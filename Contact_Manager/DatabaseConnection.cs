@@ -77,7 +77,7 @@ namespace Contact_Manager
                 CREATE TABLE customers (
 	                salutation TEXT,
 	                first_name TEXT,
-	                last_name TEXT;
+	                last_name TEXT,
 	                gender INTEGER DEFAULT 1 NOT NULL,
 	                title TEXT,
 	                email TEXT,
