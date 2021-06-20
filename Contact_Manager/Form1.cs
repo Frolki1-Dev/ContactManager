@@ -30,6 +30,12 @@ namespace Contact_Manager
             FormAddEmployee formAddEmployeeForm = new FormAddEmployee();
             formAddEmployeeForm.Show();
         }
+
+        private void btnCreateCustomer_Click(object sender, EventArgs e)
+        {
+            FormAddCustomer formAddCustomer = new FormAddCustomer();
+            formAddCustomer.Show();
+        }
     }
 }
 

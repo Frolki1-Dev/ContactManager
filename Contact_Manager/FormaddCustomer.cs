@@ -16,5 +16,17 @@ namespace Contact_Manager
         {
             InitializeComponent();
         }
+
+        private void btnCompanyDelete_Click(object sender, EventArgs e)
+        {
+            txtCompany.Text = "Firmenname";
+            txtCompanyAdress.Text = "Adresse";
+            txtCompanyZip.Text = "PLZ";
+            txtCompanyCity.Text = "Ort";
+            txtCompanyContactSurname.Text = "Nachname";
+            txtCompanyContactName.Text = "Vorname";
+            txtCompanyContactPhone.Text = "Telefon";
+            txtCompanyContactEmail.Text = "Email";
+        }
     }
 }

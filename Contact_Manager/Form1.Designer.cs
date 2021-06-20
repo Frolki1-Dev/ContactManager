@@ -39,8 +39,14 @@ namespace Contact_Manager
             this.btnCreateCustomer = new System.Windows.Forms.Button();
             this.btnCreateEmployee = new System.Windows.Forms.Button();
             this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
+            this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.dataGridView2 = new System.Windows.Forms.DataGridView();
             this.tabControl1.SuspendLayout();
+            this.tabEmployees.SuspendLayout();
+            this.tabCustomers.SuspendLayout();
             this.tabInsertData.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).BeginInit();
             this.SuspendLayout();
             // 
             // tabMitarbeiter
@@ -85,6 +91,7 @@ namespace Contact_Manager
             // 
             // tabEmployees
             // 
+            this.tabEmployees.Controls.Add(this.dataGridView1);
             this.tabEmployees.Location = new System.Drawing.Point(4, 22);
             this.tabEmployees.Name = "tabEmployees";
             this.tabEmployees.Padding = new System.Windows.Forms.Padding(3);
@@ -95,6 +102,7 @@ namespace Contact_Manager
             // 
             // tabCustomers
             // 
+            this.tabCustomers.Controls.Add(this.dataGridView2);
             this.tabCustomers.Location = new System.Drawing.Point(4, 22);
             this.tabCustomers.Name = "tabCustomers";
             this.tabCustomers.Padding = new System.Windows.Forms.Padding(3);
@@ -116,22 +124,39 @@ namespace Contact_Manager
             // 
             // btnCreateCustomer
             // 
-            this.btnCreateCustomer.Location = new System.Drawing.Point(3, 32);
+            this.btnCreateCustomer.Image = global::Contact_Manager.Properties.Resources.outline_location_city_black_48dp;
+            this.btnCreateCustomer.Location = new System.Drawing.Point(384, 3);
             this.btnCreateCustomer.Name = "btnCreateCustomer";
-            this.btnCreateCustomer.Size = new System.Drawing.Size(142, 23);
+            this.btnCreateCustomer.Size = new System.Drawing.Size(384, 394);
             this.btnCreateCustomer.TabIndex = 1;
-            this.btnCreateCustomer.Text = "Kunde erfassen";
             this.btnCreateCustomer.UseVisualStyleBackColor = true;
+            this.btnCreateCustomer.Click += new System.EventHandler(this.btnCreateCustomer_Click);
             // 
             // btnCreateEmployee
             // 
+            this.btnCreateEmployee.Image = global::Contact_Manager.Properties.Resources.outline_person_add_black_48dp;
             this.btnCreateEmployee.Location = new System.Drawing.Point(3, 3);
             this.btnCreateEmployee.Name = "btnCreateEmployee";
-            this.btnCreateEmployee.Size = new System.Drawing.Size(142, 23);
+            this.btnCreateEmployee.Size = new System.Drawing.Size(384, 394);
             this.btnCreateEmployee.TabIndex = 0;
-            this.btnCreateEmployee.Text = "Mitarbeiter erfassen";
             this.btnCreateEmployee.UseVisualStyleBackColor = true;
             this.btnCreateEmployee.Click += new System.EventHandler(this.btnCreateEmployee_Click);
+            // 
+            // dataGridView1
+            // 
+            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView1.Location = new System.Drawing.Point(6, 6);
+            this.dataGridView1.Name = "dataGridView1";
+            this.dataGridView1.Size = new System.Drawing.Size(756, 388);
+            this.dataGridView1.TabIndex = 0;
+            // 
+            // dataGridView2
+            // 
+            this.dataGridView2.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView2.Location = new System.Drawing.Point(6, 6);
+            this.dataGridView2.Name = "dataGridView2";
+            this.dataGridView2.Size = new System.Drawing.Size(756, 388);
+            this.dataGridView2.TabIndex = 1;
             // 
             // Frm1
             // 
@@ -143,7 +168,11 @@ namespace Contact_Manager
             this.Text = "Contact Manager";
             this.Load += new System.EventHandler(this.Form1_Load);
             this.tabControl1.ResumeLayout(false);
+            this.tabEmployees.ResumeLayout(false);
+            this.tabCustomers.ResumeLayout(false);
             this.tabInsertData.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -160,6 +189,8 @@ namespace Contact_Manager
         private System.Windows.Forms.Button btnCreateCustomer;
         private System.Windows.Forms.Button btnCreateEmployee;
         private System.ComponentModel.BackgroundWorker backgroundWorker1;
+        private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.DataGridView dataGridView2;
     }
 }
 
