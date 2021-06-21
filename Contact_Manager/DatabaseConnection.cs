@@ -12,6 +12,8 @@ namespace Contact_Manager
     {
         private static SqliteConnection sqliteConnection;
 
+        private static SqliteTransaction sqliteTransaction;
+
         public static void buildDatabaseConnection(string databaseFile)
         {
             // Check if file exists
@@ -32,6 +34,34 @@ namespace Contact_Manager
         public static void closeDatabaseConnection()
         {
             sqliteConnection.Close();
+        }
+
+        public static void openDatabaseConnection()
+        {
+            sqliteConnection.Open();
+        }
+
+        public static void startTransaction()
+        {
+            sqliteTransaction = sqliteConnection.BeginTransaction();
+        }
+
+        public static void commit()
+        {
+            sqliteTransaction.Commit();
+        }
+
+        public static void rollback()
+        {
+            sqliteTransaction.Rollback();
+        }
+
+        public static int effectedStatement(string sql)
+        {
+            var command = sqliteConnection.CreateCommand();
+            command.CommandText = sql;
+            // TODO: Add parameter
+            return command.ExecuteNonQuery();
         }
 
         /**

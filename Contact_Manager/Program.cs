@@ -28,7 +28,7 @@ namespace Contact_Manager
             try
             {
                 DatabaseConnection.buildDatabaseConnection(databaseFile);
-                Application.Run(new Form1());
+                Application.Run(new Frm1());
             } catch(FileNotFoundException)
             {
                 // Display the database selection or setup

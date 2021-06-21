@@ -10,6 +10,19 @@ namespace Contact_Manager.Models
     {
         public bool insert()
         {
+            try
+            {
+                DatabaseConnection.openDatabaseConnection();
+                DatabaseConnection.startTransaction();
+
+                DatabaseConnection.commit();
+            } catch
+            {
+                DatabaseConnection.rollback();
+            } finally
+            {
+                DatabaseConnection.closeDatabaseConnection();
+            }
             return false;
         }
 

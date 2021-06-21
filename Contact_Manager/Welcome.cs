@@ -31,7 +31,7 @@ namespace Contact_Manager
 
                 if(DatabaseConnection.hasActiveConnection())
                 {
-                    (new Form1()).Show();
+                    (new Frm1()).Show();
                     this.Hide();
                 } else
                 {
