@@ -76,6 +76,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Authentication\Authentication.cs" />
+    <Compile Include="Authentication\PasswordHasher.cs" />
     <Compile Include="FormAddCustomer.cs">
       <SubType>Form</SubType>
     </Compile>
