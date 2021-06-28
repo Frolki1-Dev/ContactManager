@@ -17,7 +17,21 @@ namespace Contact_Manager.Models
 
         public void getByUsername(string username)
         {
-            using (SqliteConnection connection = DatabaseConnection.getSqliteConnection())
+            string sql = "WHERE username = @username";
+
+            Dictionary<string, dynamic> parameters = new Dictionary<string, dynamic>();
+            parameters.Add("@username", username);
+
+            List<Dictionary<string, dynamic>> result = select(sql, parameters);
+
+            if(result.Count != 1)
+            {
+                throw new Exception("No or multiple user founded with the username '"+username+"'");
+            }
+
+            setProperties(result.First());
+
+            /*using (SqliteConnection connection = DatabaseConnection.getSqliteConnection())
             {
                 connection.Open();
                 var command = connection.CreateCommand();
@@ -38,7 +52,7 @@ namespace Contact_Manager.Models
                 this.password = reader.GetString(2);
                 this.active = reader.GetBoolean(3);
                 this.is_admin = reader.GetBoolean(4);
-            }
+            }*/
         }
 
         protected override string getTable()

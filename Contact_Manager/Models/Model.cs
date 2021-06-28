@@ -22,18 +22,21 @@ namespace Contact_Manager.Models
         /**
          * Make a SELECT statement against the database
          */
-        public List<Dictionary<string, dynamic>> select(string columns = "ROWID, *", string appendSql = "", Dictionary<string, dynamic> parameters = null)
+        public List<Dictionary<string, dynamic>> select(string appendSql = "", Dictionary<string, dynamic> parameters = null, string columns = "ROWID, *")
         {
             string sql = "SELECT " + columns + " FROM " + this.getTable() + " " + appendSql;
 
             if(parameters == null)
             {
-                return getResult(sql);
+                return getResult(sql.Trim());
             }
 
-            return getResult(sql, parameters);
+            return getResult(sql.Trim(), parameters);
         }
 
+        /**
+         * Get the result from the SqliteDataReader. (Only for SELECT statements)
+         */
         private List<Dictionary<string, dynamic>> getResult(string sql, Dictionary<string, dynamic> parameters = null)
         {
             List<Dictionary<string, dynamic>> result = new List<Dictionary<string, dynamic>>();
@@ -79,6 +82,41 @@ namespace Contact_Manager.Models
             }
 
             return result;
+        }
+
+        /**
+         * Setting the properties of the model from the dictionary
+         */
+        protected void setProperties(Dictionary<string, dynamic> properties)
+        {
+            foreach(KeyValuePair<string, dynamic> property in properties)
+            {
+                string propertyKey = property.Key;
+
+                // Special case with ROWID
+                if(propertyKey.ToLower() == "rowid")
+                {
+                    propertyKey = "id";
+                }
+
+                if(!this.hasProperty(propertyKey))
+                {
+                    throw new Exception("Unknown property '"+propertyKey+"' tried to set in the model!");
+                }
+
+                string stringType = this.GetType().GetProperty(propertyKey).PropertyType.FullName;
+                Type type = Type.GetType(stringType);
+
+                this.GetType().GetProperty(propertyKey).SetValue(this, Convert.ChangeType(property.Value, type));
+            }
+        }
+
+        /**
+         * Checks if the property exists in this object/model
+         */
+        private bool hasProperty(string propertyName)
+        {
+            return this.GetType().GetProperty(propertyName) != null;
         }
 
         /**
