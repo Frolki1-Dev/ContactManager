@@ -111,6 +111,24 @@ namespace Contact_Manager.Models
         }
 
         /**
+         * Delete a resource
+         */
+        public void deleteById(int id)
+        {
+            string sql = "DELETE FROM " + getTable() + " WHERE ROWID = @id";
+
+            Dictionary<string, dynamic> value = new Dictionary<string, dynamic>();
+            value.Add("@id", id);
+
+            int result = effectedRows(sql, value);
+
+            if(result != 1)
+            {
+                throw new Exception("Couldn't delete the resource.");
+            }
+        }
+
+        /**
          * Execute the SQL statement and return the effected rows
          */
         private int effectedRows(string sql, Dictionary<string, dynamic> parameters)

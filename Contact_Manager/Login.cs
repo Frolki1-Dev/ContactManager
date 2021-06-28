@@ -9,9 +9,9 @@ namespace Contact_Manager
         public Login()
         {
             InitializeComponent();
-            /*Models.User u = new Models.User();
-
-            List<string> columns = new List<string>();
+            Models.User u = new Models.User();
+            
+            /*List<string> columns = new List<string>();
             columns.Add("username");
             columns.Add("password");
             columns.Add("active");
