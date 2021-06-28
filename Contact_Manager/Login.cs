@@ -9,7 +9,7 @@ namespace Contact_Manager
         public Login()
         {
             InitializeComponent();
-            Models.User u = new Models.User();
+            /*Models.User u = new Models.User();
 
             List<string> columns = new List<string>();
             columns.Add("username");
@@ -23,7 +23,7 @@ namespace Contact_Manager
             values.Add("@active", 1);
             values.Add("@is_admin", 0);
 
-            u.insert(columns, values);
+            u.insert(columns, values);*/
         }
 
         private void CmdLogin_Click(object sender, EventArgs e)
