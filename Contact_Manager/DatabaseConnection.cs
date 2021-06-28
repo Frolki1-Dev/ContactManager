@@ -1,4 +1,5 @@
-﻿using Microsoft.Data.Sqlite;
+﻿using Contact_Manager.Authentication;
+using Microsoft.Data.Sqlite;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -78,7 +79,12 @@ namespace Contact_Manager
             return sqliteConnection.GetType() == typeof(SqliteConnection);
         }
 
-        public static void buildDatabase(string databaseFile)
+        public static SqliteConnection getSqliteConnection()
+        {
+            return sqliteConnection;
+        }
+
+        public static void buildDatabase(string databaseFile, string username, string password)
         {
             // Check if the file exists
             if(File.Exists(databaseFile))
@@ -86,6 +92,8 @@ namespace Contact_Manager
                 // The dark force should not try to overwrite the database file
                 throw new FileLoadException("The database file " + databaseFile + " already exists!");
             }
+
+            string addUserSql = "INSERT INTO logins (username, password, active, is_admin) VALUES (@username, @password, 1, 1);";
 
             FileStream file = File.Create(databaseFile);
             file.Close();
@@ -96,7 +104,11 @@ namespace Contact_Manager
             using (SqliteConnection connection = sqliteConnection) {
                 connection.Open();
                 var command = sqliteConnection.CreateCommand();
-                command.CommandText = getDatabaseSchema();
+                command.CommandText = getDatabaseSchema() + addUserSql;
+
+                command.Parameters.AddWithValue("@username", username);
+                command.Parameters.AddWithValue("@password", PasswordHasher.hashString(password));
+
                 command.ExecuteNonQuery();
             }
         }
@@ -104,6 +116,13 @@ namespace Contact_Manager
         private static string getDatabaseSchema()
         {
             return @"
+                CREATE TABLE logins (
+                    username TEXT NOT NULL,
+                    password TEXT NOT NULL,
+                    active INTEGER DEFAULT 0 NOT NULL,
+                    is_admin INTEGER DEFAULT 0 NOT NULL
+                );
+
                 CREATE TABLE customers (
 	                salutation TEXT,
 	                first_name TEXT,

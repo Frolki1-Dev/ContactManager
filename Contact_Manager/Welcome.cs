@@ -16,28 +16,63 @@ namespace Contact_Manager
         public Welcome()
         {
             InitializeComponent();
+
+            // Add default values to the text box
+            TxtUsername.Text = Environment.UserName;
+            TxtDatabaseLocation.Text = Helper.getUserProfilePath("crm.db");
         }
 
         /**
-         * Only for dev
+         * Checks if the button should be enabeld
          */
-        private void btnCreateDatabase_Click(object sender, EventArgs e)
+        private void keyupEvent(object sender, EventArgs e)
         {
-            string databaseFile = Path.GetTempPath() + "dev_db.sqlite";
+            if(isFormValid())
+            {
+                CmdCreateDatabaseAndUser.Enabled = true;
+                return;
+            }
+
+            CmdCreateDatabaseAndUser.Enabled = false;
+        }
+
+        /**
+         * Checks if the form is valid
+         */
+        private bool isFormValid()
+        {
+            // TODO make better check
+            if(TxtUsername.TextLength < 1 || TxtPassword.TextLength < 6)
+            {
+                return false;
+            }
+
+            
+            return true;
+        }
+
+        /**
+         * Create the database and insert the user
+         */
+        private void CmdCreateDatabaseAndUser_Click(object sender, EventArgs e)
+        {
+            string databaseFile = Helper.getUserProfilePath("crm.db");
 
             try
             {
-                DatabaseConnection.buildDatabase(databaseFile);
+                DatabaseConnection.buildDatabase(databaseFile, TxtUsername.Text, TxtPassword.Text);
 
-                if(DatabaseConnection.hasActiveConnection())
+                if (DatabaseConnection.hasActiveConnection())
                 {
-                    (new Frm1()).Show();
                     this.Hide();
-                } else
+                    (new Login()).ShowDialog();
+                    this.Close();
+                }
+                else
                 {
                     MessageBox.Show("Fehler", "Erstellungsfehler", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
-            } 
+            }
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message, "Erstellungsfehler", MessageBoxButtons.OK, MessageBoxIcon.Error);

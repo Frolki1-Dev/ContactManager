@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Contact_Manager.Authentication
 {
-    public static class PasswordHasher
+    class PasswordHasher
     {
         // The size of the salt
         private const int saltSize = 16;
