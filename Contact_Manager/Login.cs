@@ -8,6 +8,9 @@ namespace Contact_Manager
         public Login()
         {
             InitializeComponent();
+            Models.User u = new Models.User();
+
+            Console.Write(u.selectAll());
         }
 
         private void CmdLogin_Click(object sender, EventArgs e)

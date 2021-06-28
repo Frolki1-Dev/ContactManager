@@ -40,5 +40,10 @@ namespace Contact_Manager.Models
                 this.is_admin = reader.GetBoolean(4);
             }
         }
+
+        protected override string getTable()
+        {
+            return "logins";
+        }
     }
 }
