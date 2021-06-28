@@ -9,7 +9,6 @@ namespace Contact_Manager.Models
 {
     class User : Model
     {
-        public int id { get; internal set; }
         public string username { get; set; }
         public string password { get; internal set; }
         public bool active { get; internal set; }

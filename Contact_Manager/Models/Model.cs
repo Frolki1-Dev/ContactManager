@@ -10,6 +10,11 @@ namespace Contact_Manager.Models
     abstract class Model
     {
         /**
+         * The identifier of the resource
+         */
+        public int id { get; internal set; }
+
+        /**
          * Select all rows in the table
          */
         public List<Dictionary<string, dynamic>> selectAll(string columns = "ROWID, *")
@@ -26,7 +31,7 @@ namespace Contact_Manager.Models
         {
             string sql = "SELECT " + columns + " FROM " + this.getTable() + " " + appendSql;
 
-            if(parameters == null)
+            if (parameters == null)
             {
                 return getResult(sql.Trim());
             }
@@ -49,10 +54,10 @@ namespace Contact_Manager.Models
                 command.CommandText = sql;
 
                 // Checks if parameters is not null
-                if(parameters != null)
+                if (parameters != null)
                 {
                     // Add parameters to the sql command
-                    foreach(KeyValuePair<string, dynamic> p in parameters)
+                    foreach (KeyValuePair<string, dynamic> p in parameters)
                     {
                         command.Parameters.AddWithValue(p.Key, p.Value);
                     }
@@ -104,7 +109,7 @@ namespace Contact_Manager.Models
 
             int result = effectedRows(sql, values);
 
-            if(result != 1)
+            if (result != 1)
             {
                 throw new Exception("Couldn't create the resource.");
             }
@@ -122,10 +127,18 @@ namespace Contact_Manager.Models
 
             int result = effectedRows(sql, value);
 
-            if(result != 1)
+            if (result != 1)
             {
                 throw new Exception("Couldn't delete the resource.");
             }
+        }
+
+        /**
+         * Delete the current model
+         */
+        public void delete()
+        {
+            deleteById(id);
         }
 
         /**
