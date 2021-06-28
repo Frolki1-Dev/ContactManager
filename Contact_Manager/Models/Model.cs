@@ -9,28 +9,63 @@ namespace Contact_Manager.Models
 {
     abstract class Model
     {
-        protected string table;
-
+        /**
+         * Select all rows in the table
+         */
         public List<Dictionary<string, dynamic>> selectAll(string columns = "ROWID, *")
         {
+            string sql = "SELECT " + columns + " FROM " + this.getTable();
+
+            return getResult(sql);
+        }
+
+        /**
+         * Make a SELECT statement against the database
+         */
+        public List<Dictionary<string, dynamic>> select(string columns = "ROWID, *", string appendSql = "", Dictionary<string, dynamic> parameters = null)
+        {
+            string sql = "SELECT " + columns + " FROM " + this.getTable() + " " + appendSql;
+
+            if(parameters == null)
+            {
+                return getResult(sql);
+            }
+
+            return getResult(sql, parameters);
+        }
+
+        private List<Dictionary<string, dynamic>> getResult(string sql, Dictionary<string, dynamic> parameters = null)
+        {
             List<Dictionary<string, dynamic>> result = new List<Dictionary<string, dynamic>>();
-            List<string> cols = new List<string>();
 
             using (SqliteConnection connection = DatabaseConnection.getSqliteConnection())
             {
+                // Prepare everything for the command
                 connection.Open();
                 var command = connection.CreateCommand();
-                command.CommandText = "SELECT "+columns+" FROM " + this.getTable();
+                command.CommandText = sql;
 
+                // Checks if parameters is not null
+                if(parameters != null)
+                {
+                    // Add parameters to the sql command
+                    foreach(KeyValuePair<string, dynamic> p in parameters)
+                    {
+                        command.Parameters.AddWithValue(p.Key, p.Value);
+                    }
+                }
+
+                // Execute the command
                 SqliteDataReader reader = command.ExecuteReader();
 
+                // Checks if the reader has results
                 if (!reader.HasRows)
                 {
                     return result;
                 }
 
                 // Read out the data
-                while(reader.Read())
+                while (reader.Read())
                 {
                     Dictionary<string, dynamic> dict = new Dictionary<string, dynamic>();
 
@@ -44,37 +79,6 @@ namespace Contact_Manager.Models
             }
 
             return result;
-        }
-
-        public bool insert()
-        {
-            try
-            {
-                DatabaseConnection.openDatabaseConnection();
-                DatabaseConnection.startTransaction();
-
-                DatabaseConnection.commit();
-            } catch
-            {
-                DatabaseConnection.rollback();
-            } finally
-            {
-                DatabaseConnection.closeDatabaseConnection();
-            }
-            return false;
-        }
-
-        public bool updateById(int rowId)
-        {
-            return false;
-        }
-
-        /**
-         * Set the deleted flag
-         */
-        public bool delete(int rowId)
-        {
-            return false;
         }
 
         /**
