@@ -84,6 +84,62 @@ namespace Contact_Manager.Models
             return result;
         }
 
+        public void insert(List<string> columns, Dictionary<string, dynamic> values)
+        {
+            // Create the start of the sql
+            string sql = "INSERT INTO " + getTable() + " (";
+
+            // Add the columns
+            sql += String.Join(",", columns.ToArray()) + ") VALUES (";
+
+            // Add placeholders
+            columns.ForEach(delegate (string placeholder)
+            {
+                sql += "@" + placeholder + ",";
+            });
+
+            sql = sql.TrimEnd(',');
+
+            sql += ")";
+
+            int result = effectedRows(sql, values);
+
+            if(result != 1)
+            {
+                throw new Exception("Couldn't create the resource.");
+            }
+        }
+
+        /**
+         * Execute the SQL statement and return the effected rows
+         */
+        private int effectedRows(string sql, Dictionary<string, dynamic> parameters)
+        {
+            int result = 0;
+
+            using (SqliteConnection connection = DatabaseConnection.getSqliteConnection())
+            {
+                // Prepare everything for the command
+                connection.Open();
+                var command = connection.CreateCommand();
+                command.CommandText = sql;
+
+                // Checks if parameters is not null
+                if (parameters != null)
+                {
+                    // Add parameters to the sql command
+                    foreach (KeyValuePair<string, dynamic> p in parameters)
+                    {
+                        command.Parameters.AddWithValue(p.Key, p.Value);
+                    }
+                }
+
+                result = command.ExecuteNonQuery();
+            }
+
+            return result;
+        }
+
         /**
          * Setting the properties of the model from the dictionary
          */

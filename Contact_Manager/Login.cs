@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Windows.Forms;
+using System.Collections.Generic;
 
 namespace Contact_Manager
 {
@@ -10,7 +11,19 @@ namespace Contact_Manager
             InitializeComponent();
             Models.User u = new Models.User();
 
-            Console.Write(u.selectAll());
+            List<string> columns = new List<string>();
+            columns.Add("username");
+            columns.Add("password");
+            columns.Add("active");
+            columns.Add("is_admin");
+
+            Dictionary<string, dynamic> values = new Dictionary<string, dynamic>();
+            values.Add("@username", "admin");
+            values.Add("@password", "123");
+            values.Add("@active", 1);
+            values.Add("@is_admin", 0);
+
+            u.insert(columns, values);
         }
 
         private void CmdLogin_Click(object sender, EventArgs e)
