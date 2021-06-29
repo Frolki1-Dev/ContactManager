@@ -15,9 +15,9 @@ namespace Contact_Manager
 
     public partial class FormAddEmployee : Form
     {
-        List<string> culturesList = new List<string>();
-        CultureInfo[] cultures = CultureInfo.GetCultures(CultureTypes.SpecificCultures);
-        RegionInfo region;
+        List<string> _culturesList = new List<string>();
+        CultureInfo[] _cultures = CultureInfo.GetCultures(CultureTypes.SpecificCultures);
+        RegionInfo _region;
         public FormAddEmployee()
         {
             InitializeComponent();
@@ -26,13 +26,13 @@ namespace Contact_Manager
         private void addEmployeeForm_Load(object sender, EventArgs e)
         {
             cbCurrentApprenticeYear.Enabled = false;
-            foreach (CultureInfo culture in cultures)
+            foreach (CultureInfo culture in _cultures)
             {
-                region = new RegionInfo(culture.LCID);
-                if (!(culturesList.Contains(region.EnglishName)))
+                _region = new RegionInfo(culture.LCID);
+                if (!(_culturesList.Contains(_region.EnglishName)))
                 {
-                    culturesList.Add(region.EnglishName);
-                    cbNationality.Items.Add(region.EnglishName + "(" + region.ISOCurrencySymbol + ")");
+                    _culturesList.Add(_region.EnglishName);
+                    cbNationality.Items.Add(_region.EnglishName + "(" + _region.ISOCurrencySymbol + ")");
                 }
 
             }

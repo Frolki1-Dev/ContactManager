@@ -75,7 +75,7 @@ namespace Contact_Manager
             this.TxtPassword.PasswordChar = '*';
             this.TxtPassword.Size = new System.Drawing.Size(314, 20);
             this.TxtPassword.TabIndex = 2;
-            this.TxtPassword.TextChanged += new System.EventHandler(this.keyupEvent);
+            this.TxtPassword.TextChanged += new System.EventHandler(this.KeyupEvent);
             // 
             // TxtUsername
             // 
@@ -83,7 +83,7 @@ namespace Contact_Manager
             this.TxtUsername.Name = "TxtUsername";
             this.TxtUsername.Size = new System.Drawing.Size(314, 20);
             this.TxtUsername.TabIndex = 1;
-            this.TxtUsername.TextChanged += new System.EventHandler(this.keyupEvent);
+            this.TxtUsername.TextChanged += new System.EventHandler(this.KeyupEvent);
             // 
             // LblDatabaseLocation
             // 

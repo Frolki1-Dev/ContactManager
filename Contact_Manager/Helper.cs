@@ -12,7 +12,7 @@ namespace Contact_Manager
          * Get the user profile path from the user.
          * If you want you can also append path to the user profile path.
          */
-        public static string getUserProfilePath(string append = "")
+        public static string GetUserProfilePath(string append = "")
         {
             return Environment.GetFolderPath(Environment.SpecialFolder.UserProfile) + "\\" + append.Trim('\\');
         }
@@ -21,7 +21,7 @@ namespace Contact_Manager
          * Get the %appdata% path.
          * If you want you can also append path to the %appdata% path.
          */
-        public static string getAppDataPath(string append = "")
+        public static string GetAppDataPath(string append = "")
         {
             return Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData) + "\\" + append.Trim('\\');
         }

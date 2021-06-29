@@ -19,15 +19,14 @@ namespace Contact_Manager
 
             // Add default values to the text box
             TxtUsername.Text = Environment.UserName;
-            TxtDatabaseLocation.Text = Helper.getUserProfilePath("crm.db");
         }
 
         /**
-         * Checks if the button should be enabeld
+         * Checks if the button should be enabled
          */
-        private void keyupEvent(object sender, EventArgs e)
+        private void KeyupEvent(object sender, EventArgs e)
         {
-            if(isFormValid())
+            if(IsFormValid())
             {
                 CmdCreateDatabaseAndUser.Enabled = true;
                 return;
@@ -39,7 +38,7 @@ namespace Contact_Manager
         /**
          * Checks if the form is valid
          */
-        private bool isFormValid()
+        private bool IsFormValid()
         {
             // TODO make better check
             if(TxtUsername.TextLength < 1 || TxtPassword.TextLength < 6)
@@ -56,7 +55,7 @@ namespace Contact_Manager
          */
         private void CmdCreateDatabaseAndUser_Click(object sender, EventArgs e)
         {
-            string databaseFile = Helper.getUserProfilePath("crm.db");
+            /*string databaseFile = Helper.GetUserProfilePath("crm.db");
 
             try
             {
@@ -76,7 +75,7 @@ namespace Contact_Manager
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message, "Erstellungsfehler", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
+            }*/
         }
     }
 }

@@ -18,7 +18,7 @@ namespace Contact_Manager
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
 
-            string databaseFile = Helper.getUserProfilePath("crm.db");
+            /*string databaseFile = Helper.GetUserProfilePath("crm.db");
 
             try
             {
@@ -28,7 +28,7 @@ namespace Contact_Manager
             {
                 // Display the database selection or setup
                 Application.Run(new Welcome());
-            }
+            }*/
         }
     }
 }
