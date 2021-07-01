@@ -25,26 +25,33 @@ namespace Contact_Manager
         public const string Employees = "employees";
         public const string Trainees = "trainees";
 
-        private static Users UserCollection = new Users();
+        private static Users _userCollection = new Users();
+        private static Customers _customerCollection = new Customers();
+        private static Employees _employeeCollection = new Employees();
+        private static Trainees _traineeCollection = new Trainees();
 
         public static void AddModel(string type, dynamic data)
         {
             switch (type)
             {
                 case Users:
-                    UserCollection.Add((User)data);
+                    _userCollection.Add((User)data);
+                    break;
+                case Customers:
+                    _customerCollection.Add((Customer)data);
+                    break;
+                case Employees:
+                    _employeeCollection.Add((Employee)data);
+                    break;
+                case Trainees:
+                    _traineeCollection.Add((Trainee)data);
                     break;
             }
         }
 
         public static void LoadAll(string type)
         {
-            switch (type)
-            {
-                case Users:
-                    ReadBinaryFile(type);
-                    break;
-            }
+            ReadBinaryFile(type);
         }
 
         private static void ReadBinaryFile(string type)
@@ -72,7 +79,16 @@ namespace Contact_Manager
             switch (type)
             {
                 case Users:
-                    UserCollection = (Users) obj;
+                    _userCollection = (Users) obj;
+                    break;
+                case Customers:
+                    _customerCollection = (Customers) obj;
+                    break;
+                case Employees:
+                    _employeeCollection = (Employees) obj;
+                    break;
+                case Trainees:
+                    _traineeCollection = (Trainees) obj;
                     break;
             }
         }
@@ -97,7 +113,16 @@ namespace Contact_Manager
             switch (type)
             {
                 case Users:
-                    formatter.Serialize(stream, UserCollection);
+                    formatter.Serialize(stream, _userCollection);
+                    break;
+                case Customers:
+                    formatter.Serialize(stream, _customerCollection);
+                    break;
+                case Employees:
+                    formatter.Serialize(stream, _employeeCollection);
+                    break;
+                case Trainees:
+                    formatter.Serialize(stream, _traineeCollection);
                     break;
             }
 
@@ -119,7 +144,22 @@ namespace Contact_Manager
 
         public static Users GetUserCollection()
         {
-            return UserCollection;
+            return _userCollection;
+        }
+
+        public static Customers GetCustomerCollection()
+        {
+            return _customerCollection;
+        }
+
+        public static Employees GetEmployeeCollection()
+        {
+            return _employeeCollection;
+        }
+
+        public static Trainees GetTraineeCollection()
+        {
+            return _traineeCollection;
         }
     }
 }
