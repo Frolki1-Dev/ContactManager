@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -16,7 +17,15 @@ namespace Contact_Manager
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new Form1());
+
+            if (Helper.FinishSetup())
+            {
+                Application.Run(new Login());
+            }
+            else
+            {
+                Application.Run(new Welcome());
+            }
         }
     }
 }
