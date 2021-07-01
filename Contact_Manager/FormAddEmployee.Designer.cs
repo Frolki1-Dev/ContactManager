@@ -428,6 +428,7 @@
             this.btnSave.TabIndex = 31;
             this.btnSave.Text = "Speichern";
             this.btnSave.UseVisualStyleBackColor = true;
+            this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
             // 
             // btnDelete
             // 
@@ -437,8 +438,8 @@
             this.btnDelete.TabIndex = 32;
             this.btnDelete.Text = "Eingabe Löschen";
             this.btnDelete.UseVisualStyleBackColor = true;
-            //
-            // FormAddEmployeeForm
+            // 
+            // FormAddEmployee
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -479,7 +480,7 @@
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.MaximizeBox = false;
             this.MinimizeBox = false;
-            this.Name = "FormAddEmployeeForm";
+            this.Name = "FormAddEmployee";
             this.Text = "addEmployeeForm";
             this.Load += new System.EventHandler(this.addEmployeeForm_Load);
             this.ResumeLayout(false);

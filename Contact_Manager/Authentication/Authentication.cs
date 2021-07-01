@@ -24,7 +24,7 @@ namespace Contact_Manager.Authentication
             Users collection = DataContainer.GetUserCollection();
 
             // Make LINQ check
-            var user = from User usr in collection
+            IEnumerable<User> user = from User usr in collection
                 where usr.Username == username
                 select usr;
 
@@ -34,10 +34,20 @@ namespace Contact_Manager.Authentication
                 return false;
             }
 
+            // Checks if the password is correct
             if (!PasswordHasher.Verify(password, user.First().Password))
             {
                 return false;
             }
+
+            // Check if the user is active
+            if (!user.First().Active)
+            {
+                return false;
+            }
+
+            _user = user.First();
+            _authenticated = true;
 
             return true;
         }
