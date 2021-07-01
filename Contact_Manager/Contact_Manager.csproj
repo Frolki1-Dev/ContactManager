@@ -63,6 +63,8 @@
   <ItemGroup>
     <Compile Include="Authentication\Authentication.cs" />
     <Compile Include="Authentication\PasswordHasher.cs" />
+    <Compile Include="Collections\Users.cs" />
+    <Compile Include="DataContainer.cs" />
     <Compile Include="FormAddCustomer.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -89,6 +91,7 @@
       <DependentUpon>Login.cs</DependentUpon>
     </Compile>
     <Compile Include="Models\Model.cs" />
+    <Compile Include="Models\User.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="FormAddCustomer.resx">
@@ -135,5 +138,6 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

@@ -18,17 +18,14 @@ namespace Contact_Manager
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
 
-            /*string databaseFile = Helper.GetUserProfilePath("crm.db");
-
-            try
+            if (Helper.FinishSetup())
             {
-                DatabaseConnection.buildDatabaseConnection(databaseFile);
                 Application.Run(new Login());
-            } catch(FileNotFoundException)
+            }
+            else
             {
-                // Display the database selection or setup
                 Application.Run(new Welcome());
-            }*/
+            }
         }
     }
 }

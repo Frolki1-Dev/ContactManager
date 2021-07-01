@@ -34,8 +34,8 @@ namespace Contact_Manager
             this.LblPassword = new System.Windows.Forms.Label();
             this.TxtPassword = new System.Windows.Forms.MaskedTextBox();
             this.TxtUsername = new System.Windows.Forms.TextBox();
-            this.LblDatabaseLocation = new System.Windows.Forms.Label();
-            this.TxtDatabaseLocation = new System.Windows.Forms.TextBox();
+            this.LblPath = new System.Windows.Forms.Label();
+            this.TxtPath = new System.Windows.Forms.TextBox();
             this.CmdCreateDatabaseAndUser = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
@@ -46,9 +46,9 @@ namespace Contact_Manager
             this.LblTitle.ForeColor = System.Drawing.SystemColors.ControlText;
             this.LblTitle.Location = new System.Drawing.Point(9, 9);
             this.LblTitle.Name = "LblTitle";
-            this.LblTitle.Size = new System.Drawing.Size(538, 36);
+            this.LblTitle.Size = new System.Drawing.Size(178, 36);
             this.LblTitle.TabIndex = 2;
-            this.LblTitle.Text = "Einrichtung Datenbank und Benutzer";
+            this.LblTitle.Text = "Einrichtung";
             // 
             // LblUsername
             // 
@@ -85,22 +85,22 @@ namespace Contact_Manager
             this.TxtUsername.TabIndex = 1;
             this.TxtUsername.TextChanged += new System.EventHandler(this.KeyupEvent);
             // 
-            // LblDatabaseLocation
+            // LblPath
             // 
-            this.LblDatabaseLocation.AutoSize = true;
-            this.LblDatabaseLocation.Location = new System.Drawing.Point(15, 138);
-            this.LblDatabaseLocation.Name = "LblDatabaseLocation";
-            this.LblDatabaseLocation.Size = new System.Drawing.Size(60, 13);
-            this.LblDatabaseLocation.TabIndex = 7;
-            this.LblDatabaseLocation.Text = "Datenbank";
+            this.LblPath.AutoSize = true;
+            this.LblPath.Location = new System.Drawing.Point(15, 138);
+            this.LblPath.Name = "LblPath";
+            this.LblPath.Size = new System.Drawing.Size(29, 13);
+            this.LblPath.TabIndex = 7;
+            this.LblPath.Text = "Pfad";
             // 
-            // TxtDatabaseLocation
+            // TxtPath
             // 
-            this.TxtDatabaseLocation.Location = new System.Drawing.Point(106, 138);
-            this.TxtDatabaseLocation.Name = "TxtDatabaseLocation";
-            this.TxtDatabaseLocation.ReadOnly = true;
-            this.TxtDatabaseLocation.Size = new System.Drawing.Size(314, 20);
-            this.TxtDatabaseLocation.TabIndex = 8;
+            this.TxtPath.Location = new System.Drawing.Point(106, 138);
+            this.TxtPath.Name = "TxtPath";
+            this.TxtPath.ReadOnly = true;
+            this.TxtPath.Size = new System.Drawing.Size(314, 20);
+            this.TxtPath.TabIndex = 8;
             // 
             // CmdCreateDatabaseAndUser
             // 
@@ -109,7 +109,7 @@ namespace Contact_Manager
             this.CmdCreateDatabaseAndUser.Name = "CmdCreateDatabaseAndUser";
             this.CmdCreateDatabaseAndUser.Size = new System.Drawing.Size(523, 34);
             this.CmdCreateDatabaseAndUser.TabIndex = 3;
-            this.CmdCreateDatabaseAndUser.Text = "Datenbank und Benutzer erstellen";
+            this.CmdCreateDatabaseAndUser.Text = "Einrichtung starten";
             this.CmdCreateDatabaseAndUser.UseVisualStyleBackColor = true;
             this.CmdCreateDatabaseAndUser.Click += new System.EventHandler(this.CmdCreateDatabaseAndUser_Click);
             // 
@@ -119,8 +119,8 @@ namespace Contact_Manager
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(553, 242);
             this.Controls.Add(this.CmdCreateDatabaseAndUser);
-            this.Controls.Add(this.TxtDatabaseLocation);
-            this.Controls.Add(this.LblDatabaseLocation);
+            this.Controls.Add(this.TxtPath);
+            this.Controls.Add(this.LblPath);
             this.Controls.Add(this.TxtUsername);
             this.Controls.Add(this.TxtPassword);
             this.Controls.Add(this.LblPassword);
@@ -141,8 +141,8 @@ namespace Contact_Manager
         private System.Windows.Forms.Label LblPassword;
         private System.Windows.Forms.MaskedTextBox TxtPassword;
         private System.Windows.Forms.TextBox TxtUsername;
-        private System.Windows.Forms.Label LblDatabaseLocation;
-        private System.Windows.Forms.TextBox TxtDatabaseLocation;
+        private System.Windows.Forms.Label LblPath;
+        private System.Windows.Forms.TextBox TxtPath;
         private System.Windows.Forms.Button CmdCreateDatabaseAndUser;
     }
 }

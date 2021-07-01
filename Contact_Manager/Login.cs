@@ -9,12 +9,13 @@ namespace Contact_Manager
         public Login()
         {
             InitializeComponent();
+            DataContainer.LoadAll(DataContainer.Users);
         }
 
         private void CmdLogin_Click(object sender, EventArgs e)
         {
             // Check first all inputs
-            /*if(TxtUsername.TextLength < 1 || TxtPassword.TextLength < 1)
+            if(TxtUsername.TextLength < 1 || TxtPassword.TextLength < 1)
             {
                 MessageBox.Show("Leider wurden nicht alle Felder ausgefüllt.", "Eingabe fehlerhaft", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 return;
@@ -30,7 +31,7 @@ namespace Contact_Manager
             // You did it!
             this.Hide();
             (new Frm1()).ShowDialog();
-            this.Close();*/
+            this.Close();
         }
     }
 }

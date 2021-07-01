@@ -2,8 +2,11 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net.Sockets;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms;
+using Contact_Manager.Collections;
 
 
 namespace Contact_Manager.Authentication
@@ -18,7 +21,25 @@ namespace Contact_Manager.Authentication
          */
         public static bool Authenticate(string username, string password)
         {
-            return false;
+            Users collection = DataContainer.GetUserCollection();
+
+            // Make LINQ check
+            var user = from User usr in collection
+                where usr.Username == username
+                select usr;
+
+            // Count the result
+            if (user.Count() != 1)
+            {
+                return false;
+            }
+
+            if (!PasswordHasher.Verify(password, user.First().Password))
+            {
+                return false;
+            }
+
+            return true;
         }
 
         /**

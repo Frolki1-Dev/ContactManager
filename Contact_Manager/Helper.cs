@@ -1,8 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 
 namespace Contact_Manager
 {
@@ -18,12 +20,43 @@ namespace Contact_Manager
         }
 
         /**
+         * Get the application data path
+         */
+        public static string GetApplicationDataPath(string append = "")
+        {
+            return GetUserProfilePath("_crm") + "\\" + append.Trim('\\');
+        }
+
+        /**
          * Get the %appdata% path.
          * If you want you can also append path to the %appdata% path.
          */
         public static string GetAppDataPath(string append = "")
         {
             return Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData) + "\\" + append.Trim('\\');
+        }
+
+        /**
+         * Checks if the application setup is done
+         */
+        public static bool FinishSetup()
+        {
+            // Check if application data folder exists
+            if (!Directory.Exists(GetApplicationDataPath()))
+            {
+                return false;
+            }
+
+            // Check if the binary data files exists
+            if (!File.Exists(Helper.GetApplicationDataPath("users.dat")) || 
+                !File.Exists(Helper.GetApplicationDataPath("employees.dat")) || 
+                !File.Exists(Helper.GetApplicationDataPath("trainees.dat")) || 
+                !File.Exists(Helper.GetApplicationDataPath("customers.dat")))
+            {
+                return false;
+            }
+
+            return true;
         }
     }
 }
