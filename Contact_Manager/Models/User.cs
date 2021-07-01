@@ -35,12 +35,5 @@ namespace Contact_Manager.Models
             Active = active;
             IsAdmin = isAdmin;
         }
-        /**
-         * Loads the full binary data and save it in a list
-         */
-        public static void LoadAll()
-        {
-
-        }
     }
 }
