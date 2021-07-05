@@ -34,19 +34,24 @@ namespace Contact_Manager
             this.tabDatenerfassung = new System.Windows.Forms.TabPage();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabEmployees = new System.Windows.Forms.TabPage();
+            this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.tabCustomers = new System.Windows.Forms.TabPage();
+            this.dataGridView2 = new System.Windows.Forms.DataGridView();
+            this.tabUsers = new System.Windows.Forms.TabPage();
+            this.GridViewUsers = new System.Windows.Forms.DataGridView();
             this.tabInsertData = new System.Windows.Forms.TabPage();
+            this.CmdCreateUser = new System.Windows.Forms.Button();
             this.btnCreateCustomer = new System.Windows.Forms.Button();
             this.btnCreateEmployee = new System.Windows.Forms.Button();
             this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.dataGridView2 = new System.Windows.Forms.DataGridView();
             this.tabControl1.SuspendLayout();
             this.tabEmployees.SuspendLayout();
-            this.tabCustomers.SuspendLayout();
-            this.tabInsertData.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            this.tabCustomers.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).BeginInit();
+            this.tabUsers.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.GridViewUsers)).BeginInit();
+            this.tabInsertData.SuspendLayout();
             this.SuspendLayout();
             // 
             // tabMitarbeiter
@@ -82,52 +87,109 @@ namespace Contact_Manager
             // 
             this.tabControl1.Controls.Add(this.tabEmployees);
             this.tabControl1.Controls.Add(this.tabCustomers);
+            this.tabControl1.Controls.Add(this.tabUsers);
             this.tabControl1.Controls.Add(this.tabInsertData);
-            this.tabControl1.Location = new System.Drawing.Point(12, 12);
+            this.tabControl1.Location = new System.Drawing.Point(16, 15);
+            this.tabControl1.Margin = new System.Windows.Forms.Padding(4);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(776, 426);
+            this.tabControl1.Size = new System.Drawing.Size(1035, 524);
             this.tabControl1.TabIndex = 0;
             // 
             // tabEmployees
             // 
             this.tabEmployees.Controls.Add(this.dataGridView1);
-            this.tabEmployees.Location = new System.Drawing.Point(4, 22);
+            this.tabEmployees.Location = new System.Drawing.Point(4, 25);
+            this.tabEmployees.Margin = new System.Windows.Forms.Padding(4);
             this.tabEmployees.Name = "tabEmployees";
-            this.tabEmployees.Padding = new System.Windows.Forms.Padding(3);
-            this.tabEmployees.Size = new System.Drawing.Size(768, 400);
+            this.tabEmployees.Padding = new System.Windows.Forms.Padding(4);
+            this.tabEmployees.Size = new System.Drawing.Size(1027, 495);
             this.tabEmployees.TabIndex = 0;
             this.tabEmployees.Text = "Mitarbeiter";
             this.tabEmployees.UseVisualStyleBackColor = true;
             // 
+            // dataGridView1
+            // 
+            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView1.Location = new System.Drawing.Point(8, 7);
+            this.dataGridView1.Margin = new System.Windows.Forms.Padding(4);
+            this.dataGridView1.Name = "dataGridView1";
+            this.dataGridView1.Size = new System.Drawing.Size(1008, 478);
+            this.dataGridView1.TabIndex = 0;
+            // 
             // tabCustomers
             // 
             this.tabCustomers.Controls.Add(this.dataGridView2);
-            this.tabCustomers.Location = new System.Drawing.Point(4, 22);
+            this.tabCustomers.Location = new System.Drawing.Point(4, 25);
+            this.tabCustomers.Margin = new System.Windows.Forms.Padding(4);
             this.tabCustomers.Name = "tabCustomers";
-            this.tabCustomers.Padding = new System.Windows.Forms.Padding(3);
-            this.tabCustomers.Size = new System.Drawing.Size(768, 400);
+            this.tabCustomers.Padding = new System.Windows.Forms.Padding(4);
+            this.tabCustomers.Size = new System.Drawing.Size(1027, 495);
             this.tabCustomers.TabIndex = 1;
             this.tabCustomers.Text = "Kunden";
             this.tabCustomers.UseVisualStyleBackColor = true;
             // 
+            // dataGridView2
+            // 
+            this.dataGridView2.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView2.Location = new System.Drawing.Point(8, 7);
+            this.dataGridView2.Margin = new System.Windows.Forms.Padding(4);
+            this.dataGridView2.Name = "dataGridView2";
+            this.dataGridView2.Size = new System.Drawing.Size(1008, 478);
+            this.dataGridView2.TabIndex = 1;
+            // 
+            // tabUsers
+            // 
+            this.tabUsers.Controls.Add(this.GridViewUsers);
+            this.tabUsers.Location = new System.Drawing.Point(4, 25);
+            this.tabUsers.Name = "tabUsers";
+            this.tabUsers.Padding = new System.Windows.Forms.Padding(3);
+            this.tabUsers.Size = new System.Drawing.Size(1027, 495);
+            this.tabUsers.TabIndex = 3;
+            this.tabUsers.Text = "Benutzer";
+            this.tabUsers.UseVisualStyleBackColor = true;
+            // 
+            // GridViewUsers
+            // 
+            this.GridViewUsers.AllowUserToAddRows = false;
+            this.GridViewUsers.AllowUserToDeleteRows = false;
+            this.GridViewUsers.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.GridViewUsers.Location = new System.Drawing.Point(0, 0);
+            this.GridViewUsers.Name = "GridViewUsers";
+            this.GridViewUsers.RowTemplate.Height = 24;
+            this.GridViewUsers.Size = new System.Drawing.Size(1027, 495);
+            this.GridViewUsers.TabIndex = 0;
+            // 
             // tabInsertData
             // 
+            this.tabInsertData.Controls.Add(this.CmdCreateUser);
             this.tabInsertData.Controls.Add(this.btnCreateCustomer);
             this.tabInsertData.Controls.Add(this.btnCreateEmployee);
-            this.tabInsertData.Location = new System.Drawing.Point(4, 22);
+            this.tabInsertData.Location = new System.Drawing.Point(4, 25);
+            this.tabInsertData.Margin = new System.Windows.Forms.Padding(4);
             this.tabInsertData.Name = "tabInsertData";
-            this.tabInsertData.Size = new System.Drawing.Size(768, 400);
+            this.tabInsertData.Size = new System.Drawing.Size(1027, 495);
             this.tabInsertData.TabIndex = 2;
             this.tabInsertData.Text = "Daten erfassen";
             this.tabInsertData.UseVisualStyleBackColor = true;
             // 
+            // CmdCreateUser
+            // 
+            this.CmdCreateUser.Location = new System.Drawing.Point(4, 259);
+            this.CmdCreateUser.Name = "CmdCreateUser";
+            this.CmdCreateUser.Size = new System.Drawing.Size(501, 230);
+            this.CmdCreateUser.TabIndex = 2;
+            this.CmdCreateUser.Text = "Benutzer erstellen";
+            this.CmdCreateUser.UseVisualStyleBackColor = true;
+            this.CmdCreateUser.Click += new System.EventHandler(this.CmdCreateUser_Click);
+            // 
             // btnCreateCustomer
             // 
             this.btnCreateCustomer.Image = global::Contact_Manager.Properties.Resources.outline_location_city_black_48dp;
-            this.btnCreateCustomer.Location = new System.Drawing.Point(384, 3);
+            this.btnCreateCustomer.Location = new System.Drawing.Point(512, 4);
+            this.btnCreateCustomer.Margin = new System.Windows.Forms.Padding(4);
             this.btnCreateCustomer.Name = "btnCreateCustomer";
-            this.btnCreateCustomer.Size = new System.Drawing.Size(384, 394);
+            this.btnCreateCustomer.Size = new System.Drawing.Size(512, 485);
             this.btnCreateCustomer.TabIndex = 1;
             this.btnCreateCustomer.UseVisualStyleBackColor = true;
             this.btnCreateCustomer.Click += new System.EventHandler(this.btnCreateCustomer_Click);
@@ -135,44 +197,32 @@ namespace Contact_Manager
             // btnCreateEmployee
             // 
             this.btnCreateEmployee.Image = global::Contact_Manager.Properties.Resources.outline_person_add_black_48dp;
-            this.btnCreateEmployee.Location = new System.Drawing.Point(3, 3);
+            this.btnCreateEmployee.Location = new System.Drawing.Point(4, 4);
+            this.btnCreateEmployee.Margin = new System.Windows.Forms.Padding(4);
             this.btnCreateEmployee.Name = "btnCreateEmployee";
-            this.btnCreateEmployee.Size = new System.Drawing.Size(384, 394);
+            this.btnCreateEmployee.Size = new System.Drawing.Size(512, 248);
             this.btnCreateEmployee.TabIndex = 0;
             this.btnCreateEmployee.UseVisualStyleBackColor = true;
             this.btnCreateEmployee.Click += new System.EventHandler(this.btnCreateEmployee_Click);
             // 
-            // dataGridView1
-            // 
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(6, 6);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.Size = new System.Drawing.Size(756, 388);
-            this.dataGridView1.TabIndex = 0;
-            // 
-            // dataGridView2
-            // 
-            this.dataGridView2.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView2.Location = new System.Drawing.Point(6, 6);
-            this.dataGridView2.Name = "dataGridView2";
-            this.dataGridView2.Size = new System.Drawing.Size(756, 388);
-            this.dataGridView2.TabIndex = 1;
-            // 
             // Frm1
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.ClientSize = new System.Drawing.Size(1067, 554);
             this.Controls.Add(this.tabControl1);
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "Frm1";
             this.Text = "Contact Manager";
             this.Load += new System.EventHandler(this.Form1_Load);
             this.tabControl1.ResumeLayout(false);
             this.tabEmployees.ResumeLayout(false);
-            this.tabCustomers.ResumeLayout(false);
-            this.tabInsertData.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            this.tabCustomers.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).EndInit();
+            this.tabUsers.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.GridViewUsers)).EndInit();
+            this.tabInsertData.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -191,6 +241,9 @@ namespace Contact_Manager
         private System.ComponentModel.BackgroundWorker backgroundWorker1;
         private System.Windows.Forms.DataGridView dataGridView1;
         private System.Windows.Forms.DataGridView dataGridView2;
+        private System.Windows.Forms.TabPage tabUsers;
+        private System.Windows.Forms.Button CmdCreateUser;
+        private System.Windows.Forms.DataGridView GridViewUsers;
     }
 }
 

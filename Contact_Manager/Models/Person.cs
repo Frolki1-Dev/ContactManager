@@ -29,6 +29,7 @@ namespace Contact_Manager.Models
         }
 
         // properties
+        public int Id { get; set; }
         public string Salutation { get; set; }
         public string FirstName { get; set; }
         public string LastName { get; set; }
@@ -45,6 +46,7 @@ namespace Contact_Manager.Models
         public string Mobile { get; set; }
         public string City { get; set; }
         public string Country { get; set; }
+        public bool Deleted { get; set; }
 
         // methods
         // hier erfolgt der Speichervorgang in das ensprechende JSON-File
