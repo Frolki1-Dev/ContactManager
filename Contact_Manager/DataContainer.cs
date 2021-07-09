@@ -137,9 +137,49 @@ namespace Contact_Manager
             WriteBinaryFile(type);
         }
 
-        public static void SaveAll()
+        public static void Delete(dynamic data)
         {
+            if (data.GetType() == typeof(User))
+            {
+                _userCollection.Delete(((User)data).Id);
+            } else if (data.GetType() == typeof(Trainee))
+            {
+               // _traineeCollection.Delete(((Trainee)data).Id);
+            } else if (data.GetType() == typeof(Customer))
+            {
+                //_customerCollection.Delete(((Customer) data).Id);
+            } else if (data.GetType() == typeof(Employee))
+            {
+               // _employeeCollection.Delete(((Employee) data).Id);
+            }
+            else
+            {
+                throw new InvalidDataException("Given data object is an unknown object type!");
+            }
+        }
 
+        public static void Update(dynamic data)
+        {
+            if (data.GetType() == typeof(User))
+            {
+                _userCollection.Edit((User)data);
+            }
+            else if (data.GetType() == typeof(Trainee))
+            {
+                // _traineeCollection.Edit((Trainee)data);
+            }
+            else if (data.GetType() == typeof(Customer))
+            {
+                //_customerCollection.Edit((Customer) data);
+            }
+            else if (data.GetType() == typeof(Employee))
+            {
+                // _employeeCollection.Edit((Employee) data);
+            }
+            else
+            {
+                throw new InvalidDataException("Given data object is an unknown object type!");
+            }
         }
 
         public static Users GetUserCollection()

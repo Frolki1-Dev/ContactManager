@@ -41,6 +41,8 @@ namespace Contact_Manager
             this.PnlPage = new System.Windows.Forms.Panel();
             this.PnlTitle = new System.Windows.Forms.Panel();
             this.LblPageTitle = new System.Windows.Forms.Label();
+            this.PnlPageContent = new System.Windows.Forms.Panel();
+            this.CmdCreateResource = new System.Windows.Forms.Button();
             this.PnlNavigation.SuspendLayout();
             this.PnlLogo.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.PicLogo)).BeginInit();
@@ -199,6 +201,7 @@ namespace Contact_Manager
             // PnlPage
             // 
             this.PnlPage.BackColor = System.Drawing.Color.Transparent;
+            this.PnlPage.Controls.Add(this.PnlPageContent);
             this.PnlPage.Controls.Add(this.PnlTitle);
             this.PnlPage.Dock = System.Windows.Forms.DockStyle.Fill;
             this.PnlPage.Location = new System.Drawing.Point(300, 0);
@@ -208,6 +211,7 @@ namespace Contact_Manager
             // 
             // PnlTitle
             // 
+            this.PnlTitle.Controls.Add(this.CmdCreateResource);
             this.PnlTitle.Controls.Add(this.LblPageTitle);
             this.PnlTitle.Dock = System.Windows.Forms.DockStyle.Top;
             this.PnlTitle.Location = new System.Drawing.Point(0, 0);
@@ -229,6 +233,24 @@ namespace Contact_Manager
             this.LblPageTitle.TabIndex = 0;
             this.LblPageTitle.Text = "Page Title";
             this.LblPageTitle.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // PnlPageContent
+            // 
+            this.PnlPageContent.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.PnlPageContent.Location = new System.Drawing.Point(0, 100);
+            this.PnlPageContent.Name = "PnlPageContent";
+            this.PnlPageContent.Size = new System.Drawing.Size(954, 835);
+            this.PnlPageContent.TabIndex = 1;
+            // 
+            // CmdCreateResource
+            // 
+            this.CmdCreateResource.Location = new System.Drawing.Point(844, 40);
+            this.CmdCreateResource.Name = "CmdCreateResource";
+            this.CmdCreateResource.Size = new System.Drawing.Size(98, 32);
+            this.CmdCreateResource.TabIndex = 1;
+            this.CmdCreateResource.Text = "Erstellen";
+            this.CmdCreateResource.UseVisualStyleBackColor = true;
+            this.CmdCreateResource.Click += new System.EventHandler(this.CmdCreateResource_Click);
             // 
             // Template
             // 
@@ -269,5 +291,7 @@ namespace Contact_Manager
         private System.Windows.Forms.Panel PnlTitle;
         private System.Windows.Forms.Label LblPageTitle;
         private System.Windows.Forms.Button CmdUsers;
+        private System.Windows.Forms.Panel PnlPageContent;
+        private System.Windows.Forms.Button CmdCreateResource;
     }
 }

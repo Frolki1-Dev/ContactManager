@@ -8,7 +8,7 @@ using Contact_Manager.Authentication;
 namespace Contact_Manager.Models
 {
     [Serializable]
-    class User
+    public class User
     {
         public int Id { get; set; }
         public string Username { get; set; }
