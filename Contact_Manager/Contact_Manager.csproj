@@ -126,6 +126,12 @@
     </Compile>
     <Compile Include="Models\User.cs" />
     <Compile Include="Models\Person.cs" />
+    <Compile Include="Partials\Dialog\EmployeeDialog.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Partials\Dialog\EmployeeDialog.Designer.cs">
+      <DependentUpon>EmployeeDialog.cs</DependentUpon>
+    </Compile>
     <Compile Include="Partials\Dialog\UserDialog.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -172,6 +178,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Login.resx">
       <DependentUpon>Login.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Partials\Dialog\EmployeeDialog.resx">
+      <DependentUpon>EmployeeDialog.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Partials\Dialog\UserDialog.resx">
       <DependentUpon>UserDialog.cs</DependentUpon>
