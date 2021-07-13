@@ -28,57 +28,57 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.cmbSalutation = new System.Windows.Forms.ComboBox();
-            this.cmbTitle = new System.Windows.Forms.ComboBox();
+            this.CmbSalutation = new System.Windows.Forms.ComboBox();
+            this.CmbTitle = new System.Windows.Forms.ComboBox();
             this.rbMale = new System.Windows.Forms.RadioButton();
             this.rbFemale = new System.Windows.Forms.RadioButton();
             this.rbOther = new System.Windows.Forms.RadioButton();
-            this.txtName = new System.Windows.Forms.TextBox();
-            this.txtSurname = new System.Windows.Forms.TextBox();
-            this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
-            this.txtHandy = new System.Windows.Forms.TextBox();
+            this.txtFirstName = new System.Windows.Forms.TextBox();
+            this.txtSurName = new System.Windows.Forms.TextBox();
+            this.DtpDateOfBirth = new System.Windows.Forms.DateTimePicker();
+            this.txtMobile = new System.Windows.Forms.TextBox();
             this.txtAhv = new System.Windows.Forms.TextBox();
-            this.txtPrivatePhone = new System.Windows.Forms.TextBox();
-            this.txtAdress = new System.Windows.Forms.TextBox();
+            this.txtPhonePrivate = new System.Windows.Forms.TextBox();
+            this.txtAddress = new System.Windows.Forms.TextBox();
             this.txtCity = new System.Windows.Forms.TextBox();
             this.txtZipCode = new System.Windows.Forms.TextBox();
-            this.cbNationality = new System.Windows.Forms.ComboBox();
+            this.CmbNationality = new System.Windows.Forms.ComboBox();
             this.lblBusiness = new System.Windows.Forms.Label();
             this.lblPrivate = new System.Windows.Forms.Label();
             this.txtEmployeeNumber = new System.Windows.Forms.TextBox();
             this.txtDepartement = new System.Windows.Forms.TextBox();
-            this.txtBusinessPhone = new System.Windows.Forms.TextBox();
-            this.txtBusinessFax = new System.Windows.Forms.TextBox();
+            this.txtPhoneCompany = new System.Windows.Forms.TextBox();
+            this.txtFax = new System.Windows.Forms.TextBox();
             this.txtEmail = new System.Windows.Forms.TextBox();
-            this.cbWorkTimePercentage = new System.Windows.Forms.ComboBox();
-            this.dtpEntryDate = new System.Windows.Forms.DateTimePicker();
-            this.dtpWithdrawlDate = new System.Windows.Forms.DateTimePicker();
-            this.txtWork = new System.Windows.Forms.TextBox();
-            this.cbManagementLevel = new System.Windows.Forms.ComboBox();
-            this.cbApprenticeYears = new System.Windows.Forms.ComboBox();
-            this.cbCurrentApprenticeYear = new System.Windows.Forms.ComboBox();
-            this.chckbxActive = new System.Windows.Forms.CheckBox();
-            this.chckbxApprentice = new System.Windows.Forms.CheckBox();
+            this.CmbLoe = new System.Windows.Forms.ComboBox();
+            this.DtpEntryDate = new System.Windows.Forms.DateTimePicker();
+            this.DtpExitDate = new System.Windows.Forms.DateTimePicker();
+            this.txtRole = new System.Windows.Forms.TextBox();
+            this.CmbManagementLevel = new System.Windows.Forms.ComboBox();
+            this.CmbApprenticeYears = new System.Windows.Forms.ComboBox();
+            this.CmbCurrentApprenticeYear = new System.Windows.Forms.ComboBox();
+            this.ChkStatus = new System.Windows.Forms.CheckBox();
+            this.ChkApprentice = new System.Windows.Forms.CheckBox();
             this.btnSave = new System.Windows.Forms.Button();
             this.btnDelete = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
-            // cmbSalutation
+            // CmbSalutation
             // 
-            this.cmbSalutation.FormattingEnabled = true;
-            this.cmbSalutation.Items.AddRange(new object[] {
+            this.CmbSalutation.FormattingEnabled = true;
+            this.CmbSalutation.Items.AddRange(new object[] {
             "Herr",
             "Frau"});
-            this.cmbSalutation.Location = new System.Drawing.Point(9, 16);
-            this.cmbSalutation.Name = "cmbSalutation";
-            this.cmbSalutation.Size = new System.Drawing.Size(121, 21);
-            this.cmbSalutation.TabIndex = 0;
-            this.cmbSalutation.Text = "Anrede";
+            this.CmbSalutation.Location = new System.Drawing.Point(9, 16);
+            this.CmbSalutation.Name = "CmbSalutation";
+            this.CmbSalutation.Size = new System.Drawing.Size(121, 21);
+            this.CmbSalutation.TabIndex = 0;
+            this.CmbSalutation.Text = "Anrede";
             // 
-            // cmbTitle
+            // CmbTitle
             // 
-            this.cmbTitle.FormattingEnabled = true;
-            this.cmbTitle.Items.AddRange(new object[] {
+            this.CmbTitle.FormattingEnabled = true;
+            this.CmbTitle.Items.AddRange(new object[] {
             "Dr.",
             "Dr. Dr.",
             "Dr. hc",
@@ -102,11 +102,11 @@
             "Dr. phil. nat.",
             "Dr. rer. pol.",
             "Dr. oec."});
-            this.cmbTitle.Location = new System.Drawing.Point(132, 16);
-            this.cmbTitle.Name = "cmbTitle";
-            this.cmbTitle.Size = new System.Drawing.Size(121, 21);
-            this.cmbTitle.TabIndex = 1;
-            this.cmbTitle.Text = "Titel";
+            this.CmbTitle.Location = new System.Drawing.Point(132, 16);
+            this.CmbTitle.Name = "CmbTitle";
+            this.CmbTitle.Size = new System.Drawing.Size(121, 21);
+            this.CmbTitle.TabIndex = 1;
+            this.CmbTitle.Text = "Titel";
             // 
             // rbMale
             // 
@@ -141,37 +141,38 @@
             this.rbOther.Text = "Anderes";
             this.rbOther.UseVisualStyleBackColor = true;
             // 
-            // txtName
+            // txtFirstName
             // 
-            this.txtName.Location = new System.Drawing.Point(8, 66);
-            this.txtName.Name = "txtName";
-            this.txtName.Size = new System.Drawing.Size(118, 20);
-            this.txtName.TabIndex = 5;
-            this.txtName.Text = "Vorname";
+            this.txtFirstName.Location = new System.Drawing.Point(8, 66);
+            this.txtFirstName.Name = "txtFirstName";
+            this.txtFirstName.Size = new System.Drawing.Size(118, 20);
+            this.txtFirstName.TabIndex = 5;
+            this.txtFirstName.Text = "Vorname";
             // 
-            // txtSurname
+            // txtSurName
             // 
-            this.txtSurname.Location = new System.Drawing.Point(132, 66);
-            this.txtSurname.Name = "txtSurname";
-            this.txtSurname.Size = new System.Drawing.Size(121, 20);
-            this.txtSurname.TabIndex = 6;
-            this.txtSurname.Text = "Nachname";
+            this.txtSurName.Location = new System.Drawing.Point(132, 66);
+            this.txtSurName.Name = "txtSurName";
+            this.txtSurName.Size = new System.Drawing.Size(121, 20);
+            this.txtSurName.TabIndex = 6;
+            this.txtSurName.Text = "Nachname";
             // 
-            // dateTimePicker1
+            // DtpDateOfBirth
             // 
-            this.dateTimePicker1.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dateTimePicker1.Location = new System.Drawing.Point(132, 119);
-            this.dateTimePicker1.Name = "dateTimePicker1";
-            this.dateTimePicker1.Size = new System.Drawing.Size(121, 20);
-            this.dateTimePicker1.TabIndex = 7;
+            this.DtpDateOfBirth.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.DtpDateOfBirth.Location = new System.Drawing.Point(132, 119);
+            this.DtpDateOfBirth.Name = "DtpDateOfBirth";
+            this.DtpDateOfBirth.Size = new System.Drawing.Size(121, 20);
+            this.DtpDateOfBirth.TabIndex = 7;
             // 
-            // txtHandy
+            // txtMobile
             // 
-            this.txtHandy.Location = new System.Drawing.Point(132, 92);
-            this.txtHandy.Name = "txtHandy";
-            this.txtHandy.Size = new System.Drawing.Size(121, 20);
-            this.txtHandy.TabIndex = 8;
-            this.txtHandy.Text = "Handynummer";
+            this.txtMobile.Cursor = System.Windows.Forms.Cursors.Default;
+            this.txtMobile.Location = new System.Drawing.Point(132, 92);
+            this.txtMobile.Name = "txtMobile";
+            this.txtMobile.Size = new System.Drawing.Size(121, 20);
+            this.txtMobile.TabIndex = 8;
+            this.txtMobile.Text = "Handynummer";
             // 
             // txtAhv
             // 
@@ -181,21 +182,21 @@
             this.txtAhv.TabIndex = 9;
             this.txtAhv.Text = "AHV Nummer";
             // 
-            // txtPrivatePhone
+            // txtPhonePrivate
             // 
-            this.txtPrivatePhone.Location = new System.Drawing.Point(8, 93);
-            this.txtPrivatePhone.Name = "txtPrivatePhone";
-            this.txtPrivatePhone.Size = new System.Drawing.Size(118, 20);
-            this.txtPrivatePhone.TabIndex = 10;
-            this.txtPrivatePhone.Text = "Telefon Privat";
+            this.txtPhonePrivate.Location = new System.Drawing.Point(8, 93);
+            this.txtPhonePrivate.Name = "txtPhonePrivate";
+            this.txtPhonePrivate.Size = new System.Drawing.Size(118, 20);
+            this.txtPhonePrivate.TabIndex = 10;
+            this.txtPhonePrivate.Text = "Telefon Privat";
             // 
-            // txtAdress
+            // txtAddress
             // 
-            this.txtAdress.Location = new System.Drawing.Point(8, 145);
-            this.txtAdress.Name = "txtAdress";
-            this.txtAdress.Size = new System.Drawing.Size(118, 20);
-            this.txtAdress.TabIndex = 11;
-            this.txtAdress.Text = "Adresse";
+            this.txtAddress.Location = new System.Drawing.Point(8, 145);
+            this.txtAddress.Name = "txtAddress";
+            this.txtAddress.Size = new System.Drawing.Size(118, 20);
+            this.txtAddress.TabIndex = 11;
+            this.txtAddress.Text = "Adresse";
             // 
             // txtCity
             // 
@@ -213,14 +214,14 @@
             this.txtZipCode.TabIndex = 13;
             this.txtZipCode.Text = "PLZ";
             // 
-            // cbNationality
+            // CmbNationality
             // 
-            this.cbNationality.FormattingEnabled = true;
-            this.cbNationality.Location = new System.Drawing.Point(133, 172);
-            this.cbNationality.Name = "cbNationality";
-            this.cbNationality.Size = new System.Drawing.Size(120, 21);
-            this.cbNationality.TabIndex = 14;
-            this.cbNationality.Text = "Nationalität";
+            this.CmbNationality.FormattingEnabled = true;
+            this.CmbNationality.Location = new System.Drawing.Point(133, 172);
+            this.CmbNationality.Name = "CmbNationality";
+            this.CmbNationality.Size = new System.Drawing.Size(120, 21);
+            this.CmbNationality.TabIndex = 14;
+            this.CmbNationality.Text = "Nationalität";
             // 
             // lblBusiness
             // 
@@ -256,21 +257,21 @@
             this.txtDepartement.TabIndex = 18;
             this.txtDepartement.Text = "Abteilung";
             // 
-            // txtBusinessPhone
+            // txtPhoneCompany
             // 
-            this.txtBusinessPhone.Location = new System.Drawing.Point(8, 239);
-            this.txtBusinessPhone.Name = "txtBusinessPhone";
-            this.txtBusinessPhone.Size = new System.Drawing.Size(118, 20);
-            this.txtBusinessPhone.TabIndex = 19;
-            this.txtBusinessPhone.Text = "Telefon Geschäft";
+            this.txtPhoneCompany.Location = new System.Drawing.Point(8, 239);
+            this.txtPhoneCompany.Name = "txtPhoneCompany";
+            this.txtPhoneCompany.Size = new System.Drawing.Size(118, 20);
+            this.txtPhoneCompany.TabIndex = 19;
+            this.txtPhoneCompany.Text = "Telefon Geschäft";
             // 
-            // txtBusinessFax
+            // txtFax
             // 
-            this.txtBusinessFax.Location = new System.Drawing.Point(133, 238);
-            this.txtBusinessFax.Name = "txtBusinessFax";
-            this.txtBusinessFax.Size = new System.Drawing.Size(120, 20);
-            this.txtBusinessFax.TabIndex = 20;
-            this.txtBusinessFax.Text = "Fax Nummer";
+            this.txtFax.Location = new System.Drawing.Point(133, 238);
+            this.txtFax.Name = "txtFax";
+            this.txtFax.Size = new System.Drawing.Size(120, 20);
+            this.txtFax.TabIndex = 20;
+            this.txtFax.Text = "Fax Nummer";
             // 
             // txtEmail
             // 
@@ -280,9 +281,9 @@
             this.txtEmail.TabIndex = 21;
             this.txtEmail.Text = "Email Adresse";
             // 
-            // cbWorkTimePercentage
+            // CmbLoe
             // 
-            this.cbWorkTimePercentage.AutoCompleteCustomSource.AddRange(new string[] {
+            this.CmbLoe.AutoCompleteCustomSource.AddRange(new string[] {
             "5%",
             "10%",
             "15%",
@@ -303,8 +304,8 @@
             "90%",
             "95%",
             "100%"});
-            this.cbWorkTimePercentage.FormattingEnabled = true;
-            this.cbWorkTimePercentage.Items.AddRange(new object[] {
+            this.CmbLoe.FormattingEnabled = true;
+            this.CmbLoe.Items.AddRange(new object[] {
             "5%",
             "10%",
             "15%",
@@ -324,101 +325,101 @@
             "85%",
             "90%",
             "100%"});
-            this.cbWorkTimePercentage.Location = new System.Drawing.Point(132, 265);
-            this.cbWorkTimePercentage.Name = "cbWorkTimePercentage";
-            this.cbWorkTimePercentage.Size = new System.Drawing.Size(121, 21);
-            this.cbWorkTimePercentage.TabIndex = 22;
-            this.cbWorkTimePercentage.Text = "Anstellungsgrad";
+            this.CmbLoe.Location = new System.Drawing.Point(132, 265);
+            this.CmbLoe.Name = "CmbLoe";
+            this.CmbLoe.Size = new System.Drawing.Size(121, 21);
+            this.CmbLoe.TabIndex = 22;
+            this.CmbLoe.Text = "Anstellungsgrad";
             // 
-            // dtpEntryDate
+            // DtpEntryDate
             // 
-            this.dtpEntryDate.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dtpEntryDate.Location = new System.Drawing.Point(9, 292);
-            this.dtpEntryDate.Name = "dtpEntryDate";
-            this.dtpEntryDate.Size = new System.Drawing.Size(117, 20);
-            this.dtpEntryDate.TabIndex = 23;
+            this.DtpEntryDate.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.DtpEntryDate.Location = new System.Drawing.Point(9, 292);
+            this.DtpEntryDate.Name = "DtpEntryDate";
+            this.DtpEntryDate.Size = new System.Drawing.Size(117, 20);
+            this.DtpEntryDate.TabIndex = 23;
             // 
-            // dtpWithdrawlDate
+            // DtpExitDate
             // 
-            this.dtpWithdrawlDate.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dtpWithdrawlDate.Location = new System.Drawing.Point(133, 292);
-            this.dtpWithdrawlDate.Name = "dtpWithdrawlDate";
-            this.dtpWithdrawlDate.Size = new System.Drawing.Size(120, 20);
-            this.dtpWithdrawlDate.TabIndex = 24;
+            this.DtpExitDate.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.DtpExitDate.Location = new System.Drawing.Point(133, 292);
+            this.DtpExitDate.Name = "DtpExitDate";
+            this.DtpExitDate.Size = new System.Drawing.Size(120, 20);
+            this.DtpExitDate.TabIndex = 24;
             // 
-            // txtWork
+            // txtRole
             // 
-            this.txtWork.Location = new System.Drawing.Point(8, 318);
-            this.txtWork.Name = "txtWork";
-            this.txtWork.Size = new System.Drawing.Size(118, 20);
-            this.txtWork.TabIndex = 25;
-            this.txtWork.Text = "Tätigkeit";
+            this.txtRole.Location = new System.Drawing.Point(8, 318);
+            this.txtRole.Name = "txtRole";
+            this.txtRole.Size = new System.Drawing.Size(118, 20);
+            this.txtRole.TabIndex = 25;
+            this.txtRole.Text = "Tätigkeit";
             // 
-            // cbManagementLevel
+            // CmbManagementLevel
             // 
-            this.cbManagementLevel.FormattingEnabled = true;
-            this.cbManagementLevel.Items.AddRange(new object[] {
+            this.CmbManagementLevel.FormattingEnabled = true;
+            this.CmbManagementLevel.Items.AddRange(new object[] {
             "0",
             "1",
             "2",
             "3",
             "4",
             "5"});
-            this.cbManagementLevel.Location = new System.Drawing.Point(133, 318);
-            this.cbManagementLevel.Name = "cbManagementLevel";
-            this.cbManagementLevel.Size = new System.Drawing.Size(120, 21);
-            this.cbManagementLevel.TabIndex = 26;
-            this.cbManagementLevel.Text = "Kaderstufe";
+            this.CmbManagementLevel.Location = new System.Drawing.Point(133, 318);
+            this.CmbManagementLevel.Name = "CmbManagementLevel";
+            this.CmbManagementLevel.Size = new System.Drawing.Size(120, 21);
+            this.CmbManagementLevel.TabIndex = 26;
+            this.CmbManagementLevel.Text = "Kaderstufe";
             // 
-            // cbApprenticeYears
+            // CmbApprenticeYears
             // 
-            this.cbApprenticeYears.FormattingEnabled = true;
-            this.cbApprenticeYears.Items.AddRange(new object[] {
+            this.CmbApprenticeYears.FormattingEnabled = true;
+            this.CmbApprenticeYears.Items.AddRange(new object[] {
             "1",
             "2",
             "3",
             "4"});
-            this.cbApprenticeYears.Location = new System.Drawing.Point(8, 345);
-            this.cbApprenticeYears.Name = "cbApprenticeYears";
-            this.cbApprenticeYears.Size = new System.Drawing.Size(118, 21);
-            this.cbApprenticeYears.TabIndex = 27;
-            this.cbApprenticeYears.Text = "Anzahl Lehrjahre";
+            this.CmbApprenticeYears.Location = new System.Drawing.Point(8, 345);
+            this.CmbApprenticeYears.Name = "CmbApprenticeYears";
+            this.CmbApprenticeYears.Size = new System.Drawing.Size(118, 21);
+            this.CmbApprenticeYears.TabIndex = 27;
+            this.CmbApprenticeYears.Text = "Anzahl Lehrjahre";
             // 
-            // cbCurrentApprenticeYear
+            // CmbCurrentApprenticeYear
             // 
-            this.cbCurrentApprenticeYear.FormattingEnabled = true;
-            this.cbCurrentApprenticeYear.Items.AddRange(new object[] {
+            this.CmbCurrentApprenticeYear.FormattingEnabled = true;
+            this.CmbCurrentApprenticeYear.Items.AddRange(new object[] {
             "1",
             "2",
             "3",
             "4"});
-            this.cbCurrentApprenticeYear.Location = new System.Drawing.Point(133, 345);
-            this.cbCurrentApprenticeYear.Name = "cbCurrentApprenticeYear";
-            this.cbCurrentApprenticeYear.Size = new System.Drawing.Size(120, 21);
-            this.cbCurrentApprenticeYear.TabIndex = 28;
-            this.cbCurrentApprenticeYear.Text = "Aktuelles Lehrjahr";
+            this.CmbCurrentApprenticeYear.Location = new System.Drawing.Point(133, 345);
+            this.CmbCurrentApprenticeYear.Name = "CmbCurrentApprenticeYear";
+            this.CmbCurrentApprenticeYear.Size = new System.Drawing.Size(120, 21);
+            this.CmbCurrentApprenticeYear.TabIndex = 28;
+            this.CmbCurrentApprenticeYear.Text = "Aktuelles Lehrjahr";
             // 
-            // chckbxActive
+            // ChkStatus
             // 
-            this.chckbxActive.AutoSize = true;
-            this.chckbxActive.Location = new System.Drawing.Point(8, 372);
-            this.chckbxActive.Name = "chckbxActive";
-            this.chckbxActive.Size = new System.Drawing.Size(111, 17);
-            this.chckbxActive.TabIndex = 29;
-            this.chckbxActive.Text = "Aktiver Mitarbeiter";
-            this.chckbxActive.UseVisualStyleBackColor = true;
-            this.chckbxActive.CheckStateChanged += new System.EventHandler(this.chckbxActive_CheckStateChanged);
+            this.ChkStatus.AutoSize = true;
+            this.ChkStatus.Location = new System.Drawing.Point(8, 372);
+            this.ChkStatus.Name = "ChkStatus";
+            this.ChkStatus.Size = new System.Drawing.Size(111, 17);
+            this.ChkStatus.TabIndex = 29;
+            this.ChkStatus.Text = "Aktiver Mitarbeiter";
+            this.ChkStatus.UseVisualStyleBackColor = true;
+            this.ChkStatus.CheckStateChanged += new System.EventHandler(this.chckbxActive_CheckStateChanged);
             // 
-            // chckbxApprentice
+            // ChkApprentice
             // 
-            this.chckbxApprentice.AutoSize = true;
-            this.chckbxApprentice.Location = new System.Drawing.Point(133, 372);
-            this.chckbxApprentice.Name = "chckbxApprentice";
-            this.chckbxApprentice.Size = new System.Drawing.Size(74, 17);
-            this.chckbxApprentice.TabIndex = 30;
-            this.chckbxApprentice.Text = "Lernender";
-            this.chckbxApprentice.UseVisualStyleBackColor = true;
-            this.chckbxApprentice.CheckedChanged += new System.EventHandler(this.chckbxApprentice_CheckedChanged);
+            this.ChkApprentice.AutoSize = true;
+            this.ChkApprentice.Location = new System.Drawing.Point(133, 372);
+            this.ChkApprentice.Name = "ChkApprentice";
+            this.ChkApprentice.Size = new System.Drawing.Size(74, 17);
+            this.ChkApprentice.TabIndex = 30;
+            this.ChkApprentice.Text = "Lernender";
+            this.ChkApprentice.UseVisualStyleBackColor = true;
+            this.ChkApprentice.CheckedChanged += new System.EventHandler(this.chckbxApprentice_CheckedChanged);
             // 
             // btnSave
             // 
@@ -446,37 +447,37 @@
             this.ClientSize = new System.Drawing.Size(269, 512);
             this.Controls.Add(this.btnDelete);
             this.Controls.Add(this.btnSave);
-            this.Controls.Add(this.chckbxApprentice);
-            this.Controls.Add(this.chckbxActive);
-            this.Controls.Add(this.cbCurrentApprenticeYear);
-            this.Controls.Add(this.cbApprenticeYears);
-            this.Controls.Add(this.cbManagementLevel);
-            this.Controls.Add(this.txtWork);
-            this.Controls.Add(this.dtpWithdrawlDate);
-            this.Controls.Add(this.dtpEntryDate);
-            this.Controls.Add(this.cbWorkTimePercentage);
+            this.Controls.Add(this.ChkApprentice);
+            this.Controls.Add(this.ChkStatus);
+            this.Controls.Add(this.CmbCurrentApprenticeYear);
+            this.Controls.Add(this.CmbApprenticeYears);
+            this.Controls.Add(this.CmbManagementLevel);
+            this.Controls.Add(this.txtRole);
+            this.Controls.Add(this.DtpExitDate);
+            this.Controls.Add(this.DtpEntryDate);
+            this.Controls.Add(this.CmbLoe);
             this.Controls.Add(this.txtEmail);
-            this.Controls.Add(this.txtBusinessFax);
-            this.Controls.Add(this.txtBusinessPhone);
+            this.Controls.Add(this.txtFax);
+            this.Controls.Add(this.txtPhoneCompany);
             this.Controls.Add(this.txtDepartement);
             this.Controls.Add(this.txtEmployeeNumber);
             this.Controls.Add(this.lblPrivate);
             this.Controls.Add(this.lblBusiness);
-            this.Controls.Add(this.cbNationality);
+            this.Controls.Add(this.CmbNationality);
             this.Controls.Add(this.txtZipCode);
             this.Controls.Add(this.txtCity);
-            this.Controls.Add(this.txtAdress);
-            this.Controls.Add(this.txtPrivatePhone);
+            this.Controls.Add(this.txtAddress);
+            this.Controls.Add(this.txtPhonePrivate);
             this.Controls.Add(this.txtAhv);
-            this.Controls.Add(this.txtHandy);
-            this.Controls.Add(this.dateTimePicker1);
-            this.Controls.Add(this.txtSurname);
-            this.Controls.Add(this.txtName);
+            this.Controls.Add(this.txtMobile);
+            this.Controls.Add(this.DtpDateOfBirth);
+            this.Controls.Add(this.txtSurName);
+            this.Controls.Add(this.txtFirstName);
             this.Controls.Add(this.rbOther);
             this.Controls.Add(this.rbFemale);
             this.Controls.Add(this.rbMale);
-            this.Controls.Add(this.cmbTitle);
-            this.Controls.Add(this.cmbSalutation);
+            this.Controls.Add(this.CmbTitle);
+            this.Controls.Add(this.CmbSalutation);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.MaximizeBox = false;
             this.MinimizeBox = false;
@@ -490,37 +491,37 @@
 
         #endregion
 
-        private System.Windows.Forms.ComboBox cmbSalutation;
-        private System.Windows.Forms.ComboBox cmbTitle;
+        private System.Windows.Forms.ComboBox CmbSalutation;
+        private System.Windows.Forms.ComboBox CmbTitle;
         private System.Windows.Forms.RadioButton rbMale;
         private System.Windows.Forms.RadioButton rbFemale;
         private System.Windows.Forms.RadioButton rbOther;
-        private System.Windows.Forms.TextBox txtName;
-        private System.Windows.Forms.TextBox txtSurname;
-        private System.Windows.Forms.DateTimePicker dateTimePicker1;
-        private System.Windows.Forms.TextBox txtHandy;
+        private System.Windows.Forms.TextBox txtFirstName;
+        private System.Windows.Forms.TextBox txtSurName;
+        private System.Windows.Forms.DateTimePicker DtpDateOfBirth;
+        private System.Windows.Forms.TextBox txtMobile;
         private System.Windows.Forms.TextBox txtAhv;
-        private System.Windows.Forms.TextBox txtPrivatePhone;
-        private System.Windows.Forms.TextBox txtAdress;
+        private System.Windows.Forms.TextBox txtPhonePrivate;
+        private System.Windows.Forms.TextBox txtAddress;
         private System.Windows.Forms.TextBox txtCity;
         private System.Windows.Forms.TextBox txtZipCode;
-        private System.Windows.Forms.ComboBox cbNationality;
+        private System.Windows.Forms.ComboBox CmbNationality;
         private System.Windows.Forms.Label lblBusiness;
         private System.Windows.Forms.Label lblPrivate;
         private System.Windows.Forms.TextBox txtEmployeeNumber;
         private System.Windows.Forms.TextBox txtDepartement;
-        private System.Windows.Forms.TextBox txtBusinessPhone;
-        private System.Windows.Forms.TextBox txtBusinessFax;
+        private System.Windows.Forms.TextBox txtPhoneCompany;
+        private System.Windows.Forms.TextBox txtFax;
         private System.Windows.Forms.TextBox txtEmail;
-        private System.Windows.Forms.ComboBox cbWorkTimePercentage;
-        private System.Windows.Forms.DateTimePicker dtpEntryDate;
-        private System.Windows.Forms.DateTimePicker dtpWithdrawlDate;
-        private System.Windows.Forms.TextBox txtWork;
-        public System.Windows.Forms.ComboBox cbManagementLevel;
-        private System.Windows.Forms.ComboBox cbApprenticeYears;
-        private System.Windows.Forms.ComboBox cbCurrentApprenticeYear;
-        private System.Windows.Forms.CheckBox chckbxActive;
-        private System.Windows.Forms.CheckBox chckbxApprentice;
+        private System.Windows.Forms.ComboBox CmbLoe;
+        private System.Windows.Forms.DateTimePicker DtpEntryDate;
+        private System.Windows.Forms.DateTimePicker DtpExitDate;
+        private System.Windows.Forms.TextBox txtRole;
+        public System.Windows.Forms.ComboBox CmbManagementLevel;
+        private System.Windows.Forms.ComboBox CmbApprenticeYears;
+        private System.Windows.Forms.ComboBox CmbCurrentApprenticeYear;
+        private System.Windows.Forms.CheckBox ChkStatus;
+        private System.Windows.Forms.CheckBox ChkApprentice;
         private System.Windows.Forms.Button btnSave;
         private System.Windows.Forms.Button btnDelete;
     }
