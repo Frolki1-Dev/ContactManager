@@ -30,7 +30,7 @@ namespace Contact_Manager
 
             // You did it!
             this.Hide();
-            (new Frm1()).ShowDialog();
+            (new Template()).ShowDialog();
             this.Close();
         }
     }

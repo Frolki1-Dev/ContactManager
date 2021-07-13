@@ -67,5 +67,14 @@ namespace Contact_Manager.Authentication
         {
             return _user;
         }
+
+        /**
+         * Logout
+         */
+        public static void Logout()
+        {
+            _authenticated = false;
+            _user = null;
+        }
     }
 }
