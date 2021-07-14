@@ -13,11 +13,11 @@ namespace Contact_Manager.Models
             Salutation = salutation;
             FirstName = firstName;
             LastName = lastName;
-            DateOfBirth = dateOfBirth;
-            Gender = gender;
+            DateOfBirth = dateOfBirth; //move to employee ?
+            Gender = gender; //move to employee ?
             Title = title;
             Email = email;
-            Status = status;
+            Status = status; 
             Address = address;
             ZipCode = zipCode;
             City = city;
@@ -25,7 +25,7 @@ namespace Contact_Manager.Models
             PhoneCompany = phoneCompany;
             Fax = fax;
             Mobile = mobile;
-            Country = country;
+            Country = country; //move to employee ?
         }
 
         // properties

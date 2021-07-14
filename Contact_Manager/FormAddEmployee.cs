@@ -112,5 +112,10 @@ namespace Contact_Manager
                 managementLevel: managementLevelFormatted
             );
         }
+
+        private void btnDelete_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
