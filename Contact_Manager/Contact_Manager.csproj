@@ -84,6 +84,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Collections\Collection.cs" />
     <Compile Include="Collections\Customers.cs" />
     <Compile Include="Collections\Employees.cs" />
     <Compile Include="Collections\Trainees.cs" />
@@ -124,6 +125,7 @@
     <Compile Include="Login.Designer.cs">
       <DependentUpon>Login.cs</DependentUpon>
     </Compile>
+    <Compile Include="Interfaces\IIdentifier.cs" />
     <Compile Include="Models\User.cs" />
     <Compile Include="Models\Person.cs" />
     <Compile Include="Partials\Dialog\UserDialog.cs">
