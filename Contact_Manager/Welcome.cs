@@ -69,7 +69,6 @@ namespace Contact_Manager
             User user = new User(TxtUsername.Text, TxtPassword.Text, true, true);
 
             DataContainer.AddModel(DataContainer.Users, user);
-            DataContainer.SaveList(DataContainer.Users);
 
             this.Hide();
             (new Login()).ShowDialog();

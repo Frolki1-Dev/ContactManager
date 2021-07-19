@@ -1,7 +1,21 @@
 ﻿<?xml version='1.0' encoding='utf-8'?>
-<SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)">
-  <Profiles>
-    <Profile Name="(Default)" />
-  </Profiles>
-  <Settings />
+<SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)" GeneratedClassNamespace="Contact_Manager.Properties" GeneratedClassName="Settings">
+  <Profiles />
+  <Settings>
+    <Setting Name="DefaultFormFont" Type="System.Drawing.Font" Scope="Application">
+      <Value Profile="(Default)">Nirmala UI, 11.25pt</Value>
+    </Setting>
+    <Setting Name="DefaultFormBackgroundColor" Type="System.Drawing.Color" Scope="Application">
+      <Value Profile="(Default)">238, 238, 238</Value>
+    </Setting>
+    <Setting Name="DefaultFormBorderStyle" Type="System.Windows.Forms.FormBorderStyle" Scope="Application">
+      <Value Profile="(Default)">None</Value>
+    </Setting>
+    <Setting Name="DefaultStartPosition" Type="System.Windows.Forms.FormStartPosition" Scope="Application">
+      <Value Profile="(Default)">CenterScreen</Value>
+    </Setting>
+    <Setting Name="PrimaryColor" Type="System.Drawing.Color" Scope="Application">
+      <Value Profile="(Default)">58, 119, 241</Value>
+    </Setting>
+  </Settings>
 </SettingsFile>
