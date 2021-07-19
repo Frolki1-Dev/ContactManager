@@ -144,13 +144,13 @@ namespace Contact_Manager
                 _userCollection.Delete(((User)data).Id);
             } else if (data.GetType() == typeof(Trainee))
             {
-               // _traineeCollection.Delete(((Trainee)data).Id);
+               _traineeCollection.Delete(((Trainee)data).Id);
             } else if (data.GetType() == typeof(Customer))
             {
-                //_customerCollection.Delete(((Customer) data).Id);
+                _customerCollection.Delete(((Customer) data).Id);
             } else if (data.GetType() == typeof(Employee))
             {
-               // _employeeCollection.Delete(((Employee) data).Id);
+               _employeeCollection.Delete(((Employee) data).Id);
             }
             else
             {
@@ -166,15 +166,15 @@ namespace Contact_Manager
             }
             else if (data.GetType() == typeof(Trainee))
             {
-                // _traineeCollection.Edit((Trainee)data);
+                _traineeCollection.Edit((Trainee)data);
             }
             else if (data.GetType() == typeof(Customer))
             {
-                //_customerCollection.Edit((Customer) data);
+                _customerCollection.Edit((Customer) data);
             }
             else if (data.GetType() == typeof(Employee))
             {
-                // _employeeCollection.Edit((Employee) data);
+                _employeeCollection.Edit((Employee) data);
             }
             else
             {
@@ -184,22 +184,62 @@ namespace Contact_Manager
 
         public static Users GetUserCollection()
         {
-            return _userCollection;
+            Users temp = _userCollection;
+
+            for (int i = 0; i < temp.Count; i++)
+            {
+                if (temp[i].Deleted)
+                {
+                    temp.RemoveAt(i);
+                }
+            }
+
+            return temp;
         }
 
         public static Customers GetCustomerCollection()
         {
-            return _customerCollection;
+            Customers temp = _customerCollection;
+
+            for (int i = 0; i < temp.Count; i++)
+            {
+                if (temp[i].Deleted)
+                {
+                    temp.RemoveAt(i);
+                }
+            }
+
+            return temp;
         }
 
         public static Employees GetEmployeeCollection()
         {
-            return _employeeCollection;
+            Employees temp = _employeeCollection;
+
+            for (int i = 0; i < temp.Count; i++)
+            {
+                if (temp[i].Deleted)
+                {
+                    temp.RemoveAt(i);
+                }
+            }
+
+            return temp;
         }
 
         public static Trainees GetTraineeCollection()
         {
-            return _traineeCollection;
+            Trainees temp = _traineeCollection;
+
+            for (int i = 0; i < temp.Count; i++)
+            {
+                if (temp[i].Deleted)
+                {
+                    temp.RemoveAt(i);
+                }
+            }
+
+            return temp;
         }
     }
 }

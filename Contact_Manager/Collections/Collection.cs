@@ -8,8 +8,8 @@ using Contact_Manager.Interfaces;
 
 namespace Contact_Manager.Collections
 {
-    [Serializable()]
-    abstract class Collection : CollectionBase
+    [Serializable]
+    public abstract class Collection : CollectionBase
     {
         /**
          * Get the next ID of the resource

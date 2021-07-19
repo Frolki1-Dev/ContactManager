@@ -39,10 +39,11 @@ namespace Contact_Manager
             this.LblWelcomeUser = new System.Windows.Forms.Label();
             this.PicLogo = new System.Windows.Forms.PictureBox();
             this.PnlPage = new System.Windows.Forms.Panel();
-            this.PnlTitle = new System.Windows.Forms.Panel();
-            this.LblPageTitle = new System.Windows.Forms.Label();
             this.PnlPageContent = new System.Windows.Forms.Panel();
+            this.PnlTitle = new System.Windows.Forms.Panel();
             this.CmdCreateResource = new System.Windows.Forms.Button();
+            this.LblPageTitle = new System.Windows.Forms.Label();
+            this.CmdTrainees = new System.Windows.Forms.Button();
             this.PnlNavigation.SuspendLayout();
             this.PnlLogo.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.PicLogo)).BeginInit();
@@ -53,6 +54,7 @@ namespace Contact_Manager
             // PnlNavigation
             // 
             this.PnlNavigation.BackColor = global::Contact_Manager.Properties.Settings.Default.PrimaryColor;
+            this.PnlNavigation.Controls.Add(this.CmdTrainees);
             this.PnlNavigation.Controls.Add(this.CmdUsers);
             this.PnlNavigation.Controls.Add(this.CmdLogout);
             this.PnlNavigation.Controls.Add(this.CmdEmployees);
@@ -68,17 +70,17 @@ namespace Contact_Manager
             // CmdUsers
             // 
             this.CmdUsers.BackColor = System.Drawing.Color.Transparent;
-            this.CmdUsers.Dock = System.Windows.Forms.DockStyle.Top;
+            this.CmdUsers.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.CmdUsers.FlatAppearance.BorderSize = 0;
             this.CmdUsers.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.CmdUsers.Font = new System.Drawing.Font("Nirmala UI", 14F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.CmdUsers.ForeColor = System.Drawing.Color.White;
-            this.CmdUsers.Location = new System.Drawing.Point(0, 414);
+            this.CmdUsers.Location = new System.Drawing.Point(0, 795);
             this.CmdUsers.Margin = new System.Windows.Forms.Padding(0);
             this.CmdUsers.Name = "CmdUsers";
             this.CmdUsers.Padding = new System.Windows.Forms.Padding(0, 10, 0, 10);
             this.CmdUsers.Size = new System.Drawing.Size(300, 70);
-            this.CmdUsers.TabIndex = 5;
+            this.CmdUsers.TabIndex = 6;
             this.CmdUsers.Text = "Benutzerstamm";
             this.CmdUsers.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.CmdUsers.UseVisualStyleBackColor = false;
@@ -120,6 +122,7 @@ namespace Contact_Manager
             this.CmdEmployees.Text = "Mitarbeiterstamm";
             this.CmdEmployees.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.CmdEmployees.UseVisualStyleBackColor = false;
+            this.CmdEmployees.Click += new System.EventHandler(this.CmdEmployees_Click);
             // 
             // CmdCustomers
             // 
@@ -139,6 +142,7 @@ namespace Contact_Manager
             this.CmdCustomers.Text = "Kundenstamm";
             this.CmdCustomers.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.CmdCustomers.UseVisualStyleBackColor = false;
+            this.CmdCustomers.Click += new System.EventHandler(this.CmdCustomers_Click);
             // 
             // CmdDashboard
             // 
@@ -209,6 +213,14 @@ namespace Contact_Manager
             this.PnlPage.Size = new System.Drawing.Size(954, 935);
             this.PnlPage.TabIndex = 1;
             // 
+            // PnlPageContent
+            // 
+            this.PnlPageContent.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.PnlPageContent.Location = new System.Drawing.Point(0, 100);
+            this.PnlPageContent.Name = "PnlPageContent";
+            this.PnlPageContent.Size = new System.Drawing.Size(954, 835);
+            this.PnlPageContent.TabIndex = 1;
+            // 
             // PnlTitle
             // 
             this.PnlTitle.Controls.Add(this.CmdCreateResource);
@@ -218,6 +230,16 @@ namespace Contact_Manager
             this.PnlTitle.Name = "PnlTitle";
             this.PnlTitle.Size = new System.Drawing.Size(954, 100);
             this.PnlTitle.TabIndex = 0;
+            // 
+            // CmdCreateResource
+            // 
+            this.CmdCreateResource.Location = new System.Drawing.Point(844, 40);
+            this.CmdCreateResource.Name = "CmdCreateResource";
+            this.CmdCreateResource.Size = new System.Drawing.Size(98, 32);
+            this.CmdCreateResource.TabIndex = 1;
+            this.CmdCreateResource.Text = "Erstellen";
+            this.CmdCreateResource.UseVisualStyleBackColor = true;
+            this.CmdCreateResource.Click += new System.EventHandler(this.CmdCreateResource_Click);
             // 
             // LblPageTitle
             // 
@@ -234,23 +256,24 @@ namespace Contact_Manager
             this.LblPageTitle.Text = "Page Title";
             this.LblPageTitle.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
-            // PnlPageContent
+            // CmdTrainees
             // 
-            this.PnlPageContent.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.PnlPageContent.Location = new System.Drawing.Point(0, 100);
-            this.PnlPageContent.Name = "PnlPageContent";
-            this.PnlPageContent.Size = new System.Drawing.Size(954, 835);
-            this.PnlPageContent.TabIndex = 1;
-            // 
-            // CmdCreateResource
-            // 
-            this.CmdCreateResource.Location = new System.Drawing.Point(844, 40);
-            this.CmdCreateResource.Name = "CmdCreateResource";
-            this.CmdCreateResource.Size = new System.Drawing.Size(98, 32);
-            this.CmdCreateResource.TabIndex = 1;
-            this.CmdCreateResource.Text = "Erstellen";
-            this.CmdCreateResource.UseVisualStyleBackColor = true;
-            this.CmdCreateResource.Click += new System.EventHandler(this.CmdCreateResource_Click);
+            this.CmdTrainees.BackColor = System.Drawing.Color.Transparent;
+            this.CmdTrainees.Dock = System.Windows.Forms.DockStyle.Top;
+            this.CmdTrainees.FlatAppearance.BorderSize = 0;
+            this.CmdTrainees.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.CmdTrainees.Font = new System.Drawing.Font("Nirmala UI", 14F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.CmdTrainees.ForeColor = System.Drawing.Color.White;
+            this.CmdTrainees.Location = new System.Drawing.Point(0, 414);
+            this.CmdTrainees.Margin = new System.Windows.Forms.Padding(0);
+            this.CmdTrainees.Name = "CmdTrainees";
+            this.CmdTrainees.Padding = new System.Windows.Forms.Padding(0, 10, 0, 10);
+            this.CmdTrainees.Size = new System.Drawing.Size(300, 70);
+            this.CmdTrainees.TabIndex = 7;
+            this.CmdTrainees.Text = "Lehrlingsstamm";
+            this.CmdTrainees.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.CmdTrainees.UseVisualStyleBackColor = false;
+            this.CmdTrainees.Click += new System.EventHandler(this.CmdTrainees_Click);
             // 
             // Template
             // 
@@ -293,5 +316,6 @@ namespace Contact_Manager
         private System.Windows.Forms.Button CmdUsers;
         private System.Windows.Forms.Panel PnlPageContent;
         private System.Windows.Forms.Button CmdCreateResource;
+        private System.Windows.Forms.Button CmdTrainees;
     }
 }

@@ -128,11 +128,53 @@
     <Compile Include="Interfaces\IIdentifier.cs" />
     <Compile Include="Models\User.cs" />
     <Compile Include="Models\Person.cs" />
+    <Compile Include="Partials\Dialog\CustomerDialog.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Partials\Dialog\CustomerDialog.Designer.cs">
+      <DependentUpon>CustomerDialog.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Partials\Dialog\EmployeeDialog.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Partials\Dialog\EmployeeDialog.Designer.cs">
+      <DependentUpon>EmployeeDialog.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Partials\Dialog\TraineeDialog.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Partials\Dialog\TraineeDialog.Designer.cs">
+      <DependentUpon>TraineeDialog.cs</DependentUpon>
+    </Compile>
     <Compile Include="Partials\Dialog\UserDialog.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Partials\Dialog\UserDialog.Designer.cs">
       <DependentUpon>UserDialog.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Partials\Overview\BaseOverview.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Partials\Overview\BaseOverview.Designer.cs">
+      <DependentUpon>BaseOverview.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Partials\Overview\CustomersOverview.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Partials\Overview\CustomersOverview.Designer.cs">
+      <DependentUpon>CustomersOverview.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Partials\Overview\EmployeesOverview.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Partials\Overview\EmployeesOverview.Designer.cs">
+      <DependentUpon>EmployeesOverview.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Partials\Overview\TraineesOverview.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Partials\Overview\TraineesOverview.Designer.cs">
+      <DependentUpon>TraineesOverview.cs</DependentUpon>
     </Compile>
     <Compile Include="Partials\Overview\UsersOverview.cs">
       <SubType>Form</SubType>
@@ -177,6 +219,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Partials\Dialog\UserDialog.resx">
       <DependentUpon>UserDialog.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Partials\Overview\BaseOverview.resx">
+      <DependentUpon>BaseOverview.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Partials\Overview\UsersOverview.resx">
       <DependentUpon>UsersOverview.cs</DependentUpon>
