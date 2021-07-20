@@ -1,7 +1,7 @@
 ﻿
 namespace Contact_Manager.Partials.Dialog
 {
-    partial class EmployeeDialog
+    partial class TraineeDialog
     {
         /// <summary>
         /// Required designer variable.
@@ -32,7 +32,7 @@ namespace Contact_Manager.Partials.Dialog
             this.components = new System.ComponentModel.Container();
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
-            this.Text = "EmployeeDialog";
+            this.Text = "TraineeDialog";
         }
 
         #endregion

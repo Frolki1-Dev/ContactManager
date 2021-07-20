@@ -9,18 +9,18 @@ using Contact_Manager.Models;
 namespace Contact_Manager.Collections
 {
     [Serializable]
-    class Customers : CollectionBase
+    class Customers : Collection
     {
-        public void Add(Customer user)
-        {
-            List.Add(user);
-        }
-
-        public Customer this[int i]
+        public new Customer this[int i]
         {
             get => (Customer)List[i];
 
             set => List.Add(value);
+        }
+
+        protected override string GetDataContainerListName()
+        {
+            return DataContainer.Customers;
         }
     }
 }
