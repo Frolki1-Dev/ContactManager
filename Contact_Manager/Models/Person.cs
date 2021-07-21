@@ -1,8 +1,9 @@
 ﻿using System;
+using Contact_Manager.Interfaces;
 
 namespace Contact_Manager.Models
 {
-    class Person
+    class Person : IIdentifier
     {
         // variables
 

@@ -4,11 +4,12 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Contact_Manager.Authentication;
+using Contact_Manager.Interfaces;
 
 namespace Contact_Manager.Models
 {
     [Serializable]
-    public class User
+    public class User: IIdentifier
     {
         public int Id { get; set; }
         public string Username { get; set; }

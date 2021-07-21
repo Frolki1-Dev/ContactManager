@@ -1,7 +1,7 @@
 ﻿
 namespace Contact_Manager.Partials.Overview
 {
-    partial class UsersOverview
+    partial class EmployeesOverview
     {
         /// <summary>
         /// Erforderliche Designervariable.
