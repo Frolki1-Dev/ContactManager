@@ -439,6 +439,7 @@
             this.btnDelete.TabIndex = 32;
             this.btnDelete.Text = "Eingabe Löschen";
             this.btnDelete.UseVisualStyleBackColor = true;
+            this.btnDelete.Click += new System.EventHandler(this.btnDelete_Click);
             // 
             // FormAddEmployee
             // 
