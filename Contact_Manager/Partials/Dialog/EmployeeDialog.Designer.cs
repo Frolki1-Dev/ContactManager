@@ -749,6 +749,7 @@ namespace Contact_Manager.Partials.Dialog
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
             this.Text = "EmployeeDialog";
+        }
 
         #endregion
         private System.Windows.Forms.Button btnSave;

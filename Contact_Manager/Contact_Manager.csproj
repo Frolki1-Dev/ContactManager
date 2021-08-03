@@ -217,6 +217,9 @@
     <EmbeddedResource Include="Login.resx">
       <DependentUpon>Login.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Partials\Dialog\CustomerDialog.resx">
+      <DependentUpon>CustomerDialog.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Partials\Dialog\UserDialog.resx">
       <DependentUpon>UserDialog.cs</DependentUpon>
     </EmbeddedResource>

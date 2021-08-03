@@ -195,9 +195,6 @@ namespace Contact_Manager
             ********************************* */
             createEmployee();
 
-        private void btnDelete_Click(object sender, EventArgs e)
-        {
-
-
+        }
     }
 }

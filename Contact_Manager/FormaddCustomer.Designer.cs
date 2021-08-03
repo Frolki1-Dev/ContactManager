@@ -101,6 +101,7 @@
             this.txtCompanyContactEmail.Size = new System.Drawing.Size(118, 20);
             this.txtCompanyContactEmail.TabIndex = 26;
             this.txtCompanyContactEmail.Text = "Email";
+            this.txtCompanyContactEmail.TextChanged += new System.EventHandler(this.txtCompanyContactEmail_TextChanged);
             // 
             // btnCompanySave
             // 
@@ -129,6 +130,7 @@
             this.txtFax.Size = new System.Drawing.Size(120, 20);
             this.txtFax.TabIndex = 49;
             this.txtFax.Text = "Fax Nummer";
+            this.txtFax.TextChanged += new System.EventHandler(this.txtFax_TextChanged);
             // 
             // txtPhoneCompany
             // 
@@ -137,6 +139,7 @@
             this.txtPhoneCompany.Size = new System.Drawing.Size(118, 20);
             this.txtPhoneCompany.TabIndex = 48;
             this.txtPhoneCompany.Text = "Telefon Geschäft";
+            this.txtPhoneCompany.TextChanged += new System.EventHandler(this.txtPhoneCompany_TextChanged);
             // 
             // label2
             // 
@@ -146,6 +149,7 @@
             this.label2.Size = new System.Drawing.Size(280, 13);
             this.label2.TabIndex = 45;
             this.label2.Text = "___Privat______________________________________";
+            this.label2.Click += new System.EventHandler(this.label2_Click);
             // 
             // CmbNationality
             // 
@@ -155,6 +159,7 @@
             this.CmbNationality.Size = new System.Drawing.Size(120, 21);
             this.CmbNationality.TabIndex = 43;
             this.CmbNationality.Text = "Nationalität";
+            this.CmbNationality.SelectedIndexChanged += new System.EventHandler(this.CmbNationality_SelectedIndexChanged);
             // 
             // txtZipCode
             // 
@@ -163,6 +168,7 @@
             this.txtZipCode.Size = new System.Drawing.Size(118, 20);
             this.txtZipCode.TabIndex = 42;
             this.txtZipCode.Text = "PLZ";
+            this.txtZipCode.TextChanged += new System.EventHandler(this.txtZipCode_TextChanged);
             // 
             // txtCity
             // 
@@ -171,6 +177,7 @@
             this.txtCity.Size = new System.Drawing.Size(120, 20);
             this.txtCity.TabIndex = 41;
             this.txtCity.Text = "Ort";
+            this.txtCity.TextChanged += new System.EventHandler(this.txtCity_TextChanged);
             // 
             // txtAddress
             // 
@@ -179,6 +186,7 @@
             this.txtAddress.Size = new System.Drawing.Size(118, 20);
             this.txtAddress.TabIndex = 40;
             this.txtAddress.Text = "Adresse";
+            this.txtAddress.TextChanged += new System.EventHandler(this.txtAddress_TextChanged);
             // 
             // txtPhonePrivate
             // 
@@ -187,6 +195,7 @@
             this.txtPhonePrivate.Size = new System.Drawing.Size(118, 20);
             this.txtPhonePrivate.TabIndex = 39;
             this.txtPhonePrivate.Text = "Telefon Privat";
+            this.txtPhonePrivate.TextChanged += new System.EventHandler(this.txtPhonePrivate_TextChanged);
             // 
             // txtMobile
             // 
@@ -196,6 +205,7 @@
             this.txtMobile.Size = new System.Drawing.Size(121, 20);
             this.txtMobile.TabIndex = 37;
             this.txtMobile.Text = "Handynummer";
+            this.txtMobile.TextChanged += new System.EventHandler(this.txtMobile_TextChanged);
             // 
             // txtSurName
             // 
@@ -204,6 +214,7 @@
             this.txtSurName.Size = new System.Drawing.Size(121, 20);
             this.txtSurName.TabIndex = 35;
             this.txtSurName.Text = "Nachname";
+            this.txtSurName.TextChanged += new System.EventHandler(this.txtSurName_TextChanged);
             // 
             // txtFirstName
             // 
@@ -212,6 +223,7 @@
             this.txtFirstName.Size = new System.Drawing.Size(118, 20);
             this.txtFirstName.TabIndex = 34;
             this.txtFirstName.Text = "Vorname";
+            this.txtFirstName.TextChanged += new System.EventHandler(this.txtFirstName_TextChanged);
             // 
             // rbOther
             // 
@@ -223,6 +235,7 @@
             this.rbOther.TabStop = true;
             this.rbOther.Text = "Anderes";
             this.rbOther.UseVisualStyleBackColor = true;
+            this.rbOther.CheckedChanged += new System.EventHandler(this.rbOther_CheckedChanged);
             // 
             // rbFemale
             // 
@@ -234,6 +247,7 @@
             this.rbFemale.TabStop = true;
             this.rbFemale.Text = "Weiblich";
             this.rbFemale.UseVisualStyleBackColor = true;
+            this.rbFemale.CheckedChanged += new System.EventHandler(this.rbFemale_CheckedChanged);
             // 
             // rbMale
             // 
@@ -245,6 +259,7 @@
             this.rbMale.TabStop = true;
             this.rbMale.Text = "Männlich";
             this.rbMale.UseVisualStyleBackColor = true;
+            this.rbMale.CheckedChanged += new System.EventHandler(this.rbMale_CheckedChanged);
             // 
             // CmbTitle
             // 
@@ -278,6 +293,7 @@
             this.CmbTitle.Size = new System.Drawing.Size(121, 21);
             this.CmbTitle.TabIndex = 30;
             this.CmbTitle.Text = "Titel";
+            this.CmbTitle.SelectedIndexChanged += new System.EventHandler(this.CmbTitle_SelectedIndexChanged);
             // 
             // CmbSalutation
             // 
@@ -290,6 +306,7 @@
             this.CmbSalutation.Size = new System.Drawing.Size(121, 21);
             this.CmbSalutation.TabIndex = 29;
             this.CmbSalutation.Text = "Anrede";
+            this.CmbSalutation.SelectedIndexChanged += new System.EventHandler(this.CmbSalutation_SelectedIndexChanged);
             // 
             // CmbCustomerType
             // 
@@ -349,6 +366,7 @@
             this.DtpDateOfBirth.Name = "DtpDateOfBirth";
             this.DtpDateOfBirth.Size = new System.Drawing.Size(121, 20);
             this.DtpDateOfBirth.TabIndex = 52;
+            this.DtpDateOfBirth.ValueChanged += new System.EventHandler(this.DtpDateOfBirth_ValueChanged);
             // 
             // ChkStatus
             // 
@@ -359,6 +377,7 @@
             this.ChkStatus.TabIndex = 53;
             this.ChkStatus.Text = "Aktiver Kunde";
             this.ChkStatus.UseVisualStyleBackColor = true;
+            this.ChkStatus.CheckedChanged += new System.EventHandler(this.ChkStatus_CheckedChanged);
             // 
             // FormAddCustomer
             // 

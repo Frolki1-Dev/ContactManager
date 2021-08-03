@@ -67,28 +67,16 @@ namespace Contact_Manager
                 city: txtCity.Text,
                 country: defaultCountry,
                 companyName: txtCompany.Text,
-                customerType: CmbCustomerType.Text,
-                companyContact: txtCompanyContact.Text
+                customerType: CmbCustomerType.Text
+                
 
 
                 );
 
         }
 
-        private void lblPrivate_Click(object sender, EventArgs e)
-        {
 
-        }
-
-        private void txtCompanyContactPhone_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void txtCompanyContactName_TextChanged(object sender, EventArgs e)
-        {
-
-        }
+      
 
         private void txtCompanyContactSurname_TextChanged(object sender, EventArgs e)
         {
@@ -121,6 +109,101 @@ namespace Contact_Manager
         }
 
         private void CmbCustomerType_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void DtpDateOfBirth_ValueChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void txtFax_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void txtPhoneCompany_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label2_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void CmbNationality_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void txtZipCode_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void txtCity_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void txtAddress_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void txtPhonePrivate_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void txtMobile_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void txtSurName_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void txtFirstName_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void rbOther_CheckedChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void rbFemale_CheckedChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void rbMale_CheckedChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void CmbTitle_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void CmbSalutation_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void ChkStatus_CheckedChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void txtCompanyContactEmail_TextChanged(object sender, EventArgs e)
         {
 
         }
