@@ -101,7 +101,8 @@ namespace Contact_Manager.Partials.Dialog
 
         private void generateErrorMessage(string errorMessage)
         {
-            throw new InvalidDataException(errorMessage);
+            // throw new InvalidDataException(errorMessage);
+            MessageBox.Show(errorMessage);
         }
 
         private void cleanUpFields()
@@ -151,6 +152,18 @@ namespace Contact_Manager.Partials.Dialog
             int loeFormatted = Convert.ToInt32(CmbLoe.SelectedItem.ToString());
             int managementLevelFormatted = Convert.ToInt32(CmbManagementLevel.SelectedItem.ToString());
 
+            /* *****************************
+             * compare entry and exit date
+            ***************************** */
+
+            int comparedDates = DateTime.Compare(DtpExitDate.Value, DtpEntryDate.Value);
+
+            /* *****************************
+             * compare entry and exit date
+            ***************************** */
+
+            int checkedBirthOfDate = DateTime.Compare(DtpDateOfBirth.Value, DateTime.Today);
+
             /* *****************************************************
              * check which gender is selected and store in variable
              * male = 1 / female = 2 / other = 3
@@ -168,47 +181,63 @@ namespace Contact_Manager.Partials.Dialog
             ***************************** */
 
             // check if required fields are filled out
-            if (txtFirstName.Text.Length < 1 || txtSurName.Text.Length < 1 || txtAddress.Text.Length < 1)
-                generateErrorMessage("Dieses Feld muss ausgefüllt werden.");
+            if (CmbSalutation.SelectedItem.ToString().Length < 1)
+                generateErrorMessage("Anrede muss ausgefüllt werden.");
 
-            // check if birthdate is younger than today
-            if (DtpDateOfBirth.Value > DateTime.Today)
+            if (txtFirstName.Text.Length < 1)
+                generateErrorMessage("Vorname muss ausgefüllt werden.");
+
+            if (txtSurName.Text.Length < 1)
+                generateErrorMessage("Nachname muss ausgefüllt werden.");
+
+            // check mobile number length
+            if (txtMobile.Text.Length != 12)
+                generateErrorMessage("Bitte Telefon-Nummer im folgenden Format angeben \"+41711234567\".");
+
+            // check birth of date compare
+            if (checkedBirthOfDate > 0)
                 generateErrorMessage("Das Geburtsdatum kann nicht jünger als heute sein.");
 
-            // check if email is correct
-            // source: https://stackoverflow.com/questions/5342375/regex-email-validation / https://docs.microsoft.com/en-us/dotnet/api/system.net.mail.mailaddress?redirectedfrom=MSDN&view=net-5.0
-            try
-            {
-                MailAddress m = new MailAddress(txtEmail.Text);
-            }
-            catch (FormatException)
-            {
-                generateErrorMessage("Das Format der E-Mail Adresse ist ungültig.");
-            }
+            if (txtAddress.Text.Length < 1)
+                generateErrorMessage("Adresse muss ausgefüllt werden.");
+            
+            if (txtCity.Text.Length < 1)
+                generateErrorMessage("Ort muss ausgefüllt werden.");
 
             // check if zip code is valid for switzerland
             if (zipCodeFormatted < 1000 || zipCodeFormatted > 9999)
                 generateErrorMessage("Die Postleitzahl ist zu klein / gross.");
 
-            // check phone / fax number lengths
-            if (txtPhonePrivate.Text.Length < 1 || txtPhonePrivate.Text.Length > 12 || txtPhoneCompany.Text.Length < 1 ||
-                txtPhoneCompany.Text.Length > 12 || txtMobile.Text.Length < 1 || txtMobile.Text.Length > 12 || txtFax.Text.Length < 1 ||
-                txtFax.Text.Length > 12)
-                generateErrorMessage("Bitte Telefon- / Fax-Nummer im folgenden Format angeben \"+41711234566\".");
+            // check departement
+            if (txtDepartement.Text.Length < 0)
+                generateErrorMessage("Abteilung muss ausgefüllt sein.");
 
-            // check ahv format
-            if (txtAhv.Text.Length == 16)
-                generateErrorMessage("Format der AHV-Nr. ist ungültig -> 756.XXXX.XXXX.XX");
-            // REGEX MASTER - I NEED YOU - this internet solution isn't working...
-            // Regex ahvNumber = new Regex("[7][5][6][.]\\d{4}[.]\\d{4}[.]\\d{2}")
-
-            // check exitDate
-            if (DtpExitDate.Value < DtpEntryDate.Value)
-                generateErrorMessage("Das Austrittsdatum kann nicht vor dem Eintrittsdatum liegen.");
+            // check if email is correct
+            // source: https://stackoverflow.com/questions/5342375/regex-email-validation / https://docs.microsoft.com/en-us/dotnet/api/system.net.mail.mailaddress?redirectedfrom=MSDN&view=net-5.0
+            if (txtEmail.Text.Length > 0)
+                try
+                {
+                    MailAddress m = new MailAddress(txtEmail.Text);
+                }
+                catch (FormatException)
+                {
+                    generateErrorMessage("Das Format der E-Mail Adresse ist ungültig.");
+                }
+            else
+            {
+                generateErrorMessage("E-Mail muss ausgefüllt sein.");
+            }
 
             // check loe
-            if (loeFormatted < 0 || loeFormatted > 100)
-                generateErrorMessage("Der Beschäftigungsgrad muss zwischen 1 und 100 liegen.");
+            if (loeFormatted < 1 || loeFormatted > 100)
+                generateErrorMessage("Der Anstellungsgrad muss zwischen 1 und 100 liegen.");
+
+            // check exitDate
+            if (comparedDates < 0)
+                generateErrorMessage("Das Austrittsdatum kann nicht vor dem Eintrittsdatum liegen.");         
+
+            if (txtRole.Text.Length < 1)
+                generateErrorMessage("Tätigkeit muss ausgefüllt sein.");
 
             // check managementLevel (0-5)
             if (managementLevelFormatted < 0 || managementLevelFormatted > 5)
