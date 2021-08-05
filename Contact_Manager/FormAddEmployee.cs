@@ -187,12 +187,17 @@ namespace Contact_Manager
             );
         }
 
+
         private void btnSave_Click(object sender, EventArgs e)
         {
             /* *********************************
              * call function to create employee
             ********************************* */
             createEmployee();
-        }
+
+        private void btnDelete_Click(object sender, EventArgs e)
+        {
+
+
     }
 }

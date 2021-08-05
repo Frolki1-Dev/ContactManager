@@ -14,12 +14,15 @@ namespace Contact_Manager.Models
             CompanyName = companyName;
             CustomerType = customerType;
             CompanyContact = companyContact;
+            
         }
 
         //Properties
         public string CompanyName { get; set; }
         public string CustomerType { get; set; }
         public string CompanyContact { get; set; }
+
+        public List<T> ContactHistory { get; set; }
     }
 
 }

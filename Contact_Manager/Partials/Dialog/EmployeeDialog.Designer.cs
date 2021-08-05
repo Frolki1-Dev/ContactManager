@@ -30,6 +30,7 @@ namespace Contact_Manager.Partials.Dialog
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+
             this.btnSave = new System.Windows.Forms.Button();
             this.ChkApprentice = new System.Windows.Forms.CheckBox();
             this.ChkStatus = new System.Windows.Forms.CheckBox();
@@ -756,8 +757,9 @@ namespace Contact_Manager.Partials.Dialog
             ((System.ComponentModel.ISupportInitialize)(this.employeeDialogBindingSource)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
-
-        }
+            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Text = "EmployeeDialog";
 
         #endregion
         private System.Windows.Forms.Button btnSave;
