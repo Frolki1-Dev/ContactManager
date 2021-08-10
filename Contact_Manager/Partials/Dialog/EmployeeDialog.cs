@@ -20,6 +20,8 @@ namespace Contact_Manager.Partials.Dialog
         CultureInfo[] _cultures = CultureInfo.GetCultures(CultureTypes.SpecificCultures);
         RegionInfo _region; */
 
+        public bool errorFound = false;
+
         public EmployeeDialog()
         {
             InitializeComponent();
@@ -103,6 +105,9 @@ namespace Contact_Manager.Partials.Dialog
         {
             // throw new InvalidDataException(errorMessage);
             MessageBox.Show(errorMessage);
+
+            // error found - set global var to true
+            errorFound = true;
         }
 
         private void cleanUpFields()
@@ -159,7 +164,7 @@ namespace Contact_Manager.Partials.Dialog
             int comparedDates = DateTime.Compare(DtpExitDate.Value, DtpEntryDate.Value);
 
             /* *****************************
-             * compare entry and exit date
+             * compare date of birth
             ***************************** */
 
             int checkedBirthOfDate = DateTime.Compare(DtpDateOfBirth.Value, DateTime.Today);
@@ -200,7 +205,7 @@ namespace Contact_Manager.Partials.Dialog
 
             if (txtAddress.Text.Length < 1)
                 generateErrorMessage("Adresse muss ausgefüllt werden.");
-            
+
             if (txtCity.Text.Length < 1)
                 generateErrorMessage("Ort muss ausgefüllt werden.");
 
@@ -234,7 +239,7 @@ namespace Contact_Manager.Partials.Dialog
 
             // check exitDate
             if (comparedDates < 0)
-                generateErrorMessage("Das Austrittsdatum kann nicht vor dem Eintrittsdatum liegen.");         
+                generateErrorMessage("Das Austrittsdatum kann nicht vor dem Eintrittsdatum liegen.");
 
             if (txtRole.Text.Length < 1)
                 generateErrorMessage("Tätigkeit muss ausgefüllt sein.");
@@ -246,35 +251,39 @@ namespace Contact_Manager.Partials.Dialog
             /* *****************************
              * create employee object
             ***************************** */
-            Employee employee = new Employee(
-                salutation: CmbSalutation.Text,
-                firstName: txtFirstName.Text,
-                lastName: txtSurName.Text,
-                dateOfBirth: DtpDateOfBirth.Value,
-                gender: selectedGender,
-                title: CmbTitle.Text,
-                email: txtEmail.Text,
-                status: ChkStatus.Checked,
-                address: txtAddress.Text,
-                zipCode: zipCodeFormatted,
-                phonePrivate: txtPhonePrivate.Text,
-                phoneCompany: txtPhoneCompany.Text,
-                fax: txtFax.Text,
-                mobile: txtMobile.Text,
-                city: txtCity.Text,
-                ahv: txtAhv.Text,
-                country: defaultCountry,
-                employeeNumber: 0,
-                departement: txtDepartement.Text,
-                nationality: CmbNationality.Text,
-                entryDate: DtpEntryDate.Value,
-                exitDate: DtpExitDate.Value,
-                loe: loeFormatted,
-                role: txtRole.Text,
-                managementLevel: managementLevelFormatted
-            );
+            if (errorFound == false)
+            {
+                Employee employee = new Employee(
+                    salutation: CmbSalutation.Text,
+                    firstName: txtFirstName.Text,
+                    lastName: txtSurName.Text,
+                    dateOfBirth: DtpDateOfBirth.Value,
+                    gender: selectedGender,
+                    title: CmbTitle.Text,
+                    email: txtEmail.Text,
+                    status: ChkStatus.Checked,
+                    address: txtAddress.Text,
+                    zipCode: zipCodeFormatted,
+                    phonePrivate: txtPhonePrivate.Text,
+                    phoneCompany: txtPhoneCompany.Text,
+                    fax: txtFax.Text,
+                    mobile: txtMobile.Text,
+                    city: txtCity.Text,
+                    ahv: txtAhv.Text,
+                    country: defaultCountry,
+                    employeeNumber: 0,
+                    departement: txtDepartement.Text,
+                    nationality: CmbNationality.Text,
+                    entryDate: DtpEntryDate.Value,
+                    exitDate: DtpExitDate.Value,
+                    loe: loeFormatted,
+                    role: txtRole.Text,
+                    managementLevel: managementLevelFormatted
+                );
 
-            DataContainer.AddModel(DataContainer.Employees, employee);
+                DataContainer.AddModel(DataContainer.Employees, employee);
+                DataContainer.SaveList(employee.ToString());
+            }
         }
 
         private void btnSave_Click(object sender, EventArgs e)
