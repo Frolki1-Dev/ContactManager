@@ -3,6 +3,7 @@ using Contact_Manager.Interfaces;
 
 namespace Contact_Manager.Models
 {
+    [Serializable]
     class Person : IIdentifier
     {
         // variables
