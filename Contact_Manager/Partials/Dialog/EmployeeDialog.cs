@@ -158,10 +158,14 @@ namespace Contact_Manager.Partials.Dialog
             int managementLevelFormatted = Convert.ToInt32(CmbManagementLevel.SelectedItem.ToString());
 
             /* *****************************
-             * compare entry and exit date
+             * compare entry and exit date only if user is deactivated
             ***************************** */
-
-            int comparedDates = DateTime.Compare(DtpExitDate.Value, DtpEntryDate.Value);
+            if(ChkStatus.Checked == false)
+            {
+                int comparedDates = DateTime.Compare(DtpExitDate.Value, DtpEntryDate.Value);
+                if (comparedDates < 0)
+                    generateErrorMessage("Das Austrittsdatum kann nicht vor dem Eintrittsdatum liegen.");
+            }
 
             /* *****************************
              * compare date of birth
@@ -237,10 +241,6 @@ namespace Contact_Manager.Partials.Dialog
             if (loeFormatted < 1 || loeFormatted > 100)
                 generateErrorMessage("Der Anstellungsgrad muss zwischen 1 und 100 liegen.");
 
-            // check exitDate
-            if (comparedDates < 0)
-                generateErrorMessage("Das Austrittsdatum kann nicht vor dem Eintrittsdatum liegen.");
-
             if (txtRole.Text.Length < 1)
                 generateErrorMessage("Tätigkeit muss ausgefüllt sein.");
 
@@ -282,7 +282,9 @@ namespace Contact_Manager.Partials.Dialog
                 );
 
                 DataContainer.AddModel(DataContainer.Employees, employee);
-                DataContainer.SaveList(employee.ToString());
+                DataContainer.SaveList(DataContainer.Employees);
+
+                MessageBox.Show("Benutzer wurde erfolgreich erstellt.");
             }
         }
 
@@ -292,7 +294,6 @@ namespace Contact_Manager.Partials.Dialog
              * call function to create employee
             ********************************* */
             createEmployee();
-            MessageBox.Show("Benutzer wurde erfolgreich erstellt.");
             cleanUpFields();
         }
     }
