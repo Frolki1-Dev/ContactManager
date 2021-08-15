@@ -756,7 +756,9 @@ namespace Contact_Manager.Partials.Dialog
             ((System.ComponentModel.ISupportInitialize)(this.employeeDialogBindingSource)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
-
+            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Text = "EmployeeDialog";
         }
 
         #endregion

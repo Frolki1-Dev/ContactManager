@@ -88,36 +88,12 @@
     <Compile Include="Collections\Customers.cs" />
     <Compile Include="Collections\Employees.cs" />
     <Compile Include="Collections\Trainees.cs" />
-    <Compile Include="FormAddUser.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="FormAddUser.Designer.cs">
-      <DependentUpon>FormAddUser.cs</DependentUpon>
-    </Compile>
     <Compile Include="Models\Customer.cs" />
     <Compile Include="Authentication\Authentication.cs" />
     <Compile Include="Authentication\PasswordHasher.cs" />
     <Compile Include="Collections\Users.cs" />
     <Compile Include="DataContainer.cs" />
     <Compile Include="Models\Employee.cs" />
-    <Compile Include="FormAddCustomer.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="FormAddCustomer.Designer.cs">
-      <DependentUpon>FormAddCustomer.cs</DependentUpon>
-    </Compile>
-    <Compile Include="FormAddEmployee.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="FormAddEmployee.Designer.cs">
-      <DependentUpon>FormAddEmployee.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Form1.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Form1.Designer.cs">
-      <DependentUpon>Form1.cs</DependentUpon>
-    </Compile>
     <Compile Include="Helper.cs" />
     <Compile Include="Login.cs">
       <SubType>Form</SubType>
@@ -184,15 +160,6 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <EmbeddedResource Include="FormAddCustomer.resx">
-      <DependentUpon>FormAddCustomer.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="FormAddEmployee.resx">
-      <DependentUpon>FormAddEmployee.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Form1.resx">
-      <DependentUpon>Form1.cs</DependentUpon>
-    </EmbeddedResource>
     <Compile Include="Models\Trainee.cs" />
     <Compile Include="Properties\Settings.Designer.cs">
       <AutoGen>True</AutoGen>
@@ -211,14 +178,14 @@
     <Compile Include="Welcome.Designer.cs">
       <DependentUpon>Welcome.cs</DependentUpon>
     </Compile>
-    <EmbeddedResource Include="FormAddUser.resx">
-      <DependentUpon>FormAddUser.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="Login.resx">
       <DependentUpon>Login.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Partials\Dialog\EmployeeDialog.resx">
       <DependentUpon>EmployeeDialog.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Partials\Dialog\CustomerDialog.resx">
+      <DependentUpon>CustomerDialog.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Partials\Dialog\UserDialog.resx">
       <DependentUpon>UserDialog.cs</DependentUpon>
