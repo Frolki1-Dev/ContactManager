@@ -71,7 +71,13 @@ namespace Contact_Manager
             FileStream fs = File.Open(file, FileMode.Open);
 
             // Deserialize
-            object obj = formatter.Deserialize(fs);
+            object obj = new object();
+
+            if (fs.Length > 0)
+            {
+                 obj = formatter.Deserialize(fs);
+            }
+
             fs.Flush();
             fs.Close();
             fs.Dispose();
@@ -82,12 +88,27 @@ namespace Contact_Manager
                     _userCollection = (Users) obj;
                     break;
                 case Customers:
+                    if (obj.GetType().ToString() == "System.Object")
+                    {
+                        _customerCollection = new Customers();
+                        break;
+                    }
                     _customerCollection = (Customers) obj;
                     break;
                 case Employees:
+                    if (obj.GetType().ToString() == "System.Object")
+                    {
+                        _employeeCollection = new Employees();
+                        break;
+                    }
                     _employeeCollection = (Employees) obj;
                     break;
                 case Trainees:
+                    if (obj.GetType().ToString() == "System.Object")
+                    {
+                        _traineeCollection = new Trainees();
+                        break;
+                    }
                     _traineeCollection = (Trainees) obj;
                     break;
             }

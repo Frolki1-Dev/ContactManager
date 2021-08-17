@@ -140,6 +140,12 @@
     <Compile Include="Partials\Overview\CustomersOverview.Designer.cs">
       <DependentUpon>CustomersOverview.cs</DependentUpon>
     </Compile>
+    <Compile Include="Partials\Overview\DashboardOverview.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Partials\Overview\DashboardOverview.Designer.cs">
+      <DependentUpon>DashboardOverview.cs</DependentUpon>
+    </Compile>
     <Compile Include="Partials\Overview\EmployeesOverview.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -192,6 +198,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Partials\Overview\BaseOverview.resx">
       <DependentUpon>BaseOverview.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Partials\Overview\DashboardOverview.resx">
+      <DependentUpon>DashboardOverview.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Partials\Overview\UsersOverview.resx">
       <DependentUpon>UsersOverview.cs</DependentUpon>
