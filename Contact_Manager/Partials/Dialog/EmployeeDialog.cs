@@ -20,7 +20,17 @@ namespace Contact_Manager.Partials.Dialog
         CultureInfo[] _cultures = CultureInfo.GetCultures(CultureTypes.SpecificCultures);
         RegionInfo _region; */
 
-        public bool errorFound = false;
+        /* *****************************************************
+        * declare global vars
+        ***************************************************** */
+        private int selectedGender;
+        private string defaultCountry;
+        private int zipCodeFormatted;
+        private int loeFormatted;
+        private int managementLevelFormatted;
+
+        private bool errorFound = false;
+        private Employee editEmployee;
 
         public EmployeeDialog()
         {
@@ -30,6 +40,52 @@ namespace Contact_Manager.Partials.Dialog
         public EmployeeDialog(Employee employee)
         {
             InitializeComponent();
+
+            // set flag for edit
+            editEmployee = employee;
+
+            // set values from loaded employee
+            CmbSalutation.Text = employee.Salutation;
+            txtFirstName.Text = employee.FirstName;
+            txtSurName.Text = employee.LastName;
+            DtpDateOfBirth.Value = employee.DateOfBirth;
+
+            /* *****************************************************
+             * check which gender is set and convert to gui element
+             * male = 1 / female = 2 / other = 3
+            ***************************************************** */
+            switch (employee.Gender)
+            {
+                case 1 when employee.Gender == 1:
+                    rbMale.Checked = true;
+                    break;
+                case 2 when employee.Gender == 2:
+                    rbFemale.Checked = true;
+                    break;
+                case 3 when employee.Gender == 3:
+                    rbOther.Checked = true;
+                    break;
+            }        
+           
+            CmbTitle.Text = employee.Title;
+            txtEmail.Text = employee.Email;
+            ChkStatus.Checked = employee.Status;
+            txtAddress.Text = employee.Address;
+            txtZipCode.Text = Convert.ToString(employee.ZipCode);
+            txtPhonePrivate.Text = employee.PhonePrivate;
+            txtPhoneCompany.Text = employee.PhoneCompany;
+            txtFax.Text = employee.Fax;
+            txtMobile.Text = employee.Mobile;
+            txtCity.Text = employee.City;
+            txtAhv.Text = employee.Ahv;
+            txtDepartement.Text = employee.Departement;
+            CmbNationality.Text = employee.Nationality;
+            DtpEntryDate.Value = employee.EntryDate;
+            DtpExitDate.Value = employee.ExitDate;
+            CmbLoe.Text = Convert.ToString(employee.Loe);
+            txtRole.Text = employee.Role;
+            CmbManagementLevel.Text = Convert.ToString(employee.ManagementLevel);
+
         }
 
         public static List<string> CountryList()
@@ -61,8 +117,10 @@ namespace Contact_Manager.Partials.Dialog
 
         private void EmployeeDialog_Load(object sender, EventArgs e)
         {
-            CmbApprenticeYears.Enabled = false;
-            CmbCurrentApprenticeYear.Enabled = false;
+            /* 
+                CmbApprenticeYears.Enabled = false;
+                CmbCurrentApprenticeYear.Enabled = false;
+            */
 
             CmbNationality.DataSource = CountryList();
 
@@ -89,20 +147,6 @@ namespace Contact_Manager.Partials.Dialog
             else
             {
                 DtpExitDate.Enabled = true;
-            }
-        }
-
-        private void ChkApprentice_CheckedChanged(object sender, EventArgs e)
-        {
-            if (ChkApprentice.Checked)
-            {
-                CmbApprenticeYears.Enabled = true;
-                CmbCurrentApprenticeYear.Enabled = true;
-            }
-            else
-            {
-                CmbApprenticeYears.Enabled = false;
-                CmbCurrentApprenticeYear.Enabled = false;
             }
         }
 
@@ -145,27 +189,26 @@ namespace Contact_Manager.Partials.Dialog
             CmbManagementLevel.SelectedIndex = -1;
         }
 
-        private void createEmployee()
+        private void checkFieldInput()
         {
             /* *****************************
-             * declare vars
+             * define vars
             ***************************** */
 
-            int selectedGender;
-            string defaultCountry = "Schweiz";
+            defaultCountry = "Schweiz";
 
             /* *****************************
              * formatting stuff
             ***************************** */
 
-            int zipCodeFormatted = Convert.ToInt32(txtZipCode.Text);
-            int loeFormatted = Convert.ToInt32(CmbLoe.SelectedItem.ToString());
-            int managementLevelFormatted = Convert.ToInt32(CmbManagementLevel.SelectedItem.ToString());
+            zipCodeFormatted = Convert.ToInt32(txtZipCode.Text);
+            loeFormatted = Convert.ToInt32(CmbLoe.SelectedItem.ToString());
+            managementLevelFormatted = Convert.ToInt32(CmbManagementLevel.SelectedItem.ToString());
 
             /* *****************************
              * compare entry and exit date only if user is deactivated
             ***************************** */
-            if(ChkStatus.Checked == false)
+            if (ChkStatus.Checked == false)
             {
                 int comparedDates = DateTime.Compare(DtpExitDate.Value, DtpEntryDate.Value);
                 if (comparedDates < 0)
@@ -252,6 +295,11 @@ namespace Contact_Manager.Partials.Dialog
             // check managementLevel (0-5)
             if (managementLevelFormatted < 0 || managementLevelFormatted > 5)
                 generateErrorMessage("Die Kaderstufe muss innerhalb 0 und 5 sein");
+        }
+
+        private void createEmployee()
+        {
+            checkFieldInput();
 
             /* *****************************
              * create employee object
@@ -285,20 +333,82 @@ namespace Contact_Manager.Partials.Dialog
                     managementLevel: managementLevelFormatted
                 );
 
+                if(ChkStatus.Checked == false)
+                {
+                    employee.Status = false;
+                }
+
                 DataContainer.AddModel(DataContainer.Employees, employee);
                 DataContainer.SaveList(DataContainer.Employees);
 
-                MessageBox.Show("Benutzer wurde erfolgreich erstellt.");
+                MessageBox.Show("Mitarbeiter wurde erfolgreich erstellt.");
             }
         }
 
+        private void updateEmployee()
+        {
+            // check input
+            checkFieldInput();
+
+            if(errorFound == false)
+            {
+                // set updated fields
+                editEmployee.Salutation = CmbSalutation.Text;
+                editEmployee.FirstName = txtFirstName.Text;
+                editEmployee.LastName = txtSurName.Text;
+                editEmployee.DateOfBirth = DtpDateOfBirth.Value;
+                editEmployee.Gender = selectedGender;
+                editEmployee.Title = CmbTitle.Text;
+                editEmployee.Email = txtEmail.Text;
+                editEmployee.Status = ChkStatus.Checked;
+                editEmployee.Address = txtAddress.Text;
+                editEmployee.ZipCode = zipCodeFormatted;
+                editEmployee.PhonePrivate = txtPhonePrivate.Text;
+                editEmployee.PhoneCompany = txtPhoneCompany.Text;
+                editEmployee.Fax = txtFax.Text;
+                editEmployee.Mobile = txtMobile.Text;
+                editEmployee.City = txtCity.Text;
+                editEmployee.Ahv = txtAhv.Text;
+                editEmployee.Country = defaultCountry;
+                editEmployee.Departement = txtDepartement.Text;
+                editEmployee.Nationality = CmbNationality.Text;
+                editEmployee.EntryDate = DtpEntryDate.Value;
+
+                // if employee is acitive - dont update exitDate
+                if (ChkStatus.Checked == false)
+                    editEmployee.ExitDate = DtpExitDate.Value;
+
+                editEmployee.Loe = loeFormatted;
+                editEmployee.Role = txtRole.Text;
+                editEmployee.ManagementLevel = managementLevelFormatted;
+
+                DataContainer.Update(editEmployee);
+                MessageBox.Show("Änderungen gespeichert.");
+            }
+        }
         private void btnSave_Click(object sender, EventArgs e)
         {
             /* *********************************
              * call function to create employee
             ********************************* */
-            createEmployee();
-            cleanUpFields();
+            try
+            {
+                if (editEmployee == null)
+                {
+                    createEmployee();
+                    // cleanUpFields();
+                }
+                else
+                {
+                    updateEmployee();
+                }
+
+                this.Close();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Fehler", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
     }
 }

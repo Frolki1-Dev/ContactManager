@@ -31,10 +31,7 @@ namespace Contact_Manager.Partials.Dialog
         {
             this.components = new System.ComponentModel.Container();
             this.btnSave = new System.Windows.Forms.Button();
-            this.ChkApprentice = new System.Windows.Forms.CheckBox();
             this.ChkStatus = new System.Windows.Forms.CheckBox();
-            this.CmbCurrentApprenticeYear = new System.Windows.Forms.ComboBox();
-            this.CmbApprenticeYears = new System.Windows.Forms.ComboBox();
             this.CmbManagementLevel = new System.Windows.Forms.ComboBox();
             this.txtRole = new System.Windows.Forms.TextBox();
             this.DtpExitDate = new System.Windows.Forms.DateTimePicker();
@@ -81,8 +78,6 @@ namespace Contact_Manager.Partials.Dialog
             this.LblRole = new System.Windows.Forms.Label();
             this.LblExitDate = new System.Windows.Forms.Label();
             this.LblEntryDate = new System.Windows.Forms.Label();
-            this.LblCurrentApprenticeYear = new System.Windows.Forms.Label();
-            this.LblApprenticeYears = new System.Windows.Forms.Label();
             this.LblPrivate = new System.Windows.Forms.Label();
             this.LblCompany = new System.Windows.Forms.Label();
             this.employeeDialogBindingSource = new System.Windows.Forms.BindingSource(this.components);
@@ -100,17 +95,6 @@ namespace Contact_Manager.Partials.Dialog
             this.btnSave.UseVisualStyleBackColor = true;
             this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
             // 
-            // ChkApprentice
-            // 
-            this.ChkApprentice.AutoSize = true;
-            this.ChkApprentice.Location = new System.Drawing.Point(519, 364);
-            this.ChkApprentice.Name = "ChkApprentice";
-            this.ChkApprentice.Size = new System.Drawing.Size(74, 17);
-            this.ChkApprentice.TabIndex = 63;
-            this.ChkApprentice.Text = "Lernender";
-            this.ChkApprentice.UseVisualStyleBackColor = true;
-            this.ChkApprentice.CheckedChanged += new System.EventHandler(this.ChkApprentice_CheckedChanged);
-            // 
             // ChkStatus
             // 
             this.ChkStatus.AutoSize = true;
@@ -123,34 +107,6 @@ namespace Contact_Manager.Partials.Dialog
             this.ChkStatus.Text = "Aktiver Mitarbeiter";
             this.ChkStatus.UseVisualStyleBackColor = true;
             this.ChkStatus.CheckedChanged += new System.EventHandler(this.ChkStatus_CheckedChanged);
-            // 
-            // CmbCurrentApprenticeYear
-            // 
-            this.CmbCurrentApprenticeYear.Enabled = false;
-            this.CmbCurrentApprenticeYear.FormattingEnabled = true;
-            this.CmbCurrentApprenticeYear.Items.AddRange(new object[] {
-            "1",
-            "2",
-            "3",
-            "4"});
-            this.CmbCurrentApprenticeYear.Location = new System.Drawing.Point(519, 310);
-            this.CmbCurrentApprenticeYear.Name = "CmbCurrentApprenticeYear";
-            this.CmbCurrentApprenticeYear.Size = new System.Drawing.Size(175, 21);
-            this.CmbCurrentApprenticeYear.TabIndex = 61;
-            // 
-            // CmbApprenticeYears
-            // 
-            this.CmbApprenticeYears.Enabled = false;
-            this.CmbApprenticeYears.FormattingEnabled = true;
-            this.CmbApprenticeYears.Items.AddRange(new object[] {
-            "1",
-            "2",
-            "3",
-            "4"});
-            this.CmbApprenticeYears.Location = new System.Drawing.Point(519, 283);
-            this.CmbApprenticeYears.Name = "CmbApprenticeYears";
-            this.CmbApprenticeYears.Size = new System.Drawing.Size(175, 21);
-            this.CmbApprenticeYears.TabIndex = 60;
             // 
             // CmbManagementLevel
             // 
@@ -617,24 +573,6 @@ namespace Contact_Manager.Partials.Dialog
             this.LblEntryDate.TabIndex = 85;
             this.LblEntryDate.Text = "Eintritt *";
             // 
-            // LblCurrentApprenticeYear
-            // 
-            this.LblCurrentApprenticeYear.AutoSize = true;
-            this.LblCurrentApprenticeYear.Location = new System.Drawing.Point(399, 313);
-            this.LblCurrentApprenticeYear.Name = "LblCurrentApprenticeYear";
-            this.LblCurrentApprenticeYear.Size = new System.Drawing.Size(91, 13);
-            this.LblCurrentApprenticeYear.TabIndex = 90;
-            this.LblCurrentApprenticeYear.Text = "Aktuelles Lehrjahr";
-            // 
-            // LblApprenticeYears
-            // 
-            this.LblApprenticeYears.AutoSize = true;
-            this.LblApprenticeYears.Location = new System.Drawing.Point(399, 287);
-            this.LblApprenticeYears.Name = "LblApprenticeYears";
-            this.LblApprenticeYears.Size = new System.Drawing.Size(86, 13);
-            this.LblApprenticeYears.TabIndex = 89;
-            this.LblApprenticeYears.Text = "Anzahl Lehrjahre";
-            // 
             // LblPrivate
             // 
             this.LblPrivate.AutoSize = true;
@@ -676,8 +614,6 @@ namespace Contact_Manager.Partials.Dialog
             this.Controls.Add(this.LblInfo);
             this.Controls.Add(this.LblCompany);
             this.Controls.Add(this.LblPrivate);
-            this.Controls.Add(this.LblCurrentApprenticeYear);
-            this.Controls.Add(this.LblApprenticeYears);
             this.Controls.Add(this.LblManagementLevel);
             this.Controls.Add(this.LblRole);
             this.Controls.Add(this.LblExitDate);
@@ -701,10 +637,7 @@ namespace Contact_Manager.Partials.Dialog
             this.Controls.Add(this.LblTitle);
             this.Controls.Add(this.LblSalutation);
             this.Controls.Add(this.btnSave);
-            this.Controls.Add(this.ChkApprentice);
             this.Controls.Add(this.ChkStatus);
-            this.Controls.Add(this.CmbCurrentApprenticeYear);
-            this.Controls.Add(this.CmbApprenticeYears);
             this.Controls.Add(this.CmbManagementLevel);
             this.Controls.Add(this.txtRole);
             this.Controls.Add(this.DtpExitDate);
@@ -740,10 +673,7 @@ namespace Contact_Manager.Partials.Dialog
 
         #endregion
         private System.Windows.Forms.Button btnSave;
-        private System.Windows.Forms.CheckBox ChkApprentice;
         private System.Windows.Forms.CheckBox ChkStatus;
-        private System.Windows.Forms.ComboBox CmbCurrentApprenticeYear;
-        private System.Windows.Forms.ComboBox CmbApprenticeYears;
         public System.Windows.Forms.ComboBox CmbManagementLevel;
         private System.Windows.Forms.TextBox txtRole;
         private System.Windows.Forms.DateTimePicker DtpExitDate;
@@ -790,8 +720,6 @@ namespace Contact_Manager.Partials.Dialog
         private System.Windows.Forms.Label LblRole;
         private System.Windows.Forms.Label LblExitDate;
         private System.Windows.Forms.Label LblEntryDate;
-        private System.Windows.Forms.Label LblCurrentApprenticeYear;
-        private System.Windows.Forms.Label LblApprenticeYears;
         private System.Windows.Forms.Label LblPrivate;
         private System.Windows.Forms.Label LblCompany;
         private System.Windows.Forms.BindingSource employeeDialogBindingSource;

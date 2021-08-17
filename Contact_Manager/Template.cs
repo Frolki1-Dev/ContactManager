@@ -22,6 +22,7 @@ namespace Contact_Manager
         {
             InitializeComponent();
             CmdCreateResource.Visible = false;
+            DataContainer.LoadAll(DataContainer.Employees);
         }
 
         private void CmdDashboard_Click(object sender, EventArgs e)
