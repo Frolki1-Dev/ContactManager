@@ -6,6 +6,7 @@ using System.Drawing;
 using System.Text;
 using System.Windows.Forms;
 using Contact_Manager.Models;
+using Contact_Manager.Partials.Dialog;
 
 namespace Contact_Manager.Partials.Overview
 {
@@ -23,7 +24,9 @@ namespace Contact_Manager.Partials.Overview
 
         protected override void OpenEditDialog(int row)
         {
-            
+            CustomerDialog dialog = new CustomerDialog(GetObjectFromIndex(row));
+            dialog.FormClosing += DialogClosing;
+            dialog.Show();
         }
 
         protected override dynamic GetObjectFromIndex(int row)

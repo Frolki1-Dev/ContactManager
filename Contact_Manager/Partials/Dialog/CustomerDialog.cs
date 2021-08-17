@@ -21,6 +21,29 @@ namespace Contact_Manager.Partials.Dialog
             InitializeComponent();
 
             CmbNationality.DataSource = CountryList();
+            PnlNotes.Visible = false;
+        }
+
+        public CustomerDialog(Customer customer)
+        {
+             
+            InitializeComponent();
+            PnlNotes.Visible = true;
+
+            //load the customer to edit 
+
+
+
+            // Build a new source
+            BindingSource source = new BindingSource();
+            dynamic collection = customer.Notes;
+            source.DataSource = collection;
+            dataGridNotes.DataSource = source;
+
+
+
+
+
         }
 
        
@@ -52,19 +75,27 @@ namespace Contact_Manager.Partials.Dialog
             return CultureList;
         }
 
+        //creating contact list
+        public List<string> ContactHistoryList = new List<string>();
+
         public void ContactHistory()
         {
-            //creating contact list
-            List<string> ContactHistoryList = new List<string>();
-
             
-            string note = DateTime.Now.ToString();
+            
 
             if (txtAddNote.Text.Length > 1)
             {
-                
-                note += txtCompanyHistoryData.Text;
+                string date = DateTime.Now.ToString("dd/MM/yyyy HH:mm");
+                string note =  date + " " + txtAddNote.Text ;
+                note.Trim();
                 ContactHistoryList.Add(note);
+
+
+                txtCompanyHistoryData.Text += note + "\r\n";
+               
+                txtAddNote.Clear();
+                note = "";
+                
 
             }
                 
@@ -80,7 +111,7 @@ namespace Contact_Manager.Partials.Dialog
 
         private void generateErrorMessage(string errorMessage)
         {
-            throw new InvalidDataException(errorMessage);
+           MessageBox.Show(errorMessage);
         }
 
         public static String GetTimestamp(DateTime value)
@@ -176,16 +207,16 @@ namespace Contact_Manager.Partials.Dialog
                 txtFax.Text.Length > 12)
                 generateErrorMessage("Bitte Telefon- / Fax-Nummer im folgenden Format angeben \"+41711234566\".");
 
-              /* *****************************
-              * create customer object
-             ***************************** */
+            /* *****************************
+            * create customer object
+           ***************************** */
 
 
             Customer customer = new Customer(
-              
-                
-                
-                
+
+
+
+
                 salutation: CmbSalutation.Text,
                 firstName: txtFirstName.Text,
                 lastName: txtSurName.Text,
@@ -203,10 +234,11 @@ namespace Contact_Manager.Partials.Dialog
                 city: txtCity.Text,
                 country: defaultCountry,
                 companyName: txtCompany.Text,
-                customerType: CmbCustomerType.Text
+                customerType: CmbCustomerType.Text,
+                notes: new List<CustomerNotes>()
 
 
-                );
+                ) ;
 
             DataContainer.AddModel(DataContainer.Customers, customer);
 
@@ -231,20 +263,27 @@ namespace Contact_Manager.Partials.Dialog
 
         private void btnDeleteNote_Click(object sender, EventArgs e)
         {
-          /*
-            
-            index abfragen vom selected item -> indexof ?
-            
-            for (int i = 0; i < ContactHistory.Count; i++)
-            {
-                
-                // if it is List<String>
-                if (companies[i].equals("Something"))
-                {
-                    companies.RemoveAt(i);
-                }
-            }
-          */
+            /*
+
+              index abfragen vom selected item -> indexof ?
+
+              for (int i = 0; i < ContactHistory.Count; i++)
+              {
+
+                  // if it is List<String>
+                  if (companies[i].equals("Something"))
+                  {
+                      companies.RemoveAt(i);
+                  }
+              }
+            */
+
+           // Remove(Object):void
+        }
+
+        private void btnCompanyDelete_Click(object sender, EventArgs e)
+        {
+            cleanUpFields();
         }
     }
 }
