@@ -1,1 +1,24 @@
-TODO
+Beim erstmaligen Starten der Applikation wir nach Benutzername und Passwort gefragt
+Erstellt die .dat Dateien im Pfad C:\Users\<Benutzer>\.crm
+Anmeldung mit Benutzername und Passwort ist möglich
+Im Passwortfeld kann man die Enter Taste als Bestätigung verwenden.
+
+Erstellung von Mitarbeiter ist möglich.
+Das Bearbeiten von Mitarbeiter.
+Löschung von Mitarbeitern.
+
+Erstellung von Kunden ist möglich.
+Bearbeiten von Kunden
+Löschung von Kunden
+
+Erstellung von Lehrlingen ist möglich
+Bearbeitung von Lehrlingen
+Löschung von Lehrlingen
+
+Erstellen von neuen Users
+Bearbeitung von Users
+Deaktivieren der Users
+Löschung von Users
+
+Dashboard gibt die gesammt Anzahl der einzelnen Ressourcen.
+Suche wird gefilter auf einer Suchseite ermöglicht
