@@ -27,6 +27,11 @@ namespace Contact_Manager.Partials.Dialog
             InitializeComponent();
         }
 
+        public EmployeeDialog(Employee employee)
+        {
+            InitializeComponent();
+        }
+
         public static List<string> CountryList()
         {
             // Creating culture list
