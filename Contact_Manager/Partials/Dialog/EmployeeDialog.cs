@@ -271,7 +271,6 @@ namespace Contact_Manager.Partials.Dialog
                     city: txtCity.Text,
                     ahv: txtAhv.Text,
                     country: defaultCountry,
-                    employeeNumber: 0,
                     departement: txtDepartement.Text,
                     nationality: CmbNationality.Text,
                     entryDate: DtpEntryDate.Value,
