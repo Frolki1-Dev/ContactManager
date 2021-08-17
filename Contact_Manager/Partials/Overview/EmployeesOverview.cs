@@ -5,6 +5,8 @@ using System.Data;
 using System.Drawing;
 using System.Text;
 using System.Windows.Forms;
+using Contact_Manager.Models;
+using Contact_Manager.Partials.Dialog;
 
 namespace Contact_Manager.Partials.Overview
 {
@@ -22,12 +24,14 @@ namespace Contact_Manager.Partials.Overview
 
         protected override void OpenEditDialog(int row)
         {
-            throw new NotImplementedException();
+            EmployeeDialog dialog = new EmployeeDialog(GetObjectFromIndex(row));
+            dialog.FormClosing += DialogClosing;
+            dialog.Show();
         }
 
         protected override dynamic GetObjectFromIndex(int row)
         {
-            throw new NotImplementedException();
+            return (Employee)source[row];
         }
 
         protected override DialogResult AskForConfirmation(dynamic obj)

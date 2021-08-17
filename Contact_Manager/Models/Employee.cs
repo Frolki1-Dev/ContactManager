@@ -3,7 +3,7 @@
 namespace Contact_Manager.Models
 {
     [Serializable]
-    class Employee : Person
+    public class Employee : Person
     {
         // constructor
         public Employee(string salutation, string firstName, string lastName, DateTime dateOfBirth, int gender,
