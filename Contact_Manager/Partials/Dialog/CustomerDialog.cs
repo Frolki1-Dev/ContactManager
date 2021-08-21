@@ -20,34 +20,42 @@ namespace Contact_Manager.Partials.Dialog
     {
         private Customer currentCustomer;
 
-        protected BindingSource source;
+        private BindingSource _source;
         private bool noteInEditMode = false;
         private int rowIndex = 0;
 
         public CustomerDialog()
         {
             InitializeComponent();
-
+            Width = 478;
             CmbNationality.DataSource = CountryList();
-            PnlNotes.Visible = false;
+            GrpBoxNotes.Visible = false;
         }
 
         public CustomerDialog(Customer customer)
         {
              
             InitializeComponent();
-            this.currentCustomer = customer;
-            PnlNotes.Visible = true;
+            currentCustomer = customer;
+            GrpBoxNotes.Visible = true;
 
             //load the customer to edit 
+            txtCompany.Text = currentCustomer.CompanyName;
+            txtAddress.Text = currentCustomer.Address;
+            txtZipCode.Text = currentCustomer.ZipCode.ToString();
+            txtCity.Text = currentCustomer.City;
+            txtFirstName.Text = currentCustomer.FirstName;
+            txtSurName.Text = currentCustomer.LastName;
+            txtPhonePrivate.Text = currentCustomer.PhonePrivate;
+            txtPhoneCompany.Text = currentCustomer.PhoneCompany;
+            txtMobile.Text = currentCustomer.Mobile;
+            txtFax.Text = currentCustomer.Fax;
+            txtCompanyContactEmail.Text = currentCustomer.Email;
 
-
+            // TODO: Missing Kundentyp, Aktiver Kunde, Anrede, Titel, Geschlecht, Nationalität, Geburtsdatum
 
             // Build a new source
-            source = new BindingSource();
-            dynamic collection = this.currentCustomer.Notes;
-            source.DataSource = collection;
-            dataGridNotes.DataSource = source;
+            updateNotesView();
         }
 
        
@@ -80,51 +88,19 @@ namespace Contact_Manager.Partials.Dialog
         }
 
         //creating contact list
-        //public List<string> ContactHistoryList = new List<string>();
 
         public void ContactHistory()
         {
             CustomerNotes customerNotes = new CustomerNotes(txtAddNote.Text);
             this.currentCustomer.Notes.Add(customerNotes);
             DataContainer.Update(this.currentCustomer);
-            // TODO Aktuallisierung funktionier nicht
-            dataGridNotes.Refresh();
-
-
-            /*if (txtAddNote.Text.Length > 1)
-            {
-                string date = DateTime.Now.ToString("dd/MM/yyyy HH:mm");
-                string note =  date + " " + txtAddNote.Text ;
-                note.Trim();
-                ContactHistoryList.Add(note);
-
-
-                txtCompanyHistoryData.Text += note + "\r\n";
-               
-                txtAddNote.Clear();
-                note = "";
-                
-
-            }
-                
-            else
-                generateErrorMessage("Es kann keine leere Notiz hinzugefügt werden");*/
-
-
-
+            txtAddNote.Text = "";
+            updateNotesView();
         }
-
-      
-
 
         private void generateErrorMessage(string errorMessage)
         {
-           MessageBox.Show(errorMessage);
-        }
-
-        public static String GetTimestamp(DateTime value)
-        {
-            return value.ToString("yyyyMMddHHmmssffff");
+           MessageBox.Show(errorMessage, "Fehler", MessageBoxButtons.OK, MessageBoxIcon.Error);
         }
 
         private void cleanUpFields()
@@ -149,9 +125,6 @@ namespace Contact_Manager.Partials.Dialog
             CmbNationality.SelectedIndex = -1;
             txtCompany.Clear();
             CmbCustomerType.SelectedIndex = -1;
-            txtCompanyHistoryData.Clear();
-
-
         }
 
         private void createCustomer()
@@ -161,7 +134,7 @@ namespace Contact_Manager.Partials.Dialog
            ***************************** */
 
             int selectedGender;
-            string defaultCountry = "Schweiz";
+            string defaultCountry = "Sitzerland";
             
 
             /* *****************************
@@ -221,10 +194,6 @@ namespace Contact_Manager.Partials.Dialog
 
 
             Customer customer = new Customer(
-
-
-
-
                 salutation: CmbSalutation.Text,
                 firstName: txtFirstName.Text,
                 lastName: txtSurName.Text,
@@ -244,14 +213,9 @@ namespace Contact_Manager.Partials.Dialog
                 companyName: txtCompany.Text,
                 customerType: CmbCustomerType.Text,
                 notes: new List<CustomerNotes>()
-
-
-                ) ;
+            );
 
             DataContainer.AddModel(DataContainer.Customers, customer);
-
-
-
         }
 
         private void btnCompanySave_Click(object sender, EventArgs e)
@@ -273,7 +237,9 @@ namespace Contact_Manager.Partials.Dialog
                 DataContainer.Update(this.currentCustomer);
                 rowIndex = 0;
                 noteInEditMode = false;
+                txtAddNote.Text = "";
                 BtnAddNote.Text = "Notiz hinzufügen";
+                GrpBoxNotes.Text = "Notiz (erstellen)";
                 return;
             }
 
@@ -281,43 +247,61 @@ namespace Contact_Manager.Partials.Dialog
             ContactHistory();
         }
 
-        private void btnDeleteNote_Click(object sender, EventArgs e)
-        {
- 
-            /*
-
-              index abfragen vom selected item -> indexof ?
-
-              for (int i = 0; i < ContactHistory.Count; i++)
-              {
-
-                  // if it is List<String>
-                  if (companies[i].equals("Something"))
-                  {
-                      companies.RemoveAt(i);
-                  }
-              }
-            */
-
-           // Remove(Object):void
-        }
-
         private void btnCompanyDelete_Click(object sender, EventArgs e)
         {
             cleanUpFields();
         }
 
-        private void dataGridNotes_CellClick(object sender, DataGridViewCellEventArgs e)
+        private void CustomerDialog_Load(object sender, EventArgs e)
+        {
+            MainTheme.InitThemeForForm(this);
+        }
+
+        private void dataGridNotes_Paint(object sender, PaintEventArgs e)
+        {
+            if (dataGridNotes.Rows.Count == 0)
+            {
+                using (var gfx = e.Graphics)
+                {
+                    gfx.DrawString("Keine Notizen vorhanden", this.Font, Brushes.White,
+                        new PointF((GrpBoxNotes.Width - Font.Size * "Keine Notizen vorhanden".Length) / 2, GrpBoxNotes.Height / 3));
+                }
+            }
+        }
+
+        private void dataGridNotes_CellContentDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
             rowIndex = e.RowIndex;
             txtAddNote.Text = this.currentCustomer.Notes[rowIndex].Notes;
             this.noteInEditMode = true;
             BtnAddNote.Text = "Notiz speichern";
+            GrpBoxNotes.Text = "Notiz (bearbeiten)";
         }
 
-        private void CustomerDialog_Load(object sender, EventArgs e)
+        private void updateNotesView()
         {
-            MainTheme.InitThemeForForm(this);
+            if (_source == null)
+            {
+                _source = new BindingSource();
+                dataGridNotes.DataSource = _source;
+            }
+
+            var notes = from CustomerNotes n in currentCustomer.Notes
+                orderby n.CreatedAt descending 
+                select new
+                {
+                    Notiz = n.Notes,
+                    Angelegt = n.CreatedAt.ToString("dd.MM.yyyy HH:mm"),
+                    Ersteller = n.CreatedFrom
+                };
+
+            if (!notes.Any())
+            {
+                notes = null;
+            }
+
+            _source.DataSource = notes;
+            dataGridNotes.Update();
         }
     }
 }

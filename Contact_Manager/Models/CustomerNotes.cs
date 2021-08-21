@@ -13,15 +13,20 @@ namespace Contact_Manager.Models
         public string Notes { get; set; }
 
         public DateTime CreatedAt { get; set; }
-        public CustomerNotes(string note, DateTime created_at)
+
+        public string CreatedFrom { get; set; }
+
+        public CustomerNotes(string note, string created_from, DateTime created_at)
         {
             this.Notes = note;
             this.CreatedAt = created_at;
+            this.CreatedFrom = created_from;
         }
         public CustomerNotes(string note)
         {
             this.Notes = note;
             this.CreatedAt = DateTime.Now;
+            this.CreatedFrom = Authentication.Authentication.GetUser().Username;
         }
     }
 }
