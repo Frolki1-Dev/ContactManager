@@ -93,6 +93,7 @@
     <Compile Include="Authentication\PasswordHasher.cs" />
     <Compile Include="Collections\Users.cs" />
     <Compile Include="DataContainer.cs" />
+    <Compile Include="Models\CustomerNotes.cs" />
     <Compile Include="Models\Employee.cs" />
     <Compile Include="Helper.cs" />
     <Compile Include="Login.cs">
@@ -139,6 +140,12 @@
     </Compile>
     <Compile Include="Partials\Overview\CustomersOverview.Designer.cs">
       <DependentUpon>CustomersOverview.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Partials\Overview\DashboardOverview.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Partials\Overview\DashboardOverview.Designer.cs">
+      <DependentUpon>DashboardOverview.cs</DependentUpon>
     </Compile>
     <Compile Include="Partials\Overview\EmployeesOverview.cs">
       <SubType>Form</SubType>
@@ -187,11 +194,17 @@
     <EmbeddedResource Include="Partials\Dialog\CustomerDialog.resx">
       <DependentUpon>CustomerDialog.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Partials\Dialog\TraineeDialog.resx">
+      <DependentUpon>TraineeDialog.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Partials\Dialog\UserDialog.resx">
       <DependentUpon>UserDialog.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Partials\Overview\BaseOverview.resx">
       <DependentUpon>BaseOverview.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Partials\Overview\DashboardOverview.resx">
+      <DependentUpon>DashboardOverview.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Partials\Overview\UsersOverview.resx">
       <DependentUpon>UsersOverview.cs</DependentUpon>

@@ -21,6 +21,12 @@ namespace Contact_Manager
         public Template()
         {
             InitializeComponent();
+            DataContainer.LoadAll(DataContainer.Customers);
+            DataContainer.LoadAll(DataContainer.Employees);
+            DataContainer.LoadAll(DataContainer.Trainees);
+
+            SetPageTitle("Dashboard");
+            LoadFormIntoPanel(new DashboardOverview());
             CmdCreateResource.Visible = false;
         }
 
@@ -28,6 +34,8 @@ namespace Contact_Manager
         {
             ClearPageContentPanel();
             SetPageTitle("Dashboard");
+            LoadFormIntoPanel(new DashboardOverview());
+            CmdCreateResource.Visible = false;
         }
 
         protected void SetPageTitle(string title)

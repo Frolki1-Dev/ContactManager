@@ -14,8 +14,22 @@ namespace Contact_Manager
 
         private void CmdLogin_Click(object sender, EventArgs e)
         {
+            authenticate();
+        }
+
+        private void TxtPassword_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                // Execute login
+                authenticate();
+            }
+        }
+
+        private void authenticate()
+        {
             // Check first all inputs
-            if(TxtUsername.TextLength < 1 || TxtPassword.TextLength < 1)
+            if (TxtUsername.TextLength < 1 || TxtPassword.TextLength < 1)
             {
                 MessageBox.Show("Leider wurden nicht alle Felder ausgefüllt.", "Eingabe fehlerhaft", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 return;
