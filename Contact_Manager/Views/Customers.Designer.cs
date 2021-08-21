@@ -29,30 +29,21 @@ namespace Contact_Manager.Views
         /// </summary>
         private void InitializeComponent()
         {
-            this.navigation1 = new Contact_Manager.Components.Navigation();
             this.PnlHeader = new System.Windows.Forms.TableLayoutPanel();
             this.PnlSearch = new System.Windows.Forms.Panel();
             this.TxtSearch = new System.Windows.Forms.TextBox();
             this.LblSearch = new System.Windows.Forms.Label();
             this.PnlActions = new System.Windows.Forms.Panel();
+            this.cmdVcardImport = new System.Windows.Forms.Button();
+            this.cmdImportCsv = new System.Windows.Forms.Button();
             this.CmdCreate = new System.Windows.Forms.Button();
             this.GridViewCustomers = new System.Windows.Forms.DataGridView();
-            this.cmdImportCsv = new System.Windows.Forms.Button();
-            this.cmdVcardImport = new System.Windows.Forms.Button();
+            this.navigation1 = new Contact_Manager.Components.Navigation();
             this.PnlHeader.SuspendLayout();
             this.PnlSearch.SuspendLayout();
             this.PnlActions.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.GridViewCustomers)).BeginInit();
             this.SuspendLayout();
-            // 
-            // navigation1
-            // 
-            this.navigation1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(58)))), ((int)(((byte)(119)))), ((int)(((byte)(241)))));
-            this.navigation1.Dock = System.Windows.Forms.DockStyle.Top;
-            this.navigation1.Location = new System.Drawing.Point(0, 0);
-            this.navigation1.Name = "navigation1";
-            this.navigation1.Size = new System.Drawing.Size(800, 50);
-            this.navigation1.TabIndex = 0;
             // 
             // PnlHeader
             // 
@@ -110,6 +101,28 @@ namespace Contact_Manager.Views
             this.PnlActions.Size = new System.Drawing.Size(386, 42);
             this.PnlActions.TabIndex = 1;
             // 
+            // cmdVcardImport
+            // 
+            this.cmdVcardImport.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.cmdVcardImport.Dock = System.Windows.Forms.DockStyle.Right;
+            this.cmdVcardImport.Location = new System.Drawing.Point(-1, 0);
+            this.cmdVcardImport.Name = "cmdVcardImport";
+            this.cmdVcardImport.Size = new System.Drawing.Size(129, 42);
+            this.cmdVcardImport.TabIndex = 2;
+            this.cmdVcardImport.Text = "vCard Import";
+            this.cmdVcardImport.UseVisualStyleBackColor = true;
+            // 
+            // cmdImportCsv
+            // 
+            this.cmdImportCsv.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.cmdImportCsv.Dock = System.Windows.Forms.DockStyle.Right;
+            this.cmdImportCsv.Location = new System.Drawing.Point(128, 0);
+            this.cmdImportCsv.Name = "cmdImportCsv";
+            this.cmdImportCsv.Size = new System.Drawing.Size(129, 42);
+            this.cmdImportCsv.TabIndex = 1;
+            this.cmdImportCsv.Text = "CSV Import";
+            this.cmdImportCsv.UseVisualStyleBackColor = true;
+            // 
             // CmdCreate
             // 
             this.CmdCreate.Cursor = System.Windows.Forms.Cursors.Hand;
@@ -133,28 +146,18 @@ namespace Contact_Manager.Views
             this.GridViewCustomers.ReadOnly = true;
             this.GridViewCustomers.Size = new System.Drawing.Size(800, 344);
             this.GridViewCustomers.TabIndex = 3;
+            this.GridViewCustomers.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.GridViewCustomers_CellDoubleClick);
+            this.GridViewCustomers.Paint += new System.Windows.Forms.PaintEventHandler(this.GridViewCustomers_Paint);
+            this.GridViewCustomers.KeyDown += new System.Windows.Forms.KeyEventHandler(this.GridViewCustomers_KeyDown);
             // 
-            // cmdImportCsv
+            // navigation1
             // 
-            this.cmdImportCsv.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.cmdImportCsv.Dock = System.Windows.Forms.DockStyle.Right;
-            this.cmdImportCsv.Location = new System.Drawing.Point(128, 0);
-            this.cmdImportCsv.Name = "cmdImportCsv";
-            this.cmdImportCsv.Size = new System.Drawing.Size(129, 42);
-            this.cmdImportCsv.TabIndex = 1;
-            this.cmdImportCsv.Text = "CSV Import";
-            this.cmdImportCsv.UseVisualStyleBackColor = true;
-            // 
-            // cmdVcardImport
-            // 
-            this.cmdVcardImport.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.cmdVcardImport.Dock = System.Windows.Forms.DockStyle.Right;
-            this.cmdVcardImport.Location = new System.Drawing.Point(-1, 0);
-            this.cmdVcardImport.Name = "cmdVcardImport";
-            this.cmdVcardImport.Size = new System.Drawing.Size(129, 42);
-            this.cmdVcardImport.TabIndex = 2;
-            this.cmdVcardImport.Text = "vCard Import";
-            this.cmdVcardImport.UseVisualStyleBackColor = true;
+            this.navigation1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(58)))), ((int)(((byte)(119)))), ((int)(((byte)(241)))));
+            this.navigation1.Dock = System.Windows.Forms.DockStyle.Top;
+            this.navigation1.Location = new System.Drawing.Point(0, 0);
+            this.navigation1.Name = "navigation1";
+            this.navigation1.Size = new System.Drawing.Size(800, 50);
+            this.navigation1.TabIndex = 0;
             // 
             // Customers
             // 

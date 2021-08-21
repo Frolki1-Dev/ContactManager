@@ -46,6 +46,19 @@ namespace Contact_Manager.Collections
             return 0;
         }
 
+        public dynamic GetById(int id)
+        {
+            for (int i = 0; i < List.Count; i++)
+            {
+                if (this[i].Id == id)
+                {
+                    return this[i];
+                }
+            }
+
+            return null;
+        }
+
         /**
          * Save the list into the binary data
          */
@@ -76,7 +89,7 @@ namespace Contact_Manager.Collections
             // Find the index
             int index = GetIndexFromId(obj.Id);
 
-            if (index == 0)
+            if (index < 0)
             {
                 // We have a problem!
                 throw new InvalidDataException("The id " + obj.Id + " was not founded in the list " + TypeDescriptor.GetClassName(this) + "!");

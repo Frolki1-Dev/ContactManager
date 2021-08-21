@@ -32,9 +32,9 @@ namespace Contact_Manager.Views
             this.navigation1 = new Contact_Manager.Components.Navigation();
             this.PnlHeader = new System.Windows.Forms.TableLayoutPanel();
             this.PnlSearch = new System.Windows.Forms.Panel();
-            this.PnlActions = new System.Windows.Forms.Panel();
-            this.LblSearch = new System.Windows.Forms.Label();
             this.TxtSearch = new System.Windows.Forms.TextBox();
+            this.LblSearch = new System.Windows.Forms.Label();
+            this.PnlActions = new System.Windows.Forms.Panel();
             this.CmdCreate = new System.Windows.Forms.Button();
             this.GridViewUsers = new System.Windows.Forms.DataGridView();
             this.PnlHeader.SuspendLayout();
@@ -79,15 +79,13 @@ namespace Contact_Manager.Views
             this.PnlSearch.Size = new System.Drawing.Size(386, 42);
             this.PnlSearch.TabIndex = 0;
             // 
-            // PnlActions
+            // TxtSearch
             // 
-            this.PnlActions.Controls.Add(this.CmdCreate);
-            this.PnlActions.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.PnlActions.Location = new System.Drawing.Point(407, 7);
-            this.PnlActions.Margin = new System.Windows.Forms.Padding(7);
-            this.PnlActions.Name = "PnlActions";
-            this.PnlActions.Size = new System.Drawing.Size(386, 42);
-            this.PnlActions.TabIndex = 1;
+            this.TxtSearch.Location = new System.Drawing.Point(7, 21);
+            this.TxtSearch.Name = "TxtSearch";
+            this.TxtSearch.Size = new System.Drawing.Size(284, 20);
+            this.TxtSearch.TabIndex = 1;
+            this.TxtSearch.TextChanged += new System.EventHandler(this.TxtSearch_TextChanged);
             // 
             // LblSearch
             // 
@@ -98,13 +96,15 @@ namespace Contact_Manager.Views
             this.LblSearch.TabIndex = 0;
             this.LblSearch.Text = "Suche nach";
             // 
-            // TxtSearch
+            // PnlActions
             // 
-            this.TxtSearch.Location = new System.Drawing.Point(7, 21);
-            this.TxtSearch.Name = "TxtSearch";
-            this.TxtSearch.Size = new System.Drawing.Size(284, 20);
-            this.TxtSearch.TabIndex = 1;
-            this.TxtSearch.TextChanged += new System.EventHandler(this.TxtSearch_TextChanged);
+            this.PnlActions.Controls.Add(this.CmdCreate);
+            this.PnlActions.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.PnlActions.Location = new System.Drawing.Point(407, 7);
+            this.PnlActions.Margin = new System.Windows.Forms.Padding(7);
+            this.PnlActions.Name = "PnlActions";
+            this.PnlActions.Size = new System.Drawing.Size(386, 42);
+            this.PnlActions.TabIndex = 1;
             // 
             // CmdCreate
             // 
@@ -129,6 +129,8 @@ namespace Contact_Manager.Views
             this.GridViewUsers.ReadOnly = true;
             this.GridViewUsers.Size = new System.Drawing.Size(800, 344);
             this.GridViewUsers.TabIndex = 2;
+            this.GridViewUsers.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.GridViewUsers_CellDoubleClick);
+            this.GridViewUsers.Paint += new System.Windows.Forms.PaintEventHandler(this.GridViewUsers_Paint);
             this.GridViewUsers.KeyDown += new System.Windows.Forms.KeyEventHandler(this.GridViewUsers_KeyDown);
             // 
             // Users

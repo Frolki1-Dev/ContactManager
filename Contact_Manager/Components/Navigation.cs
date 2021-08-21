@@ -1,4 +1,5 @@
 ﻿using System;
+using System.ComponentModel;
 using System.Windows.Forms;
 using Contact_Manager.Views;
 
@@ -11,9 +12,20 @@ namespace Contact_Manager.Components
             InitializeComponent();
         }
 
+        [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
+        [Browsable(false)]
         private void Navigation_Load(object sender, EventArgs e)
         {
             BackColor = Properties.Settings.Default.NavigationColor;
+
+            // Ignore Designer!
+            if (Site != null && Site.DesignMode) return;
+
+            if (!Authentication.Authentication.GetUser().IsAdmin)
+            {
+                // Hide the users tab
+                LblUsers.Visible = false;
+            }
         }
 
         private void pictureBox2_Click(object sender, EventArgs e)
