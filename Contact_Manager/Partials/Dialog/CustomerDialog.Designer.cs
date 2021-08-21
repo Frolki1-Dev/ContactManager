@@ -393,6 +393,7 @@ namespace Contact_Manager.Partials.Dialog
             this.dataGridNotes.ReadOnly = true;
             this.dataGridNotes.Size = new System.Drawing.Size(261, 158);
             this.dataGridNotes.TabIndex = 83;
+            this.dataGridNotes.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridNotes_CellClick);
             // 
             // CustomerDialog
             // 
