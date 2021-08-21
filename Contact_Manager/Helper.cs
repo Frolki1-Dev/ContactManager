@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -57,6 +58,17 @@ namespace Contact_Manager
             }
 
             return true;
+        }
+
+        /**
+         * Helps to close the old form and open the new in the correct position
+         */
+        public static void openNewFormAndCloseOld(Form newForm, Form oldForm)
+        {
+            newForm.StartPosition = FormStartPosition.CenterScreen;
+            oldForm.Hide();
+            newForm.ShowDialog();
+            oldForm.Close();
         }
     }
 }
