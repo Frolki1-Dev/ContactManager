@@ -7,15 +7,16 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Contact_Manager.Interfaces;
 using Contact_Manager.Models;
 using Contact_Manager.Partials.Dialog;
 using Contact_Manager.Themes;
 
 namespace Contact_Manager.Views
 {
-    public partial class Users : Form
+    public partial class Users : Form, IDataSourceForm
     {
-        private BindingSource bindingSource;
+        private BindingSource _bindingSource;
         public Users()
         {
             InitializeComponent();
@@ -25,7 +26,7 @@ namespace Contact_Manager.Views
         {
             MainTheme.InitThemeForForm(this);
             PnlHeader.BackColor = Properties.Settings.Default.SecondaryColor;
-            updateSource();
+            UpdateSource();
         }
 
         private void CmdCreate_Click(object sender, EventArgs e)
@@ -33,22 +34,22 @@ namespace Contact_Manager.Views
             UserDialog dialog = new UserDialog();
             dialog.FormClosing += (o, args) =>
             {
-                updateSource();
+                UpdateSource();
             };
             dialog.Show();
         }
 
         private void TxtSearch_TextChanged(object sender, EventArgs e)
         {
-            updateSource();
+            UpdateSource();
         }
 
-        private void updateSource()
+        public void UpdateSource()
         {
-            if (bindingSource == null)
+            if (_bindingSource == null)
             {
-                bindingSource = new BindingSource();
-                GridViewUsers.DataSource = bindingSource;
+                _bindingSource = new BindingSource();
+                GridViewUsers.DataSource = _bindingSource;
             }
 
             if (TxtSearch.Text.Length > 0)
@@ -62,7 +63,7 @@ namespace Contact_Manager.Views
                         Benutzername = usr.Username,
                         Admin = usr.IsAdmin
                     };
-                bindingSource.DataSource = users;
+                _bindingSource.DataSource = users;
             }
             else
             {
@@ -73,7 +74,7 @@ namespace Contact_Manager.Views
                         Benutzername = usr.Username,
                         Admin = usr.IsAdmin
                     };
-                bindingSource.DataSource = users;
+                _bindingSource.DataSource = users;
             }
             GridViewUsers.Update();
         }
@@ -96,7 +97,7 @@ namespace Contact_Manager.Views
             }
         }
 
-        protected int GetSelectedRow()
+        public int GetSelectedRow()
         {
             // Check first the row
             if (GridViewUsers.SelectedRows.Count == 1)
