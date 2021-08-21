@@ -34,7 +34,7 @@ namespace Contact_Manager.Properties {
         
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("238, 238, 238")]
+        [global::System.Configuration.DefaultSettingValueAttribute("28, 57, 115")]
         public global::System.Drawing.Color DefaultFormBackgroundColor {
             get {
                 return ((global::System.Drawing.Color)(this["DefaultFormBackgroundColor"]));
@@ -65,6 +65,27 @@ namespace Contact_Manager.Properties {
         public global::System.Drawing.Color PrimaryColor {
             get {
                 return ((global::System.Drawing.Color)(this["PrimaryColor"]));
+            }
+        }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("235, 235, 235")]
+        public global::System.Drawing.Color FontColor {
+            get {
+                return ((global::System.Drawing.Color)(this["FontColor"]));
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("46, 94, 191")]
+        public global::System.Drawing.Color SecondaryColor {
+            get {
+                return ((global::System.Drawing.Color)(this["SecondaryColor"]));
+            }
+            set {
+                this["SecondaryColor"] = value;
             }
         }
     }

@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Windows.Forms;
 using System.Collections.Generic;
+using Contact_Manager.Themes;
 
 namespace Contact_Manager
 {
@@ -46,6 +47,11 @@ namespace Contact_Manager
             this.Hide();
             (new Template()).ShowDialog();
             this.Close();
+        }
+
+        private void Login_Load(object sender, EventArgs e)
+        {
+            MainTheme.initThemeForForm(this);
         }
     }
 }

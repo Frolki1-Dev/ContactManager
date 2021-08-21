@@ -35,46 +35,51 @@ namespace Contact_Manager
             this.CmdLogin = new System.Windows.Forms.Button();
             this.TxtUsername = new System.Windows.Forms.TextBox();
             this.TxtPassword = new System.Windows.Forms.MaskedTextBox();
+            this.panel1 = new System.Windows.Forms.Panel();
+            this.panel2 = new System.Windows.Forms.Panel();
+            this.panel3 = new System.Windows.Forms.Panel();
+            this.panel1.SuspendLayout();
+            this.panel2.SuspendLayout();
+            this.panel3.SuspendLayout();
             this.SuspendLayout();
             // 
             // LblTitle
             // 
-            this.LblTitle.AutoSize = true;
+            this.LblTitle.Dock = System.Windows.Forms.DockStyle.Fill;
             this.LblTitle.Font = new System.Drawing.Font("Microsoft Sans Serif", 22F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.LblTitle.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.LblTitle.Location = new System.Drawing.Point(99, 11);
-            this.LblTitle.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.LblTitle.Location = new System.Drawing.Point(0, 0);
             this.LblTitle.Name = "LblTitle";
-            this.LblTitle.Size = new System.Drawing.Size(194, 42);
+            this.LblTitle.Size = new System.Drawing.Size(238, 64);
             this.LblTitle.TabIndex = 3;
             this.LblTitle.Text = "Anmelden";
+            this.LblTitle.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // LblUsername
             // 
             this.LblUsername.AutoSize = true;
-            this.LblUsername.Location = new System.Drawing.Point(16, 100);
-            this.LblUsername.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.LblUsername.Location = new System.Drawing.Point(12, 3);
             this.LblUsername.Name = "LblUsername";
-            this.LblUsername.Size = new System.Drawing.Size(100, 17);
+            this.LblUsername.Size = new System.Drawing.Size(75, 13);
             this.LblUsername.TabIndex = 4;
             this.LblUsername.Text = "Benutzername";
             // 
             // LblPassword
             // 
             this.LblPassword.AutoSize = true;
-            this.LblPassword.Location = new System.Drawing.Point(16, 138);
-            this.LblPassword.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.LblPassword.Location = new System.Drawing.Point(12, 3);
             this.LblPassword.Name = "LblPassword";
-            this.LblPassword.Size = new System.Drawing.Size(65, 17);
+            this.LblPassword.Size = new System.Drawing.Size(50, 13);
             this.LblPassword.TabIndex = 5;
             this.LblPassword.Text = "Passwort";
             // 
             // CmdLogin
             // 
-            this.CmdLogin.Location = new System.Drawing.Point(124, 191);
-            this.CmdLogin.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.CmdLogin.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.CmdLogin.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.CmdLogin.Location = new System.Drawing.Point(0, 170);
             this.CmdLogin.Name = "CmdLogin";
-            this.CmdLogin.Size = new System.Drawing.Size(271, 44);
+            this.CmdLogin.Size = new System.Drawing.Size(238, 36);
             this.CmdLogin.TabIndex = 3;
             this.CmdLogin.Text = "Anmelden";
             this.CmdLogin.UseVisualStyleBackColor = true;
@@ -82,37 +87,74 @@ namespace Contact_Manager
             // 
             // TxtUsername
             // 
-            this.TxtUsername.Location = new System.Drawing.Point(124, 96);
-            this.TxtUsername.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.TxtUsername.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.TxtUsername.Location = new System.Drawing.Point(15, 19);
             this.TxtUsername.Name = "TxtUsername";
-            this.TxtUsername.Size = new System.Drawing.Size(269, 22);
+            this.TxtUsername.Size = new System.Drawing.Size(203, 20);
             this.TxtUsername.TabIndex = 1;
             // 
             // TxtPassword
             // 
-            this.TxtPassword.Location = new System.Drawing.Point(124, 134);
-            this.TxtPassword.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.TxtPassword.Location = new System.Drawing.Point(15, 19);
             this.TxtPassword.Name = "TxtPassword";
             this.TxtPassword.PasswordChar = '*';
-            this.TxtPassword.Size = new System.Drawing.Size(269, 22);
+            this.TxtPassword.Size = new System.Drawing.Size(203, 20);
             this.TxtPassword.TabIndex = 2;
             this.TxtPassword.KeyDown += new System.Windows.Forms.KeyEventHandler(this.TxtPassword_KeyDown);
             // 
+            // panel1
+            // 
+            this.panel1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.panel1.Controls.Add(this.LblTitle);
+            this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panel1.Location = new System.Drawing.Point(0, 0);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(238, 64);
+            this.panel1.TabIndex = 6;
+            // 
+            // panel2
+            // 
+            this.panel2.AutoSize = true;
+            this.panel2.Controls.Add(this.TxtUsername);
+            this.panel2.Controls.Add(this.LblUsername);
+            this.panel2.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panel2.Location = new System.Drawing.Point(0, 64);
+            this.panel2.Margin = new System.Windows.Forms.Padding(3, 3, 3, 10);
+            this.panel2.Name = "panel2";
+            this.panel2.Padding = new System.Windows.Forms.Padding(0, 0, 0, 10);
+            this.panel2.Size = new System.Drawing.Size(238, 52);
+            this.panel2.TabIndex = 7;
+            // 
+            // panel3
+            // 
+            this.panel3.AutoSize = true;
+            this.panel3.Controls.Add(this.LblPassword);
+            this.panel3.Controls.Add(this.TxtPassword);
+            this.panel3.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panel3.Location = new System.Drawing.Point(0, 116);
+            this.panel3.Name = "panel3";
+            this.panel3.Padding = new System.Windows.Forms.Padding(0, 0, 0, 10);
+            this.panel3.Size = new System.Drawing.Size(238, 52);
+            this.panel3.TabIndex = 8;
+            // 
             // Login
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(411, 250);
-            this.Controls.Add(this.TxtPassword);
-            this.Controls.Add(this.TxtUsername);
+            this.ClientSize = new System.Drawing.Size(238, 206);
+            this.Controls.Add(this.panel3);
+            this.Controls.Add(this.panel2);
+            this.Controls.Add(this.panel1);
             this.Controls.Add(this.CmdLogin);
-            this.Controls.Add(this.LblPassword);
-            this.Controls.Add(this.LblUsername);
-            this.Controls.Add(this.LblTitle);
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.Name = "Login";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Anmelden";
+            this.Load += new System.EventHandler(this.Login_Load);
+            this.panel1.ResumeLayout(false);
+            this.panel2.ResumeLayout(false);
+            this.panel2.PerformLayout();
+            this.panel3.ResumeLayout(false);
+            this.panel3.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -126,5 +168,8 @@ namespace Contact_Manager
         private System.Windows.Forms.Button CmdLogin;
         private System.Windows.Forms.TextBox TxtUsername;
         private System.Windows.Forms.MaskedTextBox TxtPassword;
+        private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.Panel panel2;
+        private System.Windows.Forms.Panel panel3;
     }
 }
