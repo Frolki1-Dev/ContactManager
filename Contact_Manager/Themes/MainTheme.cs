@@ -55,6 +55,9 @@ namespace Contact_Manager.Themes
                 } else if(control is Panel || control is UserControl || control is TableLayoutPanel)
                 {
                     SetControlStyles(control.Controls);
+                } else if (control is DataGridView)
+                {
+                    SetDataGridView((DataGridView) control);
                 }
             }
         }
@@ -98,6 +101,28 @@ namespace Contact_Manager.Themes
         private void SetTextBoxStyle(TextBox control)
         {
             control.BorderStyle = BorderStyle.FixedSingle;
+        }
+
+        private void SetDataGridView(DataGridView control)
+        {
+            control.BackgroundColor = Properties.Settings.Default.DefaultFormBackgroundColor;
+            control.BorderStyle = BorderStyle.None;
+
+            control.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+            control.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.AllCells;
+            control.ColumnHeadersDefaultCellStyle.BackColor = Properties.Settings.Default.PrimaryColor;
+            control.ColumnHeadersDefaultCellStyle.ForeColor = Color.White;
+            control.ColumnHeadersDefaultCellStyle.Padding = new Padding(3, 5, 3, 5);
+            control.ColumnHeadersBorderStyle = DataGridViewHeaderBorderStyle.Single;
+            control.ColumnHeadersDefaultCellStyle.Font = new Font(Properties.Settings.Default.DefaultFormFont, FontStyle.Bold);
+            control.EnableHeadersVisualStyles = false;
+            control.GridColor = Color.White;
+            control.RowHeadersVisible = false;
+
+            control.DefaultCellStyle.BackColor = Color.White;
+            control.DefaultCellStyle.Font = Properties.Settings.Default.DefaultFormFont;
+            control.DefaultCellStyle.Padding = new Padding(3);
+            control.DefaultCellStyle.ForeColor = Properties.Settings.Default.PrimaryColor;
         }
     }
 }
