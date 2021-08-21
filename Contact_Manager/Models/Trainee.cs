@@ -13,7 +13,7 @@ namespace Contact_Manager.Models
             DateTime exitDate, int loe, string role, int managementLevel,
             int CurrentTraineeYear, int MaxTraineeYear)
             : base(salutation, firstName, lastName, dateOfBirth, gender, title, email, status, address, zipCode,
-                  phonePrivate, phoneCompany, fax, mobile, city, country, employeeNumber, departement, ahv, nationality,
+                  phonePrivate, phoneCompany, fax, mobile, city, country, departement, ahv, nationality,
                   entryDate, exitDate, loe, role, managementLevel)
         {
             CurrentTraineeYear = currentTraineeYear;
@@ -25,6 +25,5 @@ namespace Contact_Manager.Models
         public int maxTraineeYear { get; set; }
 
         // methods
-        // hier erfolgt der Speichervorgang in das ensprechende JSON-File
     }
 }

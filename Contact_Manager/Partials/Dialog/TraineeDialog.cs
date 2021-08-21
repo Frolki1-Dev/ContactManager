@@ -15,6 +15,7 @@ namespace Contact_Manager.Partials.Dialog
         public TraineeDialog()
         {
             InitializeComponent();
+            
         }
     }
 }

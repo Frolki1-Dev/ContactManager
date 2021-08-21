@@ -9,13 +9,11 @@ namespace Contact_Manager.Models
         public Employee(string salutation, string firstName, string lastName, DateTime dateOfBirth, int gender,
             string title, string email, bool status, string address, int zipCode, string phonePrivate, string phoneCompany,
             string fax, string mobile, string city, string country,
-            int employeeNumber, string departement, string ahv, string nationality, DateTime entryDate,
+            string departement, string ahv, string nationality, DateTime entryDate,
             DateTime exitDate, int loe, string role, int managementLevel)
             : base (salutation, firstName, lastName, dateOfBirth, gender, title, email, status, address, zipCode,
                   phonePrivate, phoneCompany, fax, mobile, city, country)
         {
-            EmployeeNumber++;
-            EmployeeID = employeeNumber;
             Departement = departement;
             Ahv = ahv;
             Nationality = nationality;
@@ -28,8 +26,6 @@ namespace Contact_Manager.Models
         }
 
         // variables
-        public static int EmployeeNumber { get; private set; }
-        public int EmployeeID { get; set; }
 
         // properties
         public string Departement { get; set; }
@@ -42,6 +38,5 @@ namespace Contact_Manager.Models
         public int ManagementLevel { get; set; }
 
         // methods
-        // hier erfolgt der Speichervorgang in das ensprechende JSON-File
     }
 }
