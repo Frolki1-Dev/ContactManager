@@ -189,12 +189,6 @@
     <Compile Include="Partials\Overview\TraineesOverview.Designer.cs">
       <DependentUpon>TraineesOverview.cs</DependentUpon>
     </Compile>
-    <Compile Include="Partials\Overview\UsersOverview.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Partials\Overview\UsersOverview.Designer.cs">
-      <DependentUpon>UsersOverview.cs</DependentUpon>
-    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Models\Trainee.cs" />
@@ -204,12 +198,6 @@
       <DependentUpon>Settings.settings</DependentUpon>
     </Compile>
     <Compile Include="Settings.cs" />
-    <Compile Include="Template.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Template.Designer.cs">
-      <DependentUpon>Template.cs</DependentUpon>
-    </Compile>
     <Compile Include="Themes\MainTheme.cs" />
     <Compile Include="Views\Trainees.cs">
       <SubType>Form</SubType>
@@ -265,9 +253,6 @@
     <EmbeddedResource Include="Partials\Overview\DashboardOverview.resx">
       <DependentUpon>DashboardOverview.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Partials\Overview\UsersOverview.resx">
-      <DependentUpon>UsersOverview.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
@@ -278,9 +263,6 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
-    <EmbeddedResource Include="Template.resx">
-      <DependentUpon>Template.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="Views\Trainees.resx">
       <DependentUpon>Trainees.cs</DependentUpon>
     </EmbeddedResource>

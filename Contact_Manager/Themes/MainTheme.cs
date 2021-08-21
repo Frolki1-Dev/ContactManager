@@ -28,7 +28,7 @@ namespace Contact_Manager.Themes
 
             if (form.AccessibleDescription != null && form.AccessibleDescription.ToString() == "mainWindow")
             {
-                form.MinimumSize = new Size(1000, 600);
+                form.MinimumSize = new Size(750, 600);
             }
         }
 
@@ -58,6 +58,10 @@ namespace Contact_Manager.Themes
                 } else if (control is DataGridView)
                 {
                     SetDataGridView((DataGridView) control);
+                } else if (control is GroupBox)
+                {
+                    SetGroupBoxStyle((GroupBox)control);
+                    SetControlStyles(control.Controls);
                 }
             }
         }
@@ -123,6 +127,11 @@ namespace Contact_Manager.Themes
             control.DefaultCellStyle.Font = Properties.Settings.Default.DefaultFormFont;
             control.DefaultCellStyle.Padding = new Padding(3);
             control.DefaultCellStyle.ForeColor = Properties.Settings.Default.PrimaryColor;
+        }
+
+        private void SetGroupBoxStyle(GroupBox control)
+        {
+            control.ForeColor = Color.White;
         }
     }
 }

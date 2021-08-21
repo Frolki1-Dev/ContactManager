@@ -61,6 +61,12 @@ namespace Contact_Manager.Views
                     {
                         ID = employee.Id
                     };
+
+                if (!employees.Any())
+                {
+                    employees = null;
+                }
+
                 _bindingSource.DataSource = employees;
             }
             else
@@ -70,6 +76,12 @@ namespace Contact_Manager.Views
                     {
                         ID = employee.Id,
                     };
+
+                if (!employees.Any())
+                {
+                    employees = null;
+                }
+
                 _bindingSource.DataSource = employees;
             }
             GridViewEmployee.Update();
@@ -78,6 +90,18 @@ namespace Contact_Manager.Views
         public int GetSelectedRow()
         {
             throw new NotImplementedException();
+        }
+
+        private void GridViewEmployee_Paint(object sender, PaintEventArgs e)
+        {
+            if (GridViewEmployee.Rows.Count == 0)
+            {
+                using (var gfx = e.Graphics)
+                {
+                    gfx.DrawString("Keine Daten vorhanden", this.Font, Brushes.White,
+                        new PointF((this.Width - this.Font.Size * "Keine Daten vorhanden".Length) / 2, this.Height / 2));
+                }
+            }
         }
     }
 }

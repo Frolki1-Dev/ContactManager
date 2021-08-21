@@ -1,11 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Drawing;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using Contact_Manager.Interfaces;
 using Contact_Manager.Models;
@@ -57,23 +52,39 @@ namespace Contact_Manager.Views
                 // Search
                 var users = from User usr in DataContainer.GetUserCollection()
                             where usr.Username.Contains(TxtSearch.Text)
-                    select new
+                            orderby usr.Id
+                            select new
                     {
                         ID = usr.Id,
                         Benutzername = usr.Username,
-                        Admin = usr.IsAdmin
+                        Admin = usr.IsAdmin,
+                        Aktiv = usr.Active
                     };
+
+                if (!users.Any())
+                {
+                    users = null;
+                }
+
                 _bindingSource.DataSource = users;
             }
             else
             {
                 var users = from User usr in DataContainer.GetUserCollection()
+                    orderby usr.Id
                     select new
                     {
                         ID = usr.Id,
                         Benutzername = usr.Username,
-                        Admin = usr.IsAdmin
+                        Admin = usr.IsAdmin,
+                        Aktiv = usr.Active
                     };
+
+                if (!users.Any())
+                {
+                    users = null;
+                }
+
                 _bindingSource.DataSource = users;
             }
             GridViewUsers.Update();
@@ -95,24 +106,77 @@ namespace Contact_Manager.Views
                     MessageBoxButtons.OK, MessageBoxIcon.Information);
                 return;
             }
+
+            User user = DataContainer.GetUserCollection().GetById(row);
+
+            if (user.Deleted)
+            {
+                return;
+            }
+
+            DialogResult result = MessageBox.Show(
+                "Möchtest du wirklich den Benutzer " + user.Username + " löschen?", "Bestätigung Löschvorgang",
+                MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+
+            // Check if the user sad yes
+            if (result == DialogResult.Yes)
+            {
+                // Delete the user
+                DataContainer.Delete(user);
+                MessageBox.Show("Benutzer " + user.Username + " wurde erfolreich gelöscht.", "Gelöscht",
+                    MessageBoxButtons.OK, MessageBoxIcon.Information);
+                UpdateSource();
+            }
         }
 
         public int GetSelectedRow()
         {
-            // Check first the row
-            if (GridViewUsers.SelectedRows.Count == 1)
-            {
-                return GridViewUsers.SelectedRows[0].Index;
-            }
-
             // Check now the cell
             if (GridViewUsers.SelectedCells.Count == 1)
             {
-                return GridViewUsers.SelectedCells[0].RowIndex;
+                return (int) GridViewUsers.Rows[GridViewUsers.SelectedCells[0].RowIndex].Cells[0].Value;
             }
 
             // Return -1
             return -1;
+        }
+
+        private void GridViewUsers_Paint(object sender, PaintEventArgs e)
+        {
+            if (GridViewUsers.Rows.Count == 0)
+            {
+                using (var gfx = e.Graphics)
+                {
+                    gfx.DrawString("Keine Daten vorhanden", this.Font, Brushes.White,
+                        new PointF((this.Width - this.Font.Size * "Keine Daten vorhanden".Length) / 2, this.Height / 2));
+                }
+            }
+        }
+
+        private void GridViewUsers_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+            int row = GetSelectedRow();
+
+            if (row < 0)
+            {
+                MessageBox.Show("Row konnte nicht gefunden werden. Bitte erneut auswählen.", "Kein Auswahl",
+                    MessageBoxButtons.OK, MessageBoxIcon.Information);
+                return;
+            }
+
+            User user = DataContainer.GetUserCollection().GetById(row);
+
+            if (user.Deleted)
+            {
+                return;
+            }
+
+            UserDialog dialog = new UserDialog(user);
+            dialog.FormClosing += (o, args) =>
+            {
+                UpdateSource();
+            };
+            dialog.Show();
         }
     }
 }

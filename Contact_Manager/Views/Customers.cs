@@ -44,8 +44,21 @@ namespace Contact_Manager.Views
                             where customer.CompanyName.Contains(TxtSearch.Text) || customer.FirstName.Contains(TxtSearch.Text) || customer.LastName.Contains(TxtSearch.Text)
                     select new
                     {
-                        ID = customer.Id
+                        ID = customer.Id,
+                        Firma = customer.CompanyName,
+                        Strasse = customer.Address,
+                        PLZ = customer.ZipCode,
+                        Ort = customer.City,
+                        Vorname = customer.FirstName,
+                        Nachname = customer.LastName,
+
                     };
+
+                if (!customers.Any())
+                {
+                    customers = null;
+                }
+
                 _bindingSource.DataSource = customers;
             }
             else
@@ -54,7 +67,19 @@ namespace Contact_Manager.Views
                     select new
                     {
                         ID = customer.Id,
+                        Firma = customer.CompanyName,
+                        Strasse = customer.Address,
+                        PLZ = customer.ZipCode,
+                        Ort = customer.City,
+                        Vorname = customer.FirstName,
+                        Nachname = customer.LastName,
                     };
+
+                if (!customers.Any())
+                {
+                    customers = null;
+                }
+
                 _bindingSource.DataSource = customers;
             }
             GridViewCustomers.Update();
@@ -78,6 +103,18 @@ namespace Contact_Manager.Views
         private void TxtSearch_TextChanged(object sender, EventArgs e)
         {
             UpdateSource();
+        }
+
+        private void GridViewCustomers_Paint(object sender, PaintEventArgs e)
+        {
+            if (GridViewCustomers.Rows.Count == 0)
+            {
+                using (var gfx = e.Graphics)
+                {
+                    gfx.DrawString("Keine Daten vorhanden", this.Font, Brushes.White,
+                        new PointF((this.Width - this.Font.Size * "Keine Daten vorhanden".Length) / 2, this.Height / 2));
+                }
+            }
         }
     }
 }

@@ -65,6 +65,7 @@ namespace Contact_Manager.Views
             this.GridViewTrainees.ReadOnly = true;
             this.GridViewTrainees.Size = new System.Drawing.Size(800, 400);
             this.GridViewTrainees.TabIndex = 3;
+            this.GridViewTrainees.Paint += new System.Windows.Forms.PaintEventHandler(this.GridViewTrainees_Paint);
             // 
             // PnlHeader
             // 

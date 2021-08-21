@@ -9,6 +9,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using Contact_Manager.Models;
+using Contact_Manager.Themes;
 
 namespace Contact_Manager.Partials.Dialog
 {
@@ -95,6 +96,11 @@ namespace Contact_Manager.Partials.Dialog
             }
 
             DataContainer.Update(editUser);
+        }
+
+        private void UserDialog_Load(object sender, EventArgs e)
+        {
+            MainTheme.InitThemeForForm(this);
         }
     }
 }
