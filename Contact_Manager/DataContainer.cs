@@ -85,7 +85,7 @@ namespace Contact_Manager
             switch (type)
             {
                 case Users:
-                    _userCollection = (Users) obj;
+                    _userCollection = (Users)obj;
                     break;
                 case Customers:
                     if (obj.GetType().ToString() == "System.Object")

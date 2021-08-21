@@ -1,4 +1,5 @@
-﻿using Contact_Manager.Models;
+﻿using Contact_Manager.Collections;
+using Contact_Manager.Models;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -16,11 +17,36 @@ namespace Contact_Manager.Partials.Dialog
 {
     public partial class CustomerDialog : Form
     {
+        private Customer currentCustomer;
+
+        protected BindingSource source;
+        private bool noteInEditMode = false;
+        private int rowIndex = 0;
+
         public CustomerDialog()
         {
             InitializeComponent();
 
             CmbNationality.DataSource = CountryList();
+            PnlNotes.Visible = false;
+        }
+
+        public CustomerDialog(Customer customer)
+        {
+             
+            InitializeComponent();
+            this.currentCustomer = customer;
+            PnlNotes.Visible = true;
+
+            //load the customer to edit 
+
+
+
+            // Build a new source
+            source = new BindingSource();
+            dynamic collection = this.currentCustomer.Notes;
+            source.DataSource = collection;
+            dataGridNotes.DataSource = source;
         }
 
        
@@ -52,24 +78,36 @@ namespace Contact_Manager.Partials.Dialog
             return CultureList;
         }
 
+        //creating contact list
+        //public List<string> ContactHistoryList = new List<string>();
+
         public void ContactHistory()
         {
-            //creating contact list
-            List<string> ContactHistoryList = new List<string>();
+            CustomerNotes customerNotes = new CustomerNotes(txtAddNote.Text);
+            this.currentCustomer.Notes.Add(customerNotes);
+            DataContainer.Update(this.currentCustomer);
+            // TODO Aktuallisierung funktionier nicht
+            dataGridNotes.Refresh();
 
-            
-            string note = DateTime.Now.ToString();
 
-            if (txtAddNote.Text.Length > 1)
+            /*if (txtAddNote.Text.Length > 1)
             {
-                
-                note += txtCompanyHistoryData.Text;
+                string date = DateTime.Now.ToString("dd/MM/yyyy HH:mm");
+                string note =  date + " " + txtAddNote.Text ;
+                note.Trim();
                 ContactHistoryList.Add(note);
+
+
+                txtCompanyHistoryData.Text += note + "\r\n";
+               
+                txtAddNote.Clear();
+                note = "";
+                
 
             }
                 
             else
-                generateErrorMessage("Es kann keine leere Notiz hinzugefügt werden");
+                generateErrorMessage("Es kann keine leere Notiz hinzugefügt werden");*/
 
 
 
@@ -80,7 +118,7 @@ namespace Contact_Manager.Partials.Dialog
 
         private void generateErrorMessage(string errorMessage)
         {
-            throw new InvalidDataException(errorMessage);
+           MessageBox.Show(errorMessage);
         }
 
         public static String GetTimestamp(DateTime value)
@@ -176,16 +214,16 @@ namespace Contact_Manager.Partials.Dialog
                 txtFax.Text.Length > 12)
                 generateErrorMessage("Bitte Telefon- / Fax-Nummer im folgenden Format angeben \"+41711234566\".");
 
-              /* *****************************
-              * create customer object
-             ***************************** */
+            /* *****************************
+            * create customer object
+           ***************************** */
 
 
             Customer customer = new Customer(
-              
-                
-                
-                
+
+
+
+
                 salutation: CmbSalutation.Text,
                 firstName: txtFirstName.Text,
                 lastName: txtSurName.Text,
@@ -203,10 +241,11 @@ namespace Contact_Manager.Partials.Dialog
                 city: txtCity.Text,
                 country: defaultCountry,
                 companyName: txtCompany.Text,
-                customerType: CmbCustomerType.Text
+                customerType: CmbCustomerType.Text,
+                notes: new List<CustomerNotes>()
 
 
-                );
+                ) ;
 
             DataContainer.AddModel(DataContainer.Customers, customer);
 
@@ -226,25 +265,53 @@ namespace Contact_Manager.Partials.Dialog
 
         private void BtnAddNote_Click(object sender, EventArgs e)
         {
+            if(this.noteInEditMode)
+            {
+                // Edit
+                this.currentCustomer.Notes[rowIndex].Notes = txtAddNote.Text;
+                DataContainer.Update(this.currentCustomer);
+                rowIndex = 0;
+                noteInEditMode = false;
+                BtnAddNote.Text = "Notiz hinzufügen";
+                return;
+            }
+
+            // Create
             ContactHistory();
         }
 
         private void btnDeleteNote_Click(object sender, EventArgs e)
         {
-          /*
-            
-            index abfragen vom selected item -> indexof ?
-            
-            for (int i = 0; i < ContactHistory.Count; i++)
-            {
-                
-                // if it is List<String>
-                if (companies[i].equals("Something"))
-                {
-                    companies.RemoveAt(i);
-                }
-            }
-          */
+ 
+            /*
+
+              index abfragen vom selected item -> indexof ?
+
+              for (int i = 0; i < ContactHistory.Count; i++)
+              {
+
+                  // if it is List<String>
+                  if (companies[i].equals("Something"))
+                  {
+                      companies.RemoveAt(i);
+                  }
+              }
+            */
+
+           // Remove(Object):void
+        }
+
+        private void btnCompanyDelete_Click(object sender, EventArgs e)
+        {
+            cleanUpFields();
+        }
+
+        private void dataGridNotes_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            rowIndex = e.RowIndex;
+            txtAddNote.Text = this.currentCustomer.Notes[rowIndex].Notes;
+            this.noteInEditMode = true;
+            BtnAddNote.Text = "Notiz speichern";
         }
     }
 }

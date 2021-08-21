@@ -28,6 +28,7 @@ namespace Contact_Manager
             SetPageTitle("Dashboard");
             LoadFormIntoPanel(new DashboardOverview());
             CmdCreateResource.Visible = false;
+            DataContainer.LoadAll(DataContainer.Customers);
         }
 
         private void CmdDashboard_Click(object sender, EventArgs e)

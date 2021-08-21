@@ -27,6 +27,8 @@ namespace Contact_Manager.Partials.Overview
             UserDialog dialog = new UserDialog(GetObjectFromIndex(row));
             dialog.FormClosing += DialogClosing;
             dialog.Show();
+
+
         }
 
         protected override dynamic GetObjectFromIndex(int row)

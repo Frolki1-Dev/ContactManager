@@ -93,6 +93,7 @@
     <Compile Include="Authentication\PasswordHasher.cs" />
     <Compile Include="Collections\Users.cs" />
     <Compile Include="DataContainer.cs" />
+    <Compile Include="Models\CustomerNotes.cs" />
     <Compile Include="Models\Employee.cs" />
     <Compile Include="Helper.cs" />
     <Compile Include="Login.cs">

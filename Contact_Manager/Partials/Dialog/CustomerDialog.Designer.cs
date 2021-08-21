@@ -53,11 +53,14 @@ namespace Contact_Manager.Partials.Dialog
             this.label1 = new System.Windows.Forms.Label();
             this.txtCompanyHistoryData = new System.Windows.Forms.TextBox();
             this.txtCompany = new System.Windows.Forms.TextBox();
-            this.txtCompanyContact = new System.Windows.Forms.TextBox();
             this.ChkStatus = new System.Windows.Forms.CheckBox();
             this.BtnAddNote = new System.Windows.Forms.Button();
             this.btnDeleteNote = new System.Windows.Forms.Button();
             this.txtAddNote = new System.Windows.Forms.TextBox();
+            this.PnlNotes = new System.Windows.Forms.Panel();
+            this.dataGridNotes = new System.Windows.Forms.DataGridView();
+            this.PnlNotes.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridNotes)).BeginInit();
             this.SuspendLayout();
             // 
             // DtpDateOfBirth
@@ -96,6 +99,7 @@ namespace Contact_Manager.Partials.Dialog
             "A",
             "B",
             "C",
+            "D",
             "E"});
             this.CmbCustomerType.Location = new System.Drawing.Point(139, 48);
             this.CmbCustomerType.Name = "CmbCustomerType";
@@ -122,7 +126,7 @@ namespace Contact_Manager.Partials.Dialog
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(336, 22);
+            this.label2.Location = new System.Drawing.Point(10, 10);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(277, 13);
             this.label2.TabIndex = 74;
@@ -274,16 +278,17 @@ namespace Contact_Manager.Partials.Dialog
             // 
             // btnCompanyDelete
             // 
-            this.btnCompanyDelete.Location = new System.Drawing.Point(166, 565);
+            this.btnCompanyDelete.Location = new System.Drawing.Point(145, 356);
             this.btnCompanyDelete.Name = "btnCompanyDelete";
             this.btnCompanyDelete.Size = new System.Drawing.Size(118, 23);
             this.btnCompanyDelete.TabIndex = 60;
             this.btnCompanyDelete.Text = "Eingaben löschen";
             this.btnCompanyDelete.UseVisualStyleBackColor = true;
+            this.btnCompanyDelete.Click += new System.EventHandler(this.btnCompanyDelete_Click);
             // 
             // btnCompanySave
             // 
-            this.btnCompanySave.Location = new System.Drawing.Point(15, 565);
+            this.btnCompanySave.Location = new System.Drawing.Point(14, 356);
             this.btnCompanySave.Name = "btnCompanySave";
             this.btnCompanySave.Size = new System.Drawing.Size(118, 23);
             this.btnCompanySave.TabIndex = 59;
@@ -310,12 +315,11 @@ namespace Contact_Manager.Partials.Dialog
             // 
             // txtCompanyHistoryData
             // 
-            this.txtCompanyHistoryData.Location = new System.Drawing.Point(634, 48);
+            this.txtCompanyHistoryData.Location = new System.Drawing.Point(322, 34);
             this.txtCompanyHistoryData.Multiline = true;
             this.txtCompanyHistoryData.Name = "txtCompanyHistoryData";
-            this.txtCompanyHistoryData.Size = new System.Drawing.Size(291, 141);
+            this.txtCompanyHistoryData.Size = new System.Drawing.Size(261, 141);
             this.txtCompanyHistoryData.TabIndex = 55;
-            this.txtCompanyHistoryData.Text = "Mit diesem Kunden wurde noch Kontakt aufgebaut";
             // 
             // txtCompany
             // 
@@ -325,17 +329,11 @@ namespace Contact_Manager.Partials.Dialog
             this.txtCompany.TabIndex = 54;
             this.txtCompany.Text = "Firmenname";
             // 
-            // txtCompanyContact
-            // 
-            this.txtCompanyContact.Location = new System.Drawing.Point(694, 550);
-            this.txtCompanyContact.Name = "txtCompanyContact";
-            this.txtCompanyContact.Size = new System.Drawing.Size(118, 20);
-            this.txtCompanyContact.TabIndex = 57;
-            this.txtCompanyContact.Text = "Kontakt";
-            // 
             // ChkStatus
             // 
             this.ChkStatus.AutoSize = true;
+            this.ChkStatus.Checked = true;
+            this.ChkStatus.CheckState = System.Windows.Forms.CheckState.Checked;
             this.ChkStatus.Location = new System.Drawing.Point(16, 298);
             this.ChkStatus.Name = "ChkStatus";
             this.ChkStatus.Size = new System.Drawing.Size(93, 17);
@@ -345,7 +343,7 @@ namespace Contact_Manager.Partials.Dialog
             // 
             // BtnAddNote
             // 
-            this.BtnAddNote.Location = new System.Drawing.Point(339, 217);
+            this.BtnAddNote.Location = new System.Drawing.Point(13, 181);
             this.BtnAddNote.Name = "BtnAddNote";
             this.BtnAddNote.Size = new System.Drawing.Size(118, 23);
             this.BtnAddNote.TabIndex = 80;
@@ -355,7 +353,7 @@ namespace Contact_Manager.Partials.Dialog
             // 
             // btnDeleteNote
             // 
-            this.btnDeleteNote.Location = new System.Drawing.Point(634, 217);
+            this.btnDeleteNote.Location = new System.Drawing.Point(322, 181);
             this.btnDeleteNote.Name = "btnDeleteNote";
             this.btnDeleteNote.Size = new System.Drawing.Size(118, 23);
             this.btnDeleteNote.TabIndex = 81;
@@ -365,27 +363,49 @@ namespace Contact_Manager.Partials.Dialog
             // 
             // txtAddNote
             // 
-            this.txtAddNote.Location = new System.Drawing.Point(337, 48);
+            this.txtAddNote.Location = new System.Drawing.Point(13, 34);
             this.txtAddNote.Multiline = true;
             this.txtAddNote.Name = "txtAddNote";
             this.txtAddNote.Size = new System.Drawing.Size(291, 141);
             this.txtAddNote.TabIndex = 82;
             this.txtAddNote.Text = "Notizen hier eintragen";
             // 
+            // PnlNotes
+            // 
+            this.PnlNotes.Controls.Add(this.dataGridNotes);
+            this.PnlNotes.Controls.Add(this.txtAddNote);
+            this.PnlNotes.Controls.Add(this.btnDeleteNote);
+            this.PnlNotes.Controls.Add(this.txtCompanyHistoryData);
+            this.PnlNotes.Controls.Add(this.BtnAddNote);
+            this.PnlNotes.Controls.Add(this.label2);
+            this.PnlNotes.Location = new System.Drawing.Point(339, 12);
+            this.PnlNotes.Name = "PnlNotes";
+            this.PnlNotes.Size = new System.Drawing.Size(617, 449);
+            this.PnlNotes.TabIndex = 83;
+            // 
+            // dataGridNotes
+            // 
+            this.dataGridNotes.AllowUserToAddRows = false;
+            this.dataGridNotes.AllowUserToDeleteRows = false;
+            this.dataGridNotes.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridNotes.Location = new System.Drawing.Point(322, 234);
+            this.dataGridNotes.Name = "dataGridNotes";
+            this.dataGridNotes.ReadOnly = true;
+            this.dataGridNotes.Size = new System.Drawing.Size(261, 158);
+            this.dataGridNotes.TabIndex = 83;
+            this.dataGridNotes.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridNotes_CellClick);
+            // 
             // CustomerDialog
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1138, 803);
-            this.Controls.Add(this.txtAddNote);
-            this.Controls.Add(this.btnDeleteNote);
-            this.Controls.Add(this.BtnAddNote);
+            this.ClientSize = new System.Drawing.Size(1051, 484);
+            this.Controls.Add(this.PnlNotes);
             this.Controls.Add(this.ChkStatus);
             this.Controls.Add(this.DtpDateOfBirth);
             this.Controls.Add(this.CmbCustomerType);
             this.Controls.Add(this.txtFax);
             this.Controls.Add(this.txtPhoneCompany);
-            this.Controls.Add(this.label2);
             this.Controls.Add(this.CmbNationality);
             this.Controls.Add(this.txtZipCode);
             this.Controls.Add(this.txtCity);
@@ -402,12 +422,13 @@ namespace Contact_Manager.Partials.Dialog
             this.Controls.Add(this.btnCompanyDelete);
             this.Controls.Add(this.btnCompanySave);
             this.Controls.Add(this.txtCompanyContactEmail);
-            this.Controls.Add(this.txtCompanyContact);
             this.Controls.Add(this.label1);
-            this.Controls.Add(this.txtCompanyHistoryData);
             this.Controls.Add(this.txtCompany);
             this.Name = "CustomerDialog";
             this.Text = "CustomerDialog";
+            this.PnlNotes.ResumeLayout(false);
+            this.PnlNotes.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridNotes)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -438,10 +459,11 @@ namespace Contact_Manager.Partials.Dialog
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.TextBox txtCompanyHistoryData;
         private System.Windows.Forms.TextBox txtCompany;
-        private System.Windows.Forms.TextBox txtCompanyContact;
         private System.Windows.Forms.CheckBox ChkStatus;
         private System.Windows.Forms.Button BtnAddNote;
         private System.Windows.Forms.Button btnDeleteNote;
         private System.Windows.Forms.TextBox txtAddNote;
+        private System.Windows.Forms.Panel PnlNotes;
+        private System.Windows.Forms.DataGridView dataGridNotes;
     }
 }
