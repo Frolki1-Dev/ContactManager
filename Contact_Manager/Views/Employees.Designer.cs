@@ -65,7 +65,9 @@ namespace Contact_Manager.Views
             this.GridViewEmployee.ReadOnly = true;
             this.GridViewEmployee.Size = new System.Drawing.Size(800, 400);
             this.GridViewEmployee.TabIndex = 3;
+            this.GridViewEmployee.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.GridViewEmployee_CellDoubleClick);
             this.GridViewEmployee.Paint += new System.Windows.Forms.PaintEventHandler(this.GridViewEmployee_Paint);
+            this.GridViewEmployee.KeyDown += new System.Windows.Forms.KeyEventHandler(this.GridViewEmployee_KeyDown);
             // 
             // PnlHeader
             // 

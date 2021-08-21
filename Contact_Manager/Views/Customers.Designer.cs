@@ -29,7 +29,6 @@ namespace Contact_Manager.Views
         /// </summary>
         private void InitializeComponent()
         {
-            this.navigation1 = new Contact_Manager.Components.Navigation();
             this.PnlHeader = new System.Windows.Forms.TableLayoutPanel();
             this.PnlSearch = new System.Windows.Forms.Panel();
             this.TxtSearch = new System.Windows.Forms.TextBox();
@@ -39,20 +38,12 @@ namespace Contact_Manager.Views
             this.cmdImportCsv = new System.Windows.Forms.Button();
             this.CmdCreate = new System.Windows.Forms.Button();
             this.GridViewCustomers = new System.Windows.Forms.DataGridView();
+            this.navigation1 = new Contact_Manager.Components.Navigation();
             this.PnlHeader.SuspendLayout();
             this.PnlSearch.SuspendLayout();
             this.PnlActions.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.GridViewCustomers)).BeginInit();
             this.SuspendLayout();
-            // 
-            // navigation1
-            // 
-            this.navigation1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(58)))), ((int)(((byte)(119)))), ((int)(((byte)(241)))));
-            this.navigation1.Dock = System.Windows.Forms.DockStyle.Top;
-            this.navigation1.Location = new System.Drawing.Point(0, 0);
-            this.navigation1.Name = "navigation1";
-            this.navigation1.Size = new System.Drawing.Size(800, 50);
-            this.navigation1.TabIndex = 0;
             // 
             // PnlHeader
             // 
@@ -155,7 +146,18 @@ namespace Contact_Manager.Views
             this.GridViewCustomers.ReadOnly = true;
             this.GridViewCustomers.Size = new System.Drawing.Size(800, 344);
             this.GridViewCustomers.TabIndex = 3;
+            this.GridViewCustomers.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.GridViewCustomers_CellDoubleClick);
             this.GridViewCustomers.Paint += new System.Windows.Forms.PaintEventHandler(this.GridViewCustomers_Paint);
+            this.GridViewCustomers.KeyDown += new System.Windows.Forms.KeyEventHandler(this.GridViewCustomers_KeyDown);
+            // 
+            // navigation1
+            // 
+            this.navigation1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(58)))), ((int)(((byte)(119)))), ((int)(((byte)(241)))));
+            this.navigation1.Dock = System.Windows.Forms.DockStyle.Top;
+            this.navigation1.Location = new System.Drawing.Point(0, 0);
+            this.navigation1.Name = "navigation1";
+            this.navigation1.Size = new System.Drawing.Size(800, 50);
+            this.navigation1.TabIndex = 0;
             // 
             // Customers
             // 

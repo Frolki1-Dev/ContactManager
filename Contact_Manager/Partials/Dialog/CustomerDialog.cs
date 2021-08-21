@@ -12,6 +12,7 @@ using System.Net.Mail;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Contact_Manager.Themes;
 
 namespace Contact_Manager.Partials.Dialog
 {
@@ -312,6 +313,11 @@ namespace Contact_Manager.Partials.Dialog
             txtAddNote.Text = this.currentCustomer.Notes[rowIndex].Notes;
             this.noteInEditMode = true;
             BtnAddNote.Text = "Notiz speichern";
+        }
+
+        private void CustomerDialog_Load(object sender, EventArgs e)
+        {
+            MainTheme.InitThemeForForm(this);
         }
     }
 }

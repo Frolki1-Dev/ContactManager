@@ -426,6 +426,7 @@ namespace Contact_Manager.Partials.Dialog
             this.Controls.Add(this.txtCompany);
             this.Name = "CustomerDialog";
             this.Text = "CustomerDialog";
+            this.Load += new System.EventHandler(this.CustomerDialog_Load);
             this.PnlNotes.ResumeLayout(false);
             this.PnlNotes.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridNotes)).EndInit();

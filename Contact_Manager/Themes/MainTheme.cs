@@ -62,6 +62,12 @@ namespace Contact_Manager.Themes
                 {
                     SetGroupBoxStyle((GroupBox)control);
                     SetControlStyles(control.Controls);
+                } else if (control is RadioButton)
+                {
+                    control.ForeColor = Color.White;
+                } else if (control is CheckBox)
+                {
+                    control.ForeColor = Color.White;
                 }
             }
         }
