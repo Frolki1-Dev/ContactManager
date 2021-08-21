@@ -54,8 +54,7 @@
   </PropertyGroup>
   <PropertyGroup />
   <PropertyGroup>
-    <ApplicationIcon>
-    </ApplicationIcon>
+    <ApplicationIcon>Resources\LogoWhiteWithBackground %284%29.ico</ApplicationIcon>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
@@ -88,6 +87,18 @@
     <Compile Include="Collections\Customers.cs" />
     <Compile Include="Collections\Employees.cs" />
     <Compile Include="Collections\Trainees.cs" />
+    <Compile Include="Components\DashboardItem.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Components\DashboardItem.Designer.cs">
+      <DependentUpon>DashboardItem.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Components\Navigation.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Components\Navigation.Designer.cs">
+      <DependentUpon>Navigation.cs</DependentUpon>
+    </Compile>
     <Compile Include="Models\Customer.cs" />
     <Compile Include="Authentication\Authentication.cs" />
     <Compile Include="Authentication\PasswordHasher.cs" />
@@ -96,10 +107,28 @@
     <Compile Include="Models\CustomerNotes.cs" />
     <Compile Include="Models\Employee.cs" />
     <Compile Include="Helper.cs" />
-    <Compile Include="Login.cs">
+    <Compile Include="Views\Customers.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Login.Designer.cs">
+    <Compile Include="Views\Customers.Designer.cs">
+      <DependentUpon>Customers.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Dashboard.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\Dashboard.Designer.cs">
+      <DependentUpon>Dashboard.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Employees.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\Employees.Designer.cs">
+      <DependentUpon>Employees.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Login.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\Login.Designer.cs">
       <DependentUpon>Login.cs</DependentUpon>
     </Compile>
     <Compile Include="Interfaces\IIdentifier.cs" />
@@ -181,13 +210,40 @@
       <DependentUpon>Template.cs</DependentUpon>
     </Compile>
     <Compile Include="Themes\MainTheme.cs" />
-    <Compile Include="Welcome.cs">
+    <Compile Include="Views\Trainees.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Welcome.Designer.cs">
+    <Compile Include="Views\Trainees.Designer.cs">
+      <DependentUpon>Trainees.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Users.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\Users.Designer.cs">
+      <DependentUpon>Users.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Welcome.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\Welcome.Designer.cs">
       <DependentUpon>Welcome.cs</DependentUpon>
     </Compile>
-    <EmbeddedResource Include="Login.resx">
+    <EmbeddedResource Include="Components\DashboardItem.resx">
+      <DependentUpon>DashboardItem.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Components\Navigation.resx">
+      <DependentUpon>Navigation.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\Customers.resx">
+      <DependentUpon>Customers.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\Dashboard.resx">
+      <DependentUpon>Dashboard.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\Employees.resx">
+      <DependentUpon>Employees.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\Login.resx">
       <DependentUpon>Login.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Partials\Dialog\EmployeeDialog.resx">
@@ -224,7 +280,13 @@
     <EmbeddedResource Include="Template.resx">
       <DependentUpon>Template.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Welcome.resx">
+    <EmbeddedResource Include="Views\Trainees.resx">
+      <DependentUpon>Trainees.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\Users.resx">
+      <DependentUpon>Users.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\Welcome.resx">
       <DependentUpon>Welcome.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="packages.config" />
@@ -268,7 +330,28 @@
     <None Include="Resources\LogoWhiteWithoutBackground.png" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Views\" />
+    <None Include="Resources\user.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\User.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\sign-out.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\User1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\user-graduate.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\user-hard-hat.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\users-crown.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\user-shield.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

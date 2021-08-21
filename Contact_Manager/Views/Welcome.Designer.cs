@@ -1,5 +1,5 @@
 ﻿
-namespace Contact_Manager
+namespace Contact_Manager.Views
 {
     partial class Welcome
     {

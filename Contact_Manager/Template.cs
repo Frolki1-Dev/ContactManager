@@ -10,6 +10,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using Contact_Manager.Partials.Dialog;
 using Contact_Manager.Partials.Overview;
+using Contact_Manager.Views;
 
 namespace Contact_Manager
 {
@@ -21,9 +22,9 @@ namespace Contact_Manager
         public Template()
         {
             InitializeComponent();
-            DataContainer.LoadAll(DataContainer.Customers);
+            /*DataContainer.LoadAll(DataContainer.Customers);
             DataContainer.LoadAll(DataContainer.Employees);
-            DataContainer.LoadAll(DataContainer.Trainees);
+            DataContainer.LoadAll(DataContainer.Trainees);*/
 
             SetPageTitle("Dashboard");
             LoadFormIntoPanel(new DashboardOverview());

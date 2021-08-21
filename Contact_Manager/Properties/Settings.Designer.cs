@@ -70,22 +70,37 @@ namespace Contact_Manager.Properties {
         
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("235, 235, 235")]
+        [global::System.Configuration.DefaultSettingValueAttribute("White")]
         public global::System.Drawing.Color FontColor {
             get {
                 return ((global::System.Drawing.Color)(this["FontColor"]));
             }
         }
         
-        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("46, 94, 191")]
         public global::System.Drawing.Color SecondaryColor {
             get {
                 return ((global::System.Drawing.Color)(this["SecondaryColor"]));
             }
-            set {
-                this["SecondaryColor"] = value;
+        }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("58, 119, 241")]
+        public global::System.Drawing.Color NavigationColor {
+            get {
+                return ((global::System.Drawing.Color)(this["NavigationColor"]));
+            }
+        }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("Nirmala UI, 16pt")]
+        public global::System.Drawing.Font TitleFont {
+            get {
+                return ((global::System.Drawing.Font)(this["TitleFont"]));
             }
         }
     }

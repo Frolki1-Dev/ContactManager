@@ -1,9 +1,8 @@
 ﻿using System;
 using System.Windows.Forms;
-using System.Collections.Generic;
 using Contact_Manager.Themes;
 
-namespace Contact_Manager
+namespace Contact_Manager.Views
 {
     public partial class Login : Form
     {
@@ -44,14 +43,19 @@ namespace Contact_Manager
             }
 
             // You did it!
-            this.Hide();
-            (new Template()).ShowDialog();
-            this.Close();
+            // Load the other data inside
+            DataContainer.LoadAll(DataContainer.Customers);
+            DataContainer.LoadAll(DataContainer.Employees);
+            DataContainer.LoadAll(DataContainer.Trainees);
+
+            Helper.openNewFormAndCloseOld(new Dashboard(), this);
         }
 
         private void Login_Load(object sender, EventArgs e)
         {
-            MainTheme.initThemeForForm(this);
+            MainTheme.InitThemeForForm(this);
+            // Set autofocus
+            ActiveControl = TxtUsername;
         }
     }
 }

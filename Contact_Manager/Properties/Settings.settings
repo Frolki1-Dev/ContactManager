@@ -18,10 +18,16 @@
       <Value Profile="(Default)">58, 119, 241</Value>
     </Setting>
     <Setting Name="FontColor" Type="System.Drawing.Color" Scope="Application">
-      <Value Profile="(Default)">235, 235, 235</Value>
+      <Value Profile="(Default)">White</Value>
     </Setting>
-    <Setting Name="SecondaryColor" Type="System.Drawing.Color" Scope="User">
+    <Setting Name="SecondaryColor" Type="System.Drawing.Color" Scope="Application">
       <Value Profile="(Default)">46, 94, 191</Value>
+    </Setting>
+    <Setting Name="NavigationColor" Type="System.Drawing.Color" Scope="Application">
+      <Value Profile="(Default)">58, 119, 241</Value>
+    </Setting>
+    <Setting Name="TitleFont" Type="System.Drawing.Font" Scope="Application">
+      <Value Profile="(Default)">Nirmala UI, 16pt</Value>
     </Setting>
   </Settings>
 </SettingsFile>
