@@ -631,7 +631,7 @@ namespace Contact_Manager.Partials.Dialog
             this.Controls.Add(this.PnlMainData);
             this.Name = "CustomerDialog";
             this.Padding = new System.Windows.Forms.Padding(15);
-            this.Text = "CustomerDialog";
+            this.Text = "Kunden";
             this.Load += new System.EventHandler(this.CustomerDialog_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridNotes)).EndInit();
             this.GrpBoxCompanyData.ResumeLayout(false);

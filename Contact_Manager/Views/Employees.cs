@@ -59,7 +59,11 @@ namespace Contact_Manager.Views
                     where employee.FirstName.Contains(TxtSearch.Text) || employee.LastName.Contains(TxtSearch.Text) || employee.Role.Contains(TxtSearch.Text)
                     select new
                     {
-                        ID = employee.Id
+                        ID = employee.Id,
+                        Vorname = employee.FirstName,
+                        Nachname = employee.LastName,
+                        Abteilung = employee.Departement,
+                        Position = employee.Role
                     };
 
                 if (!employees.Any())
@@ -75,6 +79,10 @@ namespace Contact_Manager.Views
                     select new
                     {
                         ID = employee.Id,
+                        Vorname = employee.FirstName,
+                        Nachname = employee.LastName,
+                        Abteilung = employee.Departement,
+                        Position = employee.Role
                     };
 
                 if (!employees.Any())
