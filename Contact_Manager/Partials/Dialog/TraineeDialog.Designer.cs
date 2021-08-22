@@ -325,6 +325,7 @@ namespace Contact_Manager.Partials.Dialog
             this.btnSave.TabIndex = 122;
             this.btnSave.Text = "Speichern";
             this.btnSave.UseVisualStyleBackColor = true;
+            this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
             // 
             // ChkStatus
             // 
@@ -337,6 +338,7 @@ namespace Contact_Manager.Partials.Dialog
             this.ChkStatus.TabIndex = 120;
             this.ChkStatus.Text = "Aktiver Mitarbeiter";
             this.ChkStatus.UseVisualStyleBackColor = true;
+            this.ChkStatus.CheckedChanged += new System.EventHandler(this.ChkStatus_CheckedChanged);
             // 
             // CmbCurrentApprenticeYear
             // 

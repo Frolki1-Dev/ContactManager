@@ -8,10 +8,9 @@ namespace Contact_Manager.Models
         // constructor
         public Trainee(string salutation, string firstName, string lastName, DateTime dateOfBirth, int gender,
             string title, string email, bool status, string address, int zipCode, string phonePrivate, string phoneCompany,
-            string fax, string mobile, string city, string country,
-            int employeeNumber, string departement, string ahv, string nationality, DateTime entryDate,
+            string fax, string mobile, string city, string country, string departement, string ahv, string nationality, DateTime entryDate,
             DateTime exitDate, int loe, string role, int managementLevel,
-            int CurrentTraineeYear, int MaxTraineeYear)
+            int currentTraineeYear, int maxTraineeYear)
             : base(salutation, firstName, lastName, dateOfBirth, gender, title, email, status, address, zipCode,
                   phonePrivate, phoneCompany, fax, mobile, city, country, departement, ahv, nationality,
                   entryDate, exitDate, loe, role, managementLevel)
@@ -21,8 +20,8 @@ namespace Contact_Manager.Models
         }
 
         // variables
-        public int currentTraineeYear { get; set; }
-        public int maxTraineeYear { get; set; }
+        public int CurrentTraineeYear { get; set; }
+        public int MaxTraineeYear { get; set; }
 
         // methods
     }

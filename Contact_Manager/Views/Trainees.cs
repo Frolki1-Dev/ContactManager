@@ -54,7 +54,7 @@ namespace Contact_Manager.Views
                         Nachname = trainee.LastName,
                         Abteilung = trainee.Departement,
                         Position = trainee.Role,
-                        Lehrjahr = trainee.currentTraineeYear
+                        Lehrjahr = trainee.CurrentTraineeYear
                     };
 
                 if (!trainees.Any())
@@ -74,7 +74,7 @@ namespace Contact_Manager.Views
                         Nachname = trainee.LastName,
                         Abteilung = trainee.Departement,
                         Position = trainee.Role,
-                        Lehrjahr = trainee.currentTraineeYear
+                        Lehrjahr = trainee.CurrentTraineeYear
                     };
 
                 if (!trainees.Any())
