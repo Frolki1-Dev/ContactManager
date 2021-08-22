@@ -45,11 +45,16 @@ namespace Contact_Manager.Views
             if (TxtSearch.Text.Length > 0)
             {
                 // Search
-                var trainees = from Trainee employee in DataContainer.GetTraineeCollection()
-                    where employee.FirstName.Contains(TxtSearch.Text) || employee.LastName.Contains(TxtSearch.Text) || employee.Role.Contains(TxtSearch.Text)
+                var trainees = from Trainee trainee in DataContainer.GetTraineeCollection()
+                    where trainee.FirstName.Contains(TxtSearch.Text) || trainee.LastName.Contains(TxtSearch.Text) || trainee.Role.Contains(TxtSearch.Text)
                     select new
                     {
-                        ID = employee.Id
+                        ID = trainee.Id,
+                        Vorname = trainee.FirstName,
+                        Nachname = trainee.LastName,
+                        Abteilung = trainee.Departement,
+                        Position = trainee.Role,
+                        Lehrjahr = trainee.currentTraineeYear
                     };
 
                 if (!trainees.Any())
@@ -65,6 +70,11 @@ namespace Contact_Manager.Views
                     select new
                     {
                         ID = trainee.Id,
+                        Vorname = trainee.FirstName,
+                        Nachname = trainee.LastName,
+                        Abteilung = trainee.Departement,
+                        Position = trainee.Role,
+                        Lehrjahr = trainee.currentTraineeYear
                     };
 
                 if (!trainees.Any())

@@ -14,9 +14,7 @@ namespace Contact_Manager
     class ValidationException : Exception
     {
         public ValidationException(string message) : base(message: message)
-        {
-
-        }
+        { }
     }
     class Validation
     {
@@ -36,6 +34,9 @@ namespace Contact_Manager
             }
         }
 
+        /**
+         * Validate a phone number in different format
+         */
         public static void ValidatePhone(string number, string exceptionMessage = "Die Nummer ist nicht gültig!")
         {
             // Trim the input
@@ -62,6 +63,9 @@ namespace Contact_Manager
             throw new ValidationException(exceptionMessage + "\nFormate:\n0041 00 000 00 00\n +41 00 000 00 00\n000 000 00 00");
         }
 
+        /**
+         * Validate the zip code (only switzerland)
+         */
         public static void ValidateZipCode(int zipCode, string exceptionMessage = "Die Postleitzahl ist nicht gültig!")
         {
             if (zipCode < 1000 || zipCode > 9999)
@@ -70,6 +74,9 @@ namespace Contact_Manager
             }
         }
 
+        /**
+         * The field is required
+         */
         public static void Required(TextBox field, string exceptionMessage)
         {
             if (field.Text.Length < 1)
@@ -78,6 +85,9 @@ namespace Contact_Manager
             }
         }
 
+        /**
+         * The field is required
+         */
         public static void Required(string field, string exceptionMessage)
         {
             if (field.Length < 1)

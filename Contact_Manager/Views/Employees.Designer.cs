@@ -60,10 +60,10 @@ namespace Contact_Manager.Views
             this.GridViewEmployee.AllowUserToDeleteRows = false;
             this.GridViewEmployee.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.GridViewEmployee.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.GridViewEmployee.Location = new System.Drawing.Point(0, 50);
+            this.GridViewEmployee.Location = new System.Drawing.Point(0, 106);
             this.GridViewEmployee.Name = "GridViewEmployee";
             this.GridViewEmployee.ReadOnly = true;
-            this.GridViewEmployee.Size = new System.Drawing.Size(800, 400);
+            this.GridViewEmployee.Size = new System.Drawing.Size(800, 344);
             this.GridViewEmployee.TabIndex = 3;
             this.GridViewEmployee.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.GridViewEmployee_CellDoubleClick);
             this.GridViewEmployee.Paint += new System.Windows.Forms.PaintEventHandler(this.GridViewEmployee_Paint);
@@ -165,8 +165,8 @@ namespace Contact_Manager.Views
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
-            this.Controls.Add(this.PnlHeader);
             this.Controls.Add(this.GridViewEmployee);
+            this.Controls.Add(this.PnlHeader);
             this.Controls.Add(this.navigation1);
             this.Name = "Employees";
             this.Text = "Mitarbeiter";

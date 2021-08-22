@@ -60,10 +60,10 @@ namespace Contact_Manager.Views
             this.GridViewTrainees.AllowUserToDeleteRows = false;
             this.GridViewTrainees.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.GridViewTrainees.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.GridViewTrainees.Location = new System.Drawing.Point(0, 50);
+            this.GridViewTrainees.Location = new System.Drawing.Point(0, 106);
             this.GridViewTrainees.Name = "GridViewTrainees";
             this.GridViewTrainees.ReadOnly = true;
-            this.GridViewTrainees.Size = new System.Drawing.Size(800, 400);
+            this.GridViewTrainees.Size = new System.Drawing.Size(800, 344);
             this.GridViewTrainees.TabIndex = 3;
             this.GridViewTrainees.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.GridViewTrainees_CellDoubleClick);
             this.GridViewTrainees.Paint += new System.Windows.Forms.PaintEventHandler(this.GridViewTrainees_Paint);
@@ -165,8 +165,8 @@ namespace Contact_Manager.Views
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
-            this.Controls.Add(this.PnlHeader);
             this.Controls.Add(this.GridViewTrainees);
+            this.Controls.Add(this.PnlHeader);
             this.Controls.Add(this.navigation1);
             this.Name = "Trainees";
             this.Text = "Lehrlinge";

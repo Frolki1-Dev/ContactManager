@@ -728,7 +728,7 @@ namespace Contact_Manager.Partials.Dialog
             this.Controls.Add(this.CmbTitle);
             this.Controls.Add(this.CmbSalutation);
             this.Name = "TraineeDialog";
-            this.Text = "TraineeDialog";
+            this.Text = "Lehrling";
             this.Load += new System.EventHandler(this.TraineeDialog_Load);
             ((System.ComponentModel.ISupportInitialize)(this.employeeDialogBindingSource)).EndInit();
             this.ResumeLayout(false);
