@@ -108,6 +108,7 @@
     <Compile Include="Models\CustomerNotes.cs" />
     <Compile Include="Models\Employee.cs" />
     <Compile Include="Helper.cs" />
+    <Compile Include="Validation.cs" />
     <Compile Include="Views\Customers.cs">
       <SubType>Form</SubType>
     </Compile>
