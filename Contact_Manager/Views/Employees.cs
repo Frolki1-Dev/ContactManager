@@ -114,7 +114,7 @@ namespace Contact_Manager.Views
                 using (var gfx = e.Graphics)
                 {
                     gfx.DrawString("Keine Daten vorhanden", this.Font, Brushes.White,
-                        new PointF((this.Width - this.Font.Size * "Keine Daten vorhanden".Length) / 2, this.Height / 2));
+                        new PointF((GridViewEmployee.Width - this.Font.Size * "Keine Daten vorhanden".Length) / 2, GridViewEmployee.Height / 2));
                 }
             }
         }
