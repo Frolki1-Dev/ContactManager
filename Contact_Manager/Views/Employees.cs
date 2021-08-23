@@ -183,5 +183,54 @@ namespace Contact_Manager.Views
             };
             dialog.Show();
         }
+
+        private void cmdImportCsv_Click(object sender, EventArgs e)
+        {
+
+            OpenFileDialog openFileDialogCSV = new OpenFileDialog();
+            openFileDialogCSV.ShowDialog();
+            openFileDialogCSV.InitialDirectory = @"C:\";
+            openFileDialogCSV.RestoreDirectory = true;
+            openFileDialogCSV.Title = "CSV Dateien durchsuchen";
+            openFileDialogCSV.DefaultExt = "csv";
+            openFileDialogCSV.Filter = "csv files (*.csv)|*.csv|All files (*.*)|*.*";
+
+            txtFile.Text = openFileDialogCSV.FileName;
+            BindData(txtFile.Text);
+        }
+        private void BindData(string filePath)
+        {
+            DataTable dt = new DataTable();
+            string[] lines = System.IO.File.ReadAllLines(filePath);
+            if (lines.Length > 0)
+            {
+                //first line to create header
+                string firstLine = lines[0];
+                string[] headerLabels = firstLine.Split(',');
+                foreach (string headerWord in headerLabels)
+                {
+                    dt.Columns.Add(new DataColumn(headerWord));
+                }
+                //For Data
+                for (int i = 1; i < lines.Length; i++)
+                {
+                    string[] dataWords = lines[i].Split(',');
+                    DataRow dr = dt.NewRow();
+                    int columnIndex = 0;
+                    foreach (string headerWord in headerLabels)
+                    {
+                        dr[headerWord] = dataWords[columnIndex++];
+                    }
+                    dt.Rows.Add(dr);
+                }
+            }
+            if (dt.Rows.Count > 0)
+            {
+                GridViewEmployee.DataSource = dt;
+            }
+
+        }
+
     }
 }
+

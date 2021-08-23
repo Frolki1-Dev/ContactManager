@@ -99,6 +99,7 @@
     <Compile Include="Components\Navigation.Designer.cs">
       <DependentUpon>Navigation.cs</DependentUpon>
     </Compile>
+    <Compile Include="CsvFileImport.cs" />
     <Compile Include="Interfaces\IDataSourceForm.cs" />
     <Compile Include="Models\Customer.cs" />
     <Compile Include="Authentication\Authentication.cs" />

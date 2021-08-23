@@ -39,6 +39,7 @@ namespace Contact_Manager.Views
             this.cmdVcardImport = new System.Windows.Forms.Button();
             this.cmdImportCsv = new System.Windows.Forms.Button();
             this.CmdCreate = new System.Windows.Forms.Button();
+            this.txtFile = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.GridViewTrainees)).BeginInit();
             this.PnlHeader.SuspendLayout();
             this.PnlSearch.SuspendLayout();
@@ -146,6 +147,7 @@ namespace Contact_Manager.Views
             this.cmdImportCsv.TabIndex = 1;
             this.cmdImportCsv.Text = "CSV Import";
             this.cmdImportCsv.UseVisualStyleBackColor = true;
+            this.cmdImportCsv.Click += new System.EventHandler(this.cmdImportCsv_Click);
             // 
             // CmdCreate
             // 
@@ -159,6 +161,13 @@ namespace Contact_Manager.Views
             this.CmdCreate.UseVisualStyleBackColor = true;
             this.CmdCreate.Click += new System.EventHandler(this.CmdCreate_Click);
             // 
+            // txtFile
+            // 
+            this.txtFile.Location = new System.Drawing.Point(0, 430);
+            this.txtFile.Name = "txtFile";
+            this.txtFile.Size = new System.Drawing.Size(100, 20);
+            this.txtFile.TabIndex = 6;
+            // 
             // Trainees
             // 
             this.AccessibleDescription = "mainWindow";
@@ -168,6 +177,7 @@ namespace Contact_Manager.Views
             this.Controls.Add(this.GridViewTrainees);
             this.Controls.Add(this.PnlHeader);
             this.Controls.Add(this.navigation1);
+            this.Controls.Add(this.txtFile);
             this.Name = "Trainees";
             this.Text = "Lehrlinge";
             this.Load += new System.EventHandler(this.Trainees_Load);
@@ -177,6 +187,7 @@ namespace Contact_Manager.Views
             this.PnlSearch.PerformLayout();
             this.PnlActions.ResumeLayout(false);
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -192,5 +203,6 @@ namespace Contact_Manager.Views
         private System.Windows.Forms.Button cmdVcardImport;
         private System.Windows.Forms.Button cmdImportCsv;
         private System.Windows.Forms.Button CmdCreate;
+        private System.Windows.Forms.TextBox txtFile;
     }
 }

@@ -38,6 +38,7 @@ namespace Contact_Manager.Views
             this.cmdImportCsv = new System.Windows.Forms.Button();
             this.CmdCreate = new System.Windows.Forms.Button();
             this.GridViewCustomers = new System.Windows.Forms.DataGridView();
+            this.txtFile = new System.Windows.Forms.TextBox();
             this.navigation1 = new Contact_Manager.Components.Navigation();
             this.PnlHeader.SuspendLayout();
             this.PnlSearch.SuspendLayout();
@@ -122,6 +123,7 @@ namespace Contact_Manager.Views
             this.cmdImportCsv.TabIndex = 1;
             this.cmdImportCsv.Text = "CSV Import";
             this.cmdImportCsv.UseVisualStyleBackColor = true;
+            this.cmdImportCsv.Click += new System.EventHandler(this.cmdImportCsv_Click);
             // 
             // CmdCreate
             // 
@@ -150,6 +152,13 @@ namespace Contact_Manager.Views
             this.GridViewCustomers.Paint += new System.Windows.Forms.PaintEventHandler(this.GridViewCustomers_Paint);
             this.GridViewCustomers.KeyDown += new System.Windows.Forms.KeyEventHandler(this.GridViewCustomers_KeyDown);
             // 
+            // txtFile
+            // 
+            this.txtFile.Location = new System.Drawing.Point(0, 430);
+            this.txtFile.Name = "txtFile";
+            this.txtFile.Size = new System.Drawing.Size(100, 20);
+            this.txtFile.TabIndex = 7;
+            // 
             // navigation1
             // 
             this.navigation1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(58)))), ((int)(((byte)(119)))), ((int)(((byte)(241)))));
@@ -168,6 +177,7 @@ namespace Contact_Manager.Views
             this.Controls.Add(this.GridViewCustomers);
             this.Controls.Add(this.PnlHeader);
             this.Controls.Add(this.navigation1);
+            this.Controls.Add(this.txtFile);
             this.Name = "Customers";
             this.Text = "Kundenstamm";
             this.Load += new System.EventHandler(this.Customers_Load);
@@ -177,6 +187,7 @@ namespace Contact_Manager.Views
             this.PnlActions.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.GridViewCustomers)).EndInit();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -192,5 +203,6 @@ namespace Contact_Manager.Views
         private System.Windows.Forms.DataGridView GridViewCustomers;
         private System.Windows.Forms.Button cmdVcardImport;
         private System.Windows.Forms.Button cmdImportCsv;
+        private System.Windows.Forms.TextBox txtFile;
     }
 }
