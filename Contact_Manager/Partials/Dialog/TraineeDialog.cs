@@ -59,7 +59,6 @@ namespace Contact_Manager.Partials.Dialog
                     break;
             }
 
-            CmbTitle.Text = trainee.Title;
             txtEmail.Text = trainee.Email;
             ChkStatus.Checked = trainee.Status;
             txtAddress.Text = trainee.Address;
@@ -81,9 +80,121 @@ namespace Contact_Manager.Partials.Dialog
             CmbApprenticeYears.Text = Convert.ToString(trainee.MaxTraineeYear);
         }
 
+        public void defaultValueCombobox()
+        {
+            /* *****************************
+             * default salutations
+            ***************************** */
+            string[] salutations = new string[]
+            {
+                "Herr",
+                "Frau"
+            };
+
+            foreach (var salutation in salutations)
+            {
+                CmbSalutation.Items.Add(salutation);
+            }
+
+            /* *****************************
+             * default country list
+            ***************************** */
+            string[] countries = new string[]
+            {
+                "Schweiz",
+                "Deutschland",
+                "Liechtenstein",
+                "Frankreich",
+                "Österreich",
+                "Italien"
+            };
+
+            foreach (var country in countries)
+            {
+                CmbNationality.Items.Add(country);
+            }
+
+            /* *****************************
+             * default loe
+            ***************************** */
+            string[] loes = new string[]
+            {
+                "5",
+                "10",
+                "15",
+                "20",
+                "25",
+                "30",
+                "35",
+                "40",
+                "45",
+                "50",
+                "55",
+                "60",
+                "65",
+                "70",
+                "75",
+                "80",
+                "85",
+                "90",
+                "100"
+            };
+
+            foreach (var loe in loes)
+            {
+                CmbLoe.Items.Add(loe);
+            }
+
+            /* *****************************
+             * default ManagementLevel
+            ***************************** */
+            string[] levels = new string[]
+            {
+                "0",
+                "1",
+                "2",
+                "3",
+                "4",
+                "5"
+            };
+
+            foreach (var level in levels)
+            {
+                CmbManagementLevel.Items.Add(level);
+            }
+
+            /* *****************************
+             * default trainee years
+            ***************************** */
+            string[] traineeYears = new string[]
+            {
+                "1",
+                "2",
+                "3",
+                "4"
+            };
+
+            foreach (var traineeYear in traineeYears)
+            {
+                CmbApprenticeYears.Items.Add(traineeYear);
+                CmbCurrentApprenticeYear.Items.Add(traineeYear);
+            }
+        }
+
         private void TraineeDialog_Load(object sender, EventArgs e)
         {
             MainTheme.InitThemeForForm(this);
+            defaultValueCombobox();
+
+            /* *****************************
+             * define default values for trainee
+             * and lock gui elements
+            ***************************** */
+            CmbLoe.SelectedItem = "100";
+            CmbLoe.Enabled = false;
+
+            CmbManagementLevel.SelectedItem = "5";
+            CmbManagementLevel.Enabled = false;
         }
 
         private void CheckFieldInput()
@@ -199,7 +310,7 @@ namespace Contact_Manager.Partials.Dialog
                     txtSurName.Text,
                     DtpDateOfBirth.Value,
                     _selectedGender,
-                    CmbTitle.Text,
+                    "",
                     txtEmail.Text,
                     ChkStatus.Checked,
                     txtAddress.Text,
@@ -249,7 +360,7 @@ namespace Contact_Manager.Partials.Dialog
                 _editTrainee.LastName = txtSurName.Text;
                 _editTrainee.DateOfBirth = DtpDateOfBirth.Value;
                 _editTrainee.Gender = _selectedGender;
-                _editTrainee.Title = CmbTitle.Text;
+                _editTrainee.Title = "";
                 _editTrainee.Email = txtEmail.Text;
                 _editTrainee.Status = ChkStatus.Checked;
                 _editTrainee.Address = txtAddress.Text;
