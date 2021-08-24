@@ -64,6 +64,7 @@ namespace Contact_Manager.Partials.Dialog
             }
 
 
+            // TODO: Cmb Testen, ob es wirklich selektiert wird
             //load the customer to edit 
             txtCompany.Text = _currentCustomer.CompanyName;
             txtAddress.Text = _currentCustomer.Address;
@@ -80,16 +81,9 @@ namespace Contact_Manager.Partials.Dialog
             ChkStatus.Checked = _currentCustomer.Status;
             CmbTitle.Text = _currentCustomer.Title;
             CmbSalutation.Text = _currentCustomer.Salutation;
-            customer.Gender = _currentCustomer.Gender;
+            customer.Gender = _currentCustomer.Gender; // TODO: Feld hinterlegen
             CmbNationality.Text = _currentCustomer.Country;
             DtpDateOfBirth.Value = _currentCustomer.DateOfBirth;
-
-
-
-
-
-
-            // TODO: Missing Kundentyp, Aktiver Kunde, Anrede, Titel, Geschlecht, Nationalität, Geburtsdatum
 
             // Build a new source
             UpdateNotesView();
@@ -217,9 +211,6 @@ namespace Contact_Manager.Partials.Dialog
             // check if zip code is valid for switzerland
             Validation.ValidateZipCode(_zipCodeFormatted);
 
-            // TODO: Kundentypen wie ?
-
-
             // check phone / fax number lengths
             Validation.ValidatePhone(txtPhonePrivate.Text, "Die Privatnummer ist nicht gültig!");
             if (txtFax.Text.Length > 0)
@@ -281,6 +272,7 @@ namespace Contact_Manager.Partials.Dialog
 
         private void UpdateCustomer()
         {
+            // TODO: Try Catch
             // check input
             CheckFieldInput();
 
