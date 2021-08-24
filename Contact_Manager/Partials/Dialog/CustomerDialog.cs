@@ -23,6 +23,10 @@ namespace Contact_Manager.Partials.Dialog
         private BindingSource _source;
         private bool _noteInEditMode = false;
         private int _rowIndex = 0;
+        private int _selectedGender;
+        private int _zipCodeFormatted;
+        private string _defaultCountry;
+
 
         public CustomerDialog()
         {
@@ -39,7 +43,26 @@ namespace Contact_Manager.Partials.Dialog
             CmbNationality.DataSource = CountryList();
             _currentCustomer = customer;
             btnCompanyDelete.Visible = false;
-            
+
+
+
+            /* *****************************************************
+             * check which gender is set and convert to gui element
+             * male = 1 / female = 2 / other = 3
+            ***************************************************** */
+            switch (customer.Gender)
+            {
+                case 1 when customer.Gender == 1:
+                    rbMale.Checked = true;
+                    break;
+                case 2 when customer.Gender == 2:
+                    rbFemale.Checked = true;
+                    break;
+                case 3 when customer.Gender == 3:
+                    rbOther.Checked = true;
+                    break;
+            }
+
 
             //load the customer to edit 
             txtCompany.Text = _currentCustomer.CompanyName;
@@ -53,6 +76,18 @@ namespace Contact_Manager.Partials.Dialog
             txtMobile.Text = _currentCustomer.Mobile;
             txtFax.Text = _currentCustomer.Fax;
             txtCompanyContactEmail.Text = _currentCustomer.Email;
+            CmbCustomerType.Text = _currentCustomer.CustomerType;
+            ChkStatus.Checked = _currentCustomer.Status;
+            CmbTitle.Text = _currentCustomer.Title;
+            CmbSalutation.Text = _currentCustomer.Salutation;
+            customer.Gender = _currentCustomer.Gender;
+            CmbNationality.Text = _currentCustomer.Country;
+            DtpDateOfBirth.Value = _currentCustomer.DateOfBirth;
+
+
+
+
+
 
             // TODO: Missing Kundentyp, Aktiver Kunde, Anrede, Titel, Geschlecht, Nationalität, Geburtsdatum
 
@@ -132,67 +167,78 @@ namespace Contact_Manager.Partials.Dialog
             CmbCustomerType.SelectedIndex = -1;
         }
 
+        public void CheckFieldInput()
+        {
+            /* *****************************
+               * declare vars
+              ***************************** */
+
+           
+           _defaultCountry = "Sitzerland";
+
+
+            /* *****************************
+             * formatting stuff
+            ***************************** */
+            _zipCodeFormatted = Convert.ToInt32(txtZipCode.Text);
+
+            /* *****************************
+             * compare date of birth
+            ***************************** */
+
+            var checkedBirthOfDate = DateTime.Compare(DtpDateOfBirth.Value, DateTime.Today);
+
+
+            /* *****************************************************
+             * check which gender is selected and store in variable
+             * male = 1 / female = 2 / other = 3
+            ***************************************************** */
+
+            if (rbMale.Checked)
+                _selectedGender = 1;
+            else if (rbFemale.Checked)
+                _selectedGender = 2;
+            else
+                _selectedGender = 3;
+
+            /* *****************************
+            * check input for invalid data
+           ***************************** */
+
+            // check if required fields are filled out
+            Validation.Required(txtFirstName.Text, "Feld Vorname muss ausgefüllt werden.");
+            Validation.Required(txtSurName.Text, "Feld Nachname muss ausgefüllt werden.");
+            Validation.Required(txtAddress.Text, "Feld Adresse muss ausgefüllt werden.");
+            Validation.Required(txtCompany.Text, "Feld Unternehmen muss ausgefüllt werden.");
+
+            // check if email is correct
+            Validation.ValidateEmail(txtCompanyContactEmail.Text);
+
+            // check if zip code is valid for switzerland
+            Validation.ValidateZipCode(_zipCodeFormatted);
+
+            // TODO: Kundentypen wie ?
+
+
+            // check phone / fax number lengths
+            Validation.ValidatePhone(txtPhonePrivate.Text, "Die Privatnummer ist nicht gültig!");
+            if (txtFax.Text.Length > 0)
+            {
+                Validation.ValidatePhone(txtFax.Text, "Die Faxnummer ist nicht gültig!");
+            }
+
+            Validation.ValidatePhone(txtPhoneCompany.Text, "Die Geschäftsnummer ist nicht gültig!");
+            if (txtMobile.Text.Length > 0)
+            {
+                Validation.ValidatePhone(txtMobile.Text, "Die Handynummer ist nicht gültig!");
+            }
+        }
+
         private void CreateCustomer()
         {
             try
             {
-                /* *****************************
-                * declare vars
-               ***************************** */
-
-                int selectedGender;
-                string defaultCountry = "Sitzerland";
-
-
-                /* *****************************
-                 * formatting stuff
-                ***************************** */
-                int zipCodeFormatted = Convert.ToInt32(txtZipCode.Text);
-
-
-                /* *****************************************************
-                 * check which gender is selected and store in variable
-                 * male = 1 / female = 2 / other = 3
-                ***************************************************** */
-
-                if (rbMale.Checked)
-                    selectedGender = 1;
-                else if (rbFemale.Checked)
-                    selectedGender = 2;
-                else
-                    selectedGender = 3;
-
-                /* *****************************
-                * check input for invalid data
-               ***************************** */
-
-                // check if required fields are filled out
-                Validation.Required(txtFirstName.Text, "Feld Vorname muss ausgefüllt werden.");
-                Validation.Required(txtSurName.Text, "Feld Nachname muss ausgefüllt werden.");
-                Validation.Required(txtAddress.Text, "Feld Adresse muss ausgefüllt werden.");
-                Validation.Required(txtCompany.Text, "Feld Unternehmen muss ausgefüllt werden.");
-
-                // check if email is correct
-                Validation.ValidateEmail(txtCompanyContactEmail.Text);
-
-                // check if zip code is valid for switzerland
-                Validation.ValidateZipCode(zipCodeFormatted);
-
-                // TODO: Kundentypen wie ?
-
-
-                // check phone / fax number lengths
-                Validation.ValidatePhone(txtPhonePrivate.Text, "Die Privatnummer ist nicht gültig!");
-                if (txtFax.Text.Length > 0)
-                {
-                    Validation.ValidatePhone(txtFax.Text, "Die Faxnummer ist nicht gültig!");
-                }
-
-                Validation.ValidatePhone(txtPhoneCompany.Text, "Die Geschäftsnummer ist nicht gültig!");
-                if (txtMobile.Text.Length > 0)
-                {
-                    Validation.ValidatePhone(txtMobile.Text, "Die Handynummer ist nicht gültig!");
-                }
+                CheckFieldInput();
 
                 /* *****************************
                 * create customer object
@@ -204,18 +250,18 @@ namespace Contact_Manager.Partials.Dialog
                     firstName: txtFirstName.Text,
                     lastName: txtSurName.Text,
                     dateOfBirth: DtpDateOfBirth.Value,
-                    gender: selectedGender,
+                    _selectedGender,
                     title: CmbTitle.Text,
                     email: txtCompanyContactEmail.Text,
                     status: ChkStatus.Checked,
                     address: txtAddress.Text,
-                    zipCode: zipCodeFormatted,
+                    _zipCodeFormatted,
                     phonePrivate: txtPhonePrivate.Text,
                     phoneCompany: txtPhoneCompany.Text,
                     fax: txtFax.Text,
                     mobile: txtMobile.Text,
                     city: txtCity.Text,
-                    country: defaultCountry,
+                    _defaultCountry,
                     companyName: txtCompany.Text,
                     customerType: CmbCustomerType.Text,
                     notes: new List<CustomerNotes>()
@@ -233,14 +279,55 @@ namespace Contact_Manager.Partials.Dialog
             }
         }
 
+        private void UpdateCustomer()
+        {
+            // check input
+            CheckFieldInput();
+
+            //set updated fields
+            _currentCustomer.CompanyName = txtCompany.Text;
+            _currentCustomer.Address = txtAddress.Text;
+            _currentCustomer.ZipCode = _zipCodeFormatted;
+            _currentCustomer.City = txtCity.Text;
+            _currentCustomer.FirstName = txtFirstName.Text;
+            _currentCustomer.LastName = txtSurName.Text;
+            _currentCustomer.PhonePrivate = txtPhonePrivate.Text;
+            _currentCustomer.PhoneCompany = txtPhoneCompany.Text;
+            _currentCustomer.Mobile = txtMobile.Text;
+            _currentCustomer.Fax = txtFax.Text;
+            _currentCustomer.Email = txtCompanyContactEmail.Text;
+            _currentCustomer.CustomerType = CmbCustomerType.Text;
+            _currentCustomer.Status = ChkStatus.Checked;
+            _currentCustomer.Title = CmbTitle.Text;
+            _currentCustomer.Salutation = CmbSalutation.Text;
+            _currentCustomer.Gender = _selectedGender;
+            _currentCustomer.Country = CmbNationality.Text;
+            _currentCustomer.DateOfBirth = DtpDateOfBirth.Value;
+
+            DataContainer.Update(_currentCustomer);
+            MessageBox.Show("Änderungen gespeichert.");
+
+        }
+
         private void btnCompanySave_Click(object sender, EventArgs e)
         {
             /* *********************************
              * call function to create employee
             ********************************* */
-            CreateCustomer();
-            MessageBox.Show("Kunde wurde erfolgreich erstellt.", "Erfolgreich", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            Close();
+            try
+            {
+                if (_currentCustomer == null)
+                    CreateCustomer();
+                else
+                    UpdateCustomer();
+                Close();
+            }
+           catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Fehler", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        
+           
         }
 
         private void BtnAddNote_Click(object sender, EventArgs e)
