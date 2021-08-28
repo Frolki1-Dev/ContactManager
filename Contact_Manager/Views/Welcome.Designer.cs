@@ -1,5 +1,5 @@
 ﻿
-namespace Contact_Manager
+namespace Contact_Manager.Views
 {
     partial class Welcome
     {
@@ -37,23 +37,32 @@ namespace Contact_Manager
             this.LblPath = new System.Windows.Forms.Label();
             this.TxtPath = new System.Windows.Forms.TextBox();
             this.CmdCreateDatabaseAndUser = new System.Windows.Forms.Button();
+            this.panel1 = new System.Windows.Forms.Panel();
+            this.panel2 = new System.Windows.Forms.Panel();
+            this.panel3 = new System.Windows.Forms.Panel();
+            this.panel4 = new System.Windows.Forms.Panel();
+            this.panel1.SuspendLayout();
+            this.panel2.SuspendLayout();
+            this.panel3.SuspendLayout();
+            this.panel4.SuspendLayout();
             this.SuspendLayout();
             // 
             // LblTitle
             // 
-            this.LblTitle.AutoSize = true;
+            this.LblTitle.Dock = System.Windows.Forms.DockStyle.Fill;
             this.LblTitle.Font = new System.Drawing.Font("Microsoft Sans Serif", 22F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.LblTitle.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.LblTitle.Location = new System.Drawing.Point(9, 9);
+            this.LblTitle.Location = new System.Drawing.Point(0, 0);
             this.LblTitle.Name = "LblTitle";
-            this.LblTitle.Size = new System.Drawing.Size(178, 36);
+            this.LblTitle.Size = new System.Drawing.Size(350, 61);
             this.LblTitle.TabIndex = 2;
             this.LblTitle.Text = "Einrichtung";
+            this.LblTitle.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // LblUsername
             // 
             this.LblUsername.AutoSize = true;
-            this.LblUsername.Location = new System.Drawing.Point(12, 77);
+            this.LblUsername.Location = new System.Drawing.Point(15, 3);
             this.LblUsername.Name = "LblUsername";
             this.LblUsername.Size = new System.Drawing.Size(75, 13);
             this.LblUsername.TabIndex = 3;
@@ -62,7 +71,7 @@ namespace Contact_Manager
             // LblPassword
             // 
             this.LblPassword.AutoSize = true;
-            this.LblPassword.Location = new System.Drawing.Point(12, 100);
+            this.LblPassword.Location = new System.Drawing.Point(15, 3);
             this.LblPassword.Name = "LblPassword";
             this.LblPassword.Size = new System.Drawing.Size(50, 13);
             this.LblPassword.TabIndex = 4;
@@ -70,7 +79,7 @@ namespace Contact_Manager
             // 
             // TxtPassword
             // 
-            this.TxtPassword.Location = new System.Drawing.Point(106, 100);
+            this.TxtPassword.Location = new System.Drawing.Point(18, 19);
             this.TxtPassword.Name = "TxtPassword";
             this.TxtPassword.PasswordChar = '*';
             this.TxtPassword.Size = new System.Drawing.Size(314, 20);
@@ -79,7 +88,7 @@ namespace Contact_Manager
             // 
             // TxtUsername
             // 
-            this.TxtUsername.Location = new System.Drawing.Point(106, 77);
+            this.TxtUsername.Location = new System.Drawing.Point(18, 19);
             this.TxtUsername.Name = "TxtUsername";
             this.TxtUsername.Size = new System.Drawing.Size(314, 20);
             this.TxtUsername.TabIndex = 1;
@@ -88,7 +97,7 @@ namespace Contact_Manager
             // LblPath
             // 
             this.LblPath.AutoSize = true;
-            this.LblPath.Location = new System.Drawing.Point(15, 138);
+            this.LblPath.Location = new System.Drawing.Point(15, 3);
             this.LblPath.Name = "LblPath";
             this.LblPath.Size = new System.Drawing.Size(29, 13);
             this.LblPath.TabIndex = 7;
@@ -96,7 +105,7 @@ namespace Contact_Manager
             // 
             // TxtPath
             // 
-            this.TxtPath.Location = new System.Drawing.Point(106, 138);
+            this.TxtPath.Location = new System.Drawing.Point(18, 19);
             this.TxtPath.Name = "TxtPath";
             this.TxtPath.ReadOnly = true;
             this.TxtPath.Size = new System.Drawing.Size(314, 20);
@@ -104,31 +113,82 @@ namespace Contact_Manager
             // 
             // CmdCreateDatabaseAndUser
             // 
+            this.CmdCreateDatabaseAndUser.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.CmdCreateDatabaseAndUser.Enabled = false;
-            this.CmdCreateDatabaseAndUser.Location = new System.Drawing.Point(18, 196);
+            this.CmdCreateDatabaseAndUser.Location = new System.Drawing.Point(0, 238);
             this.CmdCreateDatabaseAndUser.Name = "CmdCreateDatabaseAndUser";
-            this.CmdCreateDatabaseAndUser.Size = new System.Drawing.Size(523, 34);
+            this.CmdCreateDatabaseAndUser.Size = new System.Drawing.Size(350, 34);
             this.CmdCreateDatabaseAndUser.TabIndex = 3;
             this.CmdCreateDatabaseAndUser.Text = "Einrichtung starten";
             this.CmdCreateDatabaseAndUser.UseVisualStyleBackColor = true;
             this.CmdCreateDatabaseAndUser.Click += new System.EventHandler(this.CmdCreateDatabaseAndUser_Click);
             // 
+            // panel1
+            // 
+            this.panel1.Controls.Add(this.LblTitle);
+            this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panel1.Location = new System.Drawing.Point(0, 0);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(350, 61);
+            this.panel1.TabIndex = 9;
+            // 
+            // panel2
+            // 
+            this.panel2.AutoSize = true;
+            this.panel2.Controls.Add(this.LblUsername);
+            this.panel2.Controls.Add(this.TxtUsername);
+            this.panel2.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panel2.Location = new System.Drawing.Point(0, 61);
+            this.panel2.Name = "panel2";
+            this.panel2.Padding = new System.Windows.Forms.Padding(0, 0, 0, 10);
+            this.panel2.Size = new System.Drawing.Size(350, 52);
+            this.panel2.TabIndex = 10;
+            // 
+            // panel3
+            // 
+            this.panel3.AutoSize = true;
+            this.panel3.Controls.Add(this.LblPassword);
+            this.panel3.Controls.Add(this.TxtPassword);
+            this.panel3.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panel3.Location = new System.Drawing.Point(0, 113);
+            this.panel3.Name = "panel3";
+            this.panel3.Padding = new System.Windows.Forms.Padding(0, 0, 0, 25);
+            this.panel3.Size = new System.Drawing.Size(350, 67);
+            this.panel3.TabIndex = 11;
+            // 
+            // panel4
+            // 
+            this.panel4.AutoSize = true;
+            this.panel4.Controls.Add(this.LblPath);
+            this.panel4.Controls.Add(this.TxtPath);
+            this.panel4.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panel4.Location = new System.Drawing.Point(0, 180);
+            this.panel4.Name = "panel4";
+            this.panel4.Padding = new System.Windows.Forms.Padding(0, 0, 0, 10);
+            this.panel4.Size = new System.Drawing.Size(350, 52);
+            this.panel4.TabIndex = 12;
+            // 
             // Welcome
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(553, 242);
+            this.ClientSize = new System.Drawing.Size(350, 272);
+            this.Controls.Add(this.panel4);
+            this.Controls.Add(this.panel3);
+            this.Controls.Add(this.panel2);
+            this.Controls.Add(this.panel1);
             this.Controls.Add(this.CmdCreateDatabaseAndUser);
-            this.Controls.Add(this.TxtPath);
-            this.Controls.Add(this.LblPath);
-            this.Controls.Add(this.TxtUsername);
-            this.Controls.Add(this.TxtPassword);
-            this.Controls.Add(this.LblPassword);
-            this.Controls.Add(this.LblUsername);
-            this.Controls.Add(this.LblTitle);
             this.Name = "Welcome";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Willkommen - Setup";
+            this.Load += new System.EventHandler(this.Welcome_Load);
+            this.panel1.ResumeLayout(false);
+            this.panel2.ResumeLayout(false);
+            this.panel2.PerformLayout();
+            this.panel3.ResumeLayout(false);
+            this.panel3.PerformLayout();
+            this.panel4.ResumeLayout(false);
+            this.panel4.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -144,5 +204,9 @@ namespace Contact_Manager
         private System.Windows.Forms.Label LblPath;
         private System.Windows.Forms.TextBox TxtPath;
         private System.Windows.Forms.Button CmdCreateDatabaseAndUser;
+        private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.Panel panel2;
+        private System.Windows.Forms.Panel panel3;
+        private System.Windows.Forms.Panel panel4;
     }
 }

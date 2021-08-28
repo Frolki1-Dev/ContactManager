@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -48,15 +49,26 @@ namespace Contact_Manager
             }
 
             // Check if the binary data files exists
-            if (!File.Exists(Helper.GetApplicationDataPath("users.dat")) || 
-                !File.Exists(Helper.GetApplicationDataPath("employees.dat")) || 
-                !File.Exists(Helper.GetApplicationDataPath("trainees.dat")) || 
-                !File.Exists(Helper.GetApplicationDataPath("customers.dat")))
+            if (!File.Exists(GetApplicationDataPath("users.dat")) || 
+                !File.Exists(GetApplicationDataPath("employees.dat")) || 
+                !File.Exists(GetApplicationDataPath("trainees.dat")) || 
+                !File.Exists(GetApplicationDataPath("customers.dat")))
             {
                 return false;
             }
 
             return true;
+        }
+
+        /**
+         * Helps to close the old form and open the new in the correct position
+         */
+        public static void OpenNewFormAndCloseOld(Form newForm, Form oldForm)
+        {
+            newForm.StartPosition = FormStartPosition.CenterScreen;
+            oldForm.Hide();
+            newForm.ShowDialog();
+            oldForm.Close();
         }
     }
 }

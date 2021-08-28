@@ -8,6 +8,9 @@ using Contact_Manager.Interfaces;
 
 namespace Contact_Manager.Collections
 {
+    /**
+     * Extend the CollectionBase function with our important functions
+     */
     [Serializable]
     public abstract class Collection : CollectionBase
     {
@@ -47,6 +50,22 @@ namespace Contact_Manager.Collections
         }
 
         /**
+         * Get a resource by ID
+         */
+        public dynamic GetById(int id)
+        {
+            for (int i = 0; i < List.Count; i++)
+            {
+                if (this[i].Id == id)
+                {
+                    return this[i];
+                }
+            }
+
+            return null;
+        }
+
+        /**
          * Save the list into the binary data
          */
         protected void Save()
@@ -65,6 +84,7 @@ namespace Contact_Manager.Collections
             // Add the user
             List.Add(obj);
 
+            // Save the object
             Save();
         }
 
@@ -76,7 +96,7 @@ namespace Contact_Manager.Collections
             // Find the index
             int index = GetIndexFromId(obj.Id);
 
-            if (index == 0)
+            if (index < 0)
             {
                 // We have a problem!
                 throw new InvalidDataException("The id " + obj.Id + " was not founded in the list " + TypeDescriptor.GetClassName(this) + "!");

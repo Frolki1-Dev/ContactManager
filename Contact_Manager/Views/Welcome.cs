@@ -1,16 +1,10 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
 using System.IO;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using Contact_Manager.Models;
+using Contact_Manager.Themes;
 
-namespace Contact_Manager
+namespace Contact_Manager.Views
 {
     public partial class Welcome : Form
     {
@@ -95,6 +89,11 @@ namespace Contact_Manager
             {
                 MessageBox.Show(ex.Message, "Erstellungsfehler", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }*/
+        }
+
+        private void Welcome_Load(object sender, EventArgs e)
+        {
+            MainTheme.InitThemeForForm(this);
         }
     }
 }

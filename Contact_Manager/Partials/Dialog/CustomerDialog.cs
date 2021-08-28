@@ -12,41 +12,82 @@ using System.Net.Mail;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Contact_Manager.Themes;
 
 namespace Contact_Manager.Partials.Dialog
 {
     public partial class CustomerDialog : Form
     {
-        private Customer currentCustomer;
+        private Customer _currentCustomer;
 
-        protected BindingSource source;
-        private bool noteInEditMode = false;
-        private int rowIndex = 0;
+        private BindingSource _source;
+        private bool _noteInEditMode = false;
+        private int _rowIndex = 0;
+        private int _selectedGender;
+        private int _zipCodeFormatted;
+        private string _defaultCountry;
+
 
         public CustomerDialog()
-        {
-            InitializeComponent();
 
+        {
+            //open the customerdialog without the note fields
+            InitializeComponent();
+            Width = 478;
             CmbNationality.DataSource = CountryList();
-            PnlNotes.Visible = false;
+            GrpBoxNotes.Visible = false;
         }
 
         public CustomerDialog(Customer customer)
         {
-             
+             //open an already created customer
             InitializeComponent();
-            this.currentCustomer = customer;
-            PnlNotes.Visible = true;
+            CmbNationality.DataSource = CountryList();
+            _currentCustomer = customer;
+            btnCompanyDelete.Visible = false;
+
+
+
+            /* *****************************************************
+             * check which gender is set and convert to gui element
+             * male = 1 / female = 2 / other = 3
+            ***************************************************** */
+            switch (customer.Gender)
+            {
+                case 1 when customer.Gender == 1:
+                    rbMale.Checked = true;
+                    break;
+                case 2 when customer.Gender == 2:
+                    rbFemale.Checked = true;
+                    break;
+                case 3 when customer.Gender == 3:
+                    rbOther.Checked = true;
+                    break;
+            }
+
 
             //load the customer to edit 
-
-
+            txtCompany.Text = _currentCustomer.CompanyName;
+            txtAddress.Text = _currentCustomer.Address;
+            txtZipCode.Text = _currentCustomer.ZipCode.ToString();
+            txtCity.Text = _currentCustomer.City;
+            txtFirstName.Text = _currentCustomer.FirstName;
+            txtSurName.Text = _currentCustomer.LastName;
+            txtPhonePrivate.Text = _currentCustomer.PhonePrivate;
+            txtPhoneCompany.Text = _currentCustomer.PhoneCompany;
+            txtMobile.Text = _currentCustomer.Mobile;
+            txtFax.Text = _currentCustomer.Fax;
+            txtCompanyContactEmail.Text = _currentCustomer.Email;
+            CmbCustomerType.Text = _currentCustomer.CustomerType;
+            ChkStatus.Checked = _currentCustomer.Status;
+            CmbTitle.Text = _currentCustomer.Title;
+            CmbSalutation.Text = _currentCustomer.Salutation;
+            customer.Gender = _currentCustomer.Gender; 
+            CmbNationality.Text = _currentCustomer.Country;
+            DtpDateOfBirth.Value = _currentCustomer.DateOfBirth;
 
             // Build a new source
-            source = new BindingSource();
-            dynamic collection = this.currentCustomer.Notes;
-            source.DataSource = collection;
-            dataGridNotes.DataSource = source;
+            UpdateNotesView();
         }
 
        
@@ -54,7 +95,7 @@ namespace Contact_Manager.Partials.Dialog
         public static List<string> CountryList()
         {
             // Creating culture list
-            List<string> CultureList = new List<string>();
+            List<string> cultureList = new List<string>();
 
             // getting the specific CultureInfo from CultureInfo class
             CultureInfo[] getCultureInfos = CultureInfo.GetCultures(CultureTypes.SpecificCultures);
@@ -65,69 +106,42 @@ namespace Contact_Manager.Partials.Dialog
                 RegionInfo getRegionInfo = new RegionInfo(getCulture.LCID);
 
                 // adding each country name into the arraylist
-                if (!(CultureList.Contains(getRegionInfo.EnglishName)))
+                if (!(cultureList.Contains(getRegionInfo.EnglishName)))
                 {
-                    CultureList.Add(getRegionInfo.EnglishName);
+                    cultureList.Add(getRegionInfo.EnglishName);
                 }
             }
 
             // sorting array
-            CultureList.Sort();
+            cultureList.Sort();
 
             // returning country list
-            return CultureList;
+            return cultureList;
         }
 
         //creating contact list
-        //public List<string> ContactHistoryList = new List<string>();
 
         public void ContactHistory()
         {
-            CustomerNotes customerNotes = new CustomerNotes(txtAddNote.Text);
-            this.currentCustomer.Notes.Add(customerNotes);
-            DataContainer.Update(this.currentCustomer);
-            // TODO Aktuallisierung funktionier nicht
-            dataGridNotes.Refresh();
-
-
-            /*if (txtAddNote.Text.Length > 1)
+            try
             {
-                string date = DateTime.Now.ToString("dd/MM/yyyy HH:mm");
-                string note =  date + " " + txtAddNote.Text ;
-                note.Trim();
-                ContactHistoryList.Add(note);
-
-
-                txtCompanyHistoryData.Text += note + "\r\n";
-               
-                txtAddNote.Clear();
-                note = "";
-                
-
+                Validation.Required(txtAddNote, "Notizfeld muss ausgefüllt werden!");
+                CustomerNotes customerNotes = new CustomerNotes(txtAddNote.Text);
+                this._currentCustomer.Notes.Insert(0, customerNotes);
+                DataContainer.Update(this._currentCustomer);
+                txtAddNote.Text = "";
+                UpdateNotesView();
             }
-                
-            else
-                generateErrorMessage("Es kann keine leere Notiz hinzugefügt werden");*/
-
-
-
+            catch (ValidationException ex)
+            {
+                MessageBox.Show(ex.Message, "Validierungsfehler", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
+        
 
-      
-
-
-        private void generateErrorMessage(string errorMessage)
+        private void CleanUpFields()
         {
-           MessageBox.Show(errorMessage);
-        }
-
-        public static String GetTimestamp(DateTime value)
-        {
-            return value.ToString("yyyyMMddHHmmssffff");
-        }
-
-        private void cleanUpFields()
-        {
+            
             CmbSalutation.SelectedIndex = -1;
             txtFirstName.Clear();
             txtSurName.Clear();
@@ -148,25 +162,28 @@ namespace Contact_Manager.Partials.Dialog
             CmbNationality.SelectedIndex = -1;
             txtCompany.Clear();
             CmbCustomerType.SelectedIndex = -1;
-            txtCompanyHistoryData.Clear();
-
-
         }
 
-        private void createCustomer()
+        public void CheckFieldInput()
         {
             /* *****************************
-            * declare vars
-           ***************************** */
+               * declare vars
+              ***************************** */
 
-            int selectedGender;
-            string defaultCountry = "Schweiz";
-            
+           
+           _defaultCountry = "Sitzerland";
+
 
             /* *****************************
              * formatting stuff
             ***************************** */
-            int zipCodeFormatted = Convert.ToInt32(txtZipCode.Text);
+            _zipCodeFormatted = Convert.ToInt32(txtZipCode.Text);
+
+            /* *****************************
+             * compare date of birth
+            ***************************** */
+
+            var checkedBirthOfDate = DateTime.Compare(DtpDateOfBirth.Value, DateTime.Today);
 
 
             /* *****************************************************
@@ -175,80 +192,143 @@ namespace Contact_Manager.Partials.Dialog
             ***************************************************** */
 
             if (rbMale.Checked)
-                selectedGender = 1;
+                _selectedGender = 1;
             else if (rbFemale.Checked)
-                selectedGender = 2;
+                _selectedGender = 2;
             else
-                selectedGender = 3;
+                _selectedGender = 3;
 
             /* *****************************
             * check input for invalid data
            ***************************** */
 
             // check if required fields are filled out
-            if (txtFirstName.Text.Length < 1 || txtSurName.Text.Length < 1 || txtAddress.Text.Length < 1 || txtCompany.Text.Length < 1)
-                generateErrorMessage("Dieses Feld muss ausgefüllt werden.");
+            Validation.Required(txtFirstName.Text, "Feld Vorname muss ausgefüllt werden.");
+            Validation.Required(txtSurName.Text, "Feld Nachname muss ausgefüllt werden.");
+            Validation.Required(txtAddress.Text, "Feld Adresse muss ausgefüllt werden.");
+            Validation.Required(txtCompany.Text, "Feld Unternehmen muss ausgefüllt werden.");
+            Validation.Required(CmbCustomerType.Text, "Kundentyp muss definiert werden.");
+            Validation.Required(CmbSalutation.Text, "Anrede muss ausgefüllt werden.");
+            
+
 
             // check if email is correct
-            // source: https://stackoverflow.com/questions/5342375/regex-email-validation / https://docs.microsoft.com/en-us/dotnet/api/system.net.mail.mailaddress?redirectedfrom=MSDN&view=net-5.0
-            try
-            {
-                MailAddress m = new MailAddress(txtCompanyContactEmail.Text);
-            }
-            catch (FormatException)
-            {
-                generateErrorMessage("Das Format der E-Mail Adresse ist ungültig.");
-            }
+            Validation.Required(txtCompanyContactEmail.Text, "E-Mail muss ausgefüllt sein.");
+            Validation.ValidateEmail(txtCompanyContactEmail.Text);
 
             // check if zip code is valid for switzerland
-            if (zipCodeFormatted < 1000 || zipCodeFormatted > 9999)
-                generateErrorMessage("Die Postleitzahl ist zu klein / gross.");
+            Validation.Required(txtZipCode.Text, "Feld PLZ muss ausgefüllt werden.");
+            Validation.ValidateZipCode(_zipCodeFormatted);
 
-            //Kundentypen wie ?
+            // check phone / fax / mobile number lengths and if required
+            if(txtPhonePrivate.Text.Length == 0)
+            {
+                Validation.Required(txtPhonePrivate.Text, "Telefon (Privat) muss ausgefüllt werden.");
+            }
+            else
+            Validation.ValidatePhone(txtPhonePrivate.Text, "Die Privatnummer ist nicht gültig!");
 
+            if (txtFax.Text.Length > 0)
+            {
+                Validation.ValidatePhone(txtFax.Text, "Die Faxnummer ist nicht gültig!");
+            }
 
+            if (txtPhoneCompany.Text.Length == 0)
+            {
+                Validation.Required(txtPhoneCompany.Text, "Telefon (Geschäftlich) muss ausgefüllt werden.");
+            }
+            else
+            Validation.ValidatePhone(txtPhoneCompany.Text, "Die Geschäftsnummer ist nicht gültig!");
+           
 
-            // check phone / fax number lengths
-            if (txtPhonePrivate.Text.Length < 1 || txtPhonePrivate.Text.Length > 12 || txtPhoneCompany.Text.Length < 1 ||
-                txtPhoneCompany.Text.Length > 12 || txtMobile.Text.Length < 1 || txtMobile.Text.Length > 12 || txtFax.Text.Length < 1 ||
-                txtFax.Text.Length > 12)
-                generateErrorMessage("Bitte Telefon- / Fax-Nummer im folgenden Format angeben \"+41711234566\".");
+            if (txtMobile.Text.Length > 0)
+            {
+                Validation.ValidatePhone(txtMobile.Text, "Die Handynummer ist nicht gültig!");
+            }
+        }
 
-            /* *****************************
-            * create customer object
-           ***************************** */
+        private void CreateCustomer()
+        {
+            try
+            {
+                CheckFieldInput();
 
-
-            Customer customer = new Customer(
-
-
-
-
-                salutation: CmbSalutation.Text,
-                firstName: txtFirstName.Text,
-                lastName: txtSurName.Text,
-                 dateOfBirth: DtpDateOfBirth.Value,
-                gender: selectedGender,
-                title: CmbTitle.Text,
-                email: txtCompanyContactEmail.Text,
-                status: ChkStatus.Checked,
-                address: txtAddress.Text,
-                zipCode: zipCodeFormatted,
-                phonePrivate: txtPhonePrivate.Text,
-                phoneCompany: txtPhoneCompany.Text,
-                fax: txtFax.Text,
-                mobile: txtMobile.Text,
-                city: txtCity.Text,
-                country: defaultCountry,
-                companyName: txtCompany.Text,
-                customerType: CmbCustomerType.Text,
-                notes: new List<CustomerNotes>()
+                /* *****************************
+                * create customer object
+               ***************************** */
 
 
-                ) ;
+                Customer customer = new Customer(
+                    salutation: CmbSalutation.Text,
+                    firstName: txtFirstName.Text,
+                    lastName: txtSurName.Text,
+                    dateOfBirth: DtpDateOfBirth.Value,
+                    _selectedGender,
+                    title: CmbTitle.Text,
+                    email: txtCompanyContactEmail.Text,
+                    status: ChkStatus.Checked,
+                    address: txtAddress.Text,
+                    _zipCodeFormatted,
+                    phonePrivate: txtPhonePrivate.Text,
+                    phoneCompany: txtPhoneCompany.Text,
+                    fax: txtFax.Text,
+                    mobile: txtMobile.Text,
+                    city: txtCity.Text,
+                    _defaultCountry,
+                    companyName: txtCompany.Text,
+                    customerType: CmbCustomerType.Text,
+                    notes: new List<CustomerNotes>()
+                );
 
-            DataContainer.AddModel(DataContainer.Customers, customer);
+                DataContainer.AddModel(DataContainer.Customers, customer);
+            }
+            catch (ValidationException ex)
+            {
+                MessageBox.Show(ex.Message, "Validierungsfehler", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+           
+        }
 
+        private void UpdateCustomer()
+        {
+           
+            CheckFieldInput();
+            try
+            {
+
+
+                //set updated fields
+                _currentCustomer.CompanyName = txtCompany.Text;
+                _currentCustomer.Address = txtAddress.Text;
+                _currentCustomer.ZipCode = _zipCodeFormatted;
+                _currentCustomer.City = txtCity.Text;
+                _currentCustomer.FirstName = txtFirstName.Text;
+                _currentCustomer.LastName = txtSurName.Text;
+                _currentCustomer.PhonePrivate = txtPhonePrivate.Text;
+                _currentCustomer.PhoneCompany = txtPhoneCompany.Text;
+                _currentCustomer.Mobile = txtMobile.Text;
+                _currentCustomer.Fax = txtFax.Text;
+                _currentCustomer.Email = txtCompanyContactEmail.Text;
+                _currentCustomer.CustomerType = CmbCustomerType.Text;
+                _currentCustomer.Status = ChkStatus.Checked;
+                _currentCustomer.Title = CmbTitle.Text;
+                _currentCustomer.Salutation = CmbSalutation.Text;
+                _currentCustomer.Gender = _selectedGender;
+                _currentCustomer.Country = CmbNationality.Text;
+                _currentCustomer.DateOfBirth = DtpDateOfBirth.Value;
+
+                DataContainer.Update(_currentCustomer);
+                MessageBox.Show("Änderungen gespeichert.");
+
+            }
+            catch (ValidationException ex)
+            {
+                MessageBox.Show(ex.Message, "Validierungsfehler", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Exception", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
 
 
         }
@@ -258,21 +338,46 @@ namespace Contact_Manager.Partials.Dialog
             /* *********************************
              * call function to create employee
             ********************************* */
-            createCustomer();
-            MessageBox.Show("Kunde wurde erfolgreich erstellt.");
-            cleanUpFields();
+            try
+            {
+                if (_currentCustomer == null)
+                    CreateCustomer();
+                else
+                    UpdateCustomer();
+                Close();
+            }
+           catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Fehler", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        
+           
         }
+
+
 
         private void BtnAddNote_Click(object sender, EventArgs e)
         {
-            if(this.noteInEditMode)
+            if(this._noteInEditMode)
             {
-                // Edit
-                this.currentCustomer.Notes[rowIndex].Notes = txtAddNote.Text;
-                DataContainer.Update(this.currentCustomer);
-                rowIndex = 0;
-                noteInEditMode = false;
-                BtnAddNote.Text = "Notiz hinzufügen";
+                try
+                {
+                    // Edit
+                    Validation.Required(txtAddNote, "Notizfeld muss ausgefüllt werden!");
+                    this._currentCustomer.Notes[_rowIndex].Notes = txtAddNote.Text;
+                    DataContainer.Update(this._currentCustomer);
+                    _rowIndex = 0;
+                    _noteInEditMode = false;
+                    txtAddNote.Text = "";
+                    BtnAddNote.Text = "Notiz hinzufügen";
+                    GrpBoxNotes.Text = "Notiz (erstellen)";
+                    UpdateNotesView();
+                }
+                catch (ValidationException ex)
+                {
+                    MessageBox.Show(ex.Message, "Validierungsfehler", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+
                 return;
             }
 
@@ -280,38 +385,64 @@ namespace Contact_Manager.Partials.Dialog
             ContactHistory();
         }
 
-        private void btnDeleteNote_Click(object sender, EventArgs e)
-        {
- 
-            /*
-
-              index abfragen vom selected item -> indexof ?
-
-              for (int i = 0; i < ContactHistory.Count; i++)
-              {
-
-                  // if it is List<String>
-                  if (companies[i].equals("Something"))
-                  {
-                      companies.RemoveAt(i);
-                  }
-              }
-            */
-
-           // Remove(Object):void
-        }
-
         private void btnCompanyDelete_Click(object sender, EventArgs e)
         {
-            cleanUpFields();
+            CleanUpFields();
         }
 
-        private void dataGridNotes_CellClick(object sender, DataGridViewCellEventArgs e)
+        private void CustomerDialog_Load(object sender, EventArgs e)
         {
-            rowIndex = e.RowIndex;
-            txtAddNote.Text = this.currentCustomer.Notes[rowIndex].Notes;
-            this.noteInEditMode = true;
+            MainTheme.InitThemeForForm(this);
+        }
+
+        private void dataGridNotes_Paint(object sender, PaintEventArgs e)
+        {
+            if (dataGridNotes.Rows.Count == 0)
+            {
+                using (var gfx = e.Graphics)
+                {
+                    gfx.DrawString("Keine Notizen vorhanden", this.Font, Brushes.White,
+                        new PointF((GrpBoxNotes.Width - Font.Size * "Keine Notizen vorhanden".Length) / 2, GrpBoxNotes.Height / 3));
+                }
+            }
+        }
+
+        private void dataGridNotes_CellContentDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+            //load the double clicked note 
+            _rowIndex = e.RowIndex;
+            txtAddNote.Text = this._currentCustomer.Notes[_rowIndex].Notes;
+            this._noteInEditMode = true;
             BtnAddNote.Text = "Notiz speichern";
+            GrpBoxNotes.Text = "Notiz (bearbeiten)";
+        }
+
+        private void UpdateNotesView()
+
+            //after editing a note, update the note list and the grid
+
+        {
+            if (_source == null)
+            {
+                _source = new BindingSource();
+                dataGridNotes.DataSource = _source;
+            }
+
+            var notes = from CustomerNotes n in _currentCustomer.Notes
+                select new
+                {
+                    Notiz = n.Notes,
+                    Angelegt = n.CreatedAt.ToString("dd.MM.yyyy HH:mm"),
+                    Ersteller = n.CreatedFrom
+                };
+
+            if (!notes.Any())
+            {
+                notes = null;
+            }
+
+            _source.DataSource = notes;
+            dataGridNotes.Update();
         }
     }
 }

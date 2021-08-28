@@ -30,6 +30,9 @@ namespace Contact_Manager
         private static Employees _employeeCollection = new Employees();
         private static Trainees _traineeCollection = new Trainees();
 
+        /**
+         * Add object to the given type in the collection
+         */
         public static void AddModel(string type, dynamic data)
         {
             switch (type)
@@ -49,11 +52,17 @@ namespace Contact_Manager
             }
         }
 
+        /**
+         * Load all data from the given type
+         */
         public static void LoadAll(string type)
         {
             ReadBinaryFile(type);
         }
 
+        /**
+         * Read out the binary data and convert it to the given type
+         */
         private static void ReadBinaryFile(string type)
         {
             string file = Helper.GetApplicationDataPath(type + ".dat");
@@ -114,6 +123,9 @@ namespace Contact_Manager
             }
         }
 
+        /**
+         * Save / Write the binary file of the given type
+         */
         private static void WriteBinaryFile(string type)
         {
             string file = Helper.GetApplicationDataPath(type + ".dat");
@@ -153,11 +165,17 @@ namespace Contact_Manager
             stream.Dispose();
         }
 
+        /**
+         * Save a collection to the filesystem
+         */
         public static void SaveList(string type)
         {
             WriteBinaryFile(type);
         }
 
+        /**
+         * Delete the passed resource (Set deleted flag to true)
+         */
         public static void Delete(dynamic data)
         {
             if (data.GetType() == typeof(User))
@@ -179,6 +197,9 @@ namespace Contact_Manager
             }
         }
 
+        /**
+         * Update the passed resource
+         */
         public static void Update(dynamic data)
         {
             if (data.GetType() == typeof(User))
@@ -203,6 +224,9 @@ namespace Contact_Manager
             }
         }
 
+        /**
+         * Get all active user
+         */
         public static Users GetUserCollection()
         {
             Users temp = _userCollection;
@@ -218,6 +242,9 @@ namespace Contact_Manager
             return temp;
         }
 
+        /**
+         * Get all active customer
+         */
         public static Customers GetCustomerCollection()
         {
             Customers temp = _customerCollection;
@@ -233,6 +260,9 @@ namespace Contact_Manager
             return temp;
         }
 
+        /**
+         * Get all active employee
+         */
         public static Employees GetEmployeeCollection()
         {
             Employees temp = _employeeCollection;
@@ -248,6 +278,9 @@ namespace Contact_Manager
             return temp;
         }
 
+        /**
+         * Get all active trainees
+         */
         public static Trainees GetTraineeCollection()
         {
             Trainees temp = _traineeCollection;

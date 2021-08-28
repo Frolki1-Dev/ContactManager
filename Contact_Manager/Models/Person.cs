@@ -3,14 +3,17 @@ using Contact_Manager.Interfaces;
 
 namespace Contact_Manager.Models
 {
+    /**
+     * Basic person information object
+     */
     [Serializable]
     public class Person : IIdentifier
     {
-        // variables
-
         // constructor
-        public Person(string salutation, string firstName, string lastName, DateTime dateOfBirth, int gender, string title, string email, bool status,
-            string address, int zipCode, string phonePrivate, string phoneCompany, string fax, string mobile, string city, string country)
+        public Person(string salutation, string firstName, string lastName, DateTime dateOfBirth, int gender,
+            string title, string email, bool status,
+            string address, int zipCode, string phonePrivate, string phoneCompany, string fax, string mobile,
+            string city, string country)
         {
             Salutation = salutation;
             FirstName = firstName;
@@ -49,8 +52,5 @@ namespace Contact_Manager.Models
         public string City { get; set; }
         public string Country { get; set; }
         public bool Deleted { get; set; }
-
-        // methods
-        // hier erfolgt der Speichervorgang in das ensprechende JSON-File
     }
 }

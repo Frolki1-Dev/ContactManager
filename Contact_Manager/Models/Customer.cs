@@ -3,6 +3,9 @@ using System.Collections.Generic;
 
 namespace Contact_Manager.Models
 {
+    /**
+     * Customer object
+     */
     [Serializable]
     public class Customer : Person
     {
@@ -18,19 +21,11 @@ namespace Contact_Manager.Models
             
         }
 
-       
-
         //Properties
         public string CompanyName { get; set; }
         public string CustomerType { get; set; }
 
         public List<CustomerNotes> Notes { get; set; }
-
-     
-
-    
-
-
     }
 
 }

@@ -93,9 +93,9 @@ namespace Contact_Manager.Properties {
         /// <summary>
         ///   Sucht eine lokalisierte Ressource vom Typ System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap outline_location_city_black_48dp {
+        internal static System.Drawing.Bitmap sign_out {
             get {
-                object obj = ResourceManager.GetObject("outline_location_city_black_48dp", resourceCulture);
+                object obj = ResourceManager.GetObject("sign_out", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -103,9 +103,59 @@ namespace Contact_Manager.Properties {
         /// <summary>
         ///   Sucht eine lokalisierte Ressource vom Typ System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap outline_person_add_black_48dp {
+        internal static System.Drawing.Bitmap User {
             get {
-                object obj = ResourceManager.GetObject("outline_person_add_black_48dp", resourceCulture);
+                object obj = ResourceManager.GetObject("User", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Ressource vom Typ System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap user_graduate {
+            get {
+                object obj = ResourceManager.GetObject("user-graduate", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Ressource vom Typ System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap user_hard_hat {
+            get {
+                object obj = ResourceManager.GetObject("user-hard-hat", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Ressource vom Typ System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap user_shield {
+            get {
+                object obj = ResourceManager.GetObject("user_shield", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Ressource vom Typ System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap User1 {
+            get {
+                object obj = ResourceManager.GetObject("User1", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Ressource vom Typ System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap users_crown {
+            get {
+                object obj = ResourceManager.GetObject("users-crown", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

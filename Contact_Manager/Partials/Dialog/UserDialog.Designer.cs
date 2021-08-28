@@ -44,6 +44,7 @@ namespace Contact_Manager.Partials.Dialog
             // 
             // groupBox1
             // 
+            this.groupBox1.AutoSize = true;
             this.groupBox1.Controls.Add(this.ChkIsAdmin);
             this.groupBox1.Controls.Add(this.ChkActive);
             this.groupBox1.Controls.Add(this.LblIsAdmin);
@@ -53,11 +54,11 @@ namespace Contact_Manager.Partials.Dialog
             this.groupBox1.Controls.Add(this.TxtUsername);
             this.groupBox1.Controls.Add(this.LblUsername);
             this.groupBox1.Dock = System.Windows.Forms.DockStyle.Top;
-            this.groupBox1.Location = new System.Drawing.Point(0, 0);
-            this.groupBox1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.groupBox1.Location = new System.Drawing.Point(15, 15);
+            this.groupBox1.Margin = new System.Windows.Forms.Padding(2);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Padding = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.groupBox1.Size = new System.Drawing.Size(621, 142);
+            this.groupBox1.Padding = new System.Windows.Forms.Padding(10);
+            this.groupBox1.Size = new System.Drawing.Size(231, 165);
             this.groupBox1.TabIndex = 2;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Benutzerinformationen";
@@ -65,8 +66,8 @@ namespace Contact_Manager.Partials.Dialog
             // ChkIsAdmin
             // 
             this.ChkIsAdmin.AutoSize = true;
-            this.ChkIsAdmin.Location = new System.Drawing.Point(324, 110);
-            this.ChkIsAdmin.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.ChkIsAdmin.Location = new System.Drawing.Point(15, 124);
+            this.ChkIsAdmin.Margin = new System.Windows.Forms.Padding(2);
             this.ChkIsAdmin.Name = "ChkIsAdmin";
             this.ChkIsAdmin.Size = new System.Drawing.Size(15, 14);
             this.ChkIsAdmin.TabIndex = 7;
@@ -75,8 +76,8 @@ namespace Contact_Manager.Partials.Dialog
             // ChkActive
             // 
             this.ChkActive.AutoSize = true;
-            this.ChkActive.Location = new System.Drawing.Point(16, 110);
-            this.ChkActive.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.ChkActive.Location = new System.Drawing.Point(158, 126);
+            this.ChkActive.Margin = new System.Windows.Forms.Padding(2);
             this.ChkActive.Name = "ChkActive";
             this.ChkActive.Size = new System.Drawing.Size(15, 14);
             this.ChkActive.TabIndex = 6;
@@ -85,62 +86,67 @@ namespace Contact_Manager.Partials.Dialog
             // LblIsAdmin
             // 
             this.LblIsAdmin.AutoSize = true;
-            this.LblIsAdmin.Location = new System.Drawing.Point(321, 90);
+            this.LblIsAdmin.Location = new System.Drawing.Point(34, 124);
+            this.LblIsAdmin.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.LblIsAdmin.Name = "LblIsAdmin";
-            this.LblIsAdmin.Size = new System.Drawing.Size(83, 16);
+            this.LblIsAdmin.Size = new System.Drawing.Size(67, 13);
             this.LblIsAdmin.TabIndex = 5;
             this.LblIsAdmin.Text = "Ist ein Admin";
             // 
             // LblActive
             // 
             this.LblActive.AutoSize = true;
-            this.LblActive.Location = new System.Drawing.Point(13, 90);
+            this.LblActive.Location = new System.Drawing.Point(177, 124);
+            this.LblActive.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.LblActive.Name = "LblActive";
-            this.LblActive.Size = new System.Drawing.Size(37, 16);
+            this.LblActive.Size = new System.Drawing.Size(31, 13);
             this.LblActive.TabIndex = 4;
             this.LblActive.Text = "Aktiv";
             // 
             // LblPassword
             // 
             this.LblPassword.AutoSize = true;
-            this.LblPassword.Location = new System.Drawing.Point(317, 22);
+            this.LblPassword.Location = new System.Drawing.Point(12, 71);
+            this.LblPassword.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.LblPassword.Name = "LblPassword";
-            this.LblPassword.Size = new System.Drawing.Size(63, 16);
+            this.LblPassword.Size = new System.Drawing.Size(50, 13);
             this.LblPassword.TabIndex = 3;
             this.LblPassword.Text = "Passwort";
             // 
             // TxtPassword
             // 
-            this.TxtPassword.Location = new System.Drawing.Point(317, 41);
-            this.TxtPassword.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.TxtPassword.Location = new System.Drawing.Point(15, 86);
+            this.TxtPassword.Margin = new System.Windows.Forms.Padding(2);
             this.TxtPassword.Name = "TxtPassword";
             this.TxtPassword.PasswordChar = '*';
-            this.TxtPassword.Size = new System.Drawing.Size(284, 22);
+            this.TxtPassword.Size = new System.Drawing.Size(193, 20);
             this.TxtPassword.TabIndex = 2;
             // 
             // TxtUsername
             // 
-            this.TxtUsername.Location = new System.Drawing.Point(13, 42);
-            this.TxtUsername.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.TxtUsername.Location = new System.Drawing.Point(15, 38);
+            this.TxtUsername.Margin = new System.Windows.Forms.Padding(2);
             this.TxtUsername.Name = "TxtUsername";
-            this.TxtUsername.Size = new System.Drawing.Size(256, 22);
+            this.TxtUsername.Size = new System.Drawing.Size(193, 20);
             this.TxtUsername.TabIndex = 1;
             // 
             // LblUsername
             // 
             this.LblUsername.AutoSize = true;
-            this.LblUsername.Location = new System.Drawing.Point(7, 22);
+            this.LblUsername.Location = new System.Drawing.Point(12, 23);
+            this.LblUsername.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.LblUsername.Name = "LblUsername";
-            this.LblUsername.Size = new System.Drawing.Size(94, 16);
+            this.LblUsername.Size = new System.Drawing.Size(75, 13);
             this.LblUsername.TabIndex = 0;
             this.LblUsername.Text = "Benutzername";
             // 
             // CmdCreateUser
             // 
-            this.CmdCreateUser.Location = new System.Drawing.Point(13, 332);
-            this.CmdCreateUser.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.CmdCreateUser.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.CmdCreateUser.Location = new System.Drawing.Point(15, 193);
+            this.CmdCreateUser.Margin = new System.Windows.Forms.Padding(2);
             this.CmdCreateUser.Name = "CmdCreateUser";
-            this.CmdCreateUser.Size = new System.Drawing.Size(589, 38);
+            this.CmdCreateUser.Size = new System.Drawing.Size(231, 31);
             this.CmdCreateUser.TabIndex = 3;
             this.CmdCreateUser.Text = "Benutzer anlegen";
             this.CmdCreateUser.UseVisualStyleBackColor = true;
@@ -148,17 +154,19 @@ namespace Contact_Manager.Partials.Dialog
             // 
             // UserDialog
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(621, 394);
+            this.ClientSize = new System.Drawing.Size(261, 239);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.CmdCreateUser);
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.Name = "UserDialog";
-            this.Text = "UserDialog";
+            this.Padding = new System.Windows.Forms.Padding(15);
+            this.Text = "Benutzer";
+            this.Load += new System.EventHandler(this.UserDialog_Load);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
