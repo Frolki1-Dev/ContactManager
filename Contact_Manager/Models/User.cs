@@ -8,30 +8,28 @@ using Contact_Manager.Interfaces;
 
 namespace Contact_Manager.Models
 {
+    /**
+     * User object
+     */
     [Serializable]
-    public class User: IIdentifier
+    public class User : IIdentifier
     {
         public int Id { get; set; }
         public string Username { get; set; }
 
         private string _password;
+
         public string Password
         {
-            get
-            {
-                return _password;
-            }
-
-            set
-            {
-                _password = PasswordHasher.HashString(value);
-            }
+            get => _password;
+            set => _password = PasswordHasher.HashString(value);
         }
 
         public bool Active { get; set; }
         public bool IsAdmin { get; set; }
 
         public bool Deleted { get; set; }
+
         public User(string username, string password, bool active, bool isAdmin)
         {
             Username = username;

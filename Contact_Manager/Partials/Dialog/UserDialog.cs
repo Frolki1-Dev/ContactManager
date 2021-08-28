@@ -15,7 +15,7 @@ namespace Contact_Manager.Partials.Dialog
 {
     public partial class UserDialog : Form
     {
-        private User editUser;
+        private User _editUser;
 
         public UserDialog()
         {
@@ -25,7 +25,7 @@ namespace Contact_Manager.Partials.Dialog
         public UserDialog(User user)
         {
             InitializeComponent();
-            editUser = user;
+            _editUser = user;
             TxtUsername.Text = user.Username;
             ChkActive.Checked = user.Active;
             ChkIsAdmin.Checked = user.IsAdmin;
@@ -42,7 +42,7 @@ namespace Contact_Manager.Partials.Dialog
         {
             try
             {
-                if (editUser == null)
+                if (_editUser == null)
                 {
                     CreateUser();
                 }
@@ -51,13 +51,12 @@ namespace Contact_Manager.Partials.Dialog
                     UpdateUser();
                 }
 
-                this.Close();
+                Close();
             }
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message, "Fehler", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-
         }
 
         private void CreateUser()
@@ -86,16 +85,17 @@ namespace Contact_Manager.Partials.Dialog
         private void UpdateUser()
         {
             // Set the new properties
-            editUser.Username = TxtUsername.Text;
-            editUser.Active = ChkActive.Checked;
-            editUser.IsAdmin = ChkIsAdmin.Checked;
+            _editUser.Username = TxtUsername.Text;
+            _editUser.Active = ChkActive.Checked;
+            _editUser.IsAdmin = ChkIsAdmin.Checked;
 
+            // Change password only if the password is valid
             if (TxtPassword.Text.Length > 6)
             {
-                editUser.Password = TxtPassword.Text;
+                _editUser.Password = TxtPassword.Text;
             }
 
-            DataContainer.Update(editUser);
+            DataContainer.Update(_editUser);
         }
 
         private void UserDialog_Load(object sender, EventArgs e)

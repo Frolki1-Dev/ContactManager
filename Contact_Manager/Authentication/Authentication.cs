@@ -11,6 +11,9 @@ using Contact_Manager.Collections;
 
 namespace Contact_Manager.Authentication
 {
+    /**
+     * Handles the authentication of the user
+     */
     class Authentication
     {
         private static bool _authenticated = false;

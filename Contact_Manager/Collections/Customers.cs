@@ -8,6 +8,9 @@ using Contact_Manager.Models;
 
 namespace Contact_Manager.Collections
 {
+    /**
+     * Stores all customers
+     */
     [Serializable]
     class Customers : Collection
     {

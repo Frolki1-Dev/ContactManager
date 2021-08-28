@@ -8,6 +8,9 @@ using Contact_Manager.Models;
 
 namespace Contact_Manager.Collections
 {
+    /**
+     * Stores all employees
+     */
     [Serializable]
     class Employees : Collection
     {

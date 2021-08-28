@@ -9,6 +9,9 @@ using static System.Windows.Forms.Control;
 
 namespace Contact_Manager.Themes
 {
+    /**
+     * Style the application
+     */
     class MainTheme
     {
         public static void InitThemeForForm(Form form)
@@ -18,6 +21,9 @@ namespace Contact_Manager.Themes
             theme.SetControlStyles(form.Controls);
         }
 
+        /**
+         * Set the global form window style
+         */
         public void SetFormStyle(Form form)
         {
             form.BackColor = Properties.Settings.Default.DefaultFormBackgroundColor;
@@ -32,6 +38,9 @@ namespace Contact_Manager.Themes
             }
         }
 
+        /**
+         * Set the style for the contol items
+         */
         public void SetControlStyles(ControlCollection controls)
         {
             foreach (Control control in controls)
@@ -72,6 +81,9 @@ namespace Contact_Manager.Themes
             }
         }
 
+        /**
+         * Set label style
+         */
         private void SetLabelStyle(Label control)
         {
             control.ForeColor = Properties.Settings.Default.FontColor;
@@ -98,6 +110,9 @@ namespace Contact_Manager.Themes
             }
         }
 
+        /**
+         * Set button style
+         */
         private void SetButtonStyle(Button control)
         {
             control.BackColor = Properties.Settings.Default.PrimaryColor;
@@ -108,11 +123,17 @@ namespace Contact_Manager.Themes
             control.Font = new Font(Properties.Settings.Default.DefaultFormFont, System.Drawing.FontStyle.Bold);
         }
 
+        /**
+         * Set text box style
+         */
         private void SetTextBoxStyle(TextBox control)
         {
             control.BorderStyle = BorderStyle.FixedSingle;
         }
 
+        /**
+         * Set data grid view style
+         */
         private void SetDataGridView(DataGridView control)
         {
             control.BackgroundColor = Properties.Settings.Default.DefaultFormBackgroundColor;
@@ -135,6 +156,9 @@ namespace Contact_Manager.Themes
             control.DefaultCellStyle.ForeColor = Properties.Settings.Default.PrimaryColor;
         }
 
+        /**
+         * Set group box style
+         */
         private void SetGroupBoxStyle(GroupBox control)
         {
             control.ForeColor = Color.White;

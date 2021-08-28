@@ -49,10 +49,10 @@ namespace Contact_Manager
             }
 
             // Check if the binary data files exists
-            if (!File.Exists(Helper.GetApplicationDataPath("users.dat")) || 
-                !File.Exists(Helper.GetApplicationDataPath("employees.dat")) || 
-                !File.Exists(Helper.GetApplicationDataPath("trainees.dat")) || 
-                !File.Exists(Helper.GetApplicationDataPath("customers.dat")))
+            if (!File.Exists(GetApplicationDataPath("users.dat")) || 
+                !File.Exists(GetApplicationDataPath("employees.dat")) || 
+                !File.Exists(GetApplicationDataPath("trainees.dat")) || 
+                !File.Exists(GetApplicationDataPath("customers.dat")))
             {
                 return false;
             }
@@ -63,7 +63,7 @@ namespace Contact_Manager
         /**
          * Helps to close the old form and open the new in the correct position
          */
-        public static void openNewFormAndCloseOld(Form newForm, Form oldForm)
+        public static void OpenNewFormAndCloseOld(Form newForm, Form oldForm)
         {
             newForm.StartPosition = FormStartPosition.CenterScreen;
             oldForm.Hide();

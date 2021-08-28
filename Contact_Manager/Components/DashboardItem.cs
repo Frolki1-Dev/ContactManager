@@ -11,6 +11,9 @@ using System.Windows.Forms;
 
 namespace Contact_Manager.Components
 {
+    /**
+     * Define the dashboard item
+     */
     public partial class DashboardItem : UserControl
     {
         public DashboardItem()
@@ -19,17 +22,26 @@ namespace Contact_Manager.Components
             BackColor = Properties.Settings.Default.PrimaryColor;
         }
 
-        public void setIcon(Image icon)
+        /**
+         * Set the icon
+         */
+        public void SetIcon(Image icon)
         {
             ImgIcon.Image = icon;
         }
 
-        public void setCounter(int num)
+        /**
+         * Set the counter
+         */
+        public void SetCounter(int num)
         {
             LblNumItems.Text = num.ToString();
         }
 
-        public void setTitle(string title)
+        /**
+         * Set title
+         */
+        public void SetTitle(string title)
         {
             LblTitleNumItems.Text = title;
         }

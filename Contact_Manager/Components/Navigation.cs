@@ -5,6 +5,9 @@ using Contact_Manager.Views;
 
 namespace Contact_Manager.Components
 {
+    /**
+     * The application navigation
+     */
     public partial class Navigation : UserControl
     {
         public Navigation()
@@ -98,7 +101,7 @@ namespace Contact_Manager.Components
 
         private void OpenNewView(Form form)
         {
-            Helper.openNewFormAndCloseOld(form, GetParentForm());
+            Helper.OpenNewFormAndCloseOld(form, GetParentForm());
         }
     }
 }

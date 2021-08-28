@@ -2,6 +2,9 @@
 
 namespace Contact_Manager.Models
 {
+    /**
+     * Employee object
+     */
     [Serializable]
     public class Employee : Person
     {
@@ -25,8 +28,6 @@ namespace Contact_Manager.Models
 
         }
 
-        // variables
-
         // properties
         public string Departement { get; set; }
         public string Ahv { get; set; }
@@ -36,7 +37,5 @@ namespace Contact_Manager.Models
         public int Loe { get; set; }
         public string Role { get; set; }
         public int ManagementLevel { get; set; }
-
-        // methods
     }
 }
