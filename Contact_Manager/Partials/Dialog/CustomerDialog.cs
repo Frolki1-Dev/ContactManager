@@ -29,7 +29,9 @@ namespace Contact_Manager.Partials.Dialog
 
 
         public CustomerDialog()
+
         {
+            //open the customerdialog without the note fields
             InitializeComponent();
             Width = 478;
             CmbNationality.DataSource = CountryList();
@@ -38,7 +40,7 @@ namespace Contact_Manager.Partials.Dialog
 
         public CustomerDialog(Customer customer)
         {
-             
+             //open an already created customer
             InitializeComponent();
             CmbNationality.DataSource = CountryList();
             _currentCustomer = customer;
@@ -139,6 +141,7 @@ namespace Contact_Manager.Partials.Dialog
 
         private void CleanUpFields()
         {
+            
             CmbSalutation.SelectedIndex = -1;
             txtFirstName.Clear();
             txtSurName.Clear();
@@ -217,7 +220,7 @@ namespace Contact_Manager.Partials.Dialog
             Validation.Required(txtZipCode.Text, "Feld PLZ muss ausgefüllt werden.");
             Validation.ValidateZipCode(_zipCodeFormatted);
 
-            // check phone / fax number lengths and if required
+            // check phone / fax / mobile number lengths and if required
             if(txtPhonePrivate.Text.Length == 0)
             {
                 Validation.Required(txtPhonePrivate.Text, "Telefon (Privat) muss ausgefüllt werden.");
@@ -288,8 +291,7 @@ namespace Contact_Manager.Partials.Dialog
 
         private void UpdateCustomer()
         {
-            // TODO: Try Catch
-            // check input
+           
             CheckFieldInput();
             try
             {
@@ -352,6 +354,8 @@ namespace Contact_Manager.Partials.Dialog
            
         }
 
+
+
         private void BtnAddNote_Click(object sender, EventArgs e)
         {
             if(this._noteInEditMode)
@@ -405,6 +409,7 @@ namespace Contact_Manager.Partials.Dialog
 
         private void dataGridNotes_CellContentDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
+            //load the double clicked note 
             _rowIndex = e.RowIndex;
             txtAddNote.Text = this._currentCustomer.Notes[_rowIndex].Notes;
             this._noteInEditMode = true;
@@ -413,6 +418,9 @@ namespace Contact_Manager.Partials.Dialog
         }
 
         private void UpdateNotesView()
+
+            //after editing a note, update the note list and the grid
+
         {
             if (_source == null)
             {
