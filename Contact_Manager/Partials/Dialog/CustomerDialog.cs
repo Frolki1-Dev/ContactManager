@@ -64,7 +64,6 @@ namespace Contact_Manager.Partials.Dialog
             }
 
 
-            // TODO: Cmb Testen, ob es wirklich selektiert wird
             //load the customer to edit 
             txtCompany.Text = _currentCustomer.CompanyName;
             txtAddress.Text = _currentCustomer.Address;
@@ -81,7 +80,7 @@ namespace Contact_Manager.Partials.Dialog
             ChkStatus.Checked = _currentCustomer.Status;
             CmbTitle.Text = _currentCustomer.Title;
             CmbSalutation.Text = _currentCustomer.Salutation;
-            customer.Gender = _currentCustomer.Gender; // TODO: Feld hinterlegen
+            customer.Gender = _currentCustomer.Gender; 
             CmbNationality.Text = _currentCustomer.Country;
             DtpDateOfBirth.Value = _currentCustomer.DateOfBirth;
 
@@ -136,6 +135,7 @@ namespace Contact_Manager.Partials.Dialog
                 MessageBox.Show(ex.Message, "Validierungsfehler", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
+        
 
         private void CleanUpFields()
         {
@@ -204,21 +204,40 @@ namespace Contact_Manager.Partials.Dialog
             Validation.Required(txtSurName.Text, "Feld Nachname muss ausgefüllt werden.");
             Validation.Required(txtAddress.Text, "Feld Adresse muss ausgefüllt werden.");
             Validation.Required(txtCompany.Text, "Feld Unternehmen muss ausgefüllt werden.");
+            Validation.Required(CmbCustomerType.Text, "Kundentyp muss definiert werden.");
+            Validation.Required(CmbSalutation.Text, "Anrede muss ausgefüllt werden.");
+            
+
 
             // check if email is correct
+            Validation.Required(txtCompanyContactEmail.Text, "E-Mail muss ausgefüllt sein.");
             Validation.ValidateEmail(txtCompanyContactEmail.Text);
 
             // check if zip code is valid for switzerland
+            Validation.Required(txtZipCode.Text, "Feld PLZ muss ausgefüllt werden.");
             Validation.ValidateZipCode(_zipCodeFormatted);
 
-            // check phone / fax number lengths
+            // check phone / fax number lengths and if required
+            if(txtPhonePrivate.Text.Length == 0)
+            {
+                Validation.Required(txtPhonePrivate.Text, "Telefon (Privat) muss ausgefüllt werden.");
+            }
+            else
             Validation.ValidatePhone(txtPhonePrivate.Text, "Die Privatnummer ist nicht gültig!");
+
             if (txtFax.Text.Length > 0)
             {
                 Validation.ValidatePhone(txtFax.Text, "Die Faxnummer ist nicht gültig!");
             }
 
+            if (txtPhoneCompany.Text.Length == 0)
+            {
+                Validation.Required(txtPhoneCompany.Text, "Telefon (Geschäftlich) muss ausgefüllt werden.");
+            }
+            else
             Validation.ValidatePhone(txtPhoneCompany.Text, "Die Geschäftsnummer ist nicht gültig!");
+           
+
             if (txtMobile.Text.Length > 0)
             {
                 Validation.ValidatePhone(txtMobile.Text, "Die Handynummer ist nicht gültig!");
@@ -264,10 +283,7 @@ namespace Contact_Manager.Partials.Dialog
             {
                 MessageBox.Show(ex.Message, "Validierungsfehler", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message, "Exception", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
+           
         }
 
         private void UpdateCustomer()
@@ -275,29 +291,43 @@ namespace Contact_Manager.Partials.Dialog
             // TODO: Try Catch
             // check input
             CheckFieldInput();
+            try
+            {
 
-            //set updated fields
-            _currentCustomer.CompanyName = txtCompany.Text;
-            _currentCustomer.Address = txtAddress.Text;
-            _currentCustomer.ZipCode = _zipCodeFormatted;
-            _currentCustomer.City = txtCity.Text;
-            _currentCustomer.FirstName = txtFirstName.Text;
-            _currentCustomer.LastName = txtSurName.Text;
-            _currentCustomer.PhonePrivate = txtPhonePrivate.Text;
-            _currentCustomer.PhoneCompany = txtPhoneCompany.Text;
-            _currentCustomer.Mobile = txtMobile.Text;
-            _currentCustomer.Fax = txtFax.Text;
-            _currentCustomer.Email = txtCompanyContactEmail.Text;
-            _currentCustomer.CustomerType = CmbCustomerType.Text;
-            _currentCustomer.Status = ChkStatus.Checked;
-            _currentCustomer.Title = CmbTitle.Text;
-            _currentCustomer.Salutation = CmbSalutation.Text;
-            _currentCustomer.Gender = _selectedGender;
-            _currentCustomer.Country = CmbNationality.Text;
-            _currentCustomer.DateOfBirth = DtpDateOfBirth.Value;
 
-            DataContainer.Update(_currentCustomer);
-            MessageBox.Show("Änderungen gespeichert.");
+                //set updated fields
+                _currentCustomer.CompanyName = txtCompany.Text;
+                _currentCustomer.Address = txtAddress.Text;
+                _currentCustomer.ZipCode = _zipCodeFormatted;
+                _currentCustomer.City = txtCity.Text;
+                _currentCustomer.FirstName = txtFirstName.Text;
+                _currentCustomer.LastName = txtSurName.Text;
+                _currentCustomer.PhonePrivate = txtPhonePrivate.Text;
+                _currentCustomer.PhoneCompany = txtPhoneCompany.Text;
+                _currentCustomer.Mobile = txtMobile.Text;
+                _currentCustomer.Fax = txtFax.Text;
+                _currentCustomer.Email = txtCompanyContactEmail.Text;
+                _currentCustomer.CustomerType = CmbCustomerType.Text;
+                _currentCustomer.Status = ChkStatus.Checked;
+                _currentCustomer.Title = CmbTitle.Text;
+                _currentCustomer.Salutation = CmbSalutation.Text;
+                _currentCustomer.Gender = _selectedGender;
+                _currentCustomer.Country = CmbNationality.Text;
+                _currentCustomer.DateOfBirth = DtpDateOfBirth.Value;
+
+                DataContainer.Update(_currentCustomer);
+                MessageBox.Show("Änderungen gespeichert.");
+
+            }
+            catch (ValidationException ex)
+            {
+                MessageBox.Show(ex.Message, "Validierungsfehler", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Exception", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+
 
         }
 

@@ -280,6 +280,7 @@ namespace Contact_Manager.Partials.Dialog
             // rbOther
             // 
             this.rbOther.AutoSize = true;
+            this.rbOther.Checked = true;
             this.rbOther.Location = new System.Drawing.Point(205, 84);
             this.rbOther.Name = "rbOther";
             this.rbOther.Size = new System.Drawing.Size(64, 17);
@@ -295,7 +296,6 @@ namespace Contact_Manager.Partials.Dialog
             this.rbFemale.Name = "rbFemale";
             this.rbFemale.Size = new System.Drawing.Size(66, 17);
             this.rbFemale.TabIndex = 36;
-            this.rbFemale.TabStop = true;
             this.rbFemale.Text = "Weiblich";
             this.rbFemale.UseVisualStyleBackColor = true;
             // 
@@ -306,7 +306,6 @@ namespace Contact_Manager.Partials.Dialog
             this.rbMale.Name = "rbMale";
             this.rbMale.Size = new System.Drawing.Size(68, 17);
             this.rbMale.TabIndex = 35;
-            this.rbMale.TabStop = true;
             this.rbMale.Text = "Männlich";
             this.rbMale.UseVisualStyleBackColor = true;
             // 
