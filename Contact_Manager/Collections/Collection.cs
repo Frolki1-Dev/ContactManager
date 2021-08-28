@@ -8,6 +8,9 @@ using Contact_Manager.Interfaces;
 
 namespace Contact_Manager.Collections
 {
+    /**
+     * Extend the CollectionBase function with our important functions
+     */
     [Serializable]
     public abstract class Collection : CollectionBase
     {
@@ -46,6 +49,9 @@ namespace Contact_Manager.Collections
             return 0;
         }
 
+        /**
+         * Get a resource by ID
+         */
         public dynamic GetById(int id)
         {
             for (int i = 0; i < List.Count; i++)
@@ -78,6 +84,7 @@ namespace Contact_Manager.Collections
             // Add the user
             List.Add(obj);
 
+            // Save the object
             Save();
         }
 

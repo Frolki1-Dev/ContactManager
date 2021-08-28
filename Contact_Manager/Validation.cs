@@ -16,6 +16,10 @@ namespace Contact_Manager
         public ValidationException(string message) : base(message: message)
         { }
     }
+
+    /**
+     * The validation class to validate the input data
+     */
     class Validation
     {
         /**

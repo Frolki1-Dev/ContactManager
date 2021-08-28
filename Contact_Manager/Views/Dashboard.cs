@@ -18,24 +18,24 @@ namespace Contact_Manager.Views
             InitializeComponent();
 
             // Set employee data
-            DashboardItemEmployee.setCounter(DataContainer.GetEmployeeCollection().Count);
-            DashboardItemEmployee.setIcon(Properties.Resources.user_hard_hat);
-            DashboardItemEmployee.setTitle("Anzahl Mitarbeiter");
+            DashboardItemEmployee.SetCounter(DataContainer.GetEmployeeCollection().Count);
+            DashboardItemEmployee.SetIcon(Properties.Resources.user_hard_hat);
+            DashboardItemEmployee.SetTitle("Anzahl Mitarbeiter");
 
             // Set customer data
-            DashboardItemCustomers.setCounter(DataContainer.GetCustomerCollection().Count);
-            DashboardItemCustomers.setIcon(Properties.Resources.users_crown);
-            DashboardItemCustomers.setTitle("Anzahl Kunden");
+            DashboardItemCustomers.SetCounter(DataContainer.GetCustomerCollection().Count);
+            DashboardItemCustomers.SetIcon(Properties.Resources.users_crown);
+            DashboardItemCustomers.SetTitle("Anzahl Kunden");
 
             // Set trainees data
-            DashboardItemTrainees.setCounter(DataContainer.GetTraineeCollection().Count);
-            DashboardItemTrainees.setIcon(Properties.Resources.user_graduate);
-            DashboardItemTrainees.setTitle("Anzahl Lehrlinge");
+            DashboardItemTrainees.SetCounter(DataContainer.GetTraineeCollection().Count);
+            DashboardItemTrainees.SetIcon(Properties.Resources.user_graduate);
+            DashboardItemTrainees.SetTitle("Anzahl Lehrlinge");
 
             // Set users data
-            DashboardItemUsers.setCounter(DataContainer.GetUserCollection().Count);
-            DashboardItemUsers.setIcon(Properties.Resources.user_shield);
-            DashboardItemUsers.setTitle("Anzahl Benutzer");
+            DashboardItemUsers.SetCounter(DataContainer.GetUserCollection().Count);
+            DashboardItemUsers.SetIcon(Properties.Resources.user_shield);
+            DashboardItemUsers.SetTitle("Anzahl Benutzer");
         }
 
         private void Dashboard_Load(object sender, EventArgs e)

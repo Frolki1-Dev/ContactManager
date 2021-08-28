@@ -48,7 +48,7 @@ namespace Contact_Manager.Views
             DataContainer.LoadAll(DataContainer.Employees);
             DataContainer.LoadAll(DataContainer.Trainees);
 
-            Helper.openNewFormAndCloseOld(new Dashboard(), this);
+            Helper.OpenNewFormAndCloseOld(new Dashboard(), this);
         }
 
         private void Login_Load(object sender, EventArgs e)

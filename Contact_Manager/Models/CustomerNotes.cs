@@ -7,8 +7,11 @@ using System.Threading.Tasks;
 
 namespace Contact_Manager.Models
 {
+    /**
+     * Customer notes object
+     */
     [Serializable]
-   public class CustomerNotes
+    public class CustomerNotes
     {
         public string Notes { get; set; }
 
@@ -16,17 +19,18 @@ namespace Contact_Manager.Models
 
         public string CreatedFrom { get; set; }
 
-        public CustomerNotes(string note, string created_from, DateTime created_at)
+        public CustomerNotes(string note, string createdFrom, DateTime createdAt)
         {
-            this.Notes = note;
-            this.CreatedAt = created_at;
-            this.CreatedFrom = created_from;
+            Notes = note;
+            CreatedAt = createdAt;
+            CreatedFrom = createdFrom;
         }
+
         public CustomerNotes(string note)
         {
-            this.Notes = note;
-            this.CreatedAt = DateTime.Now;
-            this.CreatedFrom = Authentication.Authentication.GetUser().Username;
+            Notes = note;
+            CreatedAt = DateTime.Now;
+            CreatedFrom = Authentication.Authentication.GetUser().Username;
         }
     }
 }
