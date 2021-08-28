@@ -261,7 +261,7 @@ namespace Contact_Manager.Partials.Dialog
             ***************************** */
 
             // check if required fields are filled out
-            Validation.Required(CmbSalutation.SelectedItem.ToString(), "Anrede muss ausgefüllt werden.");
+            Validation.Required(CmbSalutation.Text, "Anrede muss ausgefüllt werden.");
 
             Validation.Required(txtFirstName, "Vorname muss ausgefüllt werden.");
 
@@ -385,7 +385,7 @@ namespace Contact_Manager.Partials.Dialog
                 _editEmployee.Role = txtRole.Text;
                 _editEmployee.ManagementLevel = _managementLevelFormatted;
 
-                DataContainer.Update(_editEmployee);
+                     
                 MessageBox.Show("Änderungen gespeichert.");
 
                 Close();
