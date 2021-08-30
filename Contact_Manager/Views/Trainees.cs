@@ -12,7 +12,7 @@ using Contact_Manager.Models;
 using Contact_Manager.Partials.Dialog;
 using Contact_Manager.Themes;
 using Contact_Manager;
-using static Contact_Manager.CsvFileImport;
+
 
 namespace Contact_Manager.Views
 {
@@ -188,12 +188,8 @@ namespace Contact_Manager.Views
             }
         }
 
-        
-        
-
-        public void cmdImportCsv_Click(object sender, EventArgs e)
+        private void cmdImportCsvTrainee_Click(object sender, EventArgs e)
         {
-           
             OpenFileDialog openFileDialogCSV = new OpenFileDialog();
             openFileDialogCSV.ShowDialog();
             openFileDialogCSV.InitialDirectory = @"C:\";
@@ -236,7 +232,11 @@ namespace Contact_Manager.Views
                 GridViewTrainees.DataSource = dt;
             }
 
+            foreach(DataRow row in dt.Rows)
+            {
+                DataContainer.AddModel(DataContainer.Trainees, trainee);
+            }
+            
         }
-
     }
 }

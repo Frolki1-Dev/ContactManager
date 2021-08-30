@@ -37,7 +37,7 @@ namespace Contact_Manager.Views
             this.LblSearch = new System.Windows.Forms.Label();
             this.PnlActions = new System.Windows.Forms.Panel();
             this.cmdVcardImport = new System.Windows.Forms.Button();
-            this.cmdImportCsv = new System.Windows.Forms.Button();
+            this.cmdImportCsvTrainee = new System.Windows.Forms.Button();
             this.CmdCreate = new System.Windows.Forms.Button();
             this.txtFile = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.GridViewTrainees)).BeginInit();
@@ -117,7 +117,7 @@ namespace Contact_Manager.Views
             // PnlActions
             // 
             this.PnlActions.Controls.Add(this.cmdVcardImport);
-            this.PnlActions.Controls.Add(this.cmdImportCsv);
+            this.PnlActions.Controls.Add(this.cmdImportCsvTrainee);
             this.PnlActions.Controls.Add(this.CmdCreate);
             this.PnlActions.Dock = System.Windows.Forms.DockStyle.Fill;
             this.PnlActions.Location = new System.Drawing.Point(407, 7);
@@ -137,17 +137,17 @@ namespace Contact_Manager.Views
             this.cmdVcardImport.Text = "vCard Import";
             this.cmdVcardImport.UseVisualStyleBackColor = true;
             // 
-            // cmdImportCsv
+            // cmdImportCsvTrainee
             // 
-            this.cmdImportCsv.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.cmdImportCsv.Dock = System.Windows.Forms.DockStyle.Right;
-            this.cmdImportCsv.Location = new System.Drawing.Point(128, 0);
-            this.cmdImportCsv.Name = "cmdImportCsv";
-            this.cmdImportCsv.Size = new System.Drawing.Size(129, 42);
-            this.cmdImportCsv.TabIndex = 1;
-            this.cmdImportCsv.Text = "CSV Import";
-            this.cmdImportCsv.UseVisualStyleBackColor = true;
-            this.cmdImportCsv.Click += new System.EventHandler(this.cmdImportCsv_Click);
+            this.cmdImportCsvTrainee.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.cmdImportCsvTrainee.Dock = System.Windows.Forms.DockStyle.Right;
+            this.cmdImportCsvTrainee.Location = new System.Drawing.Point(128, 0);
+            this.cmdImportCsvTrainee.Name = "cmdImportCsvTrainee";
+            this.cmdImportCsvTrainee.Size = new System.Drawing.Size(129, 42);
+            this.cmdImportCsvTrainee.TabIndex = 1;
+            this.cmdImportCsvTrainee.Text = "CSV Import";
+            this.cmdImportCsvTrainee.UseVisualStyleBackColor = true;
+            this.cmdImportCsvTrainee.Click += new System.EventHandler(this.cmdImportCsvTrainee_Click);
             // 
             // CmdCreate
             // 
@@ -201,7 +201,7 @@ namespace Contact_Manager.Views
         private System.Windows.Forms.Label LblSearch;
         private System.Windows.Forms.Panel PnlActions;
         private System.Windows.Forms.Button cmdVcardImport;
-        private System.Windows.Forms.Button cmdImportCsv;
+        private System.Windows.Forms.Button cmdImportCsvTrainee;
         private System.Windows.Forms.Button CmdCreate;
         private System.Windows.Forms.TextBox txtFile;
     }
