@@ -6,6 +6,9 @@ using Contact_Manager.Models;
 
 namespace Contact_Manager.Collections
 {
+    /**
+     * Stores all users
+     */
     [Serializable]
     class Users : Collection
     {

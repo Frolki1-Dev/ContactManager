@@ -53,7 +53,6 @@ namespace Contact_Manager.Partials.Dialog
             this.LblSurName = new System.Windows.Forms.Label();
             this.LblFirstName = new System.Windows.Forms.Label();
             this.LblGender = new System.Windows.Forms.Label();
-            this.LblTitle = new System.Windows.Forms.Label();
             this.LblSalutation = new System.Windows.Forms.Label();
             this.btnSave = new System.Windows.Forms.Button();
             this.ChkStatus = new System.Windows.Forms.CheckBox();
@@ -81,7 +80,6 @@ namespace Contact_Manager.Partials.Dialog
             this.rbOther = new System.Windows.Forms.RadioButton();
             this.rbFemale = new System.Windows.Forms.RadioButton();
             this.rbMale = new System.Windows.Forms.RadioButton();
-            this.CmbTitle = new System.Windows.Forms.ComboBox();
             this.CmbSalutation = new System.Windows.Forms.ComboBox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
@@ -298,15 +296,6 @@ namespace Contact_Manager.Partials.Dialog
             this.LblGender.TabIndex = 125;
             this.LblGender.Text = "Geschlecht *";
             // 
-            // LblTitle
-            // 
-            this.LblTitle.AutoSize = true;
-            this.LblTitle.Location = new System.Drawing.Point(204, 28);
-            this.LblTitle.Name = "LblTitle";
-            this.LblTitle.Size = new System.Drawing.Size(27, 13);
-            this.LblTitle.TabIndex = 124;
-            this.LblTitle.Text = "Titel";
-            // 
             // LblSalutation
             // 
             this.LblSalutation.AutoSize = true;
@@ -342,12 +331,8 @@ namespace Contact_Manager.Partials.Dialog
             // 
             // CmbCurrentApprenticeYear
             // 
+            this.CmbCurrentApprenticeYear.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.CmbCurrentApprenticeYear.FormattingEnabled = true;
-            this.CmbCurrentApprenticeYear.Items.AddRange(new object[] {
-            "1",
-            "2",
-            "3",
-            "4"});
             this.CmbCurrentApprenticeYear.Location = new System.Drawing.Point(207, 241);
             this.CmbCurrentApprenticeYear.Name = "CmbCurrentApprenticeYear";
             this.CmbCurrentApprenticeYear.Size = new System.Drawing.Size(183, 21);
@@ -355,12 +340,8 @@ namespace Contact_Manager.Partials.Dialog
             // 
             // CmbApprenticeYears
             // 
+            this.CmbApprenticeYears.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.CmbApprenticeYears.FormattingEnabled = true;
-            this.CmbApprenticeYears.Items.AddRange(new object[] {
-            "1",
-            "2",
-            "3",
-            "4"});
             this.CmbApprenticeYears.Location = new System.Drawing.Point(18, 241);
             this.CmbApprenticeYears.Name = "CmbApprenticeYears";
             this.CmbApprenticeYears.Size = new System.Drawing.Size(183, 21);
@@ -368,14 +349,8 @@ namespace Contact_Manager.Partials.Dialog
             // 
             // CmbManagementLevel
             // 
+            this.CmbManagementLevel.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.CmbManagementLevel.FormattingEnabled = true;
-            this.CmbManagementLevel.Items.AddRange(new object[] {
-            "0",
-            "1",
-            "2",
-            "3",
-            "4",
-            "5"});
             this.CmbManagementLevel.Location = new System.Drawing.Point(18, 201);
             this.CmbManagementLevel.Name = "CmbManagementLevel";
             this.CmbManagementLevel.Size = new System.Drawing.Size(183, 21);
@@ -428,27 +403,8 @@ namespace Contact_Manager.Partials.Dialog
             "90%",
             "95%",
             "100%"});
+            this.CmbLoe.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.CmbLoe.FormattingEnabled = true;
-            this.CmbLoe.Items.AddRange(new object[] {
-            "5",
-            "10",
-            "15",
-            "20",
-            "25",
-            "30",
-            "35",
-            "40",
-            "45",
-            "50",
-            "55",
-            "60",
-            "65",
-            "70",
-            "75",
-            "80",
-            "85",
-            "90",
-            "100"});
             this.CmbLoe.Location = new System.Drawing.Point(18, 122);
             this.CmbLoe.Name = "CmbLoe";
             this.CmbLoe.Size = new System.Drawing.Size(183, 21);
@@ -484,6 +440,7 @@ namespace Contact_Manager.Partials.Dialog
             // 
             // CmbNationality
             // 
+            this.CmbNationality.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.CmbNationality.FormattingEnabled = true;
             this.CmbNationality.Location = new System.Drawing.Point(207, 276);
             this.CmbNationality.Name = "CmbNationality";
@@ -589,45 +546,10 @@ namespace Contact_Manager.Partials.Dialog
             this.rbMale.Text = "Männlich";
             this.rbMale.UseVisualStyleBackColor = true;
             // 
-            // CmbTitle
-            // 
-            this.CmbTitle.FormattingEnabled = true;
-            this.CmbTitle.Items.AddRange(new object[] {
-            "",
-            "Dr.",
-            "Dr. Dr.",
-            "Dr. hc",
-            "Dr.-Ing.",
-            "Dr. med. dent.",
-            "Dr. med. vet",
-            "Dr. phil",
-            "Ing.",
-            "Notar",
-            "Notarin",
-            "Prof.",
-            "Prof. Dr.",
-            "Prof. Dr. med.",
-            "Prof. Dr. med. vet",
-            "Rechtsanwalt",
-            "Rechtsanwältin",
-            "Dr. rer. nat.",
-            "Dr. jur.",
-            "Prof. Dr. rer. nat.",
-            "Dr. iur.",
-            "Dr. phil. nat.",
-            "Dr. rer. pol.",
-            "Dr. oec."});
-            this.CmbTitle.Location = new System.Drawing.Point(207, 44);
-            this.CmbTitle.Name = "CmbTitle";
-            this.CmbTitle.Size = new System.Drawing.Size(183, 21);
-            this.CmbTitle.TabIndex = 95;
-            // 
             // CmbSalutation
             // 
+            this.CmbSalutation.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.CmbSalutation.FormattingEnabled = true;
-            this.CmbSalutation.Items.AddRange(new object[] {
-            "Herr",
-            "Frau"});
             this.CmbSalutation.Location = new System.Drawing.Point(18, 44);
             this.CmbSalutation.Name = "CmbSalutation";
             this.CmbSalutation.Size = new System.Drawing.Size(183, 21);
@@ -639,8 +561,6 @@ namespace Contact_Manager.Partials.Dialog
             this.groupBox1.Controls.Add(this.LblSalutation);
             this.groupBox1.Controls.Add(this.CmbSalutation);
             this.groupBox1.Controls.Add(this.LblInfo);
-            this.groupBox1.Controls.Add(this.CmbTitle);
-            this.groupBox1.Controls.Add(this.LblTitle);
             this.groupBox1.Controls.Add(this.LblGender);
             this.groupBox1.Controls.Add(this.rbMale);
             this.groupBox1.Controls.Add(this.rbFemale);
@@ -761,7 +681,6 @@ namespace Contact_Manager.Partials.Dialog
         private System.Windows.Forms.Label LblSurName;
         private System.Windows.Forms.Label LblFirstName;
         private System.Windows.Forms.Label LblGender;
-        private System.Windows.Forms.Label LblTitle;
         private System.Windows.Forms.Label LblSalutation;
         private System.Windows.Forms.Button btnSave;
         private System.Windows.Forms.CheckBox ChkStatus;
@@ -789,7 +708,6 @@ namespace Contact_Manager.Partials.Dialog
         private System.Windows.Forms.RadioButton rbOther;
         private System.Windows.Forms.RadioButton rbFemale;
         private System.Windows.Forms.RadioButton rbMale;
-        private System.Windows.Forms.ComboBox CmbTitle;
         private System.Windows.Forms.ComboBox CmbSalutation;
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.GroupBox groupBox2;

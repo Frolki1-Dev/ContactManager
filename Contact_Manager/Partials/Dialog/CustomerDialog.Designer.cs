@@ -55,6 +55,7 @@ namespace Contact_Manager.Partials.Dialog
             this.txtAddNote = new System.Windows.Forms.TextBox();
             this.dataGridNotes = new System.Windows.Forms.DataGridView();
             this.GrpBoxCompanyData = new System.Windows.Forms.GroupBox();
+            this.LblInfo = new System.Windows.Forms.Label();
             this.LblZip = new System.Windows.Forms.Label();
             this.LblCity = new System.Windows.Forms.Label();
             this.LblAddress = new System.Windows.Forms.Label();
@@ -203,6 +204,7 @@ namespace Contact_Manager.Partials.Dialog
             // rbOther
             // 
             this.rbOther.AutoSize = true;
+            this.rbOther.Checked = true;
             this.rbOther.Location = new System.Drawing.Point(197, 87);
             this.rbOther.Name = "rbOther";
             this.rbOther.Size = new System.Drawing.Size(64, 17);
@@ -359,6 +361,7 @@ namespace Contact_Manager.Partials.Dialog
             // GrpBoxCompanyData
             // 
             this.GrpBoxCompanyData.AutoSize = true;
+            this.GrpBoxCompanyData.Controls.Add(this.LblInfo);
             this.GrpBoxCompanyData.Controls.Add(this.LblZip);
             this.GrpBoxCompanyData.Controls.Add(this.LblCity);
             this.GrpBoxCompanyData.Controls.Add(this.LblAddress);
@@ -379,50 +382,59 @@ namespace Contact_Manager.Partials.Dialog
             this.GrpBoxCompanyData.TabStop = false;
             this.GrpBoxCompanyData.Text = "Firmendaten";
             // 
+            // LblInfo
+            // 
+            this.LblInfo.AutoSize = true;
+            this.LblInfo.Location = new System.Drawing.Point(319, 13);
+            this.LblInfo.Name = "LblInfo";
+            this.LblInfo.Size = new System.Drawing.Size(69, 13);
+            this.LblInfo.TabIndex = 94;
+            this.LblInfo.Text = "* = Pflichtfeld";
+            // 
             // LblZip
             // 
             this.LblZip.AutoSize = true;
             this.LblZip.Location = new System.Drawing.Point(13, 101);
             this.LblZip.Name = "LblZip";
-            this.LblZip.Size = new System.Drawing.Size(27, 13);
+            this.LblZip.Size = new System.Drawing.Size(34, 13);
             this.LblZip.TabIndex = 80;
-            this.LblZip.Text = "PLZ";
+            this.LblZip.Text = "PLZ *";
             // 
             // LblCity
             // 
             this.LblCity.AutoSize = true;
             this.LblCity.Location = new System.Drawing.Point(202, 101);
             this.LblCity.Name = "LblCity";
-            this.LblCity.Size = new System.Drawing.Size(21, 13);
+            this.LblCity.Size = new System.Drawing.Size(28, 13);
             this.LblCity.TabIndex = 79;
-            this.LblCity.Text = "Ort";
+            this.LblCity.Text = "Ort *";
             // 
             // LblAddress
             // 
             this.LblAddress.AutoSize = true;
             this.LblAddress.Location = new System.Drawing.Point(13, 62);
             this.LblAddress.Name = "LblAddress";
-            this.LblAddress.Size = new System.Drawing.Size(68, 13);
+            this.LblAddress.Size = new System.Drawing.Size(75, 13);
             this.LblAddress.TabIndex = 78;
-            this.LblAddress.Text = "Strasse + Nr.";
+            this.LblAddress.Text = "Strasse + Nr. *";
             // 
             // LblCustomerType
             // 
             this.LblCustomerType.AutoSize = true;
             this.LblCustomerType.Location = new System.Drawing.Point(202, 23);
             this.LblCustomerType.Name = "LblCustomerType";
-            this.LblCustomerType.Size = new System.Drawing.Size(58, 13);
+            this.LblCustomerType.Size = new System.Drawing.Size(65, 13);
             this.LblCustomerType.TabIndex = 55;
-            this.LblCustomerType.Text = "Kundentyp";
+            this.LblCustomerType.Text = "Kundentyp *";
             // 
             // LblCompany
             // 
             this.LblCompany.AutoSize = true;
             this.LblCompany.Location = new System.Drawing.Point(13, 23);
             this.LblCompany.Name = "LblCompany";
-            this.LblCompany.Size = new System.Drawing.Size(71, 13);
+            this.LblCompany.Size = new System.Drawing.Size(78, 13);
             this.LblCompany.TabIndex = 0;
-            this.LblCompany.Text = "Unternehmen";
+            this.LblCompany.Text = "Unternehmen *";
             // 
             // GrpBoxContactPerson
             // 
@@ -477,9 +489,9 @@ namespace Contact_Manager.Partials.Dialog
             this.LblEmail.AutoSize = true;
             this.LblEmail.Location = new System.Drawing.Point(14, 228);
             this.LblEmail.Name = "LblEmail";
-            this.LblEmail.Size = new System.Drawing.Size(36, 13);
+            this.LblEmail.Size = new System.Drawing.Size(43, 13);
             this.LblEmail.TabIndex = 92;
-            this.LblEmail.Text = "E-Mail";
+            this.LblEmail.Text = "E-Mail *";
             // 
             // LblNation
             // 
@@ -495,18 +507,18 @@ namespace Contact_Manager.Partials.Dialog
             this.LblLastName.AutoSize = true;
             this.LblLastName.Location = new System.Drawing.Point(202, 111);
             this.LblLastName.Name = "LblLastName";
-            this.LblLastName.Size = new System.Drawing.Size(59, 13);
+            this.LblLastName.Size = new System.Drawing.Size(66, 13);
             this.LblLastName.TabIndex = 67;
-            this.LblLastName.Text = "Nachname";
+            this.LblLastName.Text = "Nachname *";
             // 
             // LblFirstName
             // 
             this.LblFirstName.AutoSize = true;
             this.LblFirstName.Location = new System.Drawing.Point(13, 111);
             this.LblFirstName.Name = "LblFirstName";
-            this.LblFirstName.Size = new System.Drawing.Size(49, 13);
+            this.LblFirstName.Size = new System.Drawing.Size(56, 13);
             this.LblFirstName.TabIndex = 66;
-            this.LblFirstName.Text = "Vorname";
+            this.LblFirstName.Text = "Vorname *";
             // 
             // LblFax
             // 
@@ -522,9 +534,9 @@ namespace Contact_Manager.Partials.Dialog
             this.LblGender.AutoSize = true;
             this.LblGender.Location = new System.Drawing.Point(17, 71);
             this.LblGender.Name = "LblGender";
-            this.LblGender.Size = new System.Drawing.Size(61, 13);
+            this.LblGender.Size = new System.Drawing.Size(68, 13);
             this.LblGender.TabIndex = 64;
-            this.LblGender.Text = "Geschlecht";
+            this.LblGender.Text = "Geschlecht *";
             // 
             // LblMobilePhone
             // 
@@ -549,27 +561,27 @@ namespace Contact_Manager.Partials.Dialog
             this.LblPhoneBusiness.AutoSize = true;
             this.LblPhoneBusiness.Location = new System.Drawing.Point(202, 150);
             this.LblPhoneBusiness.Name = "LblPhoneBusiness";
-            this.LblPhoneBusiness.Size = new System.Drawing.Size(111, 13);
+            this.LblPhoneBusiness.Size = new System.Drawing.Size(118, 13);
             this.LblPhoneBusiness.TabIndex = 87;
-            this.LblPhoneBusiness.Text = "Telefon (Geschäftlich)";
+            this.LblPhoneBusiness.Text = "Telefon (Geschäftlich) *";
             // 
             // LblSalutation
             // 
             this.LblSalutation.AutoSize = true;
             this.LblSalutation.Location = new System.Drawing.Point(14, 27);
             this.LblSalutation.Name = "LblSalutation";
-            this.LblSalutation.Size = new System.Drawing.Size(41, 13);
+            this.LblSalutation.Size = new System.Drawing.Size(48, 13);
             this.LblSalutation.TabIndex = 0;
-            this.LblSalutation.Text = "Anrede";
+            this.LblSalutation.Text = "Anrede *";
             // 
             // LblPhonePrivate
             // 
             this.LblPhonePrivate.AutoSize = true;
             this.LblPhonePrivate.Location = new System.Drawing.Point(13, 150);
             this.LblPhonePrivate.Name = "LblPhonePrivate";
-            this.LblPhonePrivate.Size = new System.Drawing.Size(79, 13);
+            this.LblPhonePrivate.Size = new System.Drawing.Size(86, 13);
             this.LblPhonePrivate.TabIndex = 86;
-            this.LblPhonePrivate.Text = "Telefon (Privat)";
+            this.LblPhonePrivate.Text = "Telefon (Privat) *";
             // 
             // PnlMainData
             // 
@@ -696,5 +708,6 @@ namespace Contact_Manager.Partials.Dialog
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
         private System.Windows.Forms.GroupBox GrpBoxNotes;
         private System.Windows.Forms.Label LblNote;
+        private System.Windows.Forms.Label LblInfo;
     }
 }

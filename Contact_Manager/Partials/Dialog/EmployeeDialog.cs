@@ -9,8 +9,8 @@ namespace Contact_Manager.Partials.Dialog
 {
     public partial class EmployeeDialog : Form
     {
-        /* List<string> _culturesList = new List<string>();
-        CultureInfo[] _cultures = CultureInfo.GetCultures(CultureTypes.SpecificCultures);
+        List<string> _culturesList = new List<string>();
+        /* CultureInfo[] _cultures = CultureInfo.GetCultures(CultureTypes.SpecificCultures);
         RegionInfo _region; */
 
         /* *****************************************************
@@ -79,52 +79,131 @@ namespace Contact_Manager.Partials.Dialog
             CmbManagementLevel.Text = Convert.ToString(employee.ManagementLevel);
         }
 
-        public static List<string> CountryList()
+        public void defaultValueCombobox()
         {
-            // Creating culture list
-            var cultureList = new List<string>();
-
-            // getting the specific CultureInfo from CultureInfo class
-            var getCultureInfos = CultureInfo.GetCultures(CultureTypes.SpecificCultures);
-
-            foreach (var getCulture in getCultureInfos)
+            /* *****************************
+             * default salutations
+            ***************************** */
+            string[] salutations = new string[]
             {
-                // creating the object of RegionInfo class
-                var getRegionInfo = new RegionInfo(getCulture.LCID);
+                "Herr",
+                "Frau"
+            };
 
-                // adding each country name into the arraylist
-                if (!cultureList.Contains(getRegionInfo.EnglishName)) cultureList.Add(getRegionInfo.EnglishName);
+            foreach (var salutation in salutations)
+            {
+                CmbSalutation.Items.Add(salutation);
             }
 
-            // sorting array
-            cultureList.Sort();
+            /* *****************************
+             * default titles
+            ***************************** */
+            string[] titles = new string[]
+            {
+                "",
+                "Dr.",
+                "Dr. Dr.",
+                "Dr. hc",
+                "Dr.-Ing.",
+                "Dr. med. dent.",
+                "Dr. med. vet",
+                "Dr. phil",
+                "Ing.",
+                "Notar",
+                "Notarin",
+                "Prof.",
+                "Prof. Dr.",
+                "Prof. Dr. med.",
+                "Prof. Dr. med. vet",
+                "Rechtsanwalt",
+                "Rechtsanwältin",
+                "Dr. rer. nat.",
+                "Dr. jur.",
+                "Prof. Dr. rer. nat.",
+                "Dr. iur.",
+                "Dr. phil. nat.",
+                "Dr. rer. pol.",
+                "Dr. oec."
+            };
 
-            // returning country list
-            return cultureList;
+            foreach (var title in titles)
+            {
+                CmbTitle.Items.Add(title);
+            }
+
+            /* *****************************
+             * default country list
+            ***************************** */
+            string[] countries = new string[]
+            {
+                "Schweiz",
+                "Deutschland",
+                "Liechtenstein",
+                "Frankreich",
+                "Österreich",
+                "Italien"
+            };
+
+            foreach (var country in countries)
+            {
+                CmbNationality.Items.Add(country);
+            }
+
+            /* *****************************
+             * default loe
+            ***************************** */
+            string[] loes = new string[]
+            {
+                "5",
+                "10",
+                "15",
+                "20",
+                "25",
+                "30",
+                "35",
+                "40",
+                "45",
+                "50",
+                "55",
+                "60",
+                "65",
+                "70",
+                "75",
+                "80",
+                "85",
+                "90",
+                "100"
+            };
+
+            foreach (var loe in loes)
+            {
+                CmbLoe.Items.Add(loe);
+            }
+
+            /* *****************************
+             * default ManagementLevel
+            ***************************** */
+            string[] levels = new string[]
+            {
+                "0",
+                "1",
+                "2",
+                "3",
+                "4",
+                "5"
+            };
+
+            foreach (var level in levels)
+            {
+                CmbManagementLevel.Items.Add(level);
+            }
         }
 
         private void EmployeeDialog_Load(object sender, EventArgs e)
         {
             MainTheme.InitThemeForForm(this);
-            /* 
-                CmbApprenticeYears.Enabled = false;
-                CmbCurrentApprenticeYear.Enabled = false;
-            */
 
-            CmbNationality.DataSource = CountryList();
-
-            /*
-            foreach (CultureInfo culture in _cultures)
-            {
-                _region = new RegionInfo(culture.LCID);
-                if (!(_culturesList.Contains(_region.EnglishName)))
-                {
-                    _culturesList.Add(_region.EnglishName);
-                    CmbNationality.Items.Add(_region.EnglishName + "(" + _region.ISOCurrencySymbol + ")");
-                }
-
-            }
-            */
+            defaultValueCombobox();
         }
 
         private void ChkStatus_CheckedChanged(object sender, EventArgs e)
@@ -182,7 +261,7 @@ namespace Contact_Manager.Partials.Dialog
             ***************************** */
 
             // check if required fields are filled out
-            Validation.Required(CmbSalutation.SelectedItem.ToString(), "Anrede muss ausgefüllt werden.");
+            Validation.Required(CmbSalutation.Text, "Anrede muss ausgefüllt werden.");
 
             Validation.Required(txtFirstName, "Vorname muss ausgefüllt werden.");
 
@@ -306,7 +385,7 @@ namespace Contact_Manager.Partials.Dialog
                 _editEmployee.Role = txtRole.Text;
                 _editEmployee.ManagementLevel = _managementLevelFormatted;
 
-                DataContainer.Update(_editEmployee);
+                     
                 MessageBox.Show("Änderungen gespeichert.");
 
                 Close();

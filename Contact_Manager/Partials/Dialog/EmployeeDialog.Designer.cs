@@ -113,14 +113,8 @@ namespace Contact_Manager.Partials.Dialog
             // 
             // CmbManagementLevel
             // 
+            this.CmbManagementLevel.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.CmbManagementLevel.FormattingEnabled = true;
-            this.CmbManagementLevel.Items.AddRange(new object[] {
-            "0",
-            "1",
-            "2",
-            "3",
-            "4",
-            "5"});
             this.CmbManagementLevel.Location = new System.Drawing.Point(21, 200);
             this.CmbManagementLevel.Name = "CmbManagementLevel";
             this.CmbManagementLevel.Size = new System.Drawing.Size(183, 21);
@@ -173,27 +167,8 @@ namespace Contact_Manager.Partials.Dialog
             "90%",
             "95%",
             "100%"});
+            this.CmbLoe.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.CmbLoe.FormattingEnabled = true;
-            this.CmbLoe.Items.AddRange(new object[] {
-            "5",
-            "10",
-            "15",
-            "20",
-            "25",
-            "30",
-            "35",
-            "40",
-            "45",
-            "50",
-            "55",
-            "60",
-            "65",
-            "70",
-            "75",
-            "80",
-            "85",
-            "90",
-            "100"});
             this.CmbLoe.Location = new System.Drawing.Point(21, 121);
             this.CmbLoe.Name = "CmbLoe";
             this.CmbLoe.Size = new System.Drawing.Size(183, 21);
@@ -229,6 +204,7 @@ namespace Contact_Manager.Partials.Dialog
             // 
             // CmbNationality
             // 
+            this.CmbNationality.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.CmbNationality.FormattingEnabled = true;
             this.CmbNationality.Location = new System.Drawing.Point(210, 275);
             this.CmbNationality.Name = "CmbNationality";
@@ -304,6 +280,7 @@ namespace Contact_Manager.Partials.Dialog
             // rbOther
             // 
             this.rbOther.AutoSize = true;
+            this.rbOther.Checked = true;
             this.rbOther.Location = new System.Drawing.Point(205, 84);
             this.rbOther.Name = "rbOther";
             this.rbOther.Size = new System.Drawing.Size(64, 17);
@@ -319,7 +296,6 @@ namespace Contact_Manager.Partials.Dialog
             this.rbFemale.Name = "rbFemale";
             this.rbFemale.Size = new System.Drawing.Size(66, 17);
             this.rbFemale.TabIndex = 36;
-            this.rbFemale.TabStop = true;
             this.rbFemale.Text = "Weiblich";
             this.rbFemale.UseVisualStyleBackColor = true;
             // 
@@ -330,38 +306,13 @@ namespace Contact_Manager.Partials.Dialog
             this.rbMale.Name = "rbMale";
             this.rbMale.Size = new System.Drawing.Size(68, 17);
             this.rbMale.TabIndex = 35;
-            this.rbMale.TabStop = true;
             this.rbMale.Text = "Männlich";
             this.rbMale.UseVisualStyleBackColor = true;
             // 
             // CmbTitle
             // 
+            this.CmbTitle.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.CmbTitle.FormattingEnabled = true;
-            this.CmbTitle.Items.AddRange(new object[] {
-            "",
-            "Dr.",
-            "Dr. Dr.",
-            "Dr. hc",
-            "Dr.-Ing.",
-            "Dr. med. dent.",
-            "Dr. med. vet",
-            "Dr. phil",
-            "Ing.",
-            "Notar",
-            "Notarin",
-            "Prof.",
-            "Prof. Dr.",
-            "Prof. Dr. med.",
-            "Prof. Dr. med. vet",
-            "Rechtsanwalt",
-            "Rechtsanwältin",
-            "Dr. rer. nat.",
-            "Dr. jur.",
-            "Prof. Dr. rer. nat.",
-            "Dr. iur.",
-            "Dr. phil. nat.",
-            "Dr. rer. pol.",
-            "Dr. oec."});
             this.CmbTitle.Location = new System.Drawing.Point(210, 44);
             this.CmbTitle.Name = "CmbTitle";
             this.CmbTitle.Size = new System.Drawing.Size(175, 21);
@@ -369,10 +320,8 @@ namespace Contact_Manager.Partials.Dialog
             // 
             // CmbSalutation
             // 
+            this.CmbSalutation.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.CmbSalutation.FormattingEnabled = true;
-            this.CmbSalutation.Items.AddRange(new object[] {
-            "Herr",
-            "Frau"});
             this.CmbSalutation.Location = new System.Drawing.Point(21, 44);
             this.CmbSalutation.Name = "CmbSalutation";
             this.CmbSalutation.Size = new System.Drawing.Size(183, 21);

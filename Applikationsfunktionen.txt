@@ -1,24 +1,59 @@
-Beim erstmaligen Starten der Applikation wir nach Benutzername und Passwort gefragt
-Erstellt die .dat Dateien im Pfad C:\Users\<Benutzer>\.crm
-Anmeldung mit Benutzername und Passwort ist möglich
-Im Passwortfeld kann man die Enter Taste als Bestätigung verwenden.
+# Definitionen
+✓ = Umgesetzt
+x = nicht Umgesetzt
 
-Erstellung von Mitarbeiter ist möglich.
-Das Bearbeiten von Mitarbeiter.
-Löschung von Mitarbeitern.
+# Nicht funktionale Anforderungen
+[✓] Applikation in C# Windows Froms Framework
+[✓] Durchdachte Applikationsarchitektur
+[✓] Usiblity
+[✓] Error Handeling (Stabilität)
+[✓] Inline Dokumentation vorhanden
+[✓] Einheitliche UI
 
-Erstellung von Kunden ist möglich.
-Bearbeiten von Kunden
-Löschung von Kunden
+# Allgemine Anforderungen
+[✓] Anmeldung mit Anmeldedaten
+[✓] Dashboard View
+[✓] Benutzerverwaltung nur mit Adminrechte
+[✓] Automatische vergabe von ID's bei Kunden, Mitarbeiter, Lehrlinge und Benutzer
+[✓] Datenstamm automatisch gespeichert
 
-Erstellung von Lehrlingen ist möglich
-Bearbeitung von Lehrlingen
-Löschung von Lehrlingen
+# Kundenstamm Anforderung
+[✓] Kunden suchen
+[✓] Kunde erstellen
+[x] Kunde bearbeiten
+[✓] Kunde löschen
+[✓] Kunde aktivieren/deaktivieren
+[✓] Notizen historisch Auflisten
+[✓] Notizen erstellen
+[✓] Notizen bearbeiten
 
-Erstellen von neuen Users
-Bearbeitung von Users
-Deaktivieren der Users
-Löschung von Users
+# Mitarbeiterstamm Anforderung
+[✓] Mitarbeiter suchen
+[✓] Mitarbeiter erstellen
+[✓] Mitarbeiter bearbeiten
+[✓] Mitarbeiter aktivieren/deaktivieren
+[✓] Mitarbeiter löschen
 
-Dashboard gibt die gesammt Anzahl der einzelnen Ressourcen.
-Suche wird gefilter auf einer Suchseite ermöglicht
+# Lehrlingstamm Anforderung
+[✓] Lehrling suchen
+[✓] Lehrling erstellen
+[✓] Lehrling bearbeiten
+[✓] Lehrling aktivieren/deaktivieren
+[✓] Lehrling löschen
+
+# Benutzerverwaltung Anforderung
+[✓] Benutzer suchen
+[✓] Benutzer erstellen
+[✓] Benutzer bearbeitern
+[✓] Benutzer aktivieren/deaktivieren
+[✓] Benutzer löschen
+
+# CSV Import Anforderung
+[x] CSV Import Kunde
+[x] CSV Import Mitarbeiter
+[x] CSV Import Lehrling
+
+# vCard Import Anforderung
+[x] vCard Import Kunde
+[x] vCard Import Mitarbeiter
+[x] vCard Import Lerhling

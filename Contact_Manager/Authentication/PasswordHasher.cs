@@ -7,6 +7,9 @@ using System.Threading.Tasks;
 
 namespace Contact_Manager.Authentication
 {
+    /**
+     * Hashes the password securely
+     */
     class PasswordHasher
     {
         // The size of the salt
@@ -18,6 +21,9 @@ namespace Contact_Manager.Authentication
         // The num of iteration of Rfc2898DeriveBytes
         private const int Iterations = 5;
 
+        /**
+         * Hash the clear text password
+         */
         public static string HashString(string password)
         {
             // Create the salt
@@ -39,6 +45,9 @@ namespace Contact_Manager.Authentication
             return base64Hash;
         }
 
+        /**
+         * Verify the clear text password with the hashed password
+         */
         public static bool Verify(string password, string hashPassword)
         {
             // Convert the base64 to bytes

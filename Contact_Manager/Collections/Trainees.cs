@@ -9,6 +9,9 @@ using Contact_Manager.Models;
 
 namespace Contact_Manager.Collections
 {
+    /**
+     * Stores all trainees
+     */
     [Serializable]
     class Trainees : Collection
     {
