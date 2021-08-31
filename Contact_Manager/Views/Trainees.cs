@@ -232,10 +232,11 @@ namespace Contact_Manager.Views
                 GridViewTrainees.DataSource = dt;
             }
 
-            /*foreach(DataRow row in dt.Rows)
+            foreach(DataRow row in dt.Rows)
             {
+                Trainees trainee = new Trainees();
                 DataContainer.AddModel(DataContainer.Trainees, trainee);
-            }*/
+            }
             
         }
     }

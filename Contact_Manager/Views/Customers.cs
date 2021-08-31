@@ -228,14 +228,11 @@ namespace Contact_Manager.Views
                     dt.Rows.Add(dr);
                 }
             }
-            if (dt.Rows.Count > 0)
+            foreach (DataRow row in dt.Rows)
             {
-                GridViewCustomers.DataSource = dt;
-            }
-            /*foreach (DataRow row in dt.Rows)
-            {
+                Customers customer = new Customers();
                 DataContainer.AddModel(DataContainer.Customers, customer);
-            }*/
+            }
         }
         }
     }
