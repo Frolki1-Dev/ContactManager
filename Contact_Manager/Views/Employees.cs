@@ -228,12 +228,10 @@ namespace Contact_Manager.Views
             {
                 GridViewEmployee.DataSource = dt;
             }
-            /*
-            foreach (DataRow row in dt.Rows)
+            /*foreach (DataRow row in dt.Rows)
             {
                 DataContainer.AddModel(DataContainer.Employees, employee);
-            }
-            */
+            }*/
         }
 
     }
