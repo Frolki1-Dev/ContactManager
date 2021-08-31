@@ -20,9 +20,9 @@ namespace Contact_Manager.Collections
             // Convert the IList to a normal list
             List<User> list = List.Cast<User>().ToList();
             // Search for the username
-            int index = list.FindIndex(user => user.Username == username);
+            int index = list.FindIndex(user => user.Username.ToLower().Trim() == username.ToLower().Trim());
 
-            return index > 0;
+            return index > -1;
         }
 
         protected override string GetDataContainerListName()
