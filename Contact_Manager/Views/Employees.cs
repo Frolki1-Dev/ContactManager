@@ -231,7 +231,39 @@ namespace Contact_Manager.Views
 
             foreach (DataRow row in dt.Rows)
             {
-                Employees employee = new Employees();
+                dynamic exitDate = null;
+
+                if(row[20].ToString().Length > 0)
+                {
+                    exitDate = DateTime.ParseExact(row[20].ToString(), "dd.MM.yyyy", null);
+                }
+
+                Employee employee = new Employee(
+                    salutation: row[0].ToString(),
+                    title: row[1].ToString(),
+                    firstName: row[3].ToString(),
+                    lastName: row[4].ToString(),
+                    gender: Convert.ToInt32(row[2]),
+                    phonePrivate: row[5].ToString(),
+                    phoneCompany: row[6].ToString(),
+                    mobile: row[7].ToString(),
+                    ahv: row[8].ToString(),
+                    dateOfBirth: DateTime.Now,
+                    address: row[10].ToString(),
+                    zipCode: Convert.ToInt32(row[11]),
+                    city: row[12].ToString(),
+                    nationality: row[13].ToString(),
+                    departement: row[14].ToString(),
+                    fax: row[15].ToString(),
+                    email: row[16].ToString(),
+                    loe: Convert.ToInt32(row[17]),
+                    role: row[18].ToString(),
+                    entryDate: DateTime.Now,
+                    exitDate: exitDate,
+                    managementLevel: Convert.ToInt32(row[21]),
+                    country: "None",
+                    status: Convert.ToBoolean(exitDate != null)
+                    );
                 DataContainer.AddModel(DataContainer.Employees, employee);
             }
         }
