@@ -33,6 +33,10 @@ namespace Contact_Manager.Partials.Dialog
         public TraineeDialog(Trainee trainee)
         {
             InitializeComponent();
+
+            // load default values for comboboxes
+            defaultValueCombobox();
+
             _editTrainee = trainee;
             btnSave.Text = "Änderungen speichern";
 

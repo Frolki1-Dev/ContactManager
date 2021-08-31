@@ -31,6 +31,10 @@ namespace Contact_Manager.Partials.Dialog
         public EmployeeDialog(Employee employee)
         {
             InitializeComponent();
+
+            // load default values for comboboxes
+            defaultValueCombobox();
+
             btnSave.Text = "Änderungen speichern";
 
             // set flag for edit
@@ -405,7 +409,6 @@ namespace Contact_Manager.Partials.Dialog
             {
                 if (_editEmployee == null)
                     CreateEmployee();
-                // cleanUpFields();
                 else
                     UpdateEmployee();
 
