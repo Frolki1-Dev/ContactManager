@@ -281,6 +281,8 @@ namespace Contact_Manager.Partials.Dialog
                 );
 
                 DataContainer.AddModel(DataContainer.Customers, customer);
+
+                Close();
             }
             catch (ValidationException ex)
             {
@@ -319,6 +321,7 @@ namespace Contact_Manager.Partials.Dialog
 
                 DataContainer.Update(_currentCustomer);
                 MessageBox.Show("Änderungen gespeichert.");
+                Close();
 
             }
             catch (ValidationException ex)
@@ -344,7 +347,6 @@ namespace Contact_Manager.Partials.Dialog
                     CreateCustomer();
                 else
                     UpdateCustomer();
-                Close();
             }
            catch (Exception ex)
             {

@@ -118,6 +118,7 @@ namespace Contact_Manager.Partials.Dialog
             "90%",
             "95%",
             "100%"});
+            this.CmbCustomerType.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.CmbCustomerType.FormattingEnabled = true;
             this.CmbCustomerType.Items.AddRange(new object[] {
             "A",
@@ -149,6 +150,7 @@ namespace Contact_Manager.Partials.Dialog
             // 
             // CmbNationality
             // 
+            this.CmbNationality.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.CmbNationality.FormattingEnabled = true;
             this.CmbNationality.Location = new System.Drawing.Point(21, 348);
             this.CmbNationality.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
@@ -252,6 +254,7 @@ namespace Contact_Manager.Partials.Dialog
             // 
             // CmbTitle
             // 
+            this.CmbTitle.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.CmbTitle.FormattingEnabled = true;
             this.CmbTitle.Items.AddRange(new object[] {
             "Dr.",
@@ -285,6 +288,7 @@ namespace Contact_Manager.Partials.Dialog
             // 
             // CmbSalutation
             // 
+            this.CmbSalutation.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.CmbSalutation.FormattingEnabled = true;
             this.CmbSalutation.Items.AddRange(new object[] {
             "Herr",
