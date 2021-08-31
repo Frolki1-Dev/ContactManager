@@ -1,0 +1,5 @@
+id, Anrede, Titel, Geschlecht, Vorname, Nachname, Telefon (Privat), Telefon (Geschäftlich), Handy, Fax, Email, Nationalität, Geburtsdatum, Unternehmen, Kundentyp, Adresse, PLZ, Ort
+1, Herr, , Männlich, Alexander, Palmer, 0710000001, 0711234567, 0797654321, , alexander.palmer@zbw.ch, Schweiz, 01.01.1986, ZBW, A, Gaiserwaldstrasse 6, 9015, St. Gallen
+2, Herr, , Männlich, Lukas, Thüring, 0711234567, 0717230001, 0774476369, , luk.thuering@gmail.com, Schweiz, 31.12.1999, Jansen AG, Industriestrasse 34, 9463, Oberriet
+3, Herr, , Männlich, Frank, Giger, 0511234567, 0311234567, 0797654321, , frank.giger@mail.com, Schweiz, 13.07.1997, MF Group, Bohl 6, 9000, St. Gallen
+4, Frau, , Weiblich, Maria, Muster, 0711234567, 0411234567, 0771234567, , maria.muster@mustermail.com, Schweiz, 12.12.1912, Muster AG, Musterstrasse 3, 1000, Musterdorf
