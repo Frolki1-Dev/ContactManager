@@ -409,8 +409,6 @@ namespace Contact_Manager.Partials.Dialog
                     CreateTrainee();
                 else
                     UpdateTrainee();
-
-                Close();
             }
             catch (Exception ex)
             {

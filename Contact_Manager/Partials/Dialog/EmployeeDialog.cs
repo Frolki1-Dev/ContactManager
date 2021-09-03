@@ -411,8 +411,6 @@ namespace Contact_Manager.Partials.Dialog
                     CreateEmployee();
                 else
                     UpdateEmployee();
-
-                Close();
             }
             catch (Exception ex)
             {
