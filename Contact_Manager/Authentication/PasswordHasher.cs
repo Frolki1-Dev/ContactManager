@@ -1,9 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Security.Cryptography;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Contact_Manager.Authentication
 {
@@ -62,7 +58,7 @@ namespace Contact_Manager.Authentication
             byte[] hash = pbkf2.GetBytes(HashSize);
 
             // Check every byte
-            for(var i = 0; i < HashSize; i++)
+            for (var i = 0; i < HashSize; i++)
             {
                 if (hashBytes[i + SaltSize] != hash[i])
                 {

@@ -12,31 +12,10 @@ namespace Contact_Manager.Views
     public partial class Users : Form, IDataSourceForm
     {
         private BindingSource _bindingSource;
+
         public Users()
         {
             InitializeComponent();
-        }
-
-        private void Users_Load(object sender, EventArgs e)
-        {
-            MainTheme.InitThemeForForm(this);
-            PnlHeader.BackColor = Properties.Settings.Default.SecondaryColor;
-            UpdateSource();
-        }
-
-        private void CmdCreate_Click(object sender, EventArgs e)
-        {
-            UserDialog dialog = new UserDialog();
-            dialog.FormClosing += (o, args) =>
-            {
-                UpdateSource();
-            };
-            dialog.Show();
-        }
-
-        private void TxtSearch_TextChanged(object sender, EventArgs e)
-        {
-            UpdateSource();
         }
 
         public void UpdateSource()
@@ -51,9 +30,9 @@ namespace Contact_Manager.Views
             {
                 // Search
                 var users = from User usr in DataContainer.GetUserCollection()
-                            where usr.Username.Contains(TxtSearch.Text)
-                            orderby usr.Id
-                            select new
+                    where usr.Username.Contains(TxtSearch.Text)
+                    orderby usr.Id
+                    select new
                     {
                         ID = usr.Id,
                         Benutzername = usr.Username,
@@ -87,7 +66,39 @@ namespace Contact_Manager.Views
 
                 _bindingSource.DataSource = users;
             }
+
             GridViewUsers.Update();
+        }
+
+        public int GetSelectedRow()
+        {
+            // Check now the cell
+            if (GridViewUsers.SelectedCells.Count == 1)
+            {
+                return (int) GridViewUsers.Rows[GridViewUsers.SelectedCells[0].RowIndex].Cells[0].Value;
+            }
+
+            // Return -1
+            return -1;
+        }
+
+        private void Users_Load(object sender, EventArgs e)
+        {
+            MainTheme.InitThemeForForm(this);
+            PnlHeader.BackColor = Properties.Settings.Default.SecondaryColor;
+            UpdateSource();
+        }
+
+        private void CmdCreate_Click(object sender, EventArgs e)
+        {
+            UserDialog dialog = new UserDialog();
+            dialog.FormClosing += (o, args) => { UpdateSource(); };
+            dialog.Show();
+        }
+
+        private void TxtSearch_TextChanged(object sender, EventArgs e)
+        {
+            UpdateSource();
         }
 
         private void GridViewUsers_KeyDown(object sender, KeyEventArgs e)
@@ -129,18 +140,6 @@ namespace Contact_Manager.Views
             }
         }
 
-        public int GetSelectedRow()
-        {
-            // Check now the cell
-            if (GridViewUsers.SelectedCells.Count == 1)
-            {
-                return (int) GridViewUsers.Rows[GridViewUsers.SelectedCells[0].RowIndex].Cells[0].Value;
-            }
-
-            // Return -1
-            return -1;
-        }
-
         private void GridViewUsers_Paint(object sender, PaintEventArgs e)
         {
             if (GridViewUsers.Rows.Count == 0)
@@ -148,7 +147,8 @@ namespace Contact_Manager.Views
                 using (var gfx = e.Graphics)
                 {
                     gfx.DrawString("Keine Daten vorhanden", this.Font, Brushes.White,
-                        new PointF((GridViewUsers.Width - this.Font.Size * "Keine Daten vorhanden".Length) / 2, GridViewUsers.Height / 2));
+                        new PointF((GridViewUsers.Width - this.Font.Size * "Keine Daten vorhanden".Length) / 2,
+                            GridViewUsers.Height / 2));
                 }
             }
         }
@@ -172,10 +172,7 @@ namespace Contact_Manager.Views
             }
 
             UserDialog dialog = new UserDialog(user);
-            dialog.FormClosing += (o, args) =>
-            {
-                UpdateSource();
-            };
+            dialog.FormClosing += (o, args) => { UpdateSource(); };
             dialog.Show();
         }
     }

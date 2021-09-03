@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Drawing;
 using System.Windows.Forms;
 using static System.Windows.Forms.Control;
 
@@ -46,7 +41,7 @@ namespace Contact_Manager.Themes
             foreach (Control control in controls)
             {
                 // Define for a custom style
-                if(control.AccessibleDescription != null && control.AccessibleDescription.ToString() == "custom")
+                if (control.AccessibleDescription != null && control.AccessibleDescription.ToString() == "custom")
                 {
                     continue;
                 }
@@ -54,27 +49,34 @@ namespace Contact_Manager.Themes
                 // Define the global style now
                 if (control is Label)
                 {
-                    SetLabelStyle((Label)control);
-                } else if (control is Button)
+                    SetLabelStyle((Label) control);
+                }
+                else if (control is Button)
                 {
-                    SetButtonStyle((Button)control);
-                } else if(control is TextBox)
+                    SetButtonStyle((Button) control);
+                }
+                else if (control is TextBox)
                 {
-                    SetTextBoxStyle((TextBox)control);
-                } else if(control is Panel || control is UserControl || control is TableLayoutPanel)
+                    SetTextBoxStyle((TextBox) control);
+                }
+                else if (control is Panel || control is UserControl || control is TableLayoutPanel)
                 {
                     SetControlStyles(control.Controls);
-                } else if (control is DataGridView)
+                }
+                else if (control is DataGridView)
                 {
                     SetDataGridView((DataGridView) control);
-                } else if (control is GroupBox)
+                }
+                else if (control is GroupBox)
                 {
-                    SetGroupBoxStyle((GroupBox)control);
+                    SetGroupBoxStyle((GroupBox) control);
                     SetControlStyles(control.Controls);
-                } else if (control is RadioButton)
+                }
+                else if (control is RadioButton)
                 {
                     control.ForeColor = Color.White;
-                } else if (control is CheckBox)
+                }
+                else if (control is CheckBox)
                 {
                     control.ForeColor = Color.White;
                 }
@@ -145,7 +147,8 @@ namespace Contact_Manager.Themes
             control.ColumnHeadersDefaultCellStyle.ForeColor = Color.White;
             control.ColumnHeadersDefaultCellStyle.Padding = new Padding(3, 5, 3, 5);
             control.ColumnHeadersBorderStyle = DataGridViewHeaderBorderStyle.Single;
-            control.ColumnHeadersDefaultCellStyle.Font = new Font(Properties.Settings.Default.DefaultFormFont, FontStyle.Bold);
+            control.ColumnHeadersDefaultCellStyle.Font =
+                new Font(Properties.Settings.Default.DefaultFormFont, FontStyle.Bold);
             control.EnableHeadersVisualStyles = false;
             control.GridColor = Color.White;
             control.RowHeadersVisible = false;

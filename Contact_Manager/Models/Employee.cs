@@ -10,12 +10,13 @@ namespace Contact_Manager.Models
     {
         // constructor
         public Employee(string salutation, string firstName, string lastName, DateTime dateOfBirth, int gender,
-            string title, string email, bool status, string address, int zipCode, string phonePrivate, string phoneCompany,
+            string title, string email, bool status, string address, int zipCode, string phonePrivate,
+            string phoneCompany,
             string fax, string mobile, string city, string country,
             string departement, string ahv, string nationality, DateTime entryDate,
             DateTime exitDate, int loe, string role, int managementLevel)
-            : base (salutation, firstName, lastName, dateOfBirth, gender, title, email, status, address, zipCode,
-                  phonePrivate, phoneCompany, fax, mobile, city, country)
+            : base(salutation, firstName, lastName, dateOfBirth, gender, title, email, status, address, zipCode,
+                phonePrivate, phoneCompany, fax, mobile, city, country)
         {
             Departement = departement;
             Ahv = ahv;
@@ -25,7 +26,6 @@ namespace Contact_Manager.Models
             Loe = loe;
             Role = role;
             ManagementLevel = managementLevel;
-
         }
 
         // properties

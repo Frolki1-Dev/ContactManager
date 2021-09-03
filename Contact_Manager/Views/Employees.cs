@@ -1,11 +1,7 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using Contact_Manager.Interfaces;
 using Contact_Manager.Models;
@@ -17,31 +13,10 @@ namespace Contact_Manager.Views
     public partial class Employees : Form, IDataSourceForm
     {
         private BindingSource _bindingSource;
+
         public Employees()
         {
             InitializeComponent();
-        }
-
-        private void Employees_Load(object sender, EventArgs e)
-        {
-            MainTheme.InitThemeForForm(this);
-            PnlHeader.BackColor = Properties.Settings.Default.SecondaryColor;
-            UpdateSource();
-        }
-
-        private void CmdCreate_Click(object sender, EventArgs e)
-        {
-            EmployeeDialog dialog = new EmployeeDialog();
-            dialog.FormClosing += (o, args) =>
-            {
-                UpdateSource();
-            };
-            dialog.Show();
-        }
-
-        private void TxtSearch_TextChanged(object sender, EventArgs e)
-        {
-            UpdateSource();
         }
 
         public void UpdateSource()
@@ -56,7 +31,8 @@ namespace Contact_Manager.Views
             {
                 // Search
                 var employees = from Employee employee in DataContainer.GetEmployeeCollection()
-                    where employee.FirstName.Contains(TxtSearch.Text) || employee.LastName.Contains(TxtSearch.Text) || employee.Role.Contains(TxtSearch.Text)
+                    where employee.FirstName.Contains(TxtSearch.Text) || employee.LastName.Contains(TxtSearch.Text) ||
+                          employee.Role.Contains(TxtSearch.Text)
                     select new
                     {
                         ID = employee.Id,
@@ -92,6 +68,7 @@ namespace Contact_Manager.Views
 
                 _bindingSource.DataSource = employees;
             }
+
             GridViewEmployee.Update();
         }
 
@@ -100,11 +77,30 @@ namespace Contact_Manager.Views
             // Check now the cell
             if (GridViewEmployee.SelectedCells.Count == 1)
             {
-                return (int)GridViewEmployee.Rows[GridViewEmployee.SelectedCells[0].RowIndex].Cells[0].Value;
+                return (int) GridViewEmployee.Rows[GridViewEmployee.SelectedCells[0].RowIndex].Cells[0].Value;
             }
 
             // Return -1
             return -1;
+        }
+
+        private void Employees_Load(object sender, EventArgs e)
+        {
+            MainTheme.InitThemeForForm(this);
+            PnlHeader.BackColor = Properties.Settings.Default.SecondaryColor;
+            UpdateSource();
+        }
+
+        private void CmdCreate_Click(object sender, EventArgs e)
+        {
+            EmployeeDialog dialog = new EmployeeDialog();
+            dialog.FormClosing += (o, args) => { UpdateSource(); };
+            dialog.Show();
+        }
+
+        private void TxtSearch_TextChanged(object sender, EventArgs e)
+        {
+            UpdateSource();
         }
 
         private void GridViewEmployee_Paint(object sender, PaintEventArgs e)
@@ -114,7 +110,8 @@ namespace Contact_Manager.Views
                 using (var gfx = e.Graphics)
                 {
                     gfx.DrawString("Keine Daten vorhanden", this.Font, Brushes.White,
-                        new PointF((GridViewEmployee.Width - this.Font.Size * "Keine Daten vorhanden".Length) / 2, GridViewEmployee.Height / 2));
+                        new PointF((GridViewEmployee.Width - this.Font.Size * "Keine Daten vorhanden".Length) / 2,
+                            GridViewEmployee.Height / 2));
                 }
             }
         }
@@ -144,7 +141,8 @@ namespace Contact_Manager.Views
             }
 
             DialogResult result = MessageBox.Show(
-                "Möchtest du wirklich den Mitarbeiter " + employee.FirstName + " " + employee.LastName + " löschen?", "Bestätigung Löschvorgang",
+                "Möchtest du wirklich den Mitarbeiter " + employee.FirstName + " " + employee.LastName + " löschen?",
+                "Bestätigung Löschvorgang",
                 MessageBoxButtons.YesNo, MessageBoxIcon.Question);
 
             // Check if the user sad yes
@@ -152,7 +150,9 @@ namespace Contact_Manager.Views
             {
                 // Delete the user
                 DataContainer.Delete(employee);
-                MessageBox.Show("Mitarbeiter " + employee.FirstName + " " + employee.LastName + " wurde erfolreich gelöscht.", "Gelöscht",
+                MessageBox.Show(
+                    "Mitarbeiter " + employee.FirstName + " " + employee.LastName + " wurde erfolreich gelöscht.",
+                    "Gelöscht",
                     MessageBoxButtons.OK, MessageBoxIcon.Information);
                 UpdateSource();
             }
@@ -177,16 +177,12 @@ namespace Contact_Manager.Views
             }
 
             EmployeeDialog dialog = new EmployeeDialog(employee);
-            dialog.FormClosing += (o, args) =>
-            {
-                UpdateSource();
-            };
+            dialog.FormClosing += (o, args) => { UpdateSource(); };
             dialog.Show();
         }
 
         private void cmdImportCsv_Click(object sender, EventArgs e)
         {
-
             OpenFileDialog openFileDialogCSV = new OpenFileDialog();
             openFileDialogCSV.ShowDialog();
             openFileDialogCSV.InitialDirectory = @"C:\";
@@ -198,6 +194,7 @@ namespace Contact_Manager.Views
             txtFile.Text = openFileDialogCSV.FileName;
             BindData(txtFile.Text);
         }
+
         private void BindData(string filePath)
         {
             DataTable dt = new DataTable();
@@ -211,6 +208,7 @@ namespace Contact_Manager.Views
                 {
                     dt.Columns.Add(new DataColumn(headerWord));
                 }
+
                 //For Data
                 for (int i = 1; i < lines.Length; i++)
                 {
@@ -221,6 +219,7 @@ namespace Contact_Manager.Views
                     {
                         dr[headerWord] = dataWords[columnIndex++];
                     }
+
                     dt.Rows.Add(dr);
                 }
             }
@@ -229,7 +228,7 @@ namespace Contact_Manager.Views
             {
                 dynamic exitDate = null;
 
-                if(row[20].ToString().Length > 0)
+                if (row[20].ToString().Length > 0)
                 {
                     exitDate = DateTime.ParseExact(row[20].ToString(), "dd.MM.yyyy", null);
                 }
@@ -265,7 +264,5 @@ namespace Contact_Manager.Views
                 UpdateSource();
             }
         }
-
     }
 }
-

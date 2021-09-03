@@ -1,12 +1,5 @@
-﻿using System;
-using System.Collections;
-using System.Collections.Generic;
-using System.IO;
-using System.Linq;
+﻿using System.IO;
 using System.Runtime.Serialization.Formatters.Binary;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
 using Contact_Manager.Collections;
 using Contact_Manager.Models;
 
@@ -21,6 +14,7 @@ namespace Contact_Manager
          * All possible data sources as const
          */
         public const string Users = "users";
+
         public const string Customers = "customers";
         public const string Employees = "employees";
         public const string Trainees = "trainees";
@@ -38,16 +32,16 @@ namespace Contact_Manager
             switch (type)
             {
                 case Users:
-                    _userCollection.Add((User)data);
+                    _userCollection.Add((User) data);
                     break;
                 case Customers:
-                    _customerCollection.Add((Customer)data);
+                    _customerCollection.Add((Customer) data);
                     break;
                 case Employees:
-                    _employeeCollection.Add((Employee)data);
+                    _employeeCollection.Add((Employee) data);
                     break;
                 case Trainees:
-                    _traineeCollection.Add((Trainee)data);
+                    _traineeCollection.Add((Trainee) data);
                     break;
             }
         }
@@ -84,7 +78,7 @@ namespace Contact_Manager
 
             if (fs.Length > 0)
             {
-                 obj = formatter.Deserialize(fs);
+                obj = formatter.Deserialize(fs);
             }
 
             fs.Flush();
@@ -94,7 +88,7 @@ namespace Contact_Manager
             switch (type)
             {
                 case Users:
-                    _userCollection = (Users)obj;
+                    _userCollection = (Users) obj;
                     break;
                 case Customers:
                     if (obj.GetType().ToString() == "System.Object")
@@ -102,6 +96,7 @@ namespace Contact_Manager
                         _customerCollection = new Customers();
                         break;
                     }
+
                     _customerCollection = (Customers) obj;
                     break;
                 case Employees:
@@ -110,6 +105,7 @@ namespace Contact_Manager
                         _employeeCollection = new Employees();
                         break;
                     }
+
                     _employeeCollection = (Employees) obj;
                     break;
                 case Trainees:
@@ -118,6 +114,7 @@ namespace Contact_Manager
                         _traineeCollection = new Trainees();
                         break;
                     }
+
                     _traineeCollection = (Trainees) obj;
                     break;
             }
@@ -180,16 +177,19 @@ namespace Contact_Manager
         {
             if (data.GetType() == typeof(User))
             {
-                _userCollection.Delete(((User)data).Id);
-            } else if (data.GetType() == typeof(Trainee))
+                _userCollection.Delete(((User) data).Id);
+            }
+            else if (data.GetType() == typeof(Trainee))
             {
-               _traineeCollection.Delete(((Trainee)data).Id);
-            } else if (data.GetType() == typeof(Customer))
+                _traineeCollection.Delete(((Trainee) data).Id);
+            }
+            else if (data.GetType() == typeof(Customer))
             {
                 _customerCollection.Delete(((Customer) data).Id);
-            } else if (data.GetType() == typeof(Employee))
+            }
+            else if (data.GetType() == typeof(Employee))
             {
-               _employeeCollection.Delete(((Employee) data).Id);
+                _employeeCollection.Delete(((Employee) data).Id);
             }
             else
             {
@@ -204,11 +204,11 @@ namespace Contact_Manager
         {
             if (data.GetType() == typeof(User))
             {
-                _userCollection.Edit((User)data);
+                _userCollection.Edit((User) data);
             }
             else if (data.GetType() == typeof(Trainee))
             {
-                _traineeCollection.Edit((Trainee)data);
+                _traineeCollection.Edit((Trainee) data);
             }
             else if (data.GetType() == typeof(Customer))
             {

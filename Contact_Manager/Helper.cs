@@ -1,10 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.IO;
-using System.Linq;
-using System.Security.Cryptography;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace Contact_Manager
@@ -49,9 +44,9 @@ namespace Contact_Manager
             }
 
             // Check if the binary data files exists
-            if (!File.Exists(GetApplicationDataPath("users.dat")) || 
-                !File.Exists(GetApplicationDataPath("employees.dat")) || 
-                !File.Exists(GetApplicationDataPath("trainees.dat")) || 
+            if (!File.Exists(GetApplicationDataPath("users.dat")) ||
+                !File.Exists(GetApplicationDataPath("employees.dat")) ||
+                !File.Exists(GetApplicationDataPath("trainees.dat")) ||
                 !File.Exists(GetApplicationDataPath("customers.dat")))
             {
                 return false;

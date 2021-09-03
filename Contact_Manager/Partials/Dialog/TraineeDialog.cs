@@ -1,11 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using Contact_Manager.Models;
 using Contact_Manager.Themes;
@@ -14,17 +7,20 @@ namespace Contact_Manager.Partials.Dialog
 {
     public partial class TraineeDialog : Form
     {
+        private readonly Trainee _editTrainee;
+        private int _currentTraineeYearFormatted;
+        private string _defaultCountry;
+        private int _loeFormatted;
+        private int _managementLevelFormatted;
+
+        private int _maxTraineeYearFormatted;
+
         /* *****************************************************
         * declare global vars
         ***************************************************** */
         private int _selectedGender;
         private int _zipCodeFormatted;
-        private string _defaultCountry;
-        private readonly Trainee _editTrainee;
-        private int _loeFormatted;
-        private int _managementLevelFormatted;
-        private int _currentTraineeYearFormatted;
-        private int _maxTraineeYearFormatted;
+
         public TraineeDialog()
         {
             InitializeComponent();
@@ -285,13 +281,13 @@ namespace Contact_Manager.Partials.Dialog
                 throw new ValidationException("Die Kaderstufe muss innerhalb 0 und 5 sein");
 
             // check trainee years
-            if(_maxTraineeYearFormatted < 1 || _maxTraineeYearFormatted > 4)
+            if (_maxTraineeYearFormatted < 1 || _maxTraineeYearFormatted > 4)
                 throw new ValidationException("Anzahl Lehrjahre muss zwischen 1 Jahr und 4 Jahre sein");
 
-            if(_currentTraineeYearFormatted < 1 || _currentTraineeYearFormatted > 4)
+            if (_currentTraineeYearFormatted < 1 || _currentTraineeYearFormatted > 4)
                 throw new ValidationException("Aktulles Lehrjahr muss zwischen 1 und 4 sein");
 
-            if(_currentTraineeYearFormatted > _maxTraineeYearFormatted)
+            if (_currentTraineeYearFormatted > _maxTraineeYearFormatted)
                 throw new ValidationException("Aktuelles Lehrjahr ist grösser als die Anzahl Lehrjahre");
         }
 

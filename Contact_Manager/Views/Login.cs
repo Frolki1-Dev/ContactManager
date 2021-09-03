@@ -31,14 +31,16 @@ namespace Contact_Manager.Views
             // Check first all inputs
             if (TxtUsername.TextLength < 1 || TxtPassword.TextLength < 1)
             {
-                MessageBox.Show("Leider wurden nicht alle Felder ausgefüllt.", "Eingabe fehlerhaft", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show("Leider wurden nicht alle Felder ausgefüllt.", "Eingabe fehlerhaft",
+                    MessageBoxButtons.OK, MessageBoxIcon.Information);
                 return;
             }
 
             // Try to authenticate the user
             if (!Authentication.Authentication.Authenticate(TxtUsername.Text, TxtPassword.Text))
             {
-                MessageBox.Show("Leider wurde die Kombination nicht gefunden.", "Anmeldedaten fehlerhaft", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show("Leider wurde die Kombination nicht gefunden.", "Anmeldedaten fehlerhaft",
+                    MessageBoxButtons.OK, MessageBoxIcon.Information);
                 return;
             }
 

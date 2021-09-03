@@ -1,9 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Linq;
 using System.Net.Mail;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace Contact_Manager
@@ -14,7 +11,8 @@ namespace Contact_Manager
     class ValidationException : Exception
     {
         public ValidationException(string message) : base(message: message)
-        { }
+        {
+        }
     }
 
     /**
@@ -64,7 +62,8 @@ namespace Contact_Manager
                 return;
             }
 
-            throw new ValidationException(exceptionMessage + "\nFormate:\n0041 00 000 00 00\n +41 00 000 00 00\n000 000 00 00");
+            throw new ValidationException(exceptionMessage +
+                                          "\nFormate:\n0041 00 000 00 00\n +41 00 000 00 00\n000 000 00 00");
         }
 
         /**

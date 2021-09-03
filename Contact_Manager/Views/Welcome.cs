@@ -22,7 +22,7 @@ namespace Contact_Manager.Views
          */
         private void KeyupEvent(object sender, EventArgs e)
         {
-            if(IsFormValid())
+            if (IsFormValid())
             {
                 CmdCreateDatabaseAndUser.Enabled = true;
                 return;
@@ -37,12 +37,12 @@ namespace Contact_Manager.Views
         private bool IsFormValid()
         {
             // TODO make better check
-            if(TxtUsername.TextLength < 1 || TxtPassword.TextLength < 6)
+            if (TxtUsername.TextLength < 1 || TxtPassword.TextLength < 6)
             {
                 return false;
             }
 
-            
+
             return true;
         }
 

@@ -14,6 +14,13 @@ namespace Contact_Manager.Collections
     [Serializable]
     public abstract class Collection : CollectionBase
     {
+        public IIdentifier this[int i]
+        {
+            get => (IIdentifier) List[i];
+
+            set => List.Add(value);
+        }
+
         /**
          * Get the next ID of the resource
          */
@@ -99,7 +106,8 @@ namespace Contact_Manager.Collections
             if (index < 0)
             {
                 // We have a problem!
-                throw new InvalidDataException("The id " + obj.Id + " was not founded in the list " + TypeDescriptor.GetClassName(this) + "!");
+                throw new InvalidDataException("The id " + obj.Id + " was not founded in the list " +
+                                               TypeDescriptor.GetClassName(this) + "!");
             }
 
             // Remove the index and add the user new to the list
@@ -124,13 +132,6 @@ namespace Contact_Manager.Collections
             }
 
             Save();
-        }
-
-        public IIdentifier this[int i]
-        {
-            get => (IIdentifier)List[i];
-
-            set => List.Add(value);
         }
 
         protected abstract string GetDataContainerListName();

@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.IO;
 using Contact_Manager.Models;
 
 namespace Contact_Manager.Collections
@@ -12,6 +11,13 @@ namespace Contact_Manager.Collections
     [Serializable]
     class Users : Collection
     {
+        public new User this[int i]
+        {
+            get => (User) List[i];
+
+            set => List.Add(value);
+        }
+
         /**
          * Checks if the username exists already
          */
@@ -28,13 +34,6 @@ namespace Contact_Manager.Collections
         protected override string GetDataContainerListName()
         {
             return DataContainer.Users;
-        }
-
-        public new User this[int i]
-        {
-            get => (User) List[i];
-
-            set => List.Add(value);
         }
     }
 }

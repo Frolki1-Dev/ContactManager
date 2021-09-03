@@ -1,39 +1,22 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using Contact_Manager.Interfaces;
 using Contact_Manager.Models;
 using Contact_Manager.Partials.Dialog;
 using Contact_Manager.Themes;
-using Contact_Manager;
-
 
 namespace Contact_Manager.Views
 {
     public partial class Trainees : Form, IDataSourceForm
     {
         private BindingSource _bindingSource;
+
         public Trainees()
         {
             InitializeComponent();
-        }
-
-        private void Trainees_Load(object sender, EventArgs e)
-        {
-            MainTheme.InitThemeForForm(this);
-            PnlHeader.BackColor = Properties.Settings.Default.SecondaryColor;
-            UpdateSource();
-        }
-
-        private void TxtSearch_TextChanged(object sender, EventArgs e)
-        {
-            UpdateSource();
         }
 
         public void UpdateSource()
@@ -48,7 +31,8 @@ namespace Contact_Manager.Views
             {
                 // Search
                 var trainees = from Trainee trainee in DataContainer.GetTraineeCollection()
-                    where trainee.FirstName.Contains(TxtSearch.Text) || trainee.LastName.Contains(TxtSearch.Text) || trainee.Role.Contains(TxtSearch.Text)
+                    where trainee.FirstName.Contains(TxtSearch.Text) || trainee.LastName.Contains(TxtSearch.Text) ||
+                          trainee.Role.Contains(TxtSearch.Text)
                     select new
                     {
                         ID = trainee.Id,
@@ -86,6 +70,7 @@ namespace Contact_Manager.Views
 
                 _bindingSource.DataSource = trainees;
             }
+
             GridViewTrainees.Update();
         }
 
@@ -94,20 +79,29 @@ namespace Contact_Manager.Views
             // Check now the cell
             if (GridViewTrainees.SelectedCells.Count == 1)
             {
-                return (int)GridViewTrainees.Rows[GridViewTrainees.SelectedCells[0].RowIndex].Cells[0].Value;
+                return (int) GridViewTrainees.Rows[GridViewTrainees.SelectedCells[0].RowIndex].Cells[0].Value;
             }
 
             // Return -1
             return -1;
         }
 
+        private void Trainees_Load(object sender, EventArgs e)
+        {
+            MainTheme.InitThemeForForm(this);
+            PnlHeader.BackColor = Properties.Settings.Default.SecondaryColor;
+            UpdateSource();
+        }
+
+        private void TxtSearch_TextChanged(object sender, EventArgs e)
+        {
+            UpdateSource();
+        }
+
         private void CmdCreate_Click(object sender, EventArgs e)
         {
             TraineeDialog dialog = new TraineeDialog();
-            dialog.FormClosing += (o, args) =>
-            {
-                UpdateSource();
-            };
+            dialog.FormClosing += (o, args) => { UpdateSource(); };
             dialog.Show();
         }
 
@@ -118,7 +112,8 @@ namespace Contact_Manager.Views
                 using (var gfx = e.Graphics)
                 {
                     gfx.DrawString("Keine Daten vorhanden", this.Font, Brushes.White,
-                        new PointF((GridViewTrainees.Width - this.Font.Size * "Keine Daten vorhanden".Length) / 2, GridViewTrainees.Height / 2));
+                        new PointF((GridViewTrainees.Width - this.Font.Size * "Keine Daten vorhanden".Length) / 2,
+                            GridViewTrainees.Height / 2));
                 }
             }
         }
@@ -142,10 +137,7 @@ namespace Contact_Manager.Views
             }
 
             TraineeDialog dialog = new TraineeDialog(trainee);
-            dialog.FormClosing += (o, args) =>
-            {
-                UpdateSource();
-            };
+            dialog.FormClosing += (o, args) => { UpdateSource(); };
             dialog.Show();
         }
 
@@ -174,7 +166,8 @@ namespace Contact_Manager.Views
             }
 
             DialogResult result = MessageBox.Show(
-                "Möchtest du wirklich den Lehrling " + trainee.FirstName + " " + trainee.LastName + " löschen?", "Bestätigung Löschvorgang",
+                "Möchtest du wirklich den Lehrling " + trainee.FirstName + " " + trainee.LastName + " löschen?",
+                "Bestätigung Löschvorgang",
                 MessageBoxButtons.YesNo, MessageBoxIcon.Question);
 
             // Check if the user sad yes
@@ -182,7 +175,9 @@ namespace Contact_Manager.Views
             {
                 // Delete the user
                 DataContainer.Delete(trainee);
-                MessageBox.Show("Lehrling " + trainee.FirstName + " " + trainee.LastName + " wurde erfolreich gelöscht.", "Gelöscht",
+                MessageBox.Show(
+                    "Lehrling " + trainee.FirstName + " " + trainee.LastName + " wurde erfolreich gelöscht.",
+                    "Gelöscht",
                     MessageBoxButtons.OK, MessageBoxIcon.Information);
                 UpdateSource();
             }
@@ -201,6 +196,7 @@ namespace Contact_Manager.Views
             txtFile.Text = openFileDialogCSV.FileName;
             BindData(txtFile.Text);
         }
+
         private void BindData(string filePath)
         {
             DataTable dt = new DataTable();
@@ -214,6 +210,7 @@ namespace Contact_Manager.Views
                 {
                     dt.Columns.Add(new DataColumn(headerWord));
                 }
+
                 //For Data
                 for (int i = 1; i < lines.Length; i++)
                 {
@@ -224,20 +221,21 @@ namespace Contact_Manager.Views
                     {
                         dr[headerWord] = dataWords[columnIndex++];
                     }
+
                     dt.Rows.Add(dr);
                 }
             }
+
             if (dt.Rows.Count > 0)
             {
                 GridViewTrainees.DataSource = dt;
             }
 
-            foreach(DataRow row in dt.Rows)
+            foreach (DataRow row in dt.Rows)
             {
                 Trainees trainee = new Trainees();
                 DataContainer.AddModel(DataContainer.Trainees, trainee);
             }
-            
         }
     }
 }

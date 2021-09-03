@@ -1,11 +1,7 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using Contact_Manager.Interfaces;
 using Contact_Manager.Models;
@@ -17,16 +13,10 @@ namespace Contact_Manager.Views
     public partial class Customers : Form, IDataSourceForm
     {
         private BindingSource _bindingSource;
+
         public Customers()
         {
             InitializeComponent();
-        }
-
-        private void Customers_Load(object sender, EventArgs e)
-        {
-            MainTheme.InitThemeForForm(this);
-            PnlHeader.BackColor = Properties.Settings.Default.SecondaryColor;
-            UpdateSource();
         }
 
         public void UpdateSource()
@@ -41,7 +31,8 @@ namespace Contact_Manager.Views
             {
                 // Search
                 var customers = from Customer customer in DataContainer.GetCustomerCollection()
-                            where customer.CompanyName.Contains(TxtSearch.Text) || customer.FirstName.Contains(TxtSearch.Text) || customer.LastName.Contains(TxtSearch.Text)
+                    where customer.CompanyName.Contains(TxtSearch.Text) ||
+                          customer.FirstName.Contains(TxtSearch.Text) || customer.LastName.Contains(TxtSearch.Text)
                     select new
                     {
                         ID = customer.Id,
@@ -51,7 +42,6 @@ namespace Contact_Manager.Views
                         Ort = customer.City,
                         Vorname = customer.FirstName,
                         Nachname = customer.LastName,
-
                     };
 
                 if (!customers.Any())
@@ -82,6 +72,7 @@ namespace Contact_Manager.Views
 
                 _bindingSource.DataSource = customers;
             }
+
             GridViewCustomers.Update();
         }
 
@@ -90,20 +81,24 @@ namespace Contact_Manager.Views
             // Check now the cell
             if (GridViewCustomers.SelectedCells.Count == 1)
             {
-                return (int)GridViewCustomers.Rows[GridViewCustomers.SelectedCells[0].RowIndex].Cells[0].Value;
+                return (int) GridViewCustomers.Rows[GridViewCustomers.SelectedCells[0].RowIndex].Cells[0].Value;
             }
 
             // Return -1
             return -1;
         }
 
+        private void Customers_Load(object sender, EventArgs e)
+        {
+            MainTheme.InitThemeForForm(this);
+            PnlHeader.BackColor = Properties.Settings.Default.SecondaryColor;
+            UpdateSource();
+        }
+
         private void CmdCreate_Click(object sender, EventArgs e)
         {
             CustomerDialog dialog = new CustomerDialog();
-            dialog.FormClosing += (o, args) =>
-            {
-                UpdateSource();
-            };
+            dialog.FormClosing += (o, args) => { UpdateSource(); };
             dialog.Show();
         }
 
@@ -119,7 +114,8 @@ namespace Contact_Manager.Views
                 using (var gfx = e.Graphics)
                 {
                     gfx.DrawString("Keine Daten vorhanden", this.Font, Brushes.White,
-                        new PointF((GridViewCustomers.Width - this.Font.Size * "Keine Daten vorhanden".Length) / 2, GridViewCustomers.Height / 2));
+                        new PointF((GridViewCustomers.Width - this.Font.Size * "Keine Daten vorhanden".Length) / 2,
+                            GridViewCustomers.Height / 2));
                 }
             }
         }
@@ -143,10 +139,7 @@ namespace Contact_Manager.Views
             }
 
             CustomerDialog dialog = new CustomerDialog(customer);
-            dialog.FormClosing += (o, args) =>
-            {
-                UpdateSource();
-            };
+            dialog.FormClosing += (o, args) => { UpdateSource(); };
             dialog.Show();
         }
 
@@ -202,6 +195,7 @@ namespace Contact_Manager.Views
             txtFile.Text = openFileDialogCSV.FileName;
             BindData(txtFile.Text);
         }
+
         private void BindData(string filePath)
         {
             DataTable dt = new DataTable();
@@ -215,6 +209,7 @@ namespace Contact_Manager.Views
                 {
                     dt.Columns.Add(new DataColumn(headerWord));
                 }
+
                 //For Data
                 for (int i = 1; i < lines.Length; i++)
                 {
@@ -225,15 +220,16 @@ namespace Contact_Manager.Views
                     {
                         dr[headerWord] = dataWords[columnIndex++];
                     }
+
                     dt.Rows.Add(dr);
                 }
             }
+
             foreach (DataRow row in dt.Rows)
             {
                 Customers customer = new Customers();
                 DataContainer.AddModel(DataContainer.Customers, customer);
             }
         }
-        }
     }
-
+}

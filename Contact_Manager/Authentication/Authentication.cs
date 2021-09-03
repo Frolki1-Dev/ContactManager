@@ -1,13 +1,7 @@
-﻿using Contact_Manager.Models;
-using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
-using System.Net.Sockets;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
 using Contact_Manager.Collections;
-
+using Contact_Manager.Models;
 
 namespace Contact_Manager.Authentication
 {

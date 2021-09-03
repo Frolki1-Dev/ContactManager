@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Globalization;
 using System.Windows.Forms;
 using Contact_Manager.Models;
 using Contact_Manager.Themes;
@@ -9,7 +8,12 @@ namespace Contact_Manager.Partials.Dialog
 {
     public partial class EmployeeDialog : Form
     {
+        private readonly Employee _editEmployee;
         List<string> _culturesList = new List<string>();
+        private string _defaultCountry;
+        private int _loeFormatted;
+
+        private int _managementLevelFormatted;
         /* CultureInfo[] _cultures = CultureInfo.GetCultures(CultureTypes.SpecificCultures);
         RegionInfo _region; */
 
@@ -18,10 +22,6 @@ namespace Contact_Manager.Partials.Dialog
         ***************************************************** */
         private int _selectedGender;
         private int _zipCodeFormatted;
-        private string _defaultCountry;
-        private readonly Employee _editEmployee;
-        private int _loeFormatted;
-        private int _managementLevelFormatted;
 
         public EmployeeDialog()
         {
@@ -385,7 +385,7 @@ namespace Contact_Manager.Partials.Dialog
                 _editEmployee.Role = txtRole.Text;
                 _editEmployee.ManagementLevel = _managementLevelFormatted;
 
-                     
+
                 MessageBox.Show("Änderungen gespeichert.");
 
                 Close();

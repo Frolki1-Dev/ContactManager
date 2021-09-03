@@ -33,8 +33,6 @@ namespace Contact_Manager.Models
             Country = country;
         }
 
-        // properties
-        public int Id { get; set; }
         public string Salutation { get; set; }
         public string FirstName { get; set; }
         public string LastName { get; set; }
@@ -51,6 +49,9 @@ namespace Contact_Manager.Models
         public string Mobile { get; set; }
         public string City { get; set; }
         public string Country { get; set; }
+
+        // properties
+        public int Id { get; set; }
         public bool Deleted { get; set; }
     }
 }

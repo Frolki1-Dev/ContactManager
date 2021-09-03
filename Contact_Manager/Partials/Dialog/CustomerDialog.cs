@@ -1,17 +1,10 @@
-﻿using Contact_Manager.Collections;
-using Contact_Manager.Models;
-using System;
+﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Drawing;
 using System.Globalization;
-using System.IO;
 using System.Linq;
-using System.Net.Mail;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
+using Contact_Manager.Models;
 using Contact_Manager.Themes;
 
 namespace Contact_Manager.Partials.Dialog
@@ -19,13 +12,13 @@ namespace Contact_Manager.Partials.Dialog
     public partial class CustomerDialog : Form
     {
         private Customer _currentCustomer;
-
-        private BindingSource _source;
+        private string _defaultCountry;
         private bool _noteInEditMode = false;
         private int _rowIndex = 0;
         private int _selectedGender;
+
+        private BindingSource _source;
         private int _zipCodeFormatted;
-        private string _defaultCountry;
 
 
         public CustomerDialog()
@@ -40,12 +33,11 @@ namespace Contact_Manager.Partials.Dialog
 
         public CustomerDialog(Customer customer)
         {
-             //open an already created customer
+            //open an already created customer
             InitializeComponent();
             CmbNationality.DataSource = CountryList();
             _currentCustomer = customer;
             btnCompanyDelete.Visible = false;
-
 
 
             /* *****************************************************
@@ -82,7 +74,7 @@ namespace Contact_Manager.Partials.Dialog
             ChkStatus.Checked = _currentCustomer.Status;
             CmbTitle.Text = _currentCustomer.Title;
             CmbSalutation.Text = _currentCustomer.Salutation;
-            customer.Gender = _currentCustomer.Gender; 
+            customer.Gender = _currentCustomer.Gender;
             CmbNationality.Text = _currentCustomer.Country;
             DtpDateOfBirth.Value = _currentCustomer.DateOfBirth;
 
@@ -90,7 +82,6 @@ namespace Contact_Manager.Partials.Dialog
             UpdateNotesView();
         }
 
-       
 
         public static List<string> CountryList()
         {
@@ -137,11 +128,10 @@ namespace Contact_Manager.Partials.Dialog
                 MessageBox.Show(ex.Message, "Validierungsfehler", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
-        
+
 
         private void CleanUpFields()
         {
-            
             CmbSalutation.SelectedIndex = -1;
             txtFirstName.Clear();
             txtSurName.Clear();
@@ -170,8 +160,8 @@ namespace Contact_Manager.Partials.Dialog
                * declare vars
               ***************************** */
 
-           
-           _defaultCountry = "Sitzerland";
+
+            _defaultCountry = "Sitzerland";
 
 
             /* *****************************
@@ -209,7 +199,6 @@ namespace Contact_Manager.Partials.Dialog
             Validation.Required(txtCompany.Text, "Feld Unternehmen muss ausgefüllt werden.");
             Validation.Required(CmbCustomerType.Text, "Kundentyp muss definiert werden.");
             Validation.Required(CmbSalutation.Text, "Anrede muss ausgefüllt werden.");
-            
 
 
             // check if email is correct
@@ -221,12 +210,12 @@ namespace Contact_Manager.Partials.Dialog
             Validation.ValidateZipCode(_zipCodeFormatted);
 
             // check phone / fax / mobile number lengths and if required
-            if(txtPhonePrivate.Text.Length == 0)
+            if (txtPhonePrivate.Text.Length == 0)
             {
                 Validation.Required(txtPhonePrivate.Text, "Telefon (Privat) muss ausgefüllt werden.");
             }
             else
-            Validation.ValidatePhone(txtPhonePrivate.Text, "Die Privatnummer ist nicht gültig!");
+                Validation.ValidatePhone(txtPhonePrivate.Text, "Die Privatnummer ist nicht gültig!");
 
             if (txtFax.Text.Length > 0)
             {
@@ -238,8 +227,8 @@ namespace Contact_Manager.Partials.Dialog
                 Validation.Required(txtPhoneCompany.Text, "Telefon (Geschäftlich) muss ausgefüllt werden.");
             }
             else
-            Validation.ValidatePhone(txtPhoneCompany.Text, "Die Geschäftsnummer ist nicht gültig!");
-           
+                Validation.ValidatePhone(txtPhoneCompany.Text, "Die Geschäftsnummer ist nicht gültig!");
+
 
             if (txtMobile.Text.Length > 0)
             {
@@ -288,17 +277,13 @@ namespace Contact_Manager.Partials.Dialog
             {
                 MessageBox.Show(ex.Message, "Validierungsfehler", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-           
         }
 
         private void UpdateCustomer()
         {
-           
             CheckFieldInput();
             try
             {
-
-
                 //set updated fields
                 _currentCustomer.CompanyName = txtCompany.Text;
                 _currentCustomer.Address = txtAddress.Text;
@@ -322,7 +307,6 @@ namespace Contact_Manager.Partials.Dialog
                 DataContainer.Update(_currentCustomer);
                 MessageBox.Show("Änderungen gespeichert.");
                 Close();
-
             }
             catch (ValidationException ex)
             {
@@ -332,8 +316,6 @@ namespace Contact_Manager.Partials.Dialog
             {
                 MessageBox.Show(ex.Message, "Exception", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-
-
         }
 
         private void btnCompanySave_Click(object sender, EventArgs e)
@@ -348,19 +330,16 @@ namespace Contact_Manager.Partials.Dialog
                 else
                     UpdateCustomer();
             }
-           catch (Exception ex)
+            catch (Exception ex)
             {
                 MessageBox.Show(ex.Message, "Fehler", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-        
-           
         }
-
 
 
         private void BtnAddNote_Click(object sender, EventArgs e)
         {
-            if(this._noteInEditMode)
+            if (this._noteInEditMode)
             {
                 try
                 {
@@ -404,7 +383,8 @@ namespace Contact_Manager.Partials.Dialog
                 using (var gfx = e.Graphics)
                 {
                     gfx.DrawString("Keine Notizen vorhanden", this.Font, Brushes.White,
-                        new PointF((GrpBoxNotes.Width - Font.Size * "Keine Notizen vorhanden".Length) / 2, GrpBoxNotes.Height / 3));
+                        new PointF((GrpBoxNotes.Width - Font.Size * "Keine Notizen vorhanden".Length) / 2,
+                            GrpBoxNotes.Height / 3));
                 }
             }
         }
