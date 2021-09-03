@@ -26,13 +26,16 @@ namespace Contact_Manager.Partials.Dialog
         public EmployeeDialog()
         {
             InitializeComponent();
+
+            // load defaults into comboboxes
+            defaultValueCombobox();
         }
 
         public EmployeeDialog(Employee employee)
         {
             InitializeComponent();
 
-            // load default values for comboboxes
+            // load defaults into comboboxes
             defaultValueCombobox();
 
             btnSave.Text = "Änderungen speichern";
@@ -206,8 +209,6 @@ namespace Contact_Manager.Partials.Dialog
         private void EmployeeDialog_Load(object sender, EventArgs e)
         {
             MainTheme.InitThemeForForm(this);
-
-            defaultValueCombobox();
         }
 
         private void ChkStatus_CheckedChanged(object sender, EventArgs e)
@@ -283,6 +284,10 @@ namespace Contact_Manager.Partials.Dialog
             
             if (txtFax.Text.Length > 0)
                 Validation.ValidatePhone(txtFax.Text, "Faxnummer ist nicht gültig.");
+
+            // check ahv number
+            if (txtAhv.Text.Length > 0)
+                Validation.ValidateAhv(txtAhv.Text, "AHV Nummer ist nicht gültig.");
 
             // check birth of date compare
             if (checkedBirthOfDate > 0)

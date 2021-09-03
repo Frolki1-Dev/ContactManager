@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Linq;
 using System.Net.Mail;
+using System.Text.RegularExpressions;
 using System.Windows.Forms;
 
 namespace Contact_Manager
@@ -75,6 +76,19 @@ namespace Contact_Manager
             {
                 throw new ValidationException(exceptionMessage);
             }
+        }
+
+        /**
+         * Validate the ahv number
+         */
+        public static void ValidateAhv(string ahv, string exceptionMessage = "Die AHV Nummer ist nicht gültig!")
+        {
+            // check input if pattern is correct
+            var regexResult = Regex.Match(ahv, @"[7][5][6][.][\d]{4}[.][\d]{4}[.][\d]{2}$");
+
+            // if not successfull, throw exception
+            if (regexResult.Success == false)
+                throw new ValidationException(exceptionMessage + "\nFormat:\n756.1234.5678.90");
         }
 
         /**

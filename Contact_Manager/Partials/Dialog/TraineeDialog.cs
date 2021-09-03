@@ -24,6 +24,9 @@ namespace Contact_Manager.Partials.Dialog
         public TraineeDialog()
         {
             InitializeComponent();
+
+            // load default values for comboboxes
+            defaultValueCombobox();
         }
 
         public TraineeDialog(Trainee trainee)
@@ -184,7 +187,6 @@ namespace Contact_Manager.Partials.Dialog
         private void TraineeDialog_Load(object sender, EventArgs e)
         {
             MainTheme.InitThemeForForm(this);
-            defaultValueCombobox();
 
             /* *****************************
              * define default values for trainee
@@ -266,6 +268,10 @@ namespace Contact_Manager.Partials.Dialog
 
             if (txtFax.Text.Length > 0)
                 Validation.ValidatePhone(txtFax.Text, "Faxnummer ist nicht gültig.");
+
+            // check ahv number
+            if (txtAhv.Text.Length > 0)
+                Validation.ValidateAhv(txtAhv.Text, "AHV Nummer ist nicht gültig.");
 
             // check birth of date compare
             if (checkedBirthOfDate > 0)
