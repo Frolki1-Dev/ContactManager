@@ -273,9 +273,16 @@ namespace Contact_Manager.Partials.Dialog
 
             // check tel number lengths
             Validation.ValidatePhone(txtMobile.Text, "Mobilenummer ist nicht gültig.");
-            Validation.ValidatePhone(txtPhonePrivate.Text, "Telefonnumer Privat ist nicht gültig.");
-            Validation.ValidatePhone(txtPhoneCompany.Text, "Telefonnumer Geschäft ist nicht gültig.");
-            Validation.ValidatePhone(txtFax.Text, "Faxnummer ist nicht gültig.");
+            
+            // optional tel / fax numbers
+            if (txtPhonePrivate.Text.Length > 0)
+                Validation.ValidatePhone(txtPhonePrivate.Text, "Telefonnumer Privat ist nicht gültig.");
+
+            if (txtPhoneCompany.Text.Length > 0)
+                Validation.ValidatePhone(txtPhoneCompany.Text, "Telefonnumer Geschäft ist nicht gültig.");
+            
+            if (txtFax.Text.Length > 0)
+                Validation.ValidatePhone(txtFax.Text, "Faxnummer ist nicht gültig.");
 
             // check birth of date compare
             if (checkedBirthOfDate > 0)
