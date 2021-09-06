@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Data;
 using System.Drawing;
 using System.Linq;
@@ -227,8 +228,37 @@ namespace Contact_Manager.Views
 
             foreach (DataRow row in dt.Rows)
             {
-                Customers customer = new Customers();
+                dynamic dateofbirth = null;
+
+                //if (row[3].ToString().Length > 0)
+                //{
+                //    dateofbirth = DateTime.ParseExact(row[3].ToString(), "dd.MM.yyyy", null);
+                //}
+
+                Customer customer = new Customer(
+                    row[0].ToString(),
+                    row[1].ToString(),
+                    row[2].ToString(),
+                    DateTime.Now,
+                    Convert.ToInt32(row[4]),
+                    row[5].ToString(),
+                    row[6].ToString(),
+                    false,
+                    row[7].ToString(),
+                    Convert.ToInt32(row[9]),
+                    row[8].ToString(),
+                    row[9].ToString(),
+                    row[10].ToString(),
+                    row[11].ToString(),
+                    row[12].ToString(),
+                    row[13].ToString(),
+                    row[16].ToString(),
+                    row[17].ToString(),
+                    new List<CustomerNotes>()
+                );
                 DataContainer.AddModel(DataContainer.Customers, customer);
+
+                UpdateSource();
             }
         }
     }

@@ -195,6 +195,7 @@ namespace Contact_Manager.Views
 
             txtFile.Text = openFileDialogCSV.FileName;
             BindData(txtFile.Text);
+            
         }
 
         private void BindData(string filePath)
@@ -236,6 +237,50 @@ namespace Contact_Manager.Views
                 Trainees trainee = new Trainees();
                 DataContainer.AddModel(DataContainer.Trainees, trainee);
             }
+
+            foreach (DataRow row in dt.Rows)
+            {
+                dynamic exitDate = null;
+
+                if (row[20].ToString().Length > 0)
+                {
+                    exitDate = DateTime.ParseExact(row[20].ToString(), "dd.MM.yyyy", null);
+                }
+
+                Trainee trainee = new Trainee(
+                    row[0].ToString(),
+                    row[3].ToString(),
+                    row[4].ToString(),
+                    DateTime.Now,
+                    Convert.ToInt32(row[2]),
+                    row[1].ToString(),
+                    row[16].ToString(),
+                    false,
+                    row[10].ToString(),
+                    Convert.ToInt32(row[11]),
+                    row[5].ToString(),
+                    row[6].ToString(),
+                    row[15].ToString(),
+                    row[7].ToString(),
+                    row[12].ToString(),
+                    "None",
+                    row[14].ToString(),
+                    row[8].ToString(),
+                    row[14].ToString(),
+                    DateTime.Now,
+                    DateTime.Now,
+                    Convert.ToInt32(row[17]),
+                    row[18].ToString(),
+                    Convert.ToInt32(row[21]),
+                    Convert.ToInt32(row[22]),
+                    Convert.ToInt32(row[23])
+                );
+                DataContainer.AddModel(DataContainer.Trainees, trainee);
+
+                UpdateSource();
+            }
         }
+
+
     }
 }
