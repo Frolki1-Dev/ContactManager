@@ -85,7 +85,7 @@ x = nicht Umgesetzt
 # Kundenstamm Anforderung
 [✓] Kunden suchen
 [✓] Kunde erstellen
-[x] Kunde bearbeiten
+[✓] Kunde bearbeiten
 [✓] Kunde löschen
 [✓] Kunde aktivieren/deaktivieren
 [✓] Notizen historisch Auflisten
@@ -114,9 +114,9 @@ x = nicht Umgesetzt
 [✓] Benutzer löschen
 
 # CSV Import Anforderung
-[x] CSV Import Kunde
-[x] CSV Import Mitarbeiter
-[x] CSV Import Lehrling
+[✓] CSV Import Kunde
+[✓] CSV Import Mitarbeiter
+[✓] CSV Import Lehrling
 
 # vCard Import Anforderung
 [x] vCard Import Kunde
