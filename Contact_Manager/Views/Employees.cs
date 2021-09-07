@@ -192,77 +192,8 @@ namespace Contact_Manager.Views
             openFileDialogCSV.Filter = "csv files (*.csv)|*.csv|All files (*.*)|*.*";
 
             txtFile.Text = openFileDialogCSV.FileName;
-            BindData(txtFile.Text);
-        }
-
-        private void BindData(string filePath)
-        {
-            DataTable dt = new DataTable();
-            string[] lines = System.IO.File.ReadAllLines(filePath);
-            if (lines.Length > 0)
-            {
-                //first line to create header
-                string firstLine = lines[0];
-                string[] headerLabels = firstLine.Split(',');
-                foreach (string headerWord in headerLabels)
-                {
-                    dt.Columns.Add(new DataColumn(headerWord));
-                }
-
-                //For Data
-                for (int i = 1; i < lines.Length; i++)
-                {
-                    string[] dataWords = lines[i].Split(',');
-                    DataRow dr = dt.NewRow();
-                    int columnIndex = 0;
-                    foreach (string headerWord in headerLabels)
-                    {
-                        dr[headerWord] = dataWords[columnIndex++];
-                    }
-
-                    dt.Rows.Add(dr);
-                }
-            }
-
-            foreach (DataRow row in dt.Rows)
-            {
-                dynamic exitDate = null;
-
-                if (row[20].ToString().Length > 0)
-                {
-                    exitDate = DateTime.ParseExact(row[20].ToString(), "dd.MM.yyyy", null);
-                }
-
-                Employee employee = new Employee(
-                    row[0].ToString(),
-                    row[3].ToString(),
-                    row[4].ToString(),
-                    DateTime.Now,
-                    Convert.ToInt32(row[2]),
-                    row[1].ToString(),
-                    row[16].ToString(),
-                    false,
-                    row[10].ToString(),
-                    Convert.ToInt32(row[11]),
-                    row[5].ToString(),
-                    row[6].ToString(),
-                    row[15].ToString(),
-                    row[7].ToString(),
-                    row[12].ToString(),
-                    "None",
-                    row[14].ToString(),
-                    row[8].ToString(),
-                    row[14].ToString(),
-                    DateTime.Now,
-                    DateTime.Now,
-                    Convert.ToInt32(row[17]),
-                    row[18].ToString(),
-                    Convert.ToInt32(row[21])
-                );
-                DataContainer.AddModel(DataContainer.Employees, employee);
-
-                UpdateSource();
-            }
+            CsvFileImport.StartImport(DataContainer.Employees, txtFile.Text);
+            UpdateSource();
         }
     }
 }

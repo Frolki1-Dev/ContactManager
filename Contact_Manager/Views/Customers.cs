@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Data;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Windows.Forms;
 using Contact_Manager.Interfaces;
@@ -194,72 +195,8 @@ namespace Contact_Manager.Views
             openFileDialogCSV.Filter = "csv files (*.csv)|*.csv|All files (*.*)|*.*";
 
             txtFile.Text = openFileDialogCSV.FileName;
-            BindData(txtFile.Text);
-        }
-
-        private void BindData(string filePath)
-        {
-            DataTable dt = new DataTable();
-            string[] lines = System.IO.File.ReadAllLines(filePath);
-            if (lines.Length > 0)
-            {
-                //first line to create header
-                string firstLine = lines[0];
-                string[] headerLabels = firstLine.Split(',');
-                foreach (string headerWord in headerLabels)
-                {
-                    dt.Columns.Add(new DataColumn(headerWord));
-                }
-
-                //For Data
-                for (int i = 1; i < lines.Length; i++)
-                {
-                    string[] dataWords = lines[i].Split(',');
-                    DataRow dr = dt.NewRow();
-                    int columnIndex = 0;
-                    foreach (string headerWord in headerLabels)
-                    {
-                        dr[headerWord] = dataWords[columnIndex++];
-                    }
-
-                    dt.Rows.Add(dr);
-                }
-            }
-
-            foreach (DataRow row in dt.Rows)
-            {
-                dynamic dateofbirth = null;
-
-                //if (row[3].ToString().Length > 0)
-                //{
-                //    dateofbirth = DateTime.ParseExact(row[3].ToString(), "dd.MM.yyyy", null);
-                //}
-
-                Customer customer = new Customer(
-                    row[0].ToString(),
-                    row[1].ToString(),
-                    row[2].ToString(),
-                    DateTime.Now,
-                    Convert.ToInt32(row[4]),
-                    row[5].ToString(),
-                    row[6].ToString(),
-                    false,
-                    row[7].ToString(),
-                    Convert.ToInt32(row[9]),
-                    row[8].ToString(),
-                    row[9].ToString(),
-                    row[10].ToString(),
-                    row[11].ToString(),
-                    row[12].ToString(),
-                    row[13].ToString(),
-                    row[16].ToString(),
-                    row[17].ToString(),
-                    new List<CustomerNotes>()
-                );
-                DataContainer.AddModel(DataContainer.Customers, customer);
-
-                UpdateSource();
-            }
+            CsvFileImport.StartImport(DataContainer.Customers, txtFile.Text);
+            UpdateSource();
         }
     }
 }
