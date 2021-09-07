@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Data;
 using System.Drawing;
 using System.Linq;
 using System.Windows.Forms;
@@ -19,6 +18,9 @@ namespace Contact_Manager.Views
             InitializeComponent();
         }
 
+        /**
+         * Update the data grid view
+         */
         public void UpdateSource()
         {
             if (_bindingSource == null)
@@ -32,7 +34,13 @@ namespace Contact_Manager.Views
                 // Search
                 var trainees = from Trainee trainee in DataContainer.GetTraineeCollection()
                     where trainee.FirstName.Contains(TxtSearch.Text) || trainee.LastName.Contains(TxtSearch.Text) ||
-                          trainee.Role.Contains(TxtSearch.Text)
+                          trainee.Role.Contains(TxtSearch.Text) || trainee.Departement.Contains(TxtSearch.Text) ||
+                          trainee.Ahv.Contains(TxtSearch.Text) || trainee.Address.Contains(TxtSearch.Text) ||
+                          trainee.Mobile.Contains(TxtSearch.Text) || trainee.PhonePrivate.Contains(TxtSearch.Text) ||
+                          trainee.PhoneCompany.Contains(TxtSearch.Text) || trainee.Fax.Contains(TxtSearch.Text) ||
+                          trainee.Email.Contains(TxtSearch.Text) ||
+                          trainee.ZipCode.ToString().Contains(TxtSearch.Text)
+                    orderby trainee.Id
                     select new
                     {
                         ID = trainee.Id,
@@ -52,7 +60,9 @@ namespace Contact_Manager.Views
             }
             else
             {
+                // Output all active objects
                 var trainees = from Trainee trainee in DataContainer.GetTraineeCollection()
+                    orderby trainee.Id
                     select new
                     {
                         ID = trainee.Id,
@@ -74,6 +84,9 @@ namespace Contact_Manager.Views
             GridViewTrainees.Update();
         }
 
+        /**
+         * Get the selected row from the data grid view
+         */
         public int GetSelectedRow()
         {
             // Check now the cell
@@ -93,11 +106,17 @@ namespace Contact_Manager.Views
             UpdateSource();
         }
 
+        /**
+         * If any changes are made in the search field THEN it should update the source
+         */
         private void TxtSearch_TextChanged(object sender, EventArgs e)
         {
             UpdateSource();
         }
 
+        /**
+         * Open the create mode of the dialog
+         */
         private void CmdCreate_Click(object sender, EventArgs e)
         {
             TraineeDialog dialog = new TraineeDialog();
@@ -105,19 +124,25 @@ namespace Contact_Manager.Views
             dialog.Show();
         }
 
+        /**
+         * If no objects are in the DataContainer THEN it will show an information
+         */
         private void GridViewTrainees_Paint(object sender, PaintEventArgs e)
         {
             if (GridViewTrainees.Rows.Count == 0)
             {
                 using (var gfx = e.Graphics)
                 {
-                    gfx.DrawString("Keine Daten vorhanden", this.Font, Brushes.White,
-                        new PointF((GridViewTrainees.Width - this.Font.Size * "Keine Daten vorhanden".Length) / 2,
+                    gfx.DrawString("Keine Daten vorhanden", Font, Brushes.White,
+                        new PointF((GridViewTrainees.Width - Font.Size * "Keine Daten vorhanden".Length) / 2,
                             GridViewTrainees.Height / 2));
                 }
             }
         }
 
+        /**
+         * Trigger the edit mode in the dialog
+         */
         private void GridViewTrainees_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
             int row = GetSelectedRow();
@@ -141,6 +166,9 @@ namespace Contact_Manager.Views
             dialog.Show();
         }
 
+        /**
+         * Check if the delete key is pressed. WHEN TRUE THEN it should delete the resource
+         */
         private void GridViewTrainees_KeyDown(object sender, KeyEventArgs e)
         {
             if (e.KeyCode != Keys.Delete)
@@ -183,17 +211,20 @@ namespace Contact_Manager.Views
             }
         }
 
+        /**
+         * Start the csv import
+         */
         private void cmdImportCsvTrainee_Click(object sender, EventArgs e)
         {
-            OpenFileDialog openFileDialogCSV = new OpenFileDialog();
-            openFileDialogCSV.ShowDialog();
-            openFileDialogCSV.InitialDirectory = @"C:\";
-            openFileDialogCSV.RestoreDirectory = true;
-            openFileDialogCSV.Title = "CSV Dateien durchsuchen";
-            openFileDialogCSV.DefaultExt = "csv";
-            openFileDialogCSV.Filter = "csv files (*.csv)|*.csv|All files (*.*)|*.*";
+            OpenFileDialog openFileDialogCsv = new OpenFileDialog();
+            openFileDialogCsv.ShowDialog();
+            openFileDialogCsv.InitialDirectory = @"C:\";
+            openFileDialogCsv.RestoreDirectory = true;
+            openFileDialogCsv.Title = "CSV Dateien durchsuchen";
+            openFileDialogCsv.DefaultExt = "csv";
+            openFileDialogCsv.Filter = "csv files (*.csv)|*.csv|All files (*.*)|*.*";
 
-            txtFile.Text = openFileDialogCSV.FileName;
+            txtFile.Text = openFileDialogCsv.FileName;
             CsvFileImport.StartImport(DataContainer.Trainees, txtFile.Text);
             UpdateSource();
         }

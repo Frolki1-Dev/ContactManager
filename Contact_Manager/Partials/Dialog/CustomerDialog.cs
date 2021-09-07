@@ -26,8 +26,8 @@ namespace Contact_Manager.Partials.Dialog
         {
             //open the customerdialog without the note fields
             InitializeComponent();
+            DefaultValueCombobox();
             Width = 478;
-            CmbNationality.DataSource = CountryList();
             GrpBoxNotes.Visible = false;
         }
 
@@ -35,7 +35,7 @@ namespace Contact_Manager.Partials.Dialog
         {
             //open an already created customer
             InitializeComponent();
-            CmbNationality.DataSource = CountryList();
+            DefaultValueCombobox();
             _currentCustomer = customer;
             btnCompanyDelete.Visible = false;
 
@@ -82,35 +82,33 @@ namespace Contact_Manager.Partials.Dialog
             UpdateNotesView();
         }
 
-
-        public static List<string> CountryList()
+        public void DefaultValueCombobox()
         {
-            // Creating culture list
-            List<string> cultureList = new List<string>();
-
-            // getting the specific CultureInfo from CultureInfo class
-            CultureInfo[] getCultureInfos = CultureInfo.GetCultures(CultureTypes.SpecificCultures);
-
-            foreach (CultureInfo getCulture in getCultureInfos)
+            /* *****************************
+             * Set salutations
+            ***************************** */
+            foreach (string salutation in StaticData.Salutations)
             {
-                // creating the object of RegionInfo class
-                RegionInfo getRegionInfo = new RegionInfo(getCulture.LCID);
-
-                // adding each country name into the arraylist
-                if (!(cultureList.Contains(getRegionInfo.EnglishName)))
-                {
-                    cultureList.Add(getRegionInfo.EnglishName);
-                }
+                CmbSalutation.Items.Add(salutation);
             }
 
-            // sorting array
-            cultureList.Sort();
+            /* *****************************
+             * Set titles
+            ***************************** */
+            foreach (string title in StaticData.Titles)
+            {
+                CmbTitle.Items.Add(title);
+            }
 
-            // returning country list
-            return cultureList;
+            /* *****************************
+             * Set country list
+            ***************************** */
+            foreach (string country in StaticData.Countries)
+            {
+                CmbNationality.Items.Add(country);
+            }
         }
 
-        //creating contact list
 
         public void ContactHistory()
         {
@@ -118,8 +116,8 @@ namespace Contact_Manager.Partials.Dialog
             {
                 Validation.Required(txtAddNote, "Notizfeld muss ausgefüllt werden!");
                 CustomerNotes customerNotes = new CustomerNotes(txtAddNote.Text);
-                this._currentCustomer.Notes.Insert(0, customerNotes);
-                DataContainer.Update(this._currentCustomer);
+                _currentCustomer.Notes.Insert(0, customerNotes);
+                DataContainer.Update(_currentCustomer);
                 txtAddNote.Text = "";
                 UpdateNotesView();
             }
@@ -339,14 +337,14 @@ namespace Contact_Manager.Partials.Dialog
 
         private void BtnAddNote_Click(object sender, EventArgs e)
         {
-            if (this._noteInEditMode)
+            if (_noteInEditMode)
             {
                 try
                 {
                     // Edit
                     Validation.Required(txtAddNote, "Notizfeld muss ausgefüllt werden!");
-                    this._currentCustomer.Notes[_rowIndex].Notes = txtAddNote.Text;
-                    DataContainer.Update(this._currentCustomer);
+                    _currentCustomer.Notes[_rowIndex].Notes = txtAddNote.Text;
+                    DataContainer.Update(_currentCustomer);
                     _rowIndex = 0;
                     _noteInEditMode = false;
                     txtAddNote.Text = "";
@@ -382,7 +380,7 @@ namespace Contact_Manager.Partials.Dialog
             {
                 using (var gfx = e.Graphics)
                 {
-                    gfx.DrawString("Keine Notizen vorhanden", this.Font, Brushes.White,
+                    gfx.DrawString("Keine Notizen vorhanden", Font, Brushes.White,
                         new PointF((GrpBoxNotes.Width - Font.Size * "Keine Notizen vorhanden".Length) / 2,
                             GrpBoxNotes.Height / 3));
                 }
@@ -393,8 +391,8 @@ namespace Contact_Manager.Partials.Dialog
         {
             //load the double clicked note 
             _rowIndex = e.RowIndex;
-            txtAddNote.Text = this._currentCustomer.Notes[_rowIndex].Notes;
-            this._noteInEditMode = true;
+            txtAddNote.Text = _currentCustomer.Notes[_rowIndex].Notes;
+            _noteInEditMode = true;
             BtnAddNote.Text = "Notiz speichern";
             GrpBoxNotes.Text = "Notiz (bearbeiten)";
         }

@@ -9,13 +9,9 @@ namespace Contact_Manager.Partials.Dialog
     public partial class EmployeeDialog : Form
     {
         private readonly Employee _editEmployee;
-        List<string> _culturesList = new List<string>();
         private string _defaultCountry;
         private int _loeFormatted;
-
         private int _managementLevelFormatted;
-        /* CultureInfo[] _cultures = CultureInfo.GetCultures(CultureTypes.SpecificCultures);
-        RegionInfo _region; */
 
         /* *****************************************************
         * declare global vars
@@ -28,7 +24,7 @@ namespace Contact_Manager.Partials.Dialog
             InitializeComponent();
 
             // load defaults into comboboxes
-            defaultValueCombobox();
+            DefaultValueCombobox();
         }
 
         public EmployeeDialog(Employee employee)
@@ -36,7 +32,7 @@ namespace Contact_Manager.Partials.Dialog
             InitializeComponent();
 
             // load defaults into comboboxes
-            defaultValueCombobox();
+            DefaultValueCombobox();
 
             btnSave.Text = "Änderungen speichern";
 
@@ -86,121 +82,44 @@ namespace Contact_Manager.Partials.Dialog
             CmbManagementLevel.Text = Convert.ToString(employee.ManagementLevel);
         }
 
-        public void defaultValueCombobox()
+        public void DefaultValueCombobox()
         {
             /* *****************************
-             * default salutations
+             * Set salutations
             ***************************** */
-            string[] salutations = new string[]
-            {
-                "Herr",
-                "Frau"
-            };
-
-            foreach (var salutation in salutations)
+            foreach (string salutation in StaticData.Salutations)
             {
                 CmbSalutation.Items.Add(salutation);
             }
 
             /* *****************************
-             * default titles
+             * Set titles
             ***************************** */
-            string[] titles = new string[]
-            {
-                "",
-                "Dr.",
-                "Dr. Dr.",
-                "Dr. hc",
-                "Dr.-Ing.",
-                "Dr. med. dent.",
-                "Dr. med. vet",
-                "Dr. phil",
-                "Ing.",
-                "Notar",
-                "Notarin",
-                "Prof.",
-                "Prof. Dr.",
-                "Prof. Dr. med.",
-                "Prof. Dr. med. vet",
-                "Rechtsanwalt",
-                "Rechtsanwältin",
-                "Dr. rer. nat.",
-                "Dr. jur.",
-                "Prof. Dr. rer. nat.",
-                "Dr. iur.",
-                "Dr. phil. nat.",
-                "Dr. rer. pol.",
-                "Dr. oec."
-            };
-
-            foreach (var title in titles)
+            foreach (string title in StaticData.Titles)
             {
                 CmbTitle.Items.Add(title);
             }
 
             /* *****************************
-             * default country list
+             * Set country list
             ***************************** */
-            string[] countries = new string[]
-            {
-                "Schweiz",
-                "Deutschland",
-                "Liechtenstein",
-                "Frankreich",
-                "Österreich",
-                "Italien"
-            };
-
-            foreach (var country in countries)
+            foreach (string country in StaticData.Countries)
             {
                 CmbNationality.Items.Add(country);
             }
 
             /* *****************************
-             * default loe
+             * Set loe
             ***************************** */
-            string[] loes = new string[]
-            {
-                "5",
-                "10",
-                "15",
-                "20",
-                "25",
-                "30",
-                "35",
-                "40",
-                "45",
-                "50",
-                "55",
-                "60",
-                "65",
-                "70",
-                "75",
-                "80",
-                "85",
-                "90",
-                "100"
-            };
-
-            foreach (var loe in loes)
+            foreach (string loe in StaticData.Loes)
             {
                 CmbLoe.Items.Add(loe);
             }
 
             /* *****************************
-             * default ManagementLevel
+             * Set ManagementLevel
             ***************************** */
-            string[] levels = new string[]
-            {
-                "0",
-                "1",
-                "2",
-                "3",
-                "4",
-                "5"
-            };
-
-            foreach (var level in levels)
+            foreach (string level in StaticData.ManagementLevels)
             {
                 CmbManagementLevel.Items.Add(level);
             }
@@ -274,20 +193,20 @@ namespace Contact_Manager.Partials.Dialog
 
             // check tel number lengths
             Validation.ValidatePhone(txtMobile.Text, "Mobilenummer ist nicht gültig.");
-            
+
             // optional tel / fax numbers
             if (txtPhonePrivate.Text.Length > 0)
                 Validation.ValidatePhone(txtPhonePrivate.Text, "Telefonnumer Privat ist nicht gültig.");
 
             if (txtPhoneCompany.Text.Length > 0)
                 Validation.ValidatePhone(txtPhoneCompany.Text, "Telefonnumer Geschäft ist nicht gültig.");
-            
+
             if (txtFax.Text.Length > 0)
                 Validation.ValidatePhone(txtFax.Text, "Faxnummer ist nicht gültig.");
 
             // check ahv number
-            if (txtAhv.Text.Length > 0)
-                Validation.ValidateAhv(txtAhv.Text, "AHV Nummer ist nicht gültig.");
+            Validation.Required(txtAhv.Text, "AHV Nummer wurde nicht hinterlegt.");
+            Validation.ValidateAhv(txtAhv.Text, "AHV Nummer ist nicht gültig.");
 
             // check birth of date compare
             if (checkedBirthOfDate > 0)

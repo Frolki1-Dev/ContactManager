@@ -14,7 +14,7 @@ namespace Contact_Manager.Views
 
         private void CmdLogin_Click(object sender, EventArgs e)
         {
-            authenticate();
+            Authenticate();
         }
 
         private void TxtPassword_KeyDown(object sender, KeyEventArgs e)
@@ -22,11 +22,11 @@ namespace Contact_Manager.Views
             if (e.KeyCode == Keys.Enter)
             {
                 // Execute login
-                authenticate();
+                Authenticate();
             }
         }
 
-        private void authenticate()
+        private void Authenticate()
         {
             // Check first all inputs
             if (TxtUsername.TextLength < 1 || TxtPassword.TextLength < 1)

@@ -46,10 +46,15 @@ namespace Contact_Manager.Views
             return true;
         }
 
-        /**
-         * Create the database and insert the user
-         */
         private void CmdCreateDatabaseAndUser_Click(object sender, EventArgs e)
+        {
+            CreateApplicationFiles();
+        }
+
+        /**
+         * Create all files for the application in the directory
+         */
+        private void CreateApplicationFiles()
         {
             Directory.CreateDirectory(Helper.GetApplicationDataPath());
 
@@ -64,36 +69,22 @@ namespace Contact_Manager.Views
 
             DataContainer.AddModel(DataContainer.Users, user);
 
-            this.Hide();
+            Hide();
             (new Login()).ShowDialog();
-            this.Close();
-
-            /*string databaseFile = Helper.GetUserProfilePath("crm.db");
-
-            try
-            {
-                DatabaseConnection.buildDatabase(databaseFile, TxtUsername.Text, TxtPassword.Text);
-
-                if (DatabaseConnection.hasActiveConnection())
-                {
-                    this.Hide();
-                    (new Login()).ShowDialog();
-                    this.Close();
-                }
-                else
-                {
-                    MessageBox.Show("Fehler", "Erstellungsfehler", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                }
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message, "Erstellungsfehler", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }*/
+            Close();
         }
 
         private void Welcome_Load(object sender, EventArgs e)
         {
             MainTheme.InitThemeForForm(this);
+        }
+
+        private void TxtPassword_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                CreateApplicationFiles();
+            }
         }
     }
 }

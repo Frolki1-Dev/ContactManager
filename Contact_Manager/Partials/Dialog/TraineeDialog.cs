@@ -26,7 +26,7 @@ namespace Contact_Manager.Partials.Dialog
             InitializeComponent();
 
             // load default values for comboboxes
-            defaultValueCombobox();
+            DefaultValueCombobox();
         }
 
         public TraineeDialog(Trainee trainee)
@@ -34,7 +34,7 @@ namespace Contact_Manager.Partials.Dialog
             InitializeComponent();
 
             // load default values for comboboxes
-            defaultValueCombobox();
+            DefaultValueCombobox();
 
             _editTrainee = trainee;
             btnSave.Text = "Änderungen speichern";
@@ -83,85 +83,36 @@ namespace Contact_Manager.Partials.Dialog
             CmbApprenticeYears.Text = Convert.ToString(trainee.MaxTraineeYear);
         }
 
-        public void defaultValueCombobox()
+        public void DefaultValueCombobox()
         {
             /* *****************************
-             * default salutations
+             * Set salutations
             ***************************** */
-            string[] salutations = new string[]
-            {
-                "Herr",
-                "Frau"
-            };
-
-            foreach (var salutation in salutations)
+            foreach (string salutation in StaticData.Salutations)
             {
                 CmbSalutation.Items.Add(salutation);
             }
 
             /* *****************************
-             * default country list
+             * Set country list
             ***************************** */
-            string[] countries = new string[]
-            {
-                "Schweiz",
-                "Deutschland",
-                "Liechtenstein",
-                "Frankreich",
-                "Österreich",
-                "Italien"
-            };
-
-            foreach (var country in countries)
+            foreach (string country in StaticData.Countries)
             {
                 CmbNationality.Items.Add(country);
             }
 
             /* *****************************
-             * default loe
+             * Set loe
             ***************************** */
-            string[] loes = new string[]
-            {
-                "5",
-                "10",
-                "15",
-                "20",
-                "25",
-                "30",
-                "35",
-                "40",
-                "45",
-                "50",
-                "55",
-                "60",
-                "65",
-                "70",
-                "75",
-                "80",
-                "85",
-                "90",
-                "100"
-            };
-
-            foreach (var loe in loes)
+            foreach (string loe in StaticData.Loes)
             {
                 CmbLoe.Items.Add(loe);
             }
 
             /* *****************************
-             * default ManagementLevel
+             * Set ManagementLevel
             ***************************** */
-            string[] levels = new string[]
-            {
-                "0",
-                "1",
-                "2",
-                "3",
-                "4",
-                "5"
-            };
-
-            foreach (var level in levels)
+            foreach (string level in StaticData.ManagementLevels)
             {
                 CmbManagementLevel.Items.Add(level);
             }
@@ -169,7 +120,7 @@ namespace Contact_Manager.Partials.Dialog
             /* *****************************
              * default trainee years
             ***************************** */
-            string[] traineeYears = new string[]
+            string[] traineeYears =
             {
                 "1",
                 "2",
@@ -270,8 +221,8 @@ namespace Contact_Manager.Partials.Dialog
                 Validation.ValidatePhone(txtFax.Text, "Faxnummer ist nicht gültig.");
 
             // check ahv number
-            if (txtAhv.Text.Length > 0)
-                Validation.ValidateAhv(txtAhv.Text, "AHV Nummer ist nicht gültig.");
+            Validation.Required(txtAhv.Text, "AHV Nummer wurde nicht hinterlegt.");
+            Validation.ValidateAhv(txtAhv.Text, "AHV Nummer ist nicht gültig.");
 
             // check birth of date compare
             if (checkedBirthOfDate > 0)

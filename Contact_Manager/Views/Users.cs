@@ -18,6 +18,9 @@ namespace Contact_Manager.Views
             InitializeComponent();
         }
 
+        /**
+         * Update the data grid view
+         */
         public void UpdateSource()
         {
             if (_bindingSource == null)
@@ -49,6 +52,7 @@ namespace Contact_Manager.Views
             }
             else
             {
+                // Output all active objects
                 var users = from User usr in DataContainer.GetUserCollection()
                     orderby usr.Id
                     select new
@@ -70,6 +74,9 @@ namespace Contact_Manager.Views
             GridViewUsers.Update();
         }
 
+        /**
+         * Get the selected row from the data grid view
+         */
         public int GetSelectedRow()
         {
             // Check now the cell
@@ -89,6 +96,9 @@ namespace Contact_Manager.Views
             UpdateSource();
         }
 
+        /**
+         * Open the create mode of the dialog
+         */
         private void CmdCreate_Click(object sender, EventArgs e)
         {
             UserDialog dialog = new UserDialog();
@@ -96,11 +106,17 @@ namespace Contact_Manager.Views
             dialog.Show();
         }
 
+        /**
+         * If any changes are made in the search field THEN it should update the source
+         */
         private void TxtSearch_TextChanged(object sender, EventArgs e)
         {
             UpdateSource();
         }
 
+        /**
+         * Check if the delete key is pressed. WHEN TRUE THEN it should delete the resource
+         */
         private void GridViewUsers_KeyDown(object sender, KeyEventArgs e)
         {
             if (e.KeyCode != Keys.Delete)
@@ -147,19 +163,25 @@ namespace Contact_Manager.Views
             }
         }
 
+        /**
+         * If no objects are in the DataContainer THEN it will show an information
+         */
         private void GridViewUsers_Paint(object sender, PaintEventArgs e)
         {
             if (GridViewUsers.Rows.Count == 0)
             {
                 using (var gfx = e.Graphics)
                 {
-                    gfx.DrawString("Keine Daten vorhanden", this.Font, Brushes.White,
-                        new PointF((GridViewUsers.Width - this.Font.Size * "Keine Daten vorhanden".Length) / 2,
+                    gfx.DrawString("Keine Daten vorhanden", Font, Brushes.White,
+                        new PointF((GridViewUsers.Width - Font.Size * "Keine Daten vorhanden".Length) / 2,
                             GridViewUsers.Height / 2));
                 }
             }
         }
 
+        /**
+         * Trigger the edit mode in the dialog
+         */
         private void GridViewUsers_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
             int row = GetSelectedRow();

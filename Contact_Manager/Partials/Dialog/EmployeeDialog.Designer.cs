@@ -422,9 +422,9 @@ namespace Contact_Manager.Partials.Dialog
             this.LblAhv.AutoSize = true;
             this.LblAhv.Location = new System.Drawing.Point(20, 182);
             this.LblAhv.Name = "LblAhv";
-            this.LblAhv.Size = new System.Drawing.Size(46, 13);
+            this.LblAhv.Size = new System.Drawing.Size(53, 13);
             this.LblAhv.TabIndex = 73;
-            this.LblAhv.Text = "AHV Nr.";
+            this.LblAhv.Text = "AHV Nr. *";
             // 
             // LblDepartement
             // 
@@ -569,7 +569,7 @@ namespace Contact_Manager.Partials.Dialog
             this.groupBox1.Dock = System.Windows.Forms.DockStyle.Top;
             this.groupBox1.Location = new System.Drawing.Point(10, 10);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Padding = new System.Windows.Forms.Padding(15, 15, 15, 15);
+            this.groupBox1.Padding = new System.Windows.Forms.Padding(15);
             this.groupBox1.Size = new System.Drawing.Size(404, 327);
             this.groupBox1.TabIndex = 94;
             this.groupBox1.TabStop = false;
@@ -600,7 +600,7 @@ namespace Contact_Manager.Partials.Dialog
             this.groupBox2.Dock = System.Windows.Forms.DockStyle.Top;
             this.groupBox2.Location = new System.Drawing.Point(10, 337);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Padding = new System.Windows.Forms.Padding(15, 15, 15, 15);
+            this.groupBox2.Padding = new System.Windows.Forms.Padding(15);
             this.groupBox2.Size = new System.Drawing.Size(404, 252);
             this.groupBox2.TabIndex = 95;
             this.groupBox2.TabStop = false;
@@ -620,7 +620,7 @@ namespace Contact_Manager.Partials.Dialog
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.btnSave);
             this.Name = "EmployeeDialog";
-            this.Padding = new System.Windows.Forms.Padding(10, 10, 10, 10);
+            this.Padding = new System.Windows.Forms.Padding(10);
             this.Text = "Mitarbeiter";
             this.Load += new System.EventHandler(this.EmployeeDialog_Load);
             this.groupBox1.ResumeLayout(false);
