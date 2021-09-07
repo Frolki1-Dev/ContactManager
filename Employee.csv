@@ -1,5 +1,5 @@
- Anrede, Titel, Geschlecht, Vorname, Nachname, Telfon (Privat), Telefon (Gesch‰ft), Handy, AHV Nr, Geburtsdatum, Adresse, PLZ, Ort,Nationalit‰t, Abteilung, Fax Nr, Email, Anstellungsgrad,T‰tigkeit, Eintrittsdatum, Austrittsdatum,Kaderstufe
- Herr, ,1, Lukas,Th¸ring,711234567,717654321,774476369, 756.123456789.7, 31.12.1999, Achslenstrasse 3,9016, St. Gallen, Schweiz, IT,711234567, lukas.thuering@jansen.com,100, System Engineer, 01.08.2020,,0
- Herr, ,1, Frank, Giger,711234567,717654321,774476369, 756.987654321.7, 01.01.2000, Industriestrasse 43,9000, St. Gallen, Schweiz, IT,711237654, frank.giger@mail.com,80, Software Engineer, 01.01.2010,,2
- Herr, ,2, Maria, Mustermann,711234567,717654321,774476369, 756.123451234.7,12.03.1989,Marktgasse 1,9000,St. Gallen,Schweiz,HR,711237654,maria.mustermann@mustermail.com,40,HR Managerin, 01.03.2008,,4
- Herr, ,1, Max, Mustermann,711234567,717654321,774476369, 756.123456789.7, 23.04.1968, Am Weg 3,6005, Luzern, Schweiz, GL,711234567, Max.Mustermann@mustermail.com,100, CEO, 01.01.2005,,5
+Ôªø Anrede, Titel, Geschlecht, Vorname, Nachname, Telfon (Privat), Telefon (Gesch√§ft), Handy, AHV Nr, Geburtsdatum, Adresse, PLZ, Ort,Nationalit√§t, Abteilung, Fax Nr, Email, Anstellungsgrad,T√§tigkeit, Eintrittsdatum, Austrittsdatum,Kaderstufe
+ Herr, ,1, Lukas,Th√ºring,0711234567,0717654321,0774476369, 756.1234.5678.97, 31.12.1999, Achslenstrasse 3,9016, St. Gallen, Schweiz, IT,0711234567, lukas.thuering@jansen.com,100, System Engineer, 01.08.2020,,0
+ Herr, ,1, Frank, Giger,0711234567,0717654321,0774476369, 756.9876.5432.17, 01.01.2000, Industriestrasse 43,9000, St. Gallen, Schweiz, IT,0711237654, frank.giger@mail.com,80, Software Engineer, 01.01.2010,,2
+ Herr, ,2, Maria, Mustermann,0711234567,0717654321,0774476369, 756.1234.5123.47,12.03.1989,Marktgasse 1,9000,St. Gallen,Schweiz,HR,0711237654,maria.mustermann@mustermail.com,40,HR Managerin, 01.03.2008,,4
+ Herr, ,1, Max, Mustermann,0711234567,0717654321,0774476369, 756.1234.5678.97, 23.04.1968, Am Weg 3,6005, Luzern, Schweiz, GL,0711234567, Max.Mustermann@mustermail.com,100, CEO, 01.01.2005,,5
