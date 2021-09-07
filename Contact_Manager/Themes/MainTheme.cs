@@ -37,7 +37,7 @@ namespace Contact_Manager.Themes
         }
 
         /**
-         * Set the style for the contol items
+         * Set the style for the control items
          */
         public void SetControlStyles(ControlCollection controls)
         {

@@ -125,6 +125,13 @@ namespace Contact_Manager.Views
                 return;
             }
 
+            if (user.Id == Authentication.Authentication.GetUser().Id)
+            {
+                MessageBox.Show("Du kannst dich nicht selbst löschen.", "Shame",
+                    MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+
             DialogResult result = MessageBox.Show(
                 "Möchtest du wirklich den Benutzer " + user.Username + " löschen?", "Bestätigung Löschvorgang",
                 MessageBoxButtons.YesNo, MessageBoxIcon.Question);

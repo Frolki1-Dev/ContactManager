@@ -63,18 +63,64 @@ Firmenname, Geschäftsadresse, Kundentyp (A-E), Firmenkontakt
 ▪ Dashboard-View
 ▪ Import von Kontakten im CSV-Format oder VCard-Format
 
--Erfüllte Funktionen:
+# Definitionen
+✓ = Umgesetzt
+x = nicht Umgesetzt
 
-▪ Erfassung von Mitarbeitern und Kunden ✓
-▪ Mutieren von Mitarbeitern und Kunden ✓
-▪ Aktivieren und deaktivieren von Mitarbeitern und Kunden ✓
-▪ Löschen von Mitarbeitern und Kunden ✓
-▪ Automatische Vergabe von Mitarbeiternummern ✓
-▪ Protokollieren von Notizen in Kundenkontakten inkl. Historie
-▪ Suchmöglichkeiten über alle gespeicherten Informationen ✓
-▪ Automatisches Speichern des Datenstamms auf Festplatte ✓
-▪ Login ✓
-▪ Dashboard-View ✓
-▪ Import von Kontakten im CSV-Format oder VCard-Format ✓
+# Nicht funktionale Anforderungen
+[✓] Applikation in C# Windows Froms Framework
+[✓] Durchdachte Applikationsarchitektur
+[✓] Usiblity
+[✓] Error Handeling (Stabilität)
+[✓] Inline Dokumentation vorhanden
+[✓] Einheitliche UI
+
+# Allgemine Anforderungen
+[✓] Anmeldung mit Anmeldedaten
+[✓] Dashboard View
+[✓] Benutzerverwaltung nur mit Adminrechte
+[✓] Automatische vergabe von ID's bei Kunden, Mitarbeiter, Lehrlinge und Benutzer
+[✓] Datenstamm automatisch gespeichert
+
+# Kundenstamm Anforderung
+[✓] Kunden suchen
+[✓] Kunde erstellen
+[x] Kunde bearbeiten
+[✓] Kunde löschen
+[✓] Kunde aktivieren/deaktivieren
+[✓] Notizen historisch Auflisten
+[✓] Notizen erstellen
+[✓] Notizen bearbeiten
+
+# Mitarbeiterstamm Anforderung
+[✓] Mitarbeiter suchen
+[✓] Mitarbeiter erstellen
+[✓] Mitarbeiter bearbeiten
+[✓] Mitarbeiter aktivieren/deaktivieren
+[✓] Mitarbeiter löschen
+
+# Lehrlingstamm Anforderung
+[✓] Lehrling suchen
+[✓] Lehrling erstellen
+[✓] Lehrling bearbeiten
+[✓] Lehrling aktivieren/deaktivieren
+[✓] Lehrling löschen
+
+# Benutzerverwaltung Anforderung
+[✓] Benutzer suchen
+[✓] Benutzer erstellen
+[✓] Benutzer bearbeitern
+[✓] Benutzer aktivieren/deaktivieren
+[✓] Benutzer löschen
+
+# CSV Import Anforderung
+[x] CSV Import Kunde
+[x] CSV Import Mitarbeiter
+[x] CSV Import Lehrling
+
+# vCard Import Anforderung
+[x] vCard Import Kunde
+[x] vCard Import Mitarbeiter
+[x] vCard Import Lerhling
 
 

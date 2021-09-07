@@ -79,11 +79,15 @@ namespace Contact_Manager.Partials.Dialog
         {
             // Set the new properties
             _editUser.Username = TxtUsername.Text;
-            _editUser.Active = ChkActive.Checked;
-            _editUser.IsAdmin = ChkIsAdmin.Checked;
+
+            if (Authentication.Authentication.GetUser().Id != _editUser.Id)
+            {
+                _editUser.Active = ChkActive.Checked;
+                _editUser.IsAdmin = ChkIsAdmin.Checked;
+            }
 
             // Change password only if the password is valid
-            if (TxtPassword.Text.Length > 6)
+            if (TxtPassword.Text.Length >= 6)
             {
                 _editUser.Password = TxtPassword.Text;
             }
