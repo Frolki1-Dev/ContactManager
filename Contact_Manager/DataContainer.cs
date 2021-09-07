@@ -6,7 +6,7 @@ using Contact_Manager.Models;
 namespace Contact_Manager
 {
     /**
-     * Handles all data
+     * Handles all data for the application in runtime
      */
     sealed class DataContainer
     {
@@ -14,11 +14,13 @@ namespace Contact_Manager
          * All possible data sources as const
          */
         public const string Users = "users";
-
         public const string Customers = "customers";
         public const string Employees = "employees";
         public const string Trainees = "trainees";
 
+        /**
+         * All the collections of the sources
+         */
         private static Users _userCollection = new Users();
         private static Customers _customerCollection = new Customers();
         private static Employees _employeeCollection = new Employees();
@@ -81,10 +83,12 @@ namespace Contact_Manager
                 obj = formatter.Deserialize(fs);
             }
 
+            // Clean up the file steam and close it
             fs.Flush();
             fs.Close();
             fs.Dispose();
 
+            // Set the data
             switch (type)
             {
                 case Users:

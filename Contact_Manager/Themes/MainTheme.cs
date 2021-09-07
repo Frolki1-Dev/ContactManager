@@ -5,10 +5,13 @@ using static System.Windows.Forms.Control;
 namespace Contact_Manager.Themes
 {
     /**
-     * Style the application
+     * Style the application.
      */
     class MainTheme
     {
+        /**
+         * Get the form object and loop each control from the loop to apply the style
+         */
         public static void InitThemeForForm(Form form)
         {
             MainTheme theme = new MainTheme();

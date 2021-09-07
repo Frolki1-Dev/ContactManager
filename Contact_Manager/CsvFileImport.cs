@@ -8,6 +8,9 @@ using Contact_Manager.Models;
 
 namespace Contact_Manager
 {
+    /**
+     * Helps us to import the csv file and create the objects in the data container
+     */
     class CsvFileImport
     {
         /**
@@ -188,7 +191,7 @@ namespace Contact_Manager
         }
 
         /**
-         * TODO
+         * Helps us to convert the date sting to a DateTime object
          */
         private static DateTime ConvertStringToDateTime(string dateTimeValue)
         {

@@ -4,6 +4,9 @@ using System.Windows.Forms;
 
 namespace Contact_Manager
 {
+    /**
+     * Helps us to make our application great again
+     */
     public static class Helper
     {
         /**
@@ -56,7 +59,8 @@ namespace Contact_Manager
         }
 
         /**
-         * Helps to close the old form and open the new in the correct position
+         * Helps to close the old form and open the new in the correct position.
+         * A nice dry way to do this, but it works
          */
         public static void OpenNewFormAndCloseOld(Form newForm, Form oldForm)
         {
