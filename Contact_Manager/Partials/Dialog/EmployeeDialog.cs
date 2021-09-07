@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Windows.Forms;
 using Contact_Manager.Models;
 using Contact_Manager.Themes;
