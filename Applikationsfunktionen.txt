@@ -1,3 +1,68 @@
+   _____            _             _     __  __                                   
+  / ____|          | |           | |   |  \/  |                                  
+ | |     ___  _ __ | |_ __ _  ___| |_  | \  / | __ _ _ __   __ _  __ _  ___ _ __ 
+ | |    / _ \| '_ \| __/ _` |/ __| __| | |\/| |/ _` | '_ \ / _` |/ _` |/ _ \ '__|
+ | |___| (_) | | | | || (_| | (__| |_  | |  | | (_| | | | | (_| | (_| |  __/ |   
+  \_____\___/|_| |_|\__\__,_|\___|\__| |_|  |_|\__,_|_| |_|\__,_|\__, |\___|_|   
+                                                                  __/ |          
+                                                                 |___/          
+Management Summary:
+-Ausgangslage
+
+Unsere Aufgabe war es ein Contact Manager zu entwicklen. In welchem mehrere User agieren können und Kunden, Mitarbeiter und Lehrlinge
+erfassen und bearbeiten können. Zudem sollte ein schönes GUI entwickelt werden, damit der Endbenutzer sich wohl fühlt. 
+Das Error Handling war auch ein sehr wichtiger Punkt in den Anforderungen, somit sollte die Stabilität verbessert werden.
+
+-Umsetzung
+
+Wir haben unser Projekt mit C# unter dem .NET Framework 4.8 mit Windows.Forms entwickelt. Unser UI basiert auf einer Basis Klasse.
+Jedes UI Fenster basiert auf dieser Klasse. Es werden jedoch immer die zugehörigen Texte und Dialoge angezeigt.
+Wir haben zudem noch die Anforderungen vom Login, CSV Import und der Dashboard Ansicht erstellt.
+
+-Ergebnis
+
+Wir sind mit unserem Projekt sehr zufrieden. Wir konnten alle Must have Funktionen entwicklen und haben zudem noch 3 Nice to have features
+entwickelt.
+
+-Projektsicherung
+
+Das gesamte Team arbeitet mit GitHub und in seperierten Branches damit es keine Konflikte gibt. Somit werden die Daten in der Cloud gesichert und wir
+sind gesichert, falls ein Computer nicht mehr funktionieren sollte.
+
+-Aufgabenstellung
+
+Es soll eine Microsoft Window-Forms Applikation erstellt werden, welche die Verwaltung und Pflege von Mitarbeiterund Kundeninformationen vereinfacht.
+Dabei sollen die üblichen CRUD (Create, Read, Update, Delete) Möglichkeiten
+umgesetzt werden. Nebst den allgemeinen zu verwaltenden Informationen soll es möglich sein, dass die
+Kontaktaufnahme zu Kunden in Form einer laufenden Dokumentation nachvollziehbar wird. Jeder Kontakt mit Kunden
+wird protokolliert und kann zu einem späteren Zeitpunkt eingesehen werden.
+Folgende Informationen gilt es zu verwalten:
+Anrede, Vorname, Nachname, Geburtsdatum, Geschlecht, Titel, Telefonnummer Geschäft, Fax-Nummer Geschäft,
+Mobiltelefonnummer, E-Mail-Adresse, Status (aktiv, passiv)
+Mitarbeiternummer, Abteilung, AHV-Nummer, Wohnort, Nationalität, Adresse, Postleitzahl, Wohnort, Telefonnummer
+privat, Eintrittsdatum, Austrittdatum, Beschäftigungsgrad, Rolle (Tätigkeitsbezeichnung), Kaderstufe (0-5), Lehrjahre,
+aktuelles Lehrjahr (wenn Lernender)
+Firmenname, Geschäftsadresse, Kundentyp (A-E), Firmenkontakt
+
+
+-Must have Funktionen
+
+▪ Erfassung von Mitarbeitern und Kunden
+▪ Mutieren von Mitarbeitern und Kunden
+▪ Aktivieren und deaktivieren von Mitarbeitern und Kunden
+▪ Löschen von Mitarbeitern und Kunden
+▪ Automatische Vergabe von Mitarbeiternummern
+▪ Protokollieren von Notizen in Kundenkontakten inkl. Historie
+▪ Suchmöglichkeiten über alle gespeicherten Informationen
+▪ Automatisches Speichern des Datenstamms auf Festplatte
+
+-Nice to have Funktionen
+
+ Mutationshistorie von Kontaktdaten
+▪ Login
+▪ Dashboard-View
+▪ Import von Kontakten im CSV-Format oder VCard-Format
+
 # Definitionen
 ✓ = Umgesetzt
 x = nicht Umgesetzt
@@ -20,7 +85,7 @@ x = nicht Umgesetzt
 # Kundenstamm Anforderung
 [✓] Kunden suchen
 [✓] Kunde erstellen
-[x] Kunde bearbeiten
+[✓] Kunde bearbeiten
 [✓] Kunde löschen
 [✓] Kunde aktivieren/deaktivieren
 [✓] Notizen historisch Auflisten
@@ -49,11 +114,13 @@ x = nicht Umgesetzt
 [✓] Benutzer löschen
 
 # CSV Import Anforderung
-[x] CSV Import Kunde
-[x] CSV Import Mitarbeiter
-[x] CSV Import Lehrling
+[✓] CSV Import Kunde
+[✓] CSV Import Mitarbeiter
+[✓] CSV Import Lehrling
 
 # vCard Import Anforderung
 [x] vCard Import Kunde
 [x] vCard Import Mitarbeiter
 [x] vCard Import Lerhling
+
+
